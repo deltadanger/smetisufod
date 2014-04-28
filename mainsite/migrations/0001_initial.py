@@ -20,7 +20,7 @@ class Migration(SchemaMigration):
         db.create_table(u'mainsite_itemcategory', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_name', to=orm['mainsite.I18nString'])),
-            ('job', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_job', to=orm['mainsite.I18nString'])),
+            ('job', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_job', null=True, to=orm['mainsite.I18nString'])),
         ))
         db.send_create_signal(u'mainsite', ['ItemCategory'])
 
@@ -47,9 +47,11 @@ class Migration(SchemaMigration):
             ('icon', self.gf('django.db.models.fields.CharField')(max_length=255, null=True)),
             ('item_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemType'], null=True)),
             ('level', self.gf('django.db.models.fields.IntegerField')(null=True)),
+            ('has_valid_recipe', self.gf('django.db.models.fields.BooleanField')(default=True)),
             ('cost', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('range', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('critical', self.gf('django.db.models.fields.IntegerField')(null=True)),
+            ('crit_chance', self.gf('django.db.models.fields.IntegerField')(null=True)),
+            ('crit_damage', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('failure', self.gf('django.db.models.fields.IntegerField')(null=True)),
         ))
         db.send_create_signal(u'mainsite', ['Item'])
@@ -141,12 +143,14 @@ class Migration(SchemaMigration):
         u'mainsite.item': {
             'Meta': {'object_name': 'Item'},
             'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attributes'", 'null': 'True', 'through': u"orm['mainsite.AttributeValues']", 'to': u"orm['mainsite.Attribute']"}),
-            'condition': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
+            'conditions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
             'cost': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'craft': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Item']", 'null': 'True', 'through': u"orm['mainsite.Recipe']", 'symmetrical': 'False'}),
-            'critical': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'crit_chance': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'crit_damage': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'description': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'item_description'", 'null': 'True', 'to': u"orm['mainsite.I18nString']"}),
             'failure': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'has_valid_recipe': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'icon': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'item_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemType']", 'null': 'True'}),
@@ -157,7 +161,7 @@ class Migration(SchemaMigration):
         u'mainsite.itemcategory': {
             'Meta': {'object_name': 'ItemCategory'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'job': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_job'", 'to': u"orm['mainsite.I18nString']"}),
+            'job': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_job'", 'null': 'True', 'to': u"orm['mainsite.I18nString']"}),
             'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_name'", 'to': u"orm['mainsite.I18nString']"})
         },
         u'mainsite.itemtype': {

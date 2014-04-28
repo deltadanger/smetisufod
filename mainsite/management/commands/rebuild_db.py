@@ -1,21 +1,76 @@
-# -*- coding: utf-8 -*- 
-import urllib2, unicodedata, string, re
-from HTMLParser import HTMLParser
+
+import urllib2
 
 from django.core.management.base import BaseCommand, CommandError
-from mainsite.models import I18nString, Item, ItemType, ItemCategory, Attribute, AttributeValues, AttributeCondition
+
+from item_page_parser import ItemPageParser
+
 
 PROXY = "http://jacoelt:8*ziydwys@crlwsgateway_cluster.salmat.com.au:8080"
 PROXY_LIST = {"http":PROXY, "https":PROXY}
 
-BASE_URL = "http://www.dofus.com/fr/mmorpg-jeux/objets/2-objets/10-ceinture"
+# BASE_URL = "http://www.dofus.com/fr/mmorpg-jeux/objets/2-objets/10-ceinture"
+BASE_URL = "http://www.dofus.com/fr/mmorpg-jeux/objets/"
 
+CATEGORIES = [
+    "Arme",
+    "Equipement",
+    "Familier",
+    "Monture",
+    "Ressource",
+    "Consomable",
+]
 
-RE_LEVEL = re.compile("Level (\d+)")
-RE_ATTRIBUTE = re.compile("(-?\d+)( à (-?\d+))? (.*)".decode("utf-8"))
+JOBS = [
+    "",
+]
+
+CATEGORY_MAPPING = [
+    {"url": "2-objets/1-amulette", "category": "Equipement", "type": "Amulette", "job": "Bijouter"},
+    {"url": "2-objets/9-anneau", "category": "Equipement", "type": "Anneau", "job": "Bijouter"},
+    {"url": "2-objets/16-chapeau", "category": "Equipement", "type": "Chapeau", "job": "Tailleur"},
+    {"url": "2-objets/17-cape", "category": "Equipement", "type": "Cape", "job": "Tailleur"},
+    {"url": "2-objets/81-sac-dos", "category": "Equipement", "type": "Sac a Dos", "job": "Tailleur"},
+    {"url": "2-objets/10-ceinture", "category": "Equipement", "type": "Ceinture", "job": "Cordonnier"},
+    {"url": "2-objets/11-bottes", "category": "Equipement", "type": "Bottes", "job": "Cordonnier"},
+    {"url": "2-objets/82-bouclier", "category": "Equipement", "type": "Bouclier", "job": "Forgeur de Boucliers"},
+    {"url": "1-armes/2-arc", "category": "Arme", "type": "Arc", "job": "Sculpteur d'Arcs"},
+    {"url": "1-armes/3-baguette", "category": "Arme", "type": "Baguette", "job": "Sculpteur de Baguettes"},
+    {"url": "1-armes/4-baton", "category": "Arme", "type": "Baton", "job": "Sculpteur de Baton"},
+    {"url": "1-armes/5-dague", "category": "Arme", "type": "Dague", "job": "Forgeur de Dagues"},
+    {"url": "1-armes/6-epee", "category": "Arme", "type": "Epée", "job": "Forgeur d'Epées"},
+    {"url": "1-armes/7-marteau", "category": "Arme", "type": "Marteau", "job": "Forgeur de Marteaux"},
+    {"url": "1-armes/8-pelle", "category": "Arme", "type": "Pelle", "job": "Forgeur de Pelle"},
+    {"url": "1-armes/19-hache", "category": "Arme", "type": "Hache", "job": "Forgeur de Haches"},
+    {"url": "1-armes/20-outil", "category": "Arme", "type": "Outil", "job": None},
+    {"url": "4-ressources/15-ressources-diverses", "category": "Ressource", "type": "Ressource", "job": None},
+    {"url": "4-ressources/26-potion-forgemagie", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/34-cereale", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/35-fleur", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/36-plante", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/38-bois", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/39-minerai", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/40-aliage", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/41-poisson", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/46-fruit", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/47-os", "category": "Ressource", "type": "", "job": None},
+    {"url": "4-ressources/", "category": "Ressource", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+    {"url": "", "category": "", "type": "", "job": None},
+]
 
 COOKIES = "LANG=fr; SID=E1E002989B2E28B1544466C1DFE80000"
-
 
 class Command(BaseCommand):
     help = 'Update or rebuild the items database'
@@ -34,132 +89,32 @@ class Command(BaseCommand):
             
 
 def printItem(item):
-    print item.name
+    print item.name.fr_fr
     for a in item.attributes.all():
-        values = a.attributevalues_set.get(item=item)
-        print a.name, ":" + str(values.min_value) + "-" + str(values.max_value)
+        attribute = a.attributevalues_set.get(item=item)
+        print a.name.fr_fr, ":" + str(attribute.min_value) + "-" + str(attribute.max_value)
+    
+    print "\nConditions"
+    for c in item.conditions.all():
+        condition = c.attributecondition_set.get(item=item)
+        print c.name.fr_fr, condition.equality, condition.required_value
+    
+    print "\nCaracs"
+    print str(item.cost) + " PA ; " + str(item.range) + " PO ; CC 1/" + str(item.crit_chance) + " (+" + str(item.crit_damage) + ") ; EC 1/" + str(item.failure)
+    
+    print "\nCraft"
+    craft = []
+    if item.has_valid_recipe:
+        for i in item.craft.all():
+            recipe = i.recipe_element_set.get(recipe_item=item)
+            craft.append(str(recipe.quantity) + " x " + recipe.recipe_element.name.fr_fr)
+        print ",".join(craft)
+        
+    else:
+        print "Invalid recipe"
     print "\n"
 
-def get_attr(attrs, attr):
-    for e in attrs:
-        if e[0] == attr:
-            return e[1]
-    return ""
 
-class ItemPageParser(HTMLParser):
-    def __init__(self):
-        HTMLParser.__init__(self)
-        self.reset_vars()
-        
-        self.data = []
-        self.item = None
-        
-    def reset_vars(self):
-        self.get_name = False
-        self.get_level = False
-        self.in_desc = False
-        self.get_desc = False
-        self.in_attributes = False
-        self.in_attributes_left = False
-        self.get_attributes = False
-        self.in_attributes_right = False
-        self.in_conditions = False
-        self.get_conditions = False
-        
-    
-    def handle_starttag(self, tag, attrs):
-        if tag == "div" and "middle_content" in get_attr(attrs, "class"):
-            if self.item:
-                self.item.save()
-                self.data.append(self.item)
-            self.reset_vars()
-        
-        
-        if tag == "h2" and "title_element" in get_attr(attrs, "class"):
-            self.get_name = True
-        
-        if tag == "span" and "level_element" in get_attr(attrs, "class"):
-            self.get_level = True
-        
-        
-        if tag == "div" and "desc" in get_attr(attrs, "class"):
-            self.in_desc = True
-        
-        if self.in_desc and tag == "span":
-            self.get_desc = True
-        
-        
-        if tag == "div" and "element_carac" in get_attr(attrs, "class"):
-            self.in_attributes = True
-            
-        if self.in_attributes and tag == "div" and "element_carac_left" in get_attr(attrs, "class"):
-            self.in_attributes_left = True
-        
-        if self.in_attributes and tag == "ul":
-            self.get_attributes = True
-        
-            
-        if self.in_attributes and tag == "div" and "element_carac_right" in get_attr(attrs, "class"):
-            self.in_attributes_left = False
-            self.get_attributes = False
-            self.in_attributes_right = True
-        
-        if self.in_conditions and tag == "ul":
-            self.get_conditions = True
-        
-        
-    def handle_data(self, data):
-        if self.get_name:
-            name, created = I18nString.objects.get_or_create(fr_fr=unicode(data))
-            self.item, created = Item.objects.get_or_create(name=name)
-        
-        if self.get_level:
-            match = RE_LEVEL.match(data)
-            if match:
-                self.item.level = match.group(1)
-        
-        if self.get_desc:
-            self.item.description, created = I18nString.objects.get_or_create(fr_fr=unicode(data))
-        
-        if self.get_attributes:
-            match = RE_ATTRIBUTE.match(data)
-            if match:
-                name, created = I18nString.objects.get_or_create(fr_fr=unicode(match.group(4)))
-                min = match.group(1)
-                max = match.group(3)
-                if not max:
-                    max = min
-                
-                attr, created = Attribute.objects.get_or_create(name=name)
-                try:
-                    AttributeValues.objects.get(item=self.item, attribute=attr, min_value=int(min), max_value=int(max))
-                except:
-                    AttributeValues.objects.create(item=self.item, attribute=attr, min_value=int(min), max_value=int(max))
-        
-        if self.in_attributes_right and "Conditions :" in data:
-            self.in_conditions = True
-        
-        
-    def handle_endtag(self, tag):
-        if self.get_conditions and tag == "ul":
-            self.get_conditions = False
-            self.in_conditions = False
-        
-        if self.get_attributes and tag == "ul":
-            self.get_attributes = False
-            self.in_attributes_left = False
-            self.in_attributes = False
-            
-        if self.get_desc and tag == "span":
-            self.get_desc = False
-            self.in_desc = False
-        
-        if self.get_name and tag == "h2":
-            self.get_name = False
-        
-        if self.get_level and tag == "span":
-            self.get_level = False
-        
     
 
 if __name__ == "__main__":
