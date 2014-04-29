@@ -16,11 +16,17 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'mainsite', ['I18nString'])
 
+        # Adding model 'Job'
+        db.create_table(u'mainsite_job', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='job_name', to=orm['mainsite.I18nString'])),
+        ))
+        db.send_create_signal(u'mainsite', ['Job'])
+
         # Adding model 'ItemCategory'
         db.create_table(u'mainsite_itemcategory', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_name', to=orm['mainsite.I18nString'])),
-            ('job', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_job', null=True, to=orm['mainsite.I18nString'])),
         ))
         db.send_create_signal(u'mainsite', ['ItemCategory'])
 
@@ -29,6 +35,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.I18nString'])),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemCategory'])),
+            ('job', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_job', null=True, to=orm['mainsite.Job'])),
         ))
         db.send_create_signal(u'mainsite', ['ItemType'])
 
@@ -89,6 +96,9 @@ class Migration(SchemaMigration):
     def backwards(self, orm):
         # Deleting model 'I18nString'
         db.delete_table(u'mainsite_i18nstring')
+
+        # Deleting model 'Job'
+        db.delete_table(u'mainsite_job')
 
         # Deleting model 'ItemCategory'
         db.delete_table(u'mainsite_itemcategory')
@@ -161,14 +171,19 @@ class Migration(SchemaMigration):
         u'mainsite.itemcategory': {
             'Meta': {'object_name': 'ItemCategory'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'job': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_job'", 'null': 'True', 'to': u"orm['mainsite.I18nString']"}),
             'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_name'", 'to': u"orm['mainsite.I18nString']"})
         },
         u'mainsite.itemtype': {
             'Meta': {'object_name': 'ItemType'},
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemCategory']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'job': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_job'", 'null': 'True', 'to': u"orm['mainsite.Job']"}),
             'name': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.I18nString']"})
+        },
+        u'mainsite.job': {
+            'Meta': {'object_name': 'Job'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'job_name'", 'to': u"orm['mainsite.I18nString']"})
         },
         u'mainsite.recipe': {
             'Meta': {'object_name': 'Recipe'},

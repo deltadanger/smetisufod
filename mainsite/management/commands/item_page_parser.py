@@ -3,7 +3,7 @@ import re, urllib
 
 from HTMLParser import HTMLParser
 
-from mainsite.models import I18nString, Item, ItemType, ItemCategory, Attribute, AttributeValues, AttributeCondition, Recipe
+from mainsite.models import I18nString, Item, ItemType, ItemCategory, Attribute, AttributeValue, AttributeCondition, Recipe
 
 
 RE_LEVEL = re.compile("Level (\d+)")
@@ -22,12 +22,14 @@ def get_attr(attrs, attr):
     return ""
 
 class ItemPageParser(HTMLParser):
-    def __init__(self):
+    def __init__(self, item_type):
         HTMLParser.__init__(self)
         self.reset_vars()
         
         self.data = []
         self.item = None
+        self.item_type = item_type
+        self.current_page = 0
         
     def reset_vars(self):
         self.get_name = False
@@ -46,6 +48,8 @@ class ItemPageParser(HTMLParser):
         self.get_recipe = False
         self.recipe = None
         self.invalid_recipe = False
+        self.in_pagination = False
+        self.get_page = False
         
     
     def handle_starttag(self, tag, attrs):
@@ -54,6 +58,7 @@ class ItemPageParser(HTMLParser):
                 if self.invalid_recipe:
                     Recipe.objects.filter(item=self.item).delete()
                     self.item.has_valid_recipe = False
+                self.item.item_type = self.item_type
                 self.item.save()
                 self.data.append(self.item)
             self.reset_vars()
@@ -82,7 +87,7 @@ class ItemPageParser(HTMLParser):
         if self.in_caracs_block and tag == "ul":
             self.get_attributes = True
         
-            
+        
         if self.in_caracs_block and tag == "div" and "element_carac_right" in get_attr(attrs, "class"):
             self.in_caracs_left = False
             self.get_attributes = False
@@ -94,12 +99,20 @@ class ItemPageParser(HTMLParser):
         if self.in_caracs and tag == "ul":
             self.get_caracs = True
         
+        
         if tag == "div" and "element_carac_block1" in get_attr(attrs, "class"):
             self.in_recipe = True
         
         if self.in_recipe and tag == "p":
             self.get_recipe = True
         
+        
+        
+        if tag == "div" and "pagination" in get_attr(attrs, "class"):
+            self.in_pagination = True
+        
+        if self.in_pagination and tag == "span" and "on" in get_attr(attrs, "class"):
+            self.get_page = True
         
     def handle_data(self, data):
         if self.get_name:
@@ -127,7 +140,7 @@ class ItemPageParser(HTMLParser):
                 
                 attr, created = Attribute.objects.get_or_create(name=attr)
                 
-                AttributeValues.objects.get_or_create(item=self.item, attribute=attr, min_value=int(min), max_value=int(max))
+                AttributeValue.objects.get_or_create(item=self.item, attribute=attr, min_value=int(min), max_value=int(max))
         
         if self.in_caracs_right and "Conditions :" in data:
             self.in_conditions = True
@@ -191,9 +204,16 @@ class ItemPageParser(HTMLParser):
                 else:
                     self.recipe = None
                     self.invalid_recipe = True
-                    
+        
+        
+        if self.get_page:
+            self.current_page = int(data)
         
     def handle_endtag(self, tag):
+        if self.get_page and tag == "span":
+            self.get_page = False
+            self.in_pagination = False
+        
         if self.get_recipe and tag == "p":
             self.get_recipe = False
             self.in_recipe = False

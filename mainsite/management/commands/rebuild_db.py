@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand, CommandError
 
 from item_page_parser import ItemPageParser
 
-from mainsite.models import Item, ItemCategory, ItemType, Job 
+from mainsite.models import Item, ItemCategory, ItemType, Job, I18nString
 
 
 PROXY = "http://jacoelt:8*ziydwys@crlwsgateway_cluster.salmat.com.au:8080"
@@ -99,7 +99,6 @@ CATEGORY_MAPPING = [
     {"url": "4-ressources/119-champignon",          "category": "Ressource", "type": "Champignon", "job": None},
     {"url": "4-ressources/152-galet",               "category": "Ressource", "type": "Galet", "job": None},
     {"url": "4-ressources/153-nowel",               "category": "Ressource", "type": "Nowel", "job": None},
-    {"url": "4-ressources/167-essence-gardien-donjon", "category": "Ressource", "type": "Essence de Gardien de Donjon", "job": None},
     
     {"url": "5-familiers/18-familier", "category": "Familier", "type": "Familier", "job": None},
     {"url": "5-familiers/121-montilier", "category": "Familier", "type": "Montilier", "job": None},
@@ -116,16 +115,32 @@ class Command(BaseCommand):
         opener.addheaders.append(('Cookie', COOKIES))
         
         
+        build_categories()
+        build_jobs()
+        
+        for mapping in CATEGORY_MAPPING:
+            type = build_item_type(mapping["type"], mapping["category"], mapping["job"])
+            
+            url = BASE_URL + mapping["url"] + "?pa="
+            i = 1
+            p = None
+            prev_page = 0
+            current_page = 1
+            while prev_page != current_page:
+                print "Processing", url+str(i)
+                resp = opener.open(url + str(i))
+                
+                if p:
+                    prev_page = p.current_page
+                p = ItemPageParser(type)
+                p.feed(resp.read())
+                current_page = p.current_page
+                
+                i += 1
         
         
-        resp = opener.open(BASE_URL)
         
-        p = ItemPageParser()
-        p.feed(resp.read())
-        
-        
-        
-        printItems()
+        # printItems()
 
 
 
@@ -137,15 +152,24 @@ def build_categories():
 def build_jobs():
     for j in JOBS:
         name, created = I18nString.objects.get_or_create(fr_fr=j)
-        ItemCategory.objects.get_or_create(name=name)
+        Job.objects.get_or_create(name=name)
     
+def build_item_type(type, category, job):
+    name, created = I18nString.objects.get_or_create(fr_fr=type)
+    category = I18nString.objects.get(fr_fr=category)
+    category = ItemCategory.objects.get(name=category)
+    if job:
+        job = I18nString.objects.get(fr_fr=job)
+        job = Job.objects.get(name=job)
+    
+    type, created = ItemType.objects.get_or_create(name=name, category=category, job=job)
+    return type
 
-
-def printItem():
+def printItems():
     for item in Item.objects.all():
         print item.name.fr_fr
         for a in item.attributes.all():
-            attribute = a.attributevalues_set.get(item=item)
+            attribute = a.attributevalue_set.get(item=item)
             print a.name.fr_fr, ":" + str(attribute.min_value) + "-" + str(attribute.max_value)
         
         print "\nConditions"
