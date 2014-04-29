@@ -16,7 +16,7 @@ class BaseModel(models.Model):
     objects = AdvancedManager()
     
     class Meta:
-        abstract        = True
+        abstract = True
 
 
 class I18nString(BaseModel):
@@ -52,6 +52,24 @@ class Attribute(BaseModel):
     def __unicode__(self):
         return unicode(self.name)
 
+
+class Panoplie(BaseModel):
+    name = models.ForeignKey(I18nString, related_name="panoplie_name")
+    attributes = models.ManyToManyField(Attribute, through='PanoplieAttribute', null=True)
+    
+    def __unicode__(self):
+        return unicode(self.name)
+
+class PanoplieAttribute(BaseModel):
+    panoplie = models.ForeignKey(Panoplie)
+    attribute = models.ForeignKey(Attribute)
+    value = models.IntegerField()
+    no_of_items = models.IntegerField()
+    
+    def __unicode__(self):
+        return unicode(self.item) + "-" + unicode(self.attribute)
+
+
 class Item(BaseModel):
     name                = models.ForeignKey(I18nString, related_name="item_name")
     description         = models.ForeignKey(I18nString, related_name="item_description", null=True)
@@ -67,6 +85,7 @@ class Item(BaseModel):
     crit_chance         = models.IntegerField(null=True)
     crit_damage         = models.IntegerField(null=True)
     failure             = models.IntegerField(null=True)
+    panoplie            = models.ForeignKey(Panoplie, null=True)
     
     def __unicode__(self):
         return unicode(self.name)
