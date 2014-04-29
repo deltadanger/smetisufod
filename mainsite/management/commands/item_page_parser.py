@@ -26,7 +26,6 @@ class ItemPageParser(HTMLParser):
         HTMLParser.__init__(self)
         self.reset_vars()
         
-        self.data = []
         self.item = None
         self.item_type = item_type
         self.current_page = 0
@@ -60,7 +59,6 @@ class ItemPageParser(HTMLParser):
                     self.item.has_valid_recipe = False
                 self.item.item_type = self.item_type
                 self.item.save()
-                self.data.append(self.item)
             self.reset_vars()
         
         
