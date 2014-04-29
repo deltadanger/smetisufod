@@ -8,3 +8,5 @@ def home(request):
     return {
         'TEMPLATE': "test.html",
     }
+
+
