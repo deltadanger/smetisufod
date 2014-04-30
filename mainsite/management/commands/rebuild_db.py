@@ -22,9 +22,7 @@ CATEGORIES = [
     "Arme",
     "Equipement",
     "Familier",
-    "Monture",
     "Ressource",
-    "Consomable",
 ]
 
 JOBS = [
@@ -43,7 +41,7 @@ JOBS = [
 ]
 
 CATEGORY_MAPPING = [
-    {"url": "4-ressources/15-ressources-diverses",  "category": "Ressource", "type": "Ressource", "job": None},
+    {"url": "4-ressources/15-ressources-diverses",  "category": "Ressource", "type": "Divers", "job": None},
     {"url": "4-ressources/34-cereale",              "category": "Ressource", "type": "Cérérale", "job": None},
     {"url": "4-ressources/35-fleur",                "category": "Ressource", "type": "Fleur", "job": None},
     {"url": "4-ressources/36-plante",               "category": "Ressource", "type": "Plante", "job": None},
@@ -142,13 +140,13 @@ def fetch_items(web_cache):
         prev_page = 0
         current_page = 1
         while prev_page != current_page:
-            log.debug(url+str(i))
-            resp = web_cache.get(url + str(i))
+            log.info(url+str(i))
+            content = web_cache.get(url + str(i))
             
             if p:
                 prev_page = p.current_page
             p = ItemPageParser(type)
-            p.feed(resp.read())
+            p.feed(content)
             current_page = p.current_page
             
             i += 1
@@ -180,8 +178,8 @@ def build_item_type(type, category, job):
 
 
 def fetch_sets(web_cache):
-    resp = web_cache.get(SETS_URL)
-    MainPanopliePageParser(web_cache).feed(resp.read())
+    content = web_cache.get(SETS_URL)
+    MainPanopliePageParser(web_cache).feed(content)
 
 
 

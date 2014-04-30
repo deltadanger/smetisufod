@@ -24,7 +24,7 @@ class WebCache():
         
         if path.isfile(file):
             with open(file, "r") as f:
-                content = f.readlines()
+                content = "".join(f.readlines())
             
             return content
         
@@ -36,7 +36,6 @@ class WebCache():
         with open(file, "w") as f:
             f.write(content)
         
-        raise "fail"
     
     def _get_name_from_url(self, url):
         filename = url.replace(":", "").replace("/", "-").replace("?", "$")

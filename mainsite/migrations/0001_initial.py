@@ -46,12 +46,29 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'mainsite', ['Attribute'])
 
+        # Adding model 'Panoplie'
+        db.create_table(u'mainsite_panoplie', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='panoplie_name', to=orm['mainsite.I18nString'])),
+        ))
+        db.send_create_signal(u'mainsite', ['Panoplie'])
+
+        # Adding model 'PanoplieAttribute'
+        db.create_table(u'mainsite_panoplieattribute', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('panoplie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Panoplie'])),
+            ('attribute', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Attribute'])),
+            ('value', self.gf('django.db.models.fields.IntegerField')()),
+            ('no_of_items', self.gf('django.db.models.fields.IntegerField')()),
+        ))
+        db.send_create_signal(u'mainsite', ['PanoplieAttribute'])
+
         # Adding model 'Item'
         db.create_table(u'mainsite_item', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='item_name', to=orm['mainsite.I18nString'])),
             ('description', self.gf('django.db.models.fields.related.ForeignKey')(related_name='item_description', null=True, to=orm['mainsite.I18nString'])),
-            ('icon', self.gf('django.db.models.fields.CharField')(max_length=255, null=True)),
+            ('original_id', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('item_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemType'], null=True)),
             ('level', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('has_valid_recipe', self.gf('django.db.models.fields.BooleanField')(default=True)),
@@ -60,18 +77,19 @@ class Migration(SchemaMigration):
             ('crit_chance', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('crit_damage', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('failure', self.gf('django.db.models.fields.IntegerField')(null=True)),
+            ('panoplie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Panoplie'], null=True)),
         ))
         db.send_create_signal(u'mainsite', ['Item'])
 
-        # Adding model 'AttributeValues'
-        db.create_table(u'mainsite_attributevalues', (
+        # Adding model 'AttributeValue'
+        db.create_table(u'mainsite_attributevalue', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('item', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Item'])),
             ('attribute', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Attribute'])),
             ('min_value', self.gf('django.db.models.fields.IntegerField')()),
             ('max_value', self.gf('django.db.models.fields.IntegerField')()),
         ))
-        db.send_create_signal(u'mainsite', ['AttributeValues'])
+        db.send_create_signal(u'mainsite', ['AttributeValue'])
 
         # Adding model 'AttributeCondition'
         db.create_table(u'mainsite_attributecondition', (
@@ -109,11 +127,17 @@ class Migration(SchemaMigration):
         # Deleting model 'Attribute'
         db.delete_table(u'mainsite_attribute')
 
+        # Deleting model 'Panoplie'
+        db.delete_table(u'mainsite_panoplie')
+
+        # Deleting model 'PanoplieAttribute'
+        db.delete_table(u'mainsite_panoplieattribute')
+
         # Deleting model 'Item'
         db.delete_table(u'mainsite_item')
 
-        # Deleting model 'AttributeValues'
-        db.delete_table(u'mainsite_attributevalues')
+        # Deleting model 'AttributeValue'
+        db.delete_table(u'mainsite_attributevalue')
 
         # Deleting model 'AttributeCondition'
         db.delete_table(u'mainsite_attributecondition')
@@ -136,8 +160,8 @@ class Migration(SchemaMigration):
             'item': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Item']"}),
             'required_value': ('django.db.models.fields.IntegerField', [], {})
         },
-        u'mainsite.attributevalues': {
-            'Meta': {'object_name': 'AttributeValues'},
+        u'mainsite.attributevalue': {
+            'Meta': {'object_name': 'AttributeValue'},
             'attribute': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Attribute']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'item': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Item']"}),
@@ -152,7 +176,7 @@ class Migration(SchemaMigration):
         },
         u'mainsite.item': {
             'Meta': {'object_name': 'Item'},
-            'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attributes'", 'null': 'True', 'through': u"orm['mainsite.AttributeValues']", 'to': u"orm['mainsite.Attribute']"}),
+            'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attributes'", 'null': 'True', 'through': u"orm['mainsite.AttributeValue']", 'to': u"orm['mainsite.Attribute']"}),
             'conditions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
             'cost': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'craft': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Item']", 'null': 'True', 'through': u"orm['mainsite.Recipe']", 'symmetrical': 'False'}),
@@ -161,11 +185,12 @@ class Migration(SchemaMigration):
             'description': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'item_description'", 'null': 'True', 'to': u"orm['mainsite.I18nString']"}),
             'failure': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'has_valid_recipe': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'icon': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'item_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemType']", 'null': 'True'}),
             'level': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'item_name'", 'to': u"orm['mainsite.I18nString']"}),
+            'original_id': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'panoplie': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Panoplie']", 'null': 'True'}),
             'range': ('django.db.models.fields.IntegerField', [], {'null': 'True'})
         },
         u'mainsite.itemcategory': {
@@ -184,6 +209,20 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Job'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'job_name'", 'to': u"orm['mainsite.I18nString']"})
+        },
+        u'mainsite.panoplie': {
+            'Meta': {'object_name': 'Panoplie'},
+            'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Attribute']", 'null': 'True', 'through': u"orm['mainsite.PanoplieAttribute']", 'symmetrical': 'False'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'panoplie_name'", 'to': u"orm['mainsite.I18nString']"})
+        },
+        u'mainsite.panoplieattribute': {
+            'Meta': {'object_name': 'PanoplieAttribute'},
+            'attribute': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Attribute']"}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'no_of_items': ('django.db.models.fields.IntegerField', [], {}),
+            'panoplie': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Panoplie']"}),
+            'value': ('django.db.models.fields.IntegerField', [], {})
         },
         u'mainsite.recipe': {
             'Meta': {'object_name': 'Recipe'},

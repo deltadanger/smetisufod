@@ -73,7 +73,7 @@ class PanoplieAttribute(BaseModel):
 class Item(BaseModel):
     name                = models.ForeignKey(I18nString, related_name="item_name")
     description         = models.ForeignKey(I18nString, related_name="item_description", null=True)
-    icon                = models.CharField(max_length=255, null=True)
+    original_id         = models.IntegerField(null=True)
     item_type           = models.ForeignKey(ItemType, null=True)
     level               = models.IntegerField(null=True)
     attributes          = models.ManyToManyField(Attribute, related_name="item_attributes", through='AttributeValue', null=True)
@@ -85,7 +85,7 @@ class Item(BaseModel):
     crit_chance         = models.IntegerField(null=True)
     crit_damage         = models.IntegerField(null=True)
     failure             = models.IntegerField(null=True)
-    panoplie            = models.ForeignKey(Panoplie, null=True)
+    panoplie            = models.ForeignKey(Panoplie, null=True, on_delete=models.SET_NULL)
     
     def __unicode__(self):
         return unicode(self.name)
