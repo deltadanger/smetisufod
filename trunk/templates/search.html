@@ -1,10 +1,125 @@
-<html>
-<head>
-<style>
-body: {margin: auto;}
-</style>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% load url from future %}
+
+{% block title %}Recherche d'objets{% endblock %}
+
+{% block js %}
+<script>
+    $(function(){
+        $("#type-tree").tree({
+            onCheck: {
+                ancestors: 'checkIfFull',
+                descendants: 'check'
+            },
+            onUncheck: {
+                ancestors: 'uncheck',
+                descendants: 'uncheck'
+            }
+        });
+        
+        $("#template-row").hide();
+        
+        $("#add-row").click(function() {
+            $("#effects").append($("#template-row").clone().show());
+        }).click();
+        
+        $(document).on("click", ".remove-row", function() {
+            $(this).parent().remove();
+        });
+        
+        $("#search").click(function() {
+            var args = {};
+            args.types = getSelectedTypes();
+            $.get("{% url "search" %}", args,
+            function (data) {
+                
+            });
+        });
+    });
+    
+    function getSelectedTypes() {
+        if ($("#type-all:checked").length) {
+            return "type-all";
+        }
+        
+        result = []
+        for (var cat in $("li.category")) {
+            if (cat.find("input:checked")
+    }
+
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>Recherche</h1>
+
+<div id="search-div">
+    <div id="types">
+        <ul id="type-tree">
+            <li><input type="checkbox" id="type-all" /><label for="type-all">Tous</label>
+                <ul>
+                    {% for category in categories %}
+                        <li class="category collapsed"><input type="checkbox" id="type-{{ category }}" /><label for="type-{{ category }}">{{ category }}</label>
+                            <ul>
+                                {% for type in category.itemtype_set.all %}
+                                    <li class="type"><input type="checkbox" id="type-{{ type }}" /><label for="type-{{ type }}">{{ type }}</label></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="search-fields">
+        <div>
+            <label for="name">Nom de l'objet</label> <input type="text" id="name" />
+            <label for="level-min">Niveau</label> <input type="text" id="level-min" /> &agrave; <input type="text" id="level-max" /> 
+        </div>
+        
+        <div>
+            <h3>
+                Effets
+                <input type="button" id="add-row" value="Ajouter une ligne" />
+            </h3>
+            <div id="effects"></div>
+            <label for="include-panoplie">Inclure les bonus de panoplie</label> <input type="checkbox" id="include-panoplie" />
+        </div>
+        
+        <div>
+            Seulement les recettes &agrave;
+            <label for="recipe-1">1</label><input type="checkbox" id="recipe-1" />
+            <label for="recipe-2">2</label><input type="checkbox" id="recipe-2" />
+            <label for="recipe-3">3</label><input type="checkbox" id="recipe-3" />
+            <label for="recipe-4">4</label><input type="checkbox" id="recipe-4" />
+            <label for="recipe-5">5</label><input type="checkbox" id="recipe-5" />
+            <label for="recipe-6">6</label><input type="checkbox" id="recipe-6" />
+            <label for="recipe-7">7</label><input type="checkbox" id="recipe-7" />
+            <label for="recipe-8">8</label><input type="checkbox" id="recipe-8" />
+            case(s)
+            <br />
+            <label for="craft-only">Objets craftables uniquement</label> <input type="checkbox" id="craft-only" />
+        </div>
+    </div>
+    
+    <div>
+        <input type="button" id="search" value="Lancer la recherche" />
+    </div>
+</div>
+
+
+
+<div id="template-row">
+    <select>
+        {% for attr in attributes %}
+            <option value="{{ attr.id }}">{{ attr.name }}</option>
+        {% endfor %}
+    </select>
+    <label for="value-min">Min</label> <input type="text" id="value-min" />
+    <label for="value-max">Max</label> <input type="text" id="value-max" />
+    <input type="button" class="remove-row" value="-" />
+</div>
+
+{% endblock %}

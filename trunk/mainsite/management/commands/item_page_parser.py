@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-import re, urllib
+import re, logging
 
 from HTMLParser import HTMLParser
 
 from mainsite.models import I18nString, Item, ItemType, ItemCategory, Attribute, AttributeValue, AttributeCondition, Recipe
 
+log = logging.getLogger(__name__)
 
 RE_LEVEL = re.compile("Level (\d+)")
 RE_ATTRIBUTE = re.compile("(-?\d+)( à (-?\d+))? (.*)")
@@ -14,6 +15,7 @@ RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
 RE_CARAC_CC = re.compile("CC : 1/(\d{1,2})( \(\+(\d{1,2})\))?")
 RE_CARAC_EC = re.compile("EC : 1/(\d{1,2})")
 RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s*(\d) x ")
+RE_ITEM_ID = re.compile("/(.*?)\.swf")
 
 def get_attr(attrs, attr):
     for e in attrs:
@@ -69,6 +71,13 @@ class ItemPageParser(HTMLParser):
             self.get_level = True
         
         
+        if tag == "param" and "flashvars" in get_attr(attrs, "name"):
+            match = RE_ITEM_ID.match(get_attr(attrs, "value"))
+            
+            if match:
+                self.item.original_id = int(match.group(1))
+        
+        
         if tag == "div" and "desc" in get_attr(attrs, "class"):
             self.in_desc = True
         
@@ -116,6 +125,7 @@ class ItemPageParser(HTMLParser):
         if self.get_name:
             name, created = I18nString.objects.get_or_create(fr_fr=data)
             self.item, created = Item.objects.get_or_create(name=name)
+            log.debug("Item: " + data + " ("+str(created)+")")
         
         if self.get_level:
             match = RE_LEVEL.match(data)
@@ -202,6 +212,7 @@ class ItemPageParser(HTMLParser):
                 else:
                     self.recipe = None
                     self.invalid_recipe = True
+                    log.debug("Recipe invalid")
         
         
         if self.get_page:

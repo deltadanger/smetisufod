@@ -36,10 +36,10 @@ class MainPanopliePageParser(HTMLParser):
         
         if self.in_menu and tag == "a" and "/fr/mmorpg-jeux/panoplies/" in get_attr(attrs, "href"):
             url = BASE_URL + get_attr(attrs, "href")
-            log.debug(url)
+            log.info(url)
             
-            resp = self.web_cache.get(url)
-            PanopliePageParser().feed(resp.read())
+            content = self.web_cache.get(url)
+            PanopliePageParser().feed(content)
         
     def handle_endtag(self, tag):
         if self.in_menu and tag == "div":
@@ -52,6 +52,7 @@ class PanopliePageParser(HTMLParser):
         
         self.panoplie = None
         self.current_no_item = 0
+        self.is_panoplie_valid = True
         
         self.in_name = False
         self.get_name = False
@@ -61,6 +62,9 @@ class PanopliePageParser(HTMLParser):
         
         
     def handle_starttag(self, tag, attrs):
+        if not self.is_panoplie_valid:
+            return
+        
         if tag == "div" and "content_panos" in get_attr(attrs, "class"):
             self.in_name = True
         
@@ -78,6 +82,9 @@ class PanopliePageParser(HTMLParser):
             self.get_item = True
         
     def handle_data(self, data):
+        if not self.is_panoplie_valid:
+            return
+        
         if self.get_name:
             name, created = I18nString.objects.get_or_create(fr_fr=data)
             self.panoplie, created = Panoplie.objects.get_or_create(name=name)
@@ -105,13 +112,21 @@ class PanopliePageParser(HTMLParser):
                 PanoplieAttribute.objects.get_or_create(panoplie=self.panoplie, attribute=attribute, value=value, no_of_items=self.current_no_item)
         
         if self.get_item:
-            name = I18nString.objects.get(fr_fr=data)
-            item = Item.objects.get(name=name)
-            item.panoplie = self.panoplie
-            item.save()
-            log.debug("Item " + unicode(name) + " belongs to " + unicode(self.panoplie.name))
+            name = I18nString.objects.get_if_exist(fr_fr=data)
+            item = Item.objects.get_if_exist(name=name)
+            if item:
+                item.panoplie = self.panoplie
+                item.save()
+                # log.debug("Item " + name.fr_fr + " belongs to " + self.panoplie.name.fr_fr)
+            else:
+                self.panoplie.delete()
+                self.is_panoplie_valid = False
+                log.warning("Item " + data + " does not exist, panoplie " + self.panoplie.name.fr_fr + " has been removed.")
         
     def handle_endtag(self, tag):
+        if not self.is_panoplie_valid:
+            return
+        
         if self.get_item and tag == "h2":
             self.get_item = False
         
