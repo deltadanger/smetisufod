@@ -3,7 +3,7 @@ import re, logging
 
 from HTMLParser import HTMLParser
 
-from mainsite.models import I18nString, Panoplie, PanoplieAttribute, Attribute, Item
+from mainsite.models import Panoplie, PanoplieAttribute, Attribute, Item
 
 
 BASE_URL = "http://www.dofus.com"
@@ -86,8 +86,7 @@ class PanopliePageParser(HTMLParser):
             return
         
         if self.get_name:
-            name, created = I18nString.objects.get_or_create(fr_fr=data)
-            self.panoplie, created = Panoplie.objects.get_or_create(name=name)
+            self.panoplie, created = Panoplie.objects.get_or_create(name=data)
             log.debug("Name: " + data+" ("+str(created)+")")
         
         if "Bonus de la panoplie" in data:
@@ -102,26 +101,24 @@ class PanopliePageParser(HTMLParser):
                 
             elif attribute_match:
                 if not self.current_no_item:
-                    raise Exception("Parsing mismatch, 'current_no_of_item' should be set. " + self.panoplie.name.fr_fr)
+                    raise Exception("Parsing mismatch, 'current_no_of_item' should be set. " + self.panoplie.name)
                 value = attribute_match.group(1)
                 name = attribute_match.group(2)
-                name, created = I18nString.objects.get_or_create(fr_fr=name)
                 attribute, created = Attribute.objects.get_or_create(name=name)
                 
-                log.debug(str(value) + " " + attribute.name.fr_fr + " for " + str(self.current_no_item) + " objects"+" ("+str(created)+")")
+                log.debug(str(value) + " " + attribute.name + " for " + str(self.current_no_item) + " objects"+" ("+str(created)+")")
                 PanoplieAttribute.objects.get_or_create(panoplie=self.panoplie, attribute=attribute, value=value, no_of_items=self.current_no_item)
         
         if self.get_item:
-            name = I18nString.objects.get_if_exist(fr_fr=data)
-            item = Item.objects.get_if_exist(name=name)
+            item = Item.objects.get_if_exist(name=data)
             if item:
                 item.panoplie = self.panoplie
                 item.save()
-                # log.debug("Item " + name.fr_fr + " belongs to " + self.panoplie.name.fr_fr)
+                # log.debug("Item " + name + " belongs to " + self.panoplie.name)
             else:
                 self.panoplie.delete()
                 self.is_panoplie_valid = False
-                log.warning("Item " + data + " does not exist, panoplie " + self.panoplie.name.fr_fr + " has been removed.")
+                log.warning("Item " + data + " does not exist, panoplie " + self.panoplie.name + " has been removed.")
         
     def handle_endtag(self, tag):
         if not self.is_panoplie_valid:

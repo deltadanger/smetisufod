@@ -3,7 +3,7 @@ import re, logging
 
 from HTMLParser import HTMLParser
 
-from mainsite.models import I18nString, Item, ItemType, ItemCategory, Attribute, AttributeValue, AttributeCondition, Recipe
+from mainsite.models import Item, ItemType, ItemCategory, Attribute, AttributeValue, AttributeCondition, Recipe
 
 log = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ RE_CARAC_PA = re.compile("PA : (\d{1,2})")
 RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
 RE_CARAC_CC = re.compile("CC : 1/(\d{1,2})( \(\+(\d{1,2})\))?")
 RE_CARAC_EC = re.compile("EC : 1/(\d{1,2})")
-RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s*(\d) x ")
+RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s+(\d) x ")
 RE_ITEM_ID = re.compile("/(.*?)\.swf")
 
 def get_attr(attrs, attr):
@@ -47,7 +47,7 @@ class ItemPageParser(HTMLParser):
         self.get_caracs = False
         self.in_recipe = False
         self.get_recipe = False
-        self.recipe = None
+        self.recipe = ""
         self.invalid_recipe = False
         self.in_pagination = False
         self.get_page = False
@@ -56,10 +56,8 @@ class ItemPageParser(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag == "div" and "middle_content" in get_attr(attrs, "class"):
             if self.item:
-                if self.invalid_recipe:
-                    Recipe.objects.filter(item=self.item).delete()
-                    self.item.has_valid_recipe = False
-                self.item.item_type = self.item_type
+                self.recipe = None
+                self.item.type = self.item_type
                 self.item.save()
             self.reset_vars()
         
@@ -123,8 +121,7 @@ class ItemPageParser(HTMLParser):
         
     def handle_data(self, data):
         if self.get_name:
-            name, created = I18nString.objects.get_or_create(fr_fr=data)
-            self.item, created = Item.objects.get_or_create(name=name)
+            self.item, created = Item.objects.get_or_create(name=data)
             log.debug("Item: " + data + " ("+str(created)+")")
         
         if self.get_level:
@@ -133,12 +130,12 @@ class ItemPageParser(HTMLParser):
                 self.item.level = match.group(1)
         
         if self.get_desc:
-            self.item.description, created = I18nString.objects.get_or_create(fr_fr=data)
+            self.item.description = data
         
         if self.get_attributes:
             match = RE_ATTRIBUTE.match(data)
             if match:
-                attr, created = I18nString.objects.get_or_create(fr_fr=match.group(4))
+                attr = match.group(4)
                 min = match.group(1)
                 max = match.group(3)
                 if not max:
@@ -157,7 +154,6 @@ class ItemPageParser(HTMLParser):
             match = RE_CONDITION.match(data)
             if match:
                 attr, equality, value = match.groups()
-                attr, created = I18nString.objects.get_or_create(fr_fr=attr)
                 attr, created = Attribute.objects.get_or_create(name=attr)
                 
                 AttributeCondition.objects.get_or_create(item=self.item, attribute=attr, equality=equality, required_value=value)
@@ -186,34 +182,7 @@ class ItemPageParser(HTMLParser):
                 self.item.failure = int(ec.group(1))
         
         if self.get_recipe:
-            if not self.recipe:
-                self.recipe = Recipe(item=self.item)
-            
-            match = RE_RECIPE_ELEMENT_QUANTITY.match(data)
-            if match:
-                self.recipe.quantity = int(match.group(1))
-                try:
-                    self.recipe.save()
-                    self.recipe = None
-                except Exception as e:
-                    if "IntegrityError" not in str(type(e)):
-                        raise
-            else:
-                name = I18nString.objects.get_if_exist(fr_fr=data)
-                item = Item.objects.get_if_exist(name=name)
-                if item:
-                    self.recipe.element = item
-                    try:
-                        self.recipe.save()
-                        self.recipe = None
-                    except Exception as e:
-                        if "IntegrityError" not in str(type(e)):
-                            raise
-                else:
-                    self.recipe = None
-                    self.invalid_recipe = True
-                    log.debug("Recipe invalid")
-        
+            self.recipe += re.sub("\s+", " ", data)
         
         if self.get_page:
             self.current_page = int(data)
@@ -226,6 +195,15 @@ class ItemPageParser(HTMLParser):
         if self.get_recipe and tag == "p":
             self.get_recipe = False
             self.in_recipe = False
+            
+            recipe = self.item.recipe
+            if not recipe:
+                recipe = Recipe()
+            
+            recipe.text = self.recipe
+            recipe.size = self.recipe.count(" x ")
+            recipe.save()
+            self.item.recipe = recipe
             
         if self.get_caracs and tag == "ul":
             self.get_caracs = False

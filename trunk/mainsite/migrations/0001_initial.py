@@ -8,32 +8,24 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'I18nString'
-        db.create_table(u'mainsite_i18nstring', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('fr_fr', self.gf('django.db.models.fields.CharField')(max_length=9999, null=True)),
-            ('en_us', self.gf('django.db.models.fields.CharField')(max_length=9999, null=True)),
-        ))
-        db.send_create_signal(u'mainsite', ['I18nString'])
-
         # Adding model 'Job'
         db.create_table(u'mainsite_job', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='job_name', to=orm['mainsite.I18nString'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'mainsite', ['Job'])
 
         # Adding model 'ItemCategory'
         db.create_table(u'mainsite_itemcategory', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_name', to=orm['mainsite.I18nString'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'mainsite', ['ItemCategory'])
 
         # Adding model 'ItemType'
         db.create_table(u'mainsite_itemtype', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.I18nString'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('category', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemCategory'])),
             ('job', self.gf('django.db.models.fields.related.ForeignKey')(related_name='itemcategory_job', null=True, to=orm['mainsite.Job'])),
         ))
@@ -42,14 +34,14 @@ class Migration(SchemaMigration):
         # Adding model 'Attribute'
         db.create_table(u'mainsite_attribute', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.I18nString'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'mainsite', ['Attribute'])
 
         # Adding model 'Panoplie'
         db.create_table(u'mainsite_panoplie', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='panoplie_name', to=orm['mainsite.I18nString'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'mainsite', ['Panoplie'])
 
@@ -63,21 +55,29 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'mainsite', ['PanoplieAttribute'])
 
+        # Adding model 'Recipe'
+        db.create_table(u'mainsite_recipe', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=1000)),
+            ('size', self.gf('django.db.models.fields.IntegerField')()),
+        ))
+        db.send_create_signal(u'mainsite', ['Recipe'])
+
         # Adding model 'Item'
         db.create_table(u'mainsite_item', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.related.ForeignKey')(related_name='item_name', to=orm['mainsite.I18nString'])),
-            ('description', self.gf('django.db.models.fields.related.ForeignKey')(related_name='item_description', null=True, to=orm['mainsite.I18nString'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
+            ('description', self.gf('django.db.models.fields.CharField')(max_length=5000)),
             ('original_id', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('item_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemType'], null=True)),
+            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemType'], null=True)),
             ('level', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('has_valid_recipe', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('recipe', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Recipe'], null=True)),
             ('cost', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('range', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('crit_chance', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('crit_damage', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('failure', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('panoplie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Panoplie'], null=True)),
+            ('panoplie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Panoplie'], null=True, on_delete=models.SET_NULL)),
         ))
         db.send_create_signal(u'mainsite', ['Item'])
 
@@ -101,20 +101,8 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'mainsite', ['AttributeCondition'])
 
-        # Adding model 'Recipe'
-        db.create_table(u'mainsite_recipe', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('item', self.gf('django.db.models.fields.related.ForeignKey')(related_name='recipe_item', to=orm['mainsite.Item'])),
-            ('element', self.gf('django.db.models.fields.related.ForeignKey')(related_name='recipe_element', to=orm['mainsite.Item'])),
-            ('quantity', self.gf('django.db.models.fields.IntegerField')()),
-        ))
-        db.send_create_signal(u'mainsite', ['Recipe'])
-
 
     def backwards(self, orm):
-        # Deleting model 'I18nString'
-        db.delete_table(u'mainsite_i18nstring')
-
         # Deleting model 'Job'
         db.delete_table(u'mainsite_job')
 
@@ -133,6 +121,9 @@ class Migration(SchemaMigration):
         # Deleting model 'PanoplieAttribute'
         db.delete_table(u'mainsite_panoplieattribute')
 
+        # Deleting model 'Recipe'
+        db.delete_table(u'mainsite_recipe')
+
         # Deleting model 'Item'
         db.delete_table(u'mainsite_item')
 
@@ -142,15 +133,12 @@ class Migration(SchemaMigration):
         # Deleting model 'AttributeCondition'
         db.delete_table(u'mainsite_attributecondition')
 
-        # Deleting model 'Recipe'
-        db.delete_table(u'mainsite_recipe')
-
 
     models = {
         u'mainsite.attribute': {
             'Meta': {'object_name': 'Attribute'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.I18nString']"})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'mainsite.attributecondition': {
             'Meta': {'object_name': 'AttributeCondition'},
@@ -168,53 +156,46 @@ class Migration(SchemaMigration):
             'max_value': ('django.db.models.fields.IntegerField', [], {}),
             'min_value': ('django.db.models.fields.IntegerField', [], {})
         },
-        u'mainsite.i18nstring': {
-            'Meta': {'object_name': 'I18nString'},
-            'en_us': ('django.db.models.fields.CharField', [], {'max_length': '9999', 'null': 'True'}),
-            'fr_fr': ('django.db.models.fields.CharField', [], {'max_length': '9999', 'null': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
-        },
         u'mainsite.item': {
             'Meta': {'object_name': 'Item'},
-            'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attributes'", 'null': 'True', 'through': u"orm['mainsite.AttributeValue']", 'to': u"orm['mainsite.Attribute']"}),
-            'conditions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
+            'attribute': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attribute'", 'null': 'True', 'through': u"orm['mainsite.AttributeValue']", 'to': u"orm['mainsite.Attribute']"}),
+            'condition': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
             'cost': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'craft': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Item']", 'null': 'True', 'through': u"orm['mainsite.Recipe']", 'symmetrical': 'False'}),
             'crit_chance': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'crit_damage': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'description': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'item_description'", 'null': 'True', 'to': u"orm['mainsite.I18nString']"}),
+            'description': ('django.db.models.fields.CharField', [], {'max_length': '5000'}),
             'failure': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'has_valid_recipe': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'item_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemType']", 'null': 'True'}),
             'level': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'item_name'", 'to': u"orm['mainsite.I18nString']"}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'original_id': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'panoplie': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Panoplie']", 'null': 'True'}),
-            'range': ('django.db.models.fields.IntegerField', [], {'null': 'True'})
+            'panoplie': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Panoplie']", 'null': 'True', 'on_delete': 'models.SET_NULL'}),
+            'range': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'recipe': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Recipe']", 'null': 'True'}),
+            'type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemType']", 'null': 'True'})
         },
         u'mainsite.itemcategory': {
             'Meta': {'object_name': 'ItemCategory'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_name'", 'to': u"orm['mainsite.I18nString']"})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'mainsite.itemtype': {
             'Meta': {'object_name': 'ItemType'},
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemCategory']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'job': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'itemcategory_job'", 'null': 'True', 'to': u"orm['mainsite.Job']"}),
-            'name': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.I18nString']"})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'mainsite.job': {
             'Meta': {'object_name': 'Job'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'job_name'", 'to': u"orm['mainsite.I18nString']"})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'mainsite.panoplie': {
             'Meta': {'object_name': 'Panoplie'},
             'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Attribute']", 'null': 'True', 'through': u"orm['mainsite.PanoplieAttribute']", 'symmetrical': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'panoplie_name'", 'to': u"orm['mainsite.I18nString']"})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'mainsite.panoplieattribute': {
             'Meta': {'object_name': 'PanoplieAttribute'},
@@ -226,10 +207,9 @@ class Migration(SchemaMigration):
         },
         u'mainsite.recipe': {
             'Meta': {'object_name': 'Recipe'},
-            'element': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'recipe_element'", 'to': u"orm['mainsite.Item']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'item': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'recipe_item'", 'to': u"orm['mainsite.Item']"}),
-            'quantity': ('django.db.models.fields.IntegerField', [], {})
+            'size': ('django.db.models.fields.IntegerField', [], {}),
+            'text': ('django.db.models.fields.CharField', [], {'max_length': '1000'})
         }
     }
 
