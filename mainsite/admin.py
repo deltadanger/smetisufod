@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainsite.models import I18nString, Job, ItemCategory, ItemType, Attribute, Item, AttributeValue, AttributeCondition, Recipe
+from mainsite.models import Job, ItemCategory, ItemType, Attribute, Item, AttributeValue, AttributeCondition, Recipe
 
 
 class StandardAdmin(admin.ModelAdmin):
@@ -7,16 +7,12 @@ class StandardAdmin(admin.ModelAdmin):
     # exclude = ("field_name")
     # fields = ("field_name")
 
-class I18nStringAdmin(StandardAdmin):
-    fields = ("fr_fr",)
-
 class ItemAdmin(StandardAdmin):
-    list_filter = ("item_type", "level", "attributes", "craft", "has_valid_recipe", "conditions")
+    list_filter = ("type", "level", "attribute", "recipe", "condition")
 
 
 
 
-admin.site.register(I18nString, I18nStringAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Job, StandardAdmin)
 admin.site.register(ItemCategory, StandardAdmin)

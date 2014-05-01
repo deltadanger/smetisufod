@@ -19,27 +19,21 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class I18nString(BaseModel):
-    fr_fr = models.CharField(max_length=9999, null=True)
-    en_us = models.CharField(max_length=9999, null=True)
-    
-    def __unicode__(self):
-        return unicode(self.fr_fr)
 
 class Job(BaseModel):
-    name = models.ForeignKey(I18nString, related_name="job_name")
+    name = models.CharField(max_length=50)
     
     def __unicode__(self):
         return unicode(self.name)
 
 class ItemCategory(BaseModel):
-    name = models.ForeignKey(I18nString, related_name="itemcategory_name")
+    name = models.CharField(max_length=50)
     
     def __unicode__(self):
         return unicode(self.name)
 
 class ItemType(BaseModel):
-    name = models.ForeignKey(I18nString)
+    name = models.CharField(max_length=50)
     category = models.ForeignKey(ItemCategory)
     job = models.ForeignKey(Job, related_name="itemcategory_job", null=True)
     
@@ -47,14 +41,14 @@ class ItemType(BaseModel):
         return unicode(self.name)
 
 class Attribute(BaseModel):
-    name = models.ForeignKey(I18nString)
+    name = models.CharField(max_length=50)
     
     def __unicode__(self):
         return unicode(self.name)
 
 
 class Panoplie(BaseModel):
-    name = models.ForeignKey(I18nString, related_name="panoplie_name")
+    name = models.CharField(max_length=50)
     attributes = models.ManyToManyField(Attribute, through='PanoplieAttribute', null=True)
     
     def __unicode__(self):
@@ -67,19 +61,27 @@ class PanoplieAttribute(BaseModel):
     no_of_items = models.IntegerField()
     
     def __unicode__(self):
-        return unicode(self.item) + "-" + unicode(self.attribute)
+        return unicode(self.panoplie) + "-" + unicode(self.value) + " " + unicode(self.attribute) + "(" + str(self.no_of_items) + ")"
+
+
+class Recipe(BaseModel):
+    text = models.CharField(max_length=1000)
+    size = models.IntegerField()
+    
+    def __unicode__(self):
+        return unicode(self.text) + " ("+str(self.size)+" elements)"
+
 
 
 class Item(BaseModel):
-    name                = models.ForeignKey(I18nString, related_name="item_name")
-    description         = models.ForeignKey(I18nString, related_name="item_description", null=True)
+    name                = models.CharField(max_length=50)
+    description         = models.CharField(max_length=5000)
     original_id         = models.IntegerField(null=True)
-    item_type           = models.ForeignKey(ItemType, null=True)
+    type                = models.ForeignKey(ItemType, null=True)
     level               = models.IntegerField(null=True)
-    attributes          = models.ManyToManyField(Attribute, related_name="item_attributes", through='AttributeValue', null=True)
-    craft               = models.ManyToManyField("Item", through='Recipe', symmetrical=False, null=True)
-    has_valid_recipe    = models.BooleanField(default="True")
-    conditions          = models.ManyToManyField(Attribute, related_name="item_condition", through='AttributeCondition', null=True)
+    attribute           = models.ManyToManyField(Attribute, related_name="item_attribute", through='AttributeValue', null=True)
+    recipe              = models.ForeignKey(Recipe, null=True)
+    condition           = models.ManyToManyField(Attribute, related_name="item_condition", through='AttributeCondition', null=True)
     cost                = models.IntegerField(null=True)
     range               = models.IntegerField(null=True)
     crit_chance         = models.IntegerField(null=True)
@@ -107,13 +109,4 @@ class AttributeCondition(BaseModel):
     
     def __unicode__(self):
         return unicode(self.item) + "-" + unicode(self.attribute)
-
-class Recipe(BaseModel):
-    item = models.ForeignKey(Item, related_name="recipe_item")
-    element = models.ForeignKey(Item, related_name="recipe_element")
-    quantity = models.IntegerField()
-    
-    def __unicode__(self):
-        return unicode(self.item) + " " + str(self.quantity) + "x" + unicode(self.element)
-
 

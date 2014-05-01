@@ -7,6 +7,8 @@
 {% block js %}
 <script>
     $(function(){
+        $("#template-row").hide();
+        
         $("#type-tree").tree({
             onCheck: {
                 ancestors: 'checkIfFull',
@@ -18,10 +20,15 @@
             }
         });
         
-        $("#template-row").hide();
+        $("#type-all").click();
         
         $("#add-row").click(function() {
-            $("#effects").append($("#template-row").clone().show());
+            var row = $("#template-row").clone();
+            row.removeAttr("id")
+                .addClass("effect")
+                .show();
+            
+            $("#effects").append(row);
         }).click();
         
         $(document).on("click", ".remove-row", function() {
@@ -29,8 +36,45 @@
         });
         
         $("#search").click(function() {
+            var types = getSelectedTypes();
+            var name = $("#name").val();
+            var level_min = $("#level-min").val();
+            var level_max = $("#level-max").val();
+            var attributes = [];
+            
+            $(".effect").each(function() {
+                attributes.push({
+                    "value": $(this).find("option:selected").text(),
+                    "min": $(this).find("input.value-min").val(),
+                    "max": $(this).find("input.value-max").val(),
+                });
+            });
+            
+            var include_panoplie = $("#include-panoplie:checked").length>0;
+            var recipes = [];
+            
+            $(".craft-case").each(function() {
+                if ($(this).prop("checked")) {
+                    recipes.push($(this).val());
+                }
+            });
+            
             var args = {};
-            args.types = getSelectedTypes();
+            if (types)
+                args.types = JSON.stringify(types);
+            if (name)
+                args.name = name;
+            if (level_min)
+                args.level_min = level_min;
+            if (level_max)
+                args.level_max = level_max;
+            if (attributes)
+                args.attributes = JSON.stringify(attributes);
+            if (include_panoplie)
+                args.include_panoplie = include_panoplie;
+            if (recipes)
+                args.recipes = recipes;
+            
             $.get("{% url "search" %}", args,
             function (data) {
                 
@@ -40,12 +84,27 @@
     
     function getSelectedTypes() {
         if ($("#type-all:checked").length) {
-            return "type-all";
+            return ["all"];
         }
         
         result = []
-        for (var cat in $("li.category")) {
-            if (cat.find("input:checked")
+        $("li.category").each(function() {
+            var cat = $(this);
+            var catName = cat.find(">:checkbox:checked").val();
+            if (catName) {
+                result.push(catName);
+            } else {
+                cat.find("li.type").each(function() {
+                    var type = $(this);
+                    var typeName = type.find(">:checkbox:checked").val();
+                    if (typeName) {
+                        result.push(typeName);
+                    }
+                });
+            }
+        });
+        
+        return result;
     }
 
 </script>
@@ -60,10 +119,10 @@
             <li><input type="checkbox" id="type-all" /><label for="type-all">Tous</label>
                 <ul>
                     {% for category in categories %}
-                        <li class="category collapsed"><input type="checkbox" id="type-{{ category }}" /><label for="type-{{ category }}">{{ category }}</label>
+                        <li class="category collapsed"><input type="checkbox" value="cat-{{ category }}" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
                             <ul>
                                 {% for type in category.itemtype_set.all %}
-                                    <li class="type"><input type="checkbox" id="type-{{ type }}" /><label for="type-{{ type }}">{{ type }}</label></li>
+                                    <li class="type"><input type="checkbox" value="type-{{ type }}" id="type-{{ type }}" /><label for="type-{{ type }}">{{ type }}</label></li>
                                 {% endfor %}
                             </ul>
                         </li>
@@ -85,27 +144,25 @@
                 <input type="button" id="add-row" value="Ajouter une ligne" />
             </h3>
             <div id="effects"></div>
-            <label for="include-panoplie">Inclure les bonus de panoplie</label> <input type="checkbox" id="include-panoplie" />
+            <label for="include-panoplie">Inclure les bonus de panoplie dans la recherche</label> <input type="checkbox" id="include-panoplie" checked="checked" />
         </div>
         
         <div>
             Seulement les recettes &agrave;
-            <label for="recipe-1">1</label><input type="checkbox" id="recipe-1" />
-            <label for="recipe-2">2</label><input type="checkbox" id="recipe-2" />
-            <label for="recipe-3">3</label><input type="checkbox" id="recipe-3" />
-            <label for="recipe-4">4</label><input type="checkbox" id="recipe-4" />
-            <label for="recipe-5">5</label><input type="checkbox" id="recipe-5" />
-            <label for="recipe-6">6</label><input type="checkbox" id="recipe-6" />
-            <label for="recipe-7">7</label><input type="checkbox" id="recipe-7" />
-            <label for="recipe-8">8</label><input type="checkbox" id="recipe-8" />
+            <label for="recipe-1">1</label><input type="checkbox" class="craft-case" id="recipe-1" value="1" />
+            <label for="recipe-2">2</label><input type="checkbox" class="craft-case" id="recipe-2" value="2" />
+            <label for="recipe-3">3</label><input type="checkbox" class="craft-case" id="recipe-3" value="3" />
+            <label for="recipe-4">4</label><input type="checkbox" class="craft-case" id="recipe-4" value="4" />
+            <label for="recipe-5">5</label><input type="checkbox" class="craft-case" id="recipe-5" value="5" />
+            <label for="recipe-6">6</label><input type="checkbox" class="craft-case" id="recipe-6" value="6" />
+            <label for="recipe-7">7</label><input type="checkbox" class="craft-case" id="recipe-7" value="7" />
+            <label for="recipe-8">8</label><input type="checkbox" class="craft-case" id="recipe-8" value="8" />
             case(s)
-            <br />
-            <label for="craft-only">Objets craftables uniquement</label> <input type="checkbox" id="craft-only" />
         </div>
     </div>
     
     <div>
-        <input type="button" id="search" value="Lancer la recherche" />
+        <a id="search" href="javascript:void(0);">Lancer la recherche</a>
     </div>
 </div>
 
@@ -117,8 +174,8 @@
             <option value="{{ attr.id }}">{{ attr.name }}</option>
         {% endfor %}
     </select>
-    <label for="value-min">Min</label> <input type="text" id="value-min" />
-    <label for="value-max">Max</label> <input type="text" id="value-max" />
+    <label for="value-min">Min</label> <input type="text" class="value-min" />
+    <label for="value-max">Max</label> <input type="text" class="value-max" />
     <input type="button" class="remove-row" value="-" />
 </div>
 
