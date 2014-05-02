@@ -7,7 +7,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.core import serializers
 
-from mainsite.models import Attribute, ItemCategory, ItemType, Item
+from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, PanoplieAttribute
 
 EXCLUDE_CATEGORY = ["Ressource"]
 RECIPE_SIZE_TO_JOB_LEVEL = {
@@ -39,9 +39,9 @@ def search(request):
     types = json.loads(request.GET.get("types"))
     
     type_query = Q()
+    type_query_pano = Q()
     for type in types:
-        if type == "all":
-            type_list = ItemType.objects.all()
+        type_list = None
         
         if type.startswith("cat-"):
             type_list = ItemType.objects.filter(category__name=type[4:])
@@ -49,7 +49,10 @@ def search(request):
         if type.startswith("type-"):
             type_list = [ItemType.objects.get(name=type[5:])]
         
-        type_query |= Q(type__in=type_list)
+        if type_list:
+            type_query |= Q(type__in=type_list)
+            type_query_pano |= Q(item__type__in=type_list)
+            
     
     
     name = request.GET.get("name")
@@ -61,6 +64,7 @@ def search(request):
     level_min = request.GET.get("level_min", "1")
     level_max = request.GET.get("level_max", "200")
     level_query = Q(level__gte=int(level_min), level__lte=int(level_max))
+    level_query_pano = Q(item__in=Item.objects.filter(level__lte=level_max) & Item.objects.filter(level__gte=level_min))
     
     
     recipes = request.GET.getlist("recipes")
@@ -70,9 +74,9 @@ def search(request):
     
     
     attributes = json.loads(request.GET.get("attributes"))
-    include_panoplie = request.GET.get("include_panoplie")
     
     attribute_query = Q()
+    attribute_query_pano = Q()
     for attr in attributes:
         attributeObject = Attribute.objects.get_if_exist(name=attr["value"])
         
@@ -85,20 +89,22 @@ def search(request):
         if not attr["max"]:
             attr["max"] = 9999
         
-        query = Q(attributevalue__attribute=attributeObject,
-                  attributevalue__min_value__lte=attr["max"],
-                  attributevalue__max_value__gte=attr["min"])
+        attribute_query &= Q(attributevalue__attribute=attributeObject,
+                             attributevalue__min_value__lte=attr["max"],
+                             attributevalue__max_value__gte=attr["min"])
         
-        if include_panoplie:
-            query |= Q(panoplie__panoplieattribute__attribute=attributeObject,
-                       panoplie__panoplieattribute__value__lte=attr["max"],
-                       panoplie__panoplieattribute__value__gte=attr["min"])
-        
-        attribute_query &= query
+        attribute_query_pano &= Q(panoplieattribute__attribute=attributeObject,
+                                  panoplieattribute__value__lte=attr["max"],
+                                  panoplieattribute__value__gte=attr["min"])
     
     
     items = Item.objects.filter(type_query & name_query & level_query & recipe_query & attribute_query).distinct()
     
+    
+    panoplies = []
+    if request.GET.get("include_panoplie"):
+        panoplies = Panoplie.objects.filter(name_query & type_query_pano & level_query_pano & attribute_query_pano).distinct()
+        
     
     log.debug(type_query)
     log.debug(name_query)
@@ -107,17 +113,26 @@ def search(request):
     log.debug(attribute_query)
     log.debug(items)
     
-    return HttpResponse(json.dumps([dictify(item) for item in items]), mimetype="application/json");
+    log.debug(type_query_pano)
+    log.debug(level_query_pano)
+    log.debug(attribute_query_pano)
+    log.debug(panoplies)
+    
+    
+    
+    return HttpResponse(json.dumps([dictify_item(item) for item in items] + [dictify_pano(pano) for pano in panoplies]), mimetype="application/json");
     
     return HttpResponse(serializers.serialize("json", items), mimetype="application/json");
     
 
-def dictify(item):
+def dictify_item(item):
     result = {}
+    result["is_item"] = True
     result["name"] = item.name
     result["description"] = item.description
     result["original_id"] = item.original_id
     result["type"] = item.type.name
+    result["is_weapon"] = item.type.category.name == "Arme"
     result["level"] = item.level
     result["cost"] = item.cost
     result["range"] = item.range
@@ -137,7 +152,7 @@ def dictify(item):
     attributes = []
     for a in item.attributevalue_set.all().order_by("attribute__name"):
         if a.min_value != a.max_value:
-            attributes.append(str(a.min_value) + "-" + str(a.max_value) + " " + a.attribute.name)
+            attributes.append(str(a.min_value) + " - " + str(a.max_value) + " " + a.attribute.name)
         else:
             attributes.append(str(a.min_value) + " " + a.attribute.name)
     result["attributes"] = attributes
@@ -152,15 +167,36 @@ def dictify(item):
         result["panoplie"] = item.panoplie.name
     
     return result
+
+def dictify_pano(pano):
+    result = {}
+    result["is_item"] = False
+    result["name"] = pano.name
     
+    attributes = {}
+    for a in pano.panoplieattribute_set.all().order_by("attribute__name"):
+        if not attributes.has_key(a.no_of_items):
+            attributes[a.no_of_items] = []
+        
+        attributes[a.no_of_items].append(str(a.value) + " " + a.attribute.name)
     
+    result["attributes"] = attributes
     
+    result["items"] = list(pano.item_set.all().values_list('name', flat=True))
+    result["level"] = max(pano.item_set.values_list("level", flat=True))
     
-    
-    
-    
-    
-    
+    return result
+
+
+
+
+
+
+
+
+
+
+
 
 
 
