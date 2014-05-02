@@ -1,5 +1,28 @@
-body 
-{
+body {
 	max-width: 1024px;
 	margin: auto;
+}
+
+.clear-float {
+    clear: both;
+    float: none;
+}
+
+#types {
+    border: 1px solid;
+    float: left;
+    min-height: 162px;
+    width: 350px;
+}
+
+.title > * {
+    float: left;
+}
+
+.title h1 {
+    font-size: 1.6em;
+}
+
+.item ul {
+    float: left;
 }
