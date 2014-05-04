@@ -156,14 +156,14 @@
                             
                             div.append($("<div>").addClass("clear-float"));
                             
-                            // div.append(
-                                // $("<div>")
-                                    // .addClass("craft")
-                                    // .append($("<h1>").html("Craft : " + object.job + " (Niveau " + object.job_level + ")"))
-                                    // .append($("<div>").html(object.recipe))
-                            // );
+                            div.append(
+                                $("<div>")
+                                    .addClass("craft")
+                                    .append($("<h1>").html("Craft : " + object.job + " (Niveau " + object.job_level + ")"))
+                                    .append($("<div>").html(object.recipe))
+                            );
                             
-                            // div.append($("<div>").addClass("clear-float"));
+                            div.append($("<div>").addClass("clear-float"));
                             
                             $("#results").append(div);
                         } else {
