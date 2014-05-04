@@ -2,7 +2,8 @@ import json, logging
 
 log = logging.getLogger(__name__)
 
-from annoying.decorators import render_to
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.db.models import Q
 from django.http import HttpResponse
 from django.core import serializers
@@ -21,18 +22,15 @@ RECIPE_SIZE_TO_JOB_LEVEL = {
     8: 100
 }
 
-
-@render_to()
 def home(request):
-    
     attributes = Attribute.objects.all().order_by("name")
     categories = ItemCategory.objects.all()
     
-    return {
-        "attributes": attributes,
-        "categories": categories,
-        'TEMPLATE': "search.html",
-    }
+    return render_to_response("search.html", {
+            "attributes": attributes,
+            "categories": categories,
+        }, context_instance=RequestContext(request)
+    )
 
 def search(request):
     print request.GET
@@ -67,7 +65,7 @@ def search(request):
     level_query_pano = Q(item__in=Item.objects.filter(level__lte=level_max) & Item.objects.filter(level__gte=level_min))
     
     
-    recipes = request.GET.getlist("recipes")
+    recipes = request.GET.getlist("recipes[]")
     recipe_query = Q()
     for recipe in recipes:
         recipe_query |= Q(recipe__size=recipe)
@@ -75,8 +73,8 @@ def search(request):
     
     attributes = json.loads(request.GET.get("attributes"))
     
-    attribute_query = Q()
-    attribute_query_pano = Q()
+    attribute_querys = []
+    attribute_querys_pano = []
     for attr in attributes:
         attributeObject = Attribute.objects.get_if_exist(name=attr["value"])
         
@@ -89,34 +87,41 @@ def search(request):
         if not attr["max"]:
             attr["max"] = 9999
         
-        attribute_query &= Q(attributevalue__attribute=attributeObject,
-                             attributevalue__min_value__lte=attr["max"],
-                             attributevalue__max_value__gte=attr["min"])
+        attribute_querys.append(Q(attributevalue__attribute=attributeObject,
+                                 attributevalue__min_value__lte=attr["max"],
+                                 attributevalue__max_value__gte=attr["min"]))
         
-        attribute_query_pano &= Q(panoplieattribute__attribute=attributeObject,
-                                  panoplieattribute__value__lte=attr["max"],
-                                  panoplieattribute__value__gte=attr["min"])
+        attribute_querys_pano.append(Q(panoplieattribute__attribute=attributeObject,
+                                      panoplieattribute__value__lte=attr["max"],
+                                      panoplieattribute__value__gte=attr["min"]))
     
     
-    items = Item.objects.filter(type_query & name_query & level_query & recipe_query & attribute_query).distinct()
+    items = Item.objects.filter(type_query & name_query & level_query & recipe_query)
+    for q in attribute_querys:
+        items = items.filter(q)
+    items = items.distinct()
     
     
     panoplies = []
-    if request.GET.get("include_panoplie"):
-        panoplies = Panoplie.objects.filter(name_query & type_query_pano & level_query_pano & attribute_query_pano).distinct()
+    if request.GET.get("include_panoplie") and not recipes:
+        panoplies = Panoplie.objects.filter(name_query & type_query_pano & level_query_pano)
+        for q in attribute_querys_pano:
+            panoplies = panoplies.filter(q)
+        panoplies = panoplies.distinct()
         
     
     log.debug(type_query)
     log.debug(name_query)
     log.debug(level_query)
     log.debug(recipe_query)
-    log.debug(attribute_query)
+    log.debug(attribute_querys)
     log.debug(items)
     
     log.debug(type_query_pano)
     log.debug(level_query_pano)
-    log.debug(attribute_query_pano)
+    log.debug(attribute_querys_pano)
     log.debug(panoplies)
+    
     
     
     

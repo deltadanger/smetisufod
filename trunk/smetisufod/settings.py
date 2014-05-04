@@ -75,6 +75,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     
     "C:/Users/jacoelt/Documents/private/Smetisufod/static",
+    "E:/Documents/Private Documents/Development/python/Smetisufod/static",
 )
 
 # List of finder classes that know how to find static files in
@@ -116,6 +117,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     
     "C:/Users/jacoelt/Documents/private/Smetisufod/templates",
+    "E:/Documents/Private Documents/Development/python/Smetisufod/templates",
 )
 
 INSTALLED_APPS = (
