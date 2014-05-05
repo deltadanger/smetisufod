@@ -15,22 +15,6 @@
     $(function(){
         $("#template-row").hide();
         
-        setFormFromUrlParameters();
-        
-        // $("#type-tree").tree({
-            // onCheck: {
-                // ancestors: 'checkIfFull',
-                // descendants: 'check'
-            // },
-            // onUncheck: {
-                // ancestors: 'uncheck',
-                // descendants: 'uncheck'
-            // }
-        // });
-        
-        makeCheckboxTree();
-        // $("#types :checkbox").prop("checked", "checked");
-        
         $("#add-row").click(function() {
             addAttributeRow();
         });
@@ -53,6 +37,9 @@
         $("#search").click(function() {
             $("#search-form").submit();
         });
+        
+        setFormFromUrlParameters();
+        makeCheckboxTree();
     });
     
     function setFormFromUrlParameters() {
@@ -74,6 +61,7 @@
                     break;
                     
                 case "type":
+                    value = value.replace(" ", "", "g");
                     $("#type-"+value).prop("checked", "checked");
                     break;
                 case "include-panoplie":
@@ -86,7 +74,6 @@
                     if (key.startsWith("attribute-")) {
                         var row = addAttributeRow();
                         row.find("select").val(value);
-                        console.log(value);
                         
                     } else if (key.startsWith("value-")) {
                         $("#"+key).val(value);
@@ -131,18 +118,36 @@
         });
         
         $("#types :checkbox").change(function() {
-            if ($(this).prop("checked")) {
-                $(this).parent().find(":checkbox").prop("checked", "checked");
-            } else {
-                $(this).parent().find(":checkbox").removeProp("checked");
-            }
-            
-            if ($(this).parent().parent().find(">>:checkbox:not(:checked)").length) {
-                $(this).parent().parent().parent().find(">:checkbox").removeProp("checked");
-            } else {
-                $(this).parent().parent().parent().find(">:checkbox").prop("checked", "checked");
-            }
+            checkChildren($(this));
+            checkParent($(this));
         });
+        
+        $("#types :checkbox[name='type']").change();
+    }
+    
+    function checkChildren(element) {
+        if ($(element).prop("checked")) {
+            $(element).parent().find(":checkbox").prop("checked", "checked");
+        } else {
+            $(element).parent().find(":checkbox").removeProp("checked");
+        }
+    
+    }
+    
+    function checkParent(element) {
+        console.log(element);
+        var parent = $(element).parent().parent().parent().find(">:checkbox");
+        if (parent.length == 0) {
+            return;
+        }
+        
+        if ($(element).parent().parent().find(">>:checkbox:not(:checked)").length) {
+            parent.removeProp("checked");
+        } else {
+            parent.prop("checked", "checked");
+        }
+        
+        checkParent(parent);
     }
     
 </script>
@@ -160,7 +165,7 @@
                         <li class="category collapse"><input type="checkbox" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
                             <ul>
                                 {% for type in category.itemtype_set.all %}
-                                    <li class="type"><input type="checkbox" value="{{ type }}" id="type-{{ type }}" name="type" /><label for="type-{{ type }}">{{ type }}</label></li>
+                                    <li class="type"><input type="checkbox" value="{{ type }}" id="type-{{ type|cut:" " }}" name="type" /><label for="type-{{ type }}">{{ type }}</label></li>
                                 {% endfor %}
                             </ul>
                         </li>
