@@ -10,31 +10,30 @@
     IMAGE_DISPLAY_THROUGH_FLASH_VIEWER = '<!--[if !IE]> --><object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F6441ff59f64fa89f7f443e17e26873f7" width="120" height="120"><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /><param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/ITEM_ID_PLACEHOLDER.swf" /><p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p></object><!-- <![endif]--><!--[if IE]><object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F6441ff59f64fa89f7f443e17e26873f7" width="120" height="120"><param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" /><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /><param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/ITEM_ID_PLACEHOLDER.swf" /><!--><!--dgx-->'
 
     search_running = false;
+    row_index = 1;
     
     $(function(){
         $("#template-row").hide();
         
-        $("#type-tree").tree({
-            onCheck: {
-                ancestors: 'checkIfFull',
-                descendants: 'check'
-            },
-            onUncheck: {
-                ancestors: 'uncheck',
-                descendants: 'uncheck'
-            }
-        });
+        setFormFromUrlParameters();
         
-        $("#type-all").click();
+        // $("#type-tree").tree({
+            // onCheck: {
+                // ancestors: 'checkIfFull',
+                // descendants: 'check'
+            // },
+            // onUncheck: {
+                // ancestors: 'uncheck',
+                // descendants: 'uncheck'
+            // }
+        // });
+        
+        makeCheckboxTree();
+        // $("#types :checkbox").prop("checked", "checked");
         
         $("#add-row").click(function() {
-            var row = $("#template-row").clone();
-            row.removeAttr("id")
-                .addClass("effect")
-                .show();
-            
-            $("#effects").append(row);
-        }).click();
+            addAttributeRow();
+        });
         
         $(document).on("click", ".remove-row", function() {
             $(this).parent().remove();
@@ -52,203 +51,116 @@
         });
         
         $("#search").click(function() {
-            if (search_running) {
-                return;
-            }
-            search_running = true;
-            
-            var types = getSelectedTypes();
-            var name = $("#name").val();
-            var level_min = $("#level-min").val();
-            var level_max = $("#level-max").val();
-            var attributes = [];
-            
-            $(".effect").each(function() {
-                attributes.push({
-                    "value": $(this).find("option:selected").text(),
-                    "min": $(this).find("input.value-min").val(),
-                    "max": $(this).find("input.value-max").val(),
-                });
-            });
-            
-            var include_panoplie = $("#include-panoplie:checked").length>0;
-            var recipes = [];
-            
-            $(".craft-case").each(function() {
-                if ($(this).prop("checked")) {
-                    recipes.push($(this).val());
-                }
-            });
-            
-            var args = {};
-            if (types)
-                args.types = JSON.stringify(types);
-            if (name)
-                args.name = name;
-            if (level_min)
-                args.level_min = level_min;
-            if (level_max)
-                args.level_max = level_max;
-            if (attributes)
-                args.attributes = JSON.stringify(attributes);
-            if (include_panoplie)
-                args.include_panoplie = include_panoplie;
-            if (recipes)
-                args.recipes = recipes;
-            
-            $.get("{% url "search" %}", args,
-            function (data) {
-                if (data) {
-                    $("#results").empty();
-                    
-                    var div;
-                    $.each(data, function(i, object) {
-                        if (object.is_item) {
-                            div = $("<div>")
-                            .addClass("item")
-                            .append(
-                                $("<div>")
-                                    .addClass("title")
-                                    .append($("<h1>").html(object.name))
-                                    .append($("<h3>").html(object.panoplie))
-                                    .append($("<h2>").html(object.type))
-                                    .append($("<h2>").html("Niveau " + object.level))
-                            )
-                            .append($("<div>").addClass("clear-float"));
-                            
-                            
-                            var description = $("<div>").addClass("description");
-                            if (object.original_id) {
-                                description.append(IMAGE_DISPLAY_THROUGH_FLASH_VIEWER.replace(ITEM_ID_PLACEHOLDER, object.original_id));
-                            }
-                            
-                            description
-                                .append($("<h2>").html("Description"))
-                                .append($("<p>").html(object.description));
-                        
-                            // div.append(description);
-                            
-                            div.append($("<div>").addClass("clear-float"));
-                            
-                            var caracs = $("<div>");
-                            var list = $("<ul>");
-                            $.each(object.attributes, function(i, e) {
-                                list.append($("<li>").html(e));
-                            });
-                            caracs.append(list);
-                            
-                            var conditions = $("<ul>");
-                            $.each(object.conditions, function(i, e) {
-                                conditions.append($("<li>").html(e));
-                            });
-                            caracs.append(conditions);
-                            
-                            if (object.is_weapon) {
-                                caracs.append(
-                                    $("<ul>")
-                                        .append($("<li>").html("Co&ucirc;t en PA : " + object.cost))
-                                        .append($("<li>").html("Port&eacute;e : " + object.range))
-                                        .append($("<li>").html("CC : 1/" + object.crit_chance + " (+" + object.crit_damage + ")"))
-                                        .append($("<li>").html("EC : 1/" + object.failure))
-                                );
-                            }
-                            div.append(caracs);
-                            
-                            div.append($("<div>").addClass("clear-float"));
-                            
-                            div.append(
-                                $("<div>")
-                                    .addClass("craft")
-                                    .append($("<h1>").html("Craft : " + object.job + " (Niveau " + object.job_level + ")"))
-                                    .append($("<div>").html(object.recipe))
-                            );
-                            
-                            div.append($("<div>").addClass("clear-float"));
-                            
-                            $("#results").append(div);
-                        } else {
-                            div = $("<div>")
-                            .addClass("panoplie")
-                            .append(
-                                $("<div>")
-                                    .addClass("title")
-                                    .append($("<h1>").html(object.name))
-                                    .append($("<h2>").html("Niveau " + object.level))
-                            )
-                            .append($("<div>").addClass("clear-float"));
-                            
-                            $.each(object.attributes, function(k, v) {
-                                var list = $("<ul>");
-                                $.each(v, function(i, e) {
-                                    list.append($("<li>").html(e));
-                                });
-                                div.append($("<h3>").html(k + " objets")).append(list);
-                            });
-                            div.append($("<div>").addClass("clear-float"));
-                            
-                            var items = $("<ul>");
-                            $.each(object.items, function(i, e) {
-                                items.append($("<li>").html(e));
-                            });
-                            
-                            div.append(items)
-                            .append($("<div>").addClass("clear-float"));
-                            
-                            $("#results").append(div);
-                        }
-                    });
-                    
-                } else {
-                    $("#results").empty().html("La recherche n'a retourn&eacute;e aucun r&eacute;sultat.");
-                }
-            })
-            .always(function() {
-                search_running = false;
-            });
+            $("#search-form").submit();
         });
     });
     
-    function getSelectedTypes() {
-        if ($("#type-all:checked").length) {
-            return ["all"];
-        }
-        
-        result = []
-        $("li.category").each(function() {
-            var cat = $(this);
-            var catName = cat.find(">:checkbox:checked").val();
-            if (catName) {
-                result.push(catName);
-            } else {
-                cat.find("li.type").each(function() {
-                    var type = $(this);
-                    var typeName = type.find(">:checkbox:checked").val();
-                    if (typeName) {
-                        result.push(typeName);
+    function setFormFromUrlParameters() {
+        var paramString = unescape(decodeURIComponent(window.location.search.substring(1)));
+        var params = paramString.split('&');
+        $.each(params, function(i, param) {
+            var key = param.split("=")[0].replace("+", " ", "g");
+            var value = param.split("=")[1].replace("+", " ", "g");
+            
+            switch (key) {
+                case "level-min":
+                case "level-max":
+                case "name":
+                case "cost-min":
+                case "cost-max":
+                case "range-min":
+                case "range-max":
+                    $("#"+key).val(value);
+                    break;
+                    
+                case "type":
+                    $("#type-"+value).prop("checked", "checked");
+                    break;
+                case "include-panoplie":
+                    $("#"+key).prop("checked", "checked");
+                    break;
+                case "recipe":
+                    $("#recipe-"+value).prop("checked", "checked");
+                    break;
+                default:
+                    if (key.startsWith("attribute-")) {
+                        var row = addAttributeRow();
+                        row.find("select").val(value);
+                        console.log(value);
+                        
+                    } else if (key.startsWith("value-")) {
+                        $("#"+key).val(value);
                     }
-                });
+                    break;
+                
             }
         });
         
-        return result;
+        if (params.length == 0) {
+            addAttributeRow();
+        }
     }
-
+    
+    function addAttributeRow() {
+        var row = $("#template-row").clone();
+        row.removeAttr("id")
+            .addClass("effect")
+            .show();
+        
+        var select = row.find("select");
+        select.attr("name", select.attr("name") + "-" + row_index);
+        
+        var minValue = row.find("input:text[name='value-min']");
+        minValue.attr("name", minValue.attr("name") + "-" + row_index);
+        
+        var maxValue = row.find("input:text[name='value-max']");
+        maxValue.attr("name", maxValue.attr("name") + "-" + row_index);
+        
+        row_index++;
+        
+        $("#effects").append(row);
+        return row;
+    }
+    
+    function makeCheckboxTree() {
+        $("#types li").click(function(event) {
+            if (event.target == $(this)[0] && $(this).find("ul").length) {
+                $(this).toggleClass("expand collapse");
+                return false;
+            }
+        });
+        
+        $("#types :checkbox").change(function() {
+            if ($(this).prop("checked")) {
+                $(this).parent().find(":checkbox").prop("checked", "checked");
+            } else {
+                $(this).parent().find(":checkbox").removeProp("checked");
+            }
+            
+            if ($(this).parent().parent().find(">>:checkbox:not(:checked)").length) {
+                $(this).parent().parent().parent().find(">:checkbox").removeProp("checked");
+            } else {
+                $(this).parent().parent().parent().find(">:checkbox").prop("checked", "checked");
+            }
+        });
+    }
+    
 </script>
 {% endblock %}
 
 {% block content %}
 <h1>Recherche</h1>
 
-<div id="search-div">
+<form id="search-form" action="search.html">
     <div id="types">
         <ul id="type-tree">
-            <li><input type="checkbox" id="type-all" /><label for="type-all">Tous</label>
+            <li class="expand"><input type="checkbox" id="all" /><label for="all">Tous</label>
                 <ul>
                     {% for category in categories %}
-                        <li class="category collapsed"><input type="checkbox" value="cat-{{ category }}" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
+                        <li class="category collapse"><input type="checkbox" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
                             <ul>
                                 {% for type in category.itemtype_set.all %}
-                                    <li class="type"><input type="checkbox" value="type-{{ type }}" id="type-{{ type }}" /><label for="type-{{ type }}">{{ type }}</label></li>
+                                    <li class="type"><input type="checkbox" value="{{ type }}" id="type-{{ type }}" name="type" /><label for="type-{{ type }}">{{ type }}</label></li>
                                 {% endfor %}
                             </ul>
                         </li>
@@ -260,7 +172,7 @@
     
     <div id="search-fields">
         <div>
-            <label for="level-min">Niveau</label> <input type="text" id="level-min" /> &agrave; <input type="text" id="level-max" /> 
+            <label for="level-min">Niveau</label> <input type="text" id="level-min" name="level-min" /> &agrave; <input type="text" id="level-max" name="level-max" /> 
         </div>
         
         <div>
@@ -269,28 +181,28 @@
                 <input type="button" id="add-row" value="Ajouter une ligne" />
             </h3>
             <div id="effects"></div>
-            <label for="include-panoplie">Inclure les bonus de panoplie dans la recherche</label> <input type="checkbox" id="include-panoplie" checked="checked" />
+            <label for="include-panoplie">Inclure les bonus de panoplie dans la recherche</label> <input type="checkbox" id="include-panoplie" name="include-panoplie" checked="checked" />
         </div>
         
         <a href="javascript:void(0);" id="switch-advanced-search">Recherche avanc&eacute;e</a>
         <div id="advanced-search">
-            <label for="name">Nom de l'objet</label> <input type="text" id="name" />
+            <label for="name">Nom de l'objet</label> <input type="text" id="name" name="name" />
             
             <div>
                 Seulement les recettes &agrave;
-                <label for="recipe-1">1</label><input type="checkbox" class="craft-case" id="recipe-1" value="1" />
-                <label for="recipe-2">2</label><input type="checkbox" class="craft-case" id="recipe-2" value="2" />
-                <label for="recipe-3">3</label><input type="checkbox" class="craft-case" id="recipe-3" value="3" />
-                <label for="recipe-4">4</label><input type="checkbox" class="craft-case" id="recipe-4" value="4" />
-                <label for="recipe-5">5</label><input type="checkbox" class="craft-case" id="recipe-5" value="5" />
-                <label for="recipe-6">6</label><input type="checkbox" class="craft-case" id="recipe-6" value="6" />
-                <label for="recipe-7">7</label><input type="checkbox" class="craft-case" id="recipe-7" value="7" />
-                <label for="recipe-8">8</label><input type="checkbox" class="craft-case" id="recipe-8" value="8" />
+                <label for="recipe-1">1</label><input type="checkbox" class="craft-case" id="recipe-1" name="recipe" value="1" />
+                <label for="recipe-2">2</label><input type="checkbox" class="craft-case" id="recipe-2" name="recipe" value="2" />
+                <label for="recipe-3">3</label><input type="checkbox" class="craft-case" id="recipe-3" name="recipe" value="3" />
+                <label for="recipe-4">4</label><input type="checkbox" class="craft-case" id="recipe-4" name="recipe" value="4" />
+                <label for="recipe-5">5</label><input type="checkbox" class="craft-case" id="recipe-5" name="recipe" value="5" />
+                <label for="recipe-6">6</label><input type="checkbox" class="craft-case" id="recipe-6" name="recipe" value="6" />
+                <label for="recipe-7">7</label><input type="checkbox" class="craft-case" id="recipe-7" name="recipe" value="7" />
+                <label for="recipe-8">8</label><input type="checkbox" class="craft-case" id="recipe-8" name="recipe" value="8" />
                 case(s)
             </div>
             
-            <label for="cost-min">Co&ucirc;t en PA :</label> <input type="text" id="cost-min" /> &agrave; <input type="text" id="cost-max" />
-            <label for="range-min">Port&eacute;e :</label> <input type="text" id="range-min" /> &agrave; <input type="text" id="range-max" />
+            <label for="cost-min">Co&ucirc;t en PA :</label> <input type="text" id="cost-min" name="cost-min" /> &agrave; <input type="text" id="cost-max" name="cost-max" />
+            <label for="range-min">Port&eacute;e :</label> <input type="text" id="range-min" name="range-min" /> &agrave; <input type="text" id="range-max" name="range-max" />
         </div>
     </div>
     
@@ -298,20 +210,28 @@
         <a id="search" href="javascript:void(0);">Lancer la recherche</a>
         <a id="clear-search" href="javascript:void(0);">Effacer les termes de la recherche</a>
     </div>
+</form>
+
+<div id="results">
+{% for object in objects %}
+    {% if object.is_item %}
+        {% include "item.html" with item=object %}
+    {% else %}
+        {% include "pano.html" with pano=object %}
+    {% endif %}
+{% empty %}
+    <span>Aucun objet ne correspond &agrave; ces crit&egrave;res de recherche.</span>
+{% endfor %}
 </div>
 
-<div id="results"></div>
-
-
-
 <div id="template-row">
-    <select>
+    <select name="attribute">
         {% for attr in attributes %}
-            <option value="{{ attr.id }}">{{ attr.name }}</option>
+            <option value="{{ attr.name }}">{{ attr.name }}</option>
         {% endfor %}
     </select>
-    <label for="value-min">Min</label> <input type="text" class="value-min" />
-    <label for="value-max">Max</label> <input type="text" class="value-max" />
+    <label>Min</label> <input type="text" class="value-min" name="value-min" />
+    <label>Max</label> <input type="text" class="value-max" name="value-max" />
     <input type="button" class="remove-row" value="-" />
 </div>
 

@@ -1,0 +1,49 @@
+
+<div class="item">
+    <div class="title">
+        <h1>{{ item.name }}</h1>
+        <h3>{{ item.panoplie }}</h3>
+        <h2>{{ item.type }}</h2>
+        <h2>Niveau {{ item.level }}</h2>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="description">
+        {% include "item_pic.html" with item_id=item.original_id %}
+        <h2>Description</h2>
+        <p>{{ item.description }}</p>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div>
+        <ul>
+            {% for attr in item.attributes %}
+                <li>{{ attr }}</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for cond in conditions %}
+                <li>{{ cond }}</li>
+            {% endfor %}
+        </ul>
+        {% if item.is_weapon %}
+        <ul>
+            <li>Co&ucirc;t en PA : {{ item.cost }}</li>
+            <li>Port&eacute;e : {{ item.range }}</li>
+            <li>CC : 1/{{ item.crit_chance }} (+{{ item.crit_damage }})</li>
+            <li>EC : 1/{{ item.failure }}</li>
+        </ul>
+        {% endif %}
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="craft">
+        <h2>Craft : {{ item.job }} (Niveau {{item.job_level }})</h2>
+        <div>{{ item.recipe }}</div>
+    </div>
+    
+    <div class="clear"></div>
+</div>
