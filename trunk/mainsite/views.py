@@ -1,4 +1,4 @@
-import json, logging
+import json, logging, re
 
 log = logging.getLogger(__name__)
 
@@ -26,26 +26,20 @@ def home(request):
     attributes = Attribute.objects.all().order_by("name")
     categories = ItemCategory.objects.all()
     
-    return render_to_response("search.html", {
-            "attributes": attributes,
-            "categories": categories,
-        }, context_instance=RequestContext(request)
-    )
-
-def search(request):
-    print request.GET
-    types = json.loads(request.GET.get("types"))
+    if not request.GET:
+        return render_to_response("search.html", {
+                "attributes": attributes,
+                "categories": categories,
+            }, context_instance=RequestContext(request)
+        )
+    
+    
+    types = request.GET.getlist("type")
     
     type_query = Q()
     type_query_pano = Q()
     for type in types:
-        type_list = None
-        
-        if type.startswith("cat-"):
-            type_list = ItemType.objects.filter(category__name=type[4:])
-            
-        if type.startswith("type-"):
-            type_list = [ItemType.objects.get(name=type[5:])]
+        type_list = [ItemType.objects.get(name=type)]
         
         if type_list:
             type_query |= Q(type__in=type_list)
@@ -65,36 +59,38 @@ def search(request):
     level_query_pano = Q(item__in=Item.objects.filter(level__lte=level_max) & Item.objects.filter(level__gte=level_min))
     
     
-    recipes = request.GET.getlist("recipes[]")
+    recipes = request.GET.getlist("recipe")
     recipe_query = Q()
     for recipe in recipes:
         recipe_query |= Q(recipe__size=recipe)
     
     
-    attributes = json.loads(request.GET.get("attributes"))
-    
     attribute_querys = []
     attribute_querys_pano = []
-    for attr in attributes:
-        attributeObject = Attribute.objects.get_if_exist(name=attr["value"])
+    for k, v in request.GET.items():
+        if re.match("attribute-\d+", k):
+            index = k[10:]
+            min = 1
+            max = 9999
+            try:
+                min = int(request.GET.get("value-min-"+index, 1))
+                max = int(request.GET.get("value-max-"+index, 9999))
+            except ValueError:
+                pass
+            
+            attributeObject = Attribute.objects.get_if_exist(name=v)
+            
+            if not attributeObject:
+                continue
+            
+            attribute_querys.append(Q(attributevalue__attribute=attributeObject,
+                                      attributevalue__min_value__lte=max,
+                                      attributevalue__max_value__gte=min))
+            
+            attribute_querys_pano.append(Q(panoplieattribute__attribute=attributeObject,
+                                           panoplieattribute__value__lte=max,
+                                           panoplieattribute__value__gte=min))
         
-        if not attributeObject:
-            continue
-        
-        if not attr["min"]:
-            attr["min"] = 1
-        
-        if not attr["max"]:
-            attr["max"] = 9999
-        
-        attribute_querys.append(Q(attributevalue__attribute=attributeObject,
-                                 attributevalue__min_value__lte=attr["max"],
-                                 attributevalue__max_value__gte=attr["min"]))
-        
-        attribute_querys_pano.append(Q(panoplieattribute__attribute=attributeObject,
-                                      panoplieattribute__value__lte=attr["max"],
-                                      panoplieattribute__value__gte=attr["min"]))
-    
     
     items = Item.objects.filter(type_query & name_query & level_query & recipe_query)
     for q in attribute_querys:
@@ -123,11 +119,17 @@ def search(request):
     log.debug(panoplies)
     
     
+    objects = [dictify_item(item) for item in items] + [dictify_pano(pano) for pano in panoplies]
     
+    if request.GET.get("json"):
+        return HttpResponse(json.dumps(objects), mimetype="application/json");
     
-    return HttpResponse(json.dumps([dictify_item(item) for item in items] + [dictify_pano(pano) for pano in panoplies]), mimetype="application/json");
-    
-    return HttpResponse(serializers.serialize("json", items), mimetype="application/json");
+    return render_to_response("search.html", {
+            "attributes": attributes,
+            "categories": categories,
+            "objects": objects,
+        }, context_instance=RequestContext(request)
+    )
     
 
 def dictify_item(item):

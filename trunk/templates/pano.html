@@ -1,0 +1,30 @@
+
+<div class="panoplie">
+    <div class="title">
+        <h1>{{ pano.name }}</h1>
+        <h2>Niveau {{ pano.level }}</h2>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div>
+        {% for k, v in pano.attributes %}
+        <h3>{{ k }} objets</h3>
+        <ul>
+            {% for attr in v %}
+                <li>{{ attr }}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+    
+    <div class="clear"></div>
+    
+    <ul>
+        {% for item in pano.items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    
+    <div class="clear"></div>
+</div>

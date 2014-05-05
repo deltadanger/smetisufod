@@ -15,7 +15,7 @@ RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
 RE_CARAC_CC = re.compile("CC : 1/(\d{1,2})( \(\+(\d{1,2})\))?")
 RE_CARAC_EC = re.compile("EC : 1/(\d{1,2})")
 RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s+(\d) x ")
-RE_ITEM_ID = re.compile("/(.*?)\.swf")
+RE_ITEM_ID = re.compile(".*/(\d+)\.swf")
 
 def get_attr(attrs, attr):
     for e in attrs:
@@ -46,9 +46,9 @@ class ItemPageParser(HTMLParser):
         self.in_caracs = False
         self.get_caracs = False
         self.in_recipe = False
+        self.in_recipe_confirmed = False
         self.get_recipe = False
         self.recipe = ""
-        self.invalid_recipe = False
         self.in_pagination = False
         self.get_page = False
         
@@ -89,7 +89,7 @@ class ItemPageParser(HTMLParser):
         if self.in_caracs_block and tag == "div" and "element_carac_left" in get_attr(attrs, "class"):
             self.in_caracs_left = True
         
-        if self.in_caracs_block and tag == "ul":
+        if self.in_caracs_block and tag == "li":
             self.get_attributes = True
         
         
@@ -108,7 +108,7 @@ class ItemPageParser(HTMLParser):
         if tag == "div" and "element_carac_block1" in get_attr(attrs, "class"):
             self.in_recipe = True
         
-        if self.in_recipe and tag == "p":
+        if self.in_recipe_confirmed and tag == "p":
             self.get_recipe = True
         
         
@@ -181,6 +181,9 @@ class ItemPageParser(HTMLParser):
             if ec:
                 self.item.failure = int(ec.group(1))
         
+        if self.in_recipe and "Craft :" in data:
+            self.in_recipe_confirmed = True
+        
         if self.get_recipe:
             self.recipe += re.sub("\s+", " ", data)
         
@@ -192,8 +195,9 @@ class ItemPageParser(HTMLParser):
             self.get_page = False
             self.in_pagination = False
         
-        if self.get_recipe and tag == "p":
+        if self.in_recipe and tag == "p":
             self.get_recipe = False
+            self.in_recipe_confirmed = False
             self.in_recipe = False
             
             recipe = self.item.recipe
