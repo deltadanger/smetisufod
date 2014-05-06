@@ -1,156 +1,12 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
 {% load url from future %}
 
 {% block title %}Recherche d'objets{% endblock %}
 
 {% block js %}
-<script>
-    ITEM_ID_PLACEHOLDER = "ITEM_ID_PLACEHOLDER";
-    IMAGE_DISPLAY_THROUGH_FLASH_VIEWER = '<!--[if !IE]> --><object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F6441ff59f64fa89f7f443e17e26873f7" width="120" height="120"><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /><param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/ITEM_ID_PLACEHOLDER.swf" /><p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p></object><!-- <![endif]--><!--[if IE]><object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F6441ff59f64fa89f7f443e17e26873f7" width="120" height="120"><param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" /><param name="allowscriptaccess" value="always" /><param name="wmode" value="transparent" /><param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/ITEM_ID_PLACEHOLDER.swf" /><!--><!--dgx-->'
-
-    search_running = false;
-    row_index = 1;
-    
-    $(function(){
-        $("#template-row").hide();
-        
-        $("#add-row").click(function() {
-            addAttributeRow();
-        });
-        
-        $(document).on("click", ".remove-row", function() {
-            $(this).parent().remove();
-        });
-        
-        $("#advanced-search").hide();
-        $("#switch-advanced-search").click(function() {
-            $("#advanced-search").toggle();
-        });
-        
-        $("#clear-search").click(function() {
-            $("input:text").val("");
-            $(".craft-case").removeProp("checked");
-            $(".effect").remove();
-        });
-        
-        $("#search").click(function() {
-            $("#search-form").submit();
-        });
-        
-        setFormFromUrlParameters();
-        makeCheckboxTree();
-    });
-    
-    function setFormFromUrlParameters() {
-        var paramString = unescape(decodeURIComponent(window.location.search.substring(1)));
-        var params = paramString.split('&');
-        $.each(params, function(i, param) {
-            var key = param.split("=")[0].replace("+", " ", "g");
-            var value = param.split("=")[1].replace("+", " ", "g");
-            
-            switch (key) {
-                case "level-min":
-                case "level-max":
-                case "name":
-                case "cost-min":
-                case "cost-max":
-                case "range-min":
-                case "range-max":
-                    $("#"+key).val(value);
-                    break;
-                    
-                case "type":
-                    value = value.replace(" ", "", "g");
-                    $("#type-"+value).prop("checked", "checked");
-                    break;
-                case "include-panoplie":
-                    $("#"+key).prop("checked", "checked");
-                    break;
-                case "recipe":
-                    $("#recipe-"+value).prop("checked", "checked");
-                    break;
-                default:
-                    if (key.startsWith("attribute-")) {
-                        var row = addAttributeRow();
-                        row.find("select").val(value);
-                        
-                    } else if (key.startsWith("value-")) {
-                        $("#"+key).val(value);
-                    }
-                    break;
-                
-            }
-        });
-        
-        if (params.length == 0) {
-            addAttributeRow();
-        }
-    }
-    
-    function addAttributeRow() {
-        var row = $("#template-row").clone();
-        row.removeAttr("id")
-            .addClass("effect")
-            .show();
-        
-        var select = row.find("select");
-        select.attr("name", select.attr("name") + "-" + row_index);
-        
-        var minValue = row.find("input:text[name='value-min']");
-        minValue.attr("name", minValue.attr("name") + "-" + row_index);
-        
-        var maxValue = row.find("input:text[name='value-max']");
-        maxValue.attr("name", maxValue.attr("name") + "-" + row_index);
-        
-        row_index++;
-        
-        $("#effects").append(row);
-        return row;
-    }
-    
-    function makeCheckboxTree() {
-        $("#types li").click(function(event) {
-            if (event.target == $(this)[0] && $(this).find("ul").length) {
-                $(this).toggleClass("expand collapse");
-                return false;
-            }
-        });
-        
-        $("#types :checkbox").change(function() {
-            checkChildren($(this));
-            checkParent($(this));
-        });
-        
-        $("#types :checkbox[name='type']").change();
-    }
-    
-    function checkChildren(element) {
-        if ($(element).prop("checked")) {
-            $(element).parent().find(":checkbox").prop("checked", "checked");
-        } else {
-            $(element).parent().find(":checkbox").removeProp("checked");
-        }
-    
-    }
-    
-    function checkParent(element) {
-        console.log(element);
-        var parent = $(element).parent().parent().parent().find(">:checkbox");
-        if (parent.length == 0) {
-            return;
-        }
-        
-        if ($(element).parent().parent().find(">>:checkbox:not(:checked)").length) {
-            parent.removeProp("checked");
-        } else {
-            parent.prop("checked", "checked");
-        }
-        
-        checkParent(parent);
-    }
-    
-</script>
+<script src="{% static "js/search.js" %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -159,10 +15,10 @@
 <form id="search-form" action="search.html">
     <div id="types">
         <ul id="type-tree">
-            <li class="expand"><input type="checkbox" id="all" /><label for="all">Tous</label>
+            <li class="tree-expanded"><input type="checkbox" id="all" /><label for="all">Tous</label>
                 <ul>
                     {% for category in categories %}
-                        <li class="category collapse"><input type="checkbox" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
+                        <li class="category tree-collapsed"><input type="checkbox" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
                             <ul>
                                 {% for type in category.itemtype_set.all %}
                                     <li class="type"><input type="checkbox" value="{{ type }}" id="type-{{ type|cut:" " }}" name="type" /><label for="type-{{ type }}">{{ type }}</label></li>
@@ -217,6 +73,7 @@
     </div>
 </form>
 
+{% if objects != None %}
 <div id="results">
 {% for object in objects %}
     {% if object.is_item %}
@@ -228,6 +85,7 @@
     <span>Aucun objet ne correspond &agrave; ces crit&egrave;res de recherche.</span>
 {% endfor %}
 </div>
+{% endif %}
 
 <div id="template-row">
     <select name="attribute">

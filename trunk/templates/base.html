@@ -1,21 +1,61 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 {% load staticfiles %}
 
-<html>
+<html lang="fr">
 <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="{{ pageDescription }}" />
+    <meta name="keywords" content="dofus,objets,recherche,wakfu,ankama,amakna,kamas,pa,pm,po" />
+    <meta name="robots" content="noodp" />
+    <meta name="rating" content="General" />
+    <meta http-equiv="content-language" content="fr-fr" />
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+    <meta property="og:site_name" content="Smetisufod" />
+    <meta property="og:title" content="{{ pageTitle }}" />
+    <meta property="og:description" content="{{ pageDescription }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ pageUrl }}" />
     
-    {% block js %}{% endblock %}
+    <meta itemprop="name" content="{{ pageTitle }}" />
+    <meta itemprop="description" content="{{ pageDescription }}" />
+    <meta itemprop="image" content="" />
     
-    <link rel="stylesheet" type="text/css" href="{% static "base.css" %}">
-    {% block css %}{% endblock %}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="{{ pageUrl }}" />
+    <meta name="twitter:title" content="{{ pageTitle }}" />
+    <meta name="twitter:description" content="{{ pageDescription }}" />
     
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{{ pageTitle }}{% endblock %}</title>
 </head>
 <body>
 
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Smetisufod</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Search</a></li>
+                <li><a href="about">D&eacute;veloppeurs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 {% block content %}{% endblock %}
+
+
+<script src="{% static "js/jquery.1.11.0.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+
+{% block js %}{% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+{% block css %}{% endblock %}
 
 </body>
 </html>

@@ -8,7 +8,7 @@ from mainsite.models import Item, ItemType, ItemCategory, Attribute, AttributeVa
 log = logging.getLogger(__name__)
 
 RE_LEVEL = re.compile("Level (\d+)")
-RE_ATTRIBUTE = re.compile("(-?\d+)( à (-?\d+))? (.*)")
+RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
 RE_CONDITION = re.compile("(.+?) ([><=]) (\d+)")
 RE_CARAC_PA = re.compile("PA : (\d{1,2})")
 RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
@@ -89,7 +89,7 @@ class ItemPageParser(HTMLParser):
         if self.in_caracs_block and tag == "div" and "element_carac_left" in get_attr(attrs, "class"):
             self.in_caracs_left = True
         
-        if self.in_caracs_block and tag == "li":
+        if self.in_caracs_left and tag == "li":
             self.get_attributes = True
         
         
@@ -106,6 +106,13 @@ class ItemPageParser(HTMLParser):
         
         
         if tag == "div" and "element_carac_block1" in get_attr(attrs, "class"):
+            self.in_caracs_block = False
+            self.in_caracs_left = False
+            self.get_attributes = False
+            self.in_caracs_right = False
+            self.get_conditions = False
+            self.get_caracs = False
+            
             self.in_recipe = True
         
         if self.in_recipe_confirmed and tag == "p":
@@ -142,6 +149,10 @@ class ItemPageParser(HTMLParser):
                     max = min
                 if int(min) < 0 and int(max) > 0:
                     max = "-"+max
+                
+                # if not Attribute.objects.get_if_exist(name=attr):
+                    # log.debug(match.groups())
+                    # raise Exception("Weird attribute:" + attr + " on " + self.item.name)
                 
                 attr, created = Attribute.objects.get_or_create(name=attr)
                 

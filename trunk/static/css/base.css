@@ -1,4 +1,5 @@
 body {
+	padding-top: 50px;
 	max-width: 1024px;
 	margin: auto;
 }
@@ -31,18 +32,18 @@ li {
 	list-style: disc outside none;
 }
 
-li.collapse {
-	list-style-image: url("arrow-right.png");
+li.tree-collapsed {
+	list-style-image: url("../img/arrow-right.png");
 }
 
-li.collapse>ul {
+li.tree-collapsed>ul {
 	display: none;
 }
 
-li.expand {
-	list-style-image: url("arrow-down.png");
+li.tree-expanded {
+	list-style-image: url("../img/arrow-down.png");
 }
 
-li.expand>ul {
+li.tree-expanded>ul {
 	display: block;
 }

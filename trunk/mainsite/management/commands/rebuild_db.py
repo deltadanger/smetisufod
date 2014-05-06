@@ -118,13 +118,6 @@ CATEGORY_MAPPING = [
 COOKIES = "LANG=fr; SID=E1E002989B2E28B1544466C1DFE80000"
 
 class Command(BaseCommand):
-    # option_list = BaseCommand.option_list + (
-        # make_option('--refresh_cache',
-            # action='store_true',
-            # dest='delete',
-            # default=False,
-            # help='Delete poll instead of closing it'),
-        # )
     help = 'Update or rebuild the items database'
     
     def handle(self, *args, **options):
@@ -132,9 +125,9 @@ class Command(BaseCommand):
         opener = urllib2.build_opener(proxy)
         opener.addheaders.append(('Cookie', COOKIES))
         
-        web_cache = WebCache(opener, True)
+        web_cache = WebCache(opener)
         
-        # fetch_items(web_cache)
+        fetch_items(web_cache)
         fetch_sets(web_cache)
         # printItems()
 
