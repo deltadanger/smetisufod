@@ -22,16 +22,24 @@ RECIPE_SIZE_TO_JOB_LEVEL = {
     8: 100
 }
 
+PAGE_TITLE = "Dofus: Outil de recherche d'objets"
+PAGE_DESCRIPTION = "Outil de recherche d'objet pour le MMORPG Dofus."
+PAGE_URL = ""
+
 def home(request):
     attributes = Attribute.objects.all().order_by("name")
     categories = ItemCategory.objects.all()
     
+    page_parameters = {
+        "attributes": attributes,
+        "categories": categories,
+        "pageTitle": PAGE_TITLE,
+        "pageDescription": PAGE_DESCRIPTION,
+        "pageUrl": PAGE_URL,
+    }
+    
     if not request.GET:
-        return render_to_response("search.html", {
-                "attributes": attributes,
-                "categories": categories,
-            }, context_instance=RequestContext(request)
-        )
+        return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
     
     
     types = request.GET.getlist("type")
@@ -123,13 +131,10 @@ def home(request):
     
     if request.GET.get("json"):
         return HttpResponse(json.dumps(objects), mimetype="application/json");
+        
+    page_parameters.update({"objects": objects,})
     
-    return render_to_response("search.html", {
-            "attributes": attributes,
-            "categories": categories,
-            "objects": objects,
-        }, context_instance=RequestContext(request)
-    )
+    return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
     
 
 def dictify_item(item):
