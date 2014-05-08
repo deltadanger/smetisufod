@@ -9,41 +9,13 @@ body {
     float: none;
 }
 
-#types {
-    border: 1px solid;
+nav {
     float: left;
-    min-height: 162px;
-    width: 350px;
+    padding: 20px;
+    width: 100px;
 }
 
-.title > * {
-    float: left;
+nav ul {
+    padding: 0;
 }
 
-.title h1 {
-    font-size: 1.6em;
-}
-
-.item ul {
-    float: left;
-}
-
-li {
-	list-style: disc outside none;
-}
-
-li.tree-collapsed {
-	list-style-image: url("../img/arrow-right.png");
-}
-
-li.tree-collapsed>ul {
-	display: none;
-}
-
-li.tree-expanded {
-	list-style-image: url("../img/arrow-down.png");
-}
-
-li.tree-expanded>ul {
-	display: block;
-}

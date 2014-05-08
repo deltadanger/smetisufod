@@ -68,11 +68,9 @@
                     $("#recipe-"+value).prop("checked", "checked");
                     break;
                 default:
-                    if (key.startsWith("attribute-")) {
-                        var row = addAttributeRow();
-                        row.find("select").val(value);
-                        
-                    } else if (key.startsWith("value-")) {
+                    if (key.startsWith("attribute-") || key.startsWith("value-")) {
+                        var index = key.slice(key.lastIndexOf("-")+1)
+                        addAttributeRow(index);
                         $("#"+key).val(value);
                     }
                     break;
@@ -84,27 +82,44 @@
                 $(this).removeClass("tree-collapsed").addClass("tree-expanded");
             }
         });
+        
+        if ($("#advanced-search").find(":checked").length != 0 || $("#advanced-search").find("input:text").filter(function(){return $.trim($(this).val()).length > 0;}).length != 0) {
+            $("#advanced-search").show();
+        }
     }
 
-    function addAttributeRow() {
+    function addAttributeRow(index) {
+        if (index) {
+            row_index = index;
+            if ($("#attribute-"+row_index).length != 0) {
+                return;
+            }
+        } else {
+            while ($("#attribute-"+row_index).length != 0) {
+                row_index++;
+            }
+            index = row_index;
+            row_index++;
+        }
+        
         var row = $("#template-row").clone();
         row.removeAttr("id")
             .addClass("effect")
             .show();
         
         var select = row.find("select");
-        select.attr("name", select.attr("name") + "-" + row_index);
+        var name = select.attr("name") + "-" + index;
+        select.attr("name", name).attr("id", name);
         
         var minValue = row.find("input:text[name='value-min']");
-        minValue.attr("name", minValue.attr("name") + "-" + row_index);
+        name = minValue.attr("name") + "-" + index;
+        minValue.attr("name", name).attr("id", name);
         
         var maxValue = row.find("input:text[name='value-max']");
-        maxValue.attr("name", maxValue.attr("name") + "-" + row_index);
-        
-        row_index++;
+        name = maxValue.attr("name") + "-" + index;
+        maxValue.attr("name", name).attr("id", name);
         
         $("#effects").append(row);
-        return row;
     }
 
     function makeCheckboxTree() {
