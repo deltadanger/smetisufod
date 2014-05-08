@@ -36,6 +36,7 @@ def home(request):
         "pageTitle": PAGE_TITLE,
         "pageDescription": PAGE_DESCRIPTION,
         "pageUrl": PAGE_URL,
+        "active_tab": "search",
     }
     
     if not request.GET:
@@ -61,9 +62,14 @@ def home(request):
         name_query = Q(name__icontains=name)
     
     
-    level_min = request.GET.get("level_min", "1")
-    level_max = request.GET.get("level_max", "200")
-    level_query = Q(level__gte=int(level_min), level__lte=int(level_max))
+    level_min = 1
+    if request.GET.get("level-min"):
+        level_min = int(request.GET.get("level-min"))
+    level_max = 200
+    if request.GET.get("level-max"):
+        level_max = int(request.GET.get("level-max"))
+        
+    level_query = Q(level__gte=int(level_min),level__lte=int(level_max))
     level_query_pano = Q(item__in=Item.objects.filter(level__lte=level_max) & Item.objects.filter(level__gte=level_min))
     
     

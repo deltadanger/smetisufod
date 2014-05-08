@@ -17,4 +17,6 @@ urlpatterns = patterns('',
 
     url(r'^$', 'mainsite.views.home', name='home'),
     url(r'^search.html$', 'mainsite.views.home', name='search'),
+    url(r'^developper.html$', 'mainsite.views.home', name='dev'),
+    url(r'^contact.html$', 'mainsite.views.home', name='contact'),
 )
