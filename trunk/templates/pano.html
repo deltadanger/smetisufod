@@ -1,28 +1,30 @@
 
-<div class="panoplie">
+<div class="result panoplie">
     <div class="title">
         <h1>{{ pano.name }}</h1>
-        <h2>Niveau {{ pano.level }}</h2>
+        <h4>Niveau {{ pano.level }}</h4>
     </div>
     
     <div class="clear"></div>
     
-    <div>
-        {% for k, v in pano.attributes %}
-        <h3>{{ k }} objets</h3>
-        <ul>
-            {% for attr in v %}
-                <li>{{ attr }}</li>
-            {% endfor %}
-        </ul>
+    <div class="caracs">
+        {% for k, v in pano.attributes.items %}
+        <div>
+            <h2>{{ k }} objets</h2>
+            <ul>
+                {% for attr in v %}
+                    <li class="{% cycle "odd" "even" %}">{{ attr }}</li>
+                {% endfor %}
+            </ul>
+        </div>
         {% endfor %}
     </div>
     
     <div class="clear"></div>
     
-    <ul>
+    <ul class="item-list">
         {% for item in pano.items %}
-        <li>{{ item }}</li>
+        <li class="item-lookup">{{ item }}</li>
         {% endfor %}
     </ul>
     
