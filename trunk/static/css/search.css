@@ -5,34 +5,133 @@
     width: 350px;
 }
 
-.title > * {
-    float: left;
-}
-
-.title h1 {
-    font-size: 1.6em;
-}
-
-.item ul {
-    float: left;
-}
-
-li {
+#types li {
 	list-style: disc outside none;
 }
 
-li.tree-collapsed {
+#types li.tree-collapsed {
 	list-style-image: url("../img/arrow-right.png");
 }
 
-li.tree-collapsed>ul {
+#types li.tree-collapsed>ul {
 	display: none;
 }
 
-li.tree-expanded {
+#types li.tree-expanded {
 	list-style-image: url("../img/arrow-down.png");
 }
 
-li.tree-expanded>ul {
+#types li.tree-expanded>ul {
 	display: block;
 }
+
+.item {
+    background-color: #C4B58A;
+    border: 2px inset #C4B58A;
+    margin: 10px;
+    padding: 0 10px 10px;
+}
+
+.item .title {
+	font-family: Tahoma;
+    font-size: 12px;
+    font-weight: bold;
+	color: #FEF5E3;
+    padding: 0 10px;
+}
+
+.item .title > h1, .title > h3 {
+    float: left;
+    text-transform: uppercase;
+}
+
+.item .title > h1 {
+    margin: 0;
+}
+
+.item .title > h3, .title > h4 {
+    margin: 6px 0 0 15px;
+}
+
+.item .title > h4 {
+    float: right;
+}
+
+.item .description {
+    background-color: #F6EDDC;
+    color: #5E4911;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.item .image {
+    height: 120px;
+    margin: 10px;
+    width: 120px !important;
+}
+
+.item .caracs {
+    color: #000000;
+    font-size: 14px;
+}
+
+.item .caracs div {
+    float: left;
+    width: 200px;
+}
+
+.item .caracs h2 {
+    background-color: #F6EDDC;
+    color: #43340D;
+    font-size: 17px;
+    margin: 5px;
+    padding: 1px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.item .caracs ul {
+    list-style: none outside none;
+    margin: 5px;
+    padding: 0;
+}
+
+.item .caracs ul li {
+    padding-left: 3px;
+}
+
+.item .caracs ul li.even {
+	background-color: #DED0B3;
+}
+
+.craft {
+    background-color: #F6EDDC;
+    padding: 5px 10px;
+}
+
+.craft div {
+    font-weight: bold;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.craft div h2 {
+    font-size: 16px;
+}
+
+.craft div h3 {
+    font-size: 14px;
+}
+
+.craft div h2, .craft div h3 {
+    display: inline;
+}
+
+.craft span {
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+
+
+
