@@ -1,5 +1,5 @@
 
-<div class="item">
+<div class="result item">
     <div class="title">
         <h1>{{ item.name }}</h1>
         <h3>{{ item.panoplie }}</h3>
@@ -50,6 +50,7 @@
     
     <div class="clear"></div>
     
+    {% if item.recipe %}
     <div class="craft">
         <div>
             <h2>Craft :</h2> <h3>{{ item.job }} (Niveau {{item.job_level }})</h3>
@@ -58,4 +59,5 @@
     </div>
     
     <div class="clear"></div>
+    {% endif %}
 </div>

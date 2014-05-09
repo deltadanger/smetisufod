@@ -25,14 +25,15 @@
 	display: block;
 }
 
-.item {
+
+.result {
     background-color: #C4B58A;
     border: 2px inset #C4B58A;
     margin: 10px;
     padding: 0 10px 10px;
 }
 
-.item .title {
+.result .title {
 	font-family: Tahoma;
     font-size: 12px;
     font-weight: bold;
@@ -40,22 +41,23 @@
     padding: 0 10px;
 }
 
-.item .title > h1, .title > h3 {
+.result .title > h1, .title > h3 {
     float: left;
     text-transform: uppercase;
 }
 
-.item .title > h1 {
+.result .title > h1 {
     margin: 0;
 }
 
-.item .title > h3, .title > h4 {
+.result .title > h3, .title > h4 {
     margin: 6px 0 0 15px;
 }
 
-.item .title > h4 {
+.result .title > h4 {
     float: right;
 }
+
 
 .item .description {
     background-color: #F6EDDC;
@@ -70,19 +72,19 @@
     width: 120px !important;
 }
 
-.item .caracs {
+.result .caracs {
     color: #000000;
     font-size: 14px;
 }
 
-.item .caracs div {
+.result .caracs div {
     float: left;
-    width: 200px;
+    width: 195px;
 }
 
-.item .caracs h2 {
+.result .caracs h2 {
     background-color: #F6EDDC;
-    color: #43340D;
+    color: #5E4911;
     font-size: 17px;
     margin: 5px;
     padding: 1px 0;
@@ -90,47 +92,70 @@
     text-transform: uppercase;
 }
 
-.item .caracs ul {
+.result .caracs ul {
     list-style: none outside none;
     margin: 5px;
     padding: 0;
 }
 
-.item .caracs ul li {
+.result .caracs ul li {
     padding-left: 3px;
 }
 
-.item .caracs ul li.even {
+.result .caracs ul li.even {
 	background-color: #DED0B3;
 }
 
-.craft {
+.item .craft {
     background-color: #F6EDDC;
     padding: 5px 10px;
 }
 
-.craft div {
+.item .craft div {
     font-weight: bold;
     margin-left: 10px;
     text-transform: uppercase;
 }
 
-.craft div h2 {
+.item .craft div h2 {
     font-size: 16px;
 }
 
-.craft div h3 {
+.item .craft div h3 {
     font-size: 14px;
 }
 
-.craft div h2, .craft div h3 {
+.item .craft div h2, .craft div h3 {
     display: inline;
 }
 
-.craft span {
+.item .craft span {
     font-size: 14px;
     margin-left: 15px;
 }
+
+.panoplie .item-list {
+    list-style: none outside none;
+    padding: 0;
+}
+
+.panoplie .item-list li {
+    float: left;
+    margin: 0 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

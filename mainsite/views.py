@@ -113,7 +113,7 @@ def home(request):
     
     
     panoplies = []
-    if request.GET.get("include_panoplie") and not recipes:
+    if request.GET.get("include-panoplie") and not recipes:
         panoplies = Panoplie.objects.filter(name_query & type_query_pano & level_query_pano)
         for q in attribute_querys_pano:
             panoplies = panoplies.filter(q)
