@@ -11,6 +11,7 @@
         
         $(document).on("click", ".remove-row", function() {
             $(this).parent().remove();
+            applyEffectRowStyle();
         });
         
         $("#advanced-search").hide();
@@ -120,6 +121,19 @@
         maxValue.attr("name", name).attr("id", name);
         
         $("#effects").append(row);
+        
+        applyEffectRowStyle();
+    }
+    
+    function applyEffectRowStyle() {
+        $("#effects > li").each(function(i, e) {
+            $(e).removeClass("even odd");
+            if (i % 2 == 1) {
+                $(e).addClass("even");
+            } else {
+                $(e).addClass("odd");
+            }
+        });
     }
 
     function makeCheckboxTree() {

@@ -1,8 +1,27 @@
+
+li.even {
+	background-color: #DED0B3;
+}
+
+#search-form {
+    background-color: #C4B58A;
+    border: 2px inset #C4B58A;
+    margin: 10px;
+    padding: 10px;
+}
+
+#search-form > h1 {
+    color: #FEF5E3;
+    font-family: tahoma;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
 #types {
-    border: 1px solid;
+    background-color: #F6EDDC;
     float: left;
     min-height: 162px;
-    width: 350px;
+    width: 250px;
 }
 
 #types li {
@@ -25,6 +44,53 @@
 	display: block;
 }
 
+#search-fields {
+    float: left;
+    margin: -5px 15px 0;
+}
+
+#search-fields input[type="text"] {
+    width: 30px;
+}
+
+#search-fields > div {
+    background-color: #F6EDDC;
+    margin: 5px 5px 7px;
+    padding: 3px;
+}
+
+#search-fields h3 {
+    color: #94855A;
+    margin: 4px 0;
+    padding: 0 0 0 10px;
+    text-transform: uppercase;
+}
+
+#search-fields h3 input {
+    float: right;
+    margin-top: -2px;
+}
+
+#effects {
+    background-color: #C4B58A;
+    margin: 0;
+    padding: 0;
+}
+
+#effects li {
+    list-style: none outside none;
+    padding: 2px 5px;
+}
+
+#name {
+    width: 200px !important;
+}
+
+#search-form .submit {
+    background-color: rgba(0, 0, 0, 0);
+    margin: 20px 0 0;
+    text-align: center;
+}
 
 .result {
     background-color: #C4B58A;
@@ -100,10 +166,6 @@
 
 .result .caracs ul li {
     padding-left: 3px;
-}
-
-.result .caracs ul li.even {
-	background-color: #DED0B3;
 }
 
 .item .craft {

@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block content %}
-<h1>Recherche</h1>
 
 <form id="search-form" action="search.html">
+    <h1>Recherche</h1>
     <div id="types">
         <ul id="type-tree">
             <li class="tree-expanded"><input type="checkbox" id="all" /><label for="all">Tous</label>
@@ -43,13 +43,14 @@
         <div>
             <h3>
                 Effets
-                <input type="button" id="add-row" value="Ajouter une ligne" />
+                <input type="button" id="add-row" class="light-button" value="Ajouter une ligne" />
             </h3>
-            <div id="effects"></div>
+            <div class="clear"></div>
+            <ul id="effects"></ul>
             <label for="include-panoplie">Inclure les bonus de panoplie dans la recherche</label> <input type="checkbox" id="include-panoplie" name="include-panoplie" checked="checked" />
         </div>
         
-        <a href="javascript:void(0);" id="switch-advanced-search">Recherche avanc&eacute;e</a>
+        <a href="javascript:void(0);" id="switch-advanced-search" class="light-button">Recherche avanc&eacute;e</a>
         <div id="advanced-search">
             <label for="name">Nom de l'objet</label> <input type="text" id="name" name="name" />
             
@@ -66,15 +67,28 @@
                 case(s)
             </div>
             
-            <label for="cost-min">Co&ucirc;t en PA :</label> <input type="text" id="cost-min" name="cost-min" autocomplete="off" /> &agrave; <input type="text" id="cost-max" name="cost-max" autocomplete="off" />
-            <label for="range-min">Port&eacute;e :</label> <input type="text" id="range-min" name="range-min" autocomplete="off" /> &agrave; <input type="text" id="range-max" name="range-max" autocomplete="off" />
+            <div>
+                <label for="cost-min">Co&ucirc;t en PA :</label>
+                <input type="text" id="cost-min" name="cost-min" autocomplete="off" />
+                &agrave;
+                <input type="text" id="cost-max" name="cost-max" autocomplete="off" />
+                
+                <br />
+                
+                <label for="range-min">Port&eacute;e :</label>
+                <input type="text" id="range-min" name="range-min" autocomplete="off" />
+                &agrave;
+                <input type="text" id="range-max" name="range-max" autocomplete="off" />
+            </div>
+        </div>
+    
+        <div class="submit">
+            <a id="search" href="javascript:void(0);" class="light-button bold">Lancer la recherche</a>
+            <a id="clear-search" href="javascript:void(0);" class="light-button small">Effacer les termes de la recherche</a>
         </div>
     </div>
     
-    <div>
-        <a id="search" href="javascript:void(0);">Lancer la recherche</a>
-        <a id="clear-search" href="javascript:void(0);">Effacer les termes de la recherche</a>
-    </div>
+    <div class="clear"></div>
 </form>
 
 {% if objects != None %}
@@ -91,7 +105,7 @@
 </div>
 {% endif %}
 
-<div id="template-row">
+<li id="template-row">
     <select name="attribute">
         {% for attr in attributes %}
             <option value="{{ attr.name }}">{{ attr.name }}</option>
@@ -100,6 +114,6 @@
     <label>Min</label> <input type="text" class="value-min" name="value-min" autocomplete="off" />
     <label>Max</label> <input type="text" class="value-max" name="value-max" autocomplete="off" />
     <input type="button" class="remove-row" value="-" />
-</div>
+</li>
 
 {% endblock %}
