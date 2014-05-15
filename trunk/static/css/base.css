@@ -11,7 +11,7 @@ body {
 }
 
 nav {
-    float: left;
+    #float: left;
     padding: 20px;
     width: 100px;
 }
@@ -20,6 +20,24 @@ nav ul {
     padding: 0;
 }
 
+.light-button {
+    background-color: #F6EDDC;
+    border: 2px outset #C4B58A;
+    color: #000000;
+    cursor: pointer;
+    margin: 5px;
+    padding: 2px 5px;
+    text-decoration: none;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.bold {
+	font-size: 18px;
+	font-weight: bold;
+}
 
 .item-lookup {
     background-color: #F6EDDC;
@@ -28,3 +46,4 @@ nav ul {
     cursor: default;
     padding: 2px 5px;
 }
+

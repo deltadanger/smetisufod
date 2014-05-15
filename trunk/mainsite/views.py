@@ -79,6 +79,7 @@ def home(request):
         recipe_query |= Q(recipe__size=recipe)
     
     
+    
     attribute_querys = []
     attribute_querys_pano = []
     for k, v in request.GET.items():
@@ -109,7 +110,7 @@ def home(request):
     items = Item.objects.filter(type_query & name_query & level_query & recipe_query)
     for q in attribute_querys:
         items = items.filter(q)
-    items = items.distinct()
+    items = items.distinct().order_by("level")
     
     
     panoplies = []
