@@ -30,7 +30,7 @@
         <div class="conditions">
             <h2>Conditions</h2>
             <ul>
-                {% for cond in conditions %}
+                {% for cond in item.conditions %}
                     <li class="{% cycle "odd" "even" %}">{{ cond }}</li>
                 {% endfor %}
             </ul>
