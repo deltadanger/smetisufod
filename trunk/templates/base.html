@@ -31,23 +31,24 @@
 <body>
 
 <header>
-<a href="{% url "home" %}">Smetisufod</a>
+<a href="{% url "home" %}">SmetisufoD</a>
 </header>
 
-<nav>
+<nav class="wide">
+    <h1>Index</h1>
     <ul>
-        <li class="{% if active_tab == "search" %}active{% endif %}"><a href="{% url "search" %}">Recherche</a></li>
-        <li class="{% if active_tab == "dev" %}active{% endif %}"><a href="{% url "dev" %}">Developpeurs</a></li>
-        <li class="{% if active_tab == "contact" %}active{% endif %}"><a href="{% url "contact" %}">Contact</a></li>
+        <li class="odd {% if active_tab == "search" %}active{% endif %}"><a href="{% url "search" %}">Recherche</a></li>
+        <li class="even {% if active_tab == "dev" %}active{% endif %}"><a href="{% url "dev" %}">Developpeurs</a></li>
+        <li class="odd {% if active_tab == "contact" %}active{% endif %}"><a href="{% url "contact" %}">Contact</a></li>
     </ul>
 </nav>
 
-<main>
+<main class="wide">
 {% block content %}{% endblock %}
 </main>
 
 <footer>
-Toutes les informations et images pr&eacute;sentes sur ce site sont la propri&eacute;t&eacute; de Ankama. <a href="http://www.ankama.com" target="_blank">Lien</a>
+    <a href="http://www.ankama.com" target="_blank">Toutes les informations et images pr&eacute;sentes sur ce site sont la propri&eacute;t&eacute; de Ankama.</a>
 </footer>
 
 <script src="{% static "js/jquery.1.11.0.min.js" %}"></script>

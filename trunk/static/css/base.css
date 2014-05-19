@@ -1,23 +1,6 @@
-body {
-	padding-top: 50px;
-	max-width: 1024px;
-	margin: auto;
-	background-color: #FFF7E0;
-}
-
 .clear {
     clear: both;
     float: none;
-}
-
-nav {
-    #float: left;
-    padding: 20px;
-    width: 100px;
-}
-
-nav ul {
-    padding: 0;
 }
 
 .light-button {
@@ -37,6 +20,101 @@ nav ul {
 .bold {
 	font-size: 18px;
 	font-weight: bold;
+}
+
+
+
+body {
+    background-color: #1F2012;
+	max-width: 1024px;
+	margin: auto;
+}
+
+
+header {
+    margin: 10px 40px;
+}
+
+header a {
+    color: #EBBF6D;
+    font-family: Tahoma;
+    font-size: 54px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+nav.wide {
+    border: 2px solid #FC8D2B;
+    border-radius: 7px;
+    float: left;
+    padding: 0;
+    width: 127px;
+}
+
+nav h1 {
+    border-bottom: 1px solid #E79854;
+    color: #EBBF6D;
+    font-family: Tahoma;
+    font-size: 18px;
+    margin: 0;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+nav li {
+    font-size: 14px;
+    list-style: none outside none;
+    padding: 0 8px 3px;
+}
+
+nav li.even {
+	background-color: #3C352D
+}
+
+nav li.active {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 3px 8px 5px;
+}
+
+nav li a {
+    color: #E0DCDC;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    text-decoration: underline;
+}
+
+
+main.wide {
+    background-color: #FFF7E0;
+    margin-left: 150px;
+    padding: 5px;
+}
+
+
+
+footer {
+    margin: 10px;
+    text-align: center;
+}
+
+footer a {
+    color: #60493C;
+    text-decoration: none;
+}
+
+footer a:hover {
+	color: #C4BBA7;
+	text-decoration: underline;
 }
 
 .item-lookup {

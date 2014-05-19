@@ -15,8 +15,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r'^$', 'mainsite.views.home', name='home'),
-    url(r'^search.html$', 'mainsite.views.home', name='search'),
-    url(r'^developper.html$', 'mainsite.views.home', name='dev'),
-    url(r'^contact.html$', 'mainsite.views.home', name='contact'),
+    url(r'^$', 'mainsite.views.search', name='home'),
+    url(r'^search.html$', 'mainsite.views.search', name='search'),
+    url(r'^developper.html$', 'mainsite.views.devs', name='dev'),
+    url(r'^contact.html$', 'mainsite.views.contact', name='contact'),
 )

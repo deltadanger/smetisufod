@@ -25,6 +25,7 @@ li.even {
 }
 
 #types li {
+    cursor: pointer;
 	list-style: disc outside none;
 }
 
