@@ -26,7 +26,7 @@ PAGE_TITLE = "Dofus: Outil de recherche d'objets"
 PAGE_DESCRIPTION = "Outil de recherche d'objet pour le MMORPG Dofus."
 PAGE_URL = ""
 
-def home(request):
+def search(request):
     attributes = Attribute.objects.all().order_by("name")
     categories = ItemCategory.objects.all()
     
@@ -213,6 +213,40 @@ def dictify_pano(pano):
 
 
 
+def devs(request):
+    attributes = Attribute.objects.all().order_by("name")
+    categories = ItemCategory.objects.all()
+    
+    page_parameters = {
+        "attributes": attributes,
+        "categories": categories,
+        "pageTitle": PAGE_TITLE,
+        "pageDescription": PAGE_DESCRIPTION,
+        "pageUrl": PAGE_URL,
+        "active_tab": "dev",
+    }
+    
+    if not request.GET:
+        return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
+
+
+
+def contact(request):
+    attributes = Attribute.objects.all().order_by("name")
+    categories = ItemCategory.objects.all()
+    
+    page_parameters = {
+        "attributes": attributes,
+        "categories": categories,
+        "pageTitle": PAGE_TITLE,
+        "pageDescription": PAGE_DESCRIPTION,
+        "pageUrl": PAGE_URL,
+        "active_tab": "contact",
+    }
+    
+    if not request.GET:
+        return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
+    
 
 
 
