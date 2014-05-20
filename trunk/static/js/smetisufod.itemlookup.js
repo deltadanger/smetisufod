@@ -66,13 +66,15 @@
                     
                     $.get("get_item", {"name": element.html()}, function(result) {
                         if (result.html) {
-                            element.css("cursor", cursor);
                             displayDiv.html(result.html);
                             displayDiv.find(".item-lookup").lookupitem();
                             moveDiv(displayDiv, element);
                         } else {
                             displayDiv.remove();
                         }
+                        
+                    }).complete(function() {
+                        element.css("cursor", cursor);
                     });
                 }
                 
