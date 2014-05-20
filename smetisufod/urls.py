@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     url(r'^search.html$', 'mainsite.views.search', name='search'),
     url(r'^developper.html$', 'mainsite.views.devs', name='dev'),
     url(r'^contact.html$', 'mainsite.views.contact', name='contact'),
+    url(r'^get_item$', 'mainsite.views.get_item', name='get_item'),
 )
