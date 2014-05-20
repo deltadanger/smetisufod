@@ -2,8 +2,8 @@ import json, logging, re
 
 log = logging.getLogger(__name__)
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse
 from django.core import serializers
@@ -44,16 +44,12 @@ def search(request):
     
     
     types = request.GET.getlist("type")
-    
     type_query = Q()
     type_query_pano = Q()
+    
     for type in types:
-        type_list = [ItemType.objects.get(name=type)]
-        
-        if type_list:
-            type_query |= Q(type__in=type_list)
-            type_query_pano |= Q(item__type__in=type_list)
-            
+        type_query |= Q(type=ItemType.objects.get(name=type))
+        type_query_pano |= Q(item__type=ItemType.objects.get(name=type))
     
     
     name = request.GET.get("name")
@@ -69,8 +65,8 @@ def search(request):
     if request.GET.get("level-max"):
         level_max = int(request.GET.get("level-max"))
         
-    level_query = Q(level__gte=int(level_min),level__lte=int(level_max))
-    level_query_pano = Q(item__in=Item.objects.filter(level__lte=level_max) & Item.objects.filter(level__gte=level_min))
+    level_query = Q(level__gte=level_min,level__lte=level_max)
+    level_query_pano = Q(item__level__gte=level_min, item__level__lte=level_max)
     
     
     recipes = request.GET.getlist("recipe")
@@ -112,6 +108,14 @@ def search(request):
         items = items.filter(q)
     items = items.distinct().order_by("level")
     
+    log.debug(type_query)
+    log.debug(name_query)
+    log.debug(level_query)
+    log.debug(recipe_query)
+    log.debug(attribute_querys)
+    log.debug(items)
+    
+    
     
     panoplies = []
     if request.GET.get("include-panoplie") and not recipes:
@@ -120,18 +124,12 @@ def search(request):
             panoplies = panoplies.filter(q)
         panoplies = panoplies.distinct()
         
-    
-    log.debug(type_query)
-    log.debug(name_query)
-    log.debug(level_query)
-    log.debug(recipe_query)
-    log.debug(attribute_querys)
-    log.debug(items)
-    
-    log.debug(type_query_pano)
-    log.debug(level_query_pano)
-    log.debug(attribute_querys_pano)
-    log.debug(panoplies)
+        log.debug(type_query_pano)
+        log.debug(name_query)
+        log.debug(level_query_pano)
+        log.debug(attribute_querys_pano)
+        log.debug(panoplies)
+        
     
     
     objects = [dictify_item(item) for item in items] + [dictify_pano(pano) for pano in panoplies]
@@ -227,7 +225,7 @@ def devs(request):
     }
     
     if not request.GET:
-        return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
+        return render_to_response("build.html", page_parameters, context_instance=RequestContext(request))
 
 
 
@@ -245,12 +243,27 @@ def contact(request):
     }
     
     if not request.GET:
-        return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
+        return render_to_response("build.html", page_parameters, context_instance=RequestContext(request))
     
 
 
 
 
-
+def get_item(request):
+    name = request.GET.get("name");
+    
+    result = {}
+    
+    if name:
+        item = Item.objects.get_if_exist(name__iexact=name)
+        pano = Panoplie.objects.get_if_exist(name__iexact=name)
+        if item:
+            result["isPanoplie"] = False
+            result["html"] = loader.render_to_string("item.html", {"item": dictify_item(item)}, context_instance=RequestContext(request))
+        elif pano:
+            result["isPanoplie"] = True
+            result["html"] = loader.render_to_string("pano.html", {"pano": dictify_pano(pano)}, context_instance=RequestContext(request))
+    print result
+    return HttpResponse(json.dumps(result), mimetype="application/json");
 
 

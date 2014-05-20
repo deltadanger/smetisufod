@@ -31,6 +31,8 @@
         
         setFormFromUrlParameters();
         makeCheckboxTree();
+        
+        $(".item-lookup").lookupitem();$(".item-lookup").lookupitem();
     });
 
     function setFormFromUrlParameters() {
@@ -40,8 +42,11 @@
         if (params.length == 0 || !params[0]) {
             addAttributeRow();
             $("#types :checkbox[name='type']").prop("checked", "checked");
+            $("#include-panoplie").prop("checked", "checked");
             return;
         }
+        
+        var isTypeDefined = false;
         
         $.each(params, function(i, param) {
             var key = param.split("=")[0].replace("+", " ", "g");
@@ -59,6 +64,7 @@
                     break;
                     
                 case "type":
+                    isTypeDefined = true;
                     value = value.replace(" ", "", "g");
                     $("#type-"+value).prop("checked", "checked");
                     break;
@@ -77,6 +83,10 @@
                     break;
             }
         });
+        
+        if (!isTypeDefined) {
+            $("#types :checkbox[name='type']").prop("checked", "checked");
+        }
         
         $(".category").each(function() {
             if ($(this).find("[name='type']:checkbox:checked").length != 0 && $(this).find("[name='type']:checkbox:not(:checked)").length != 0) {

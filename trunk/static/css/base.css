@@ -28,6 +28,7 @@ body {
     background-color: #1F2012;
 	max-width: 1024px;
 	margin: auto;
+    padding: 0 10px;
 }
 
 
@@ -115,13 +116,5 @@ footer a {
 footer a:hover {
 	color: #C4BBA7;
 	text-decoration: underline;
-}
-
-.item-lookup {
-    background-color: #F6EDDC;
-    border: 1px solid #5E4911;
-    color: #5E4911;
-    cursor: default;
-    padding: 2px 5px;
 }
 

@@ -97,6 +97,8 @@ li.even {
     background-color: #C4B58A;
     border: 2px inset #C4B58A;
     margin: 10px;
+	min-width: -moz-max-content;
+	min-width: -webkit-max-content;
     padding: 0 10px 10px;
 }
 
@@ -108,7 +110,7 @@ li.even {
     padding: 0 10px;
 }
 
-.result .title > h1, .title > h3 {
+.result .title > h1, .result .title > h3 {
     float: left;
     text-transform: uppercase;
 }
@@ -117,7 +119,11 @@ li.even {
     margin: 0;
 }
 
-.result .title > h3, .title > h4 {
+.result .title > h3 {
+    margin: 2px 0 0 15px;
+}
+
+.result .title > h4 {
     margin: 6px 0 0 15px;
 }
 
@@ -197,6 +203,10 @@ li.even {
     margin-left: 15px;
 }
 
+.panoplie {
+	min-width: 500px;
+}
+
 .panoplie .item-list {
     list-style: none outside none;
     padding: 0;
@@ -204,7 +214,6 @@ li.even {
 
 .panoplie .item-list li {
     float: left;
-    margin: 0 2px;
 }
 
 
