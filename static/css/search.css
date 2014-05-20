@@ -120,7 +120,7 @@ li.even {
 }
 
 .result .title > h3 {
-    margin: 2px 0 0 15px;
+    margin: 2px 0 0 15px !important;
 }
 
 .result .title > h4 {
@@ -132,11 +132,20 @@ li.even {
 }
 
 
-.item .description {
+.item .description div {
     background-color: #F6EDDC;
     color: #5E4911;
+    float: left;
     font-size: 12px;
+	margin-right: 5px;
+    max-width: 700px;
     padding: 5px 10px;
+}
+
+.item .description .light-button {
+    float: right;
+    margin: 0;
+    padding: 0;
 }
 
 .item .image {
@@ -177,6 +186,7 @@ li.even {
 
 .item .craft {
     background-color: #F6EDDC;
+    max-width: 800px;
     padding: 5px 10px;
 }
 
