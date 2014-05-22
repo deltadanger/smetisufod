@@ -1,4 +1,36 @@
 
+#aside-items .light-button {
+    display: block;
+    margin: 5px auto 0;
+    padding: 0;
+}
+
+#aside-items > ul {
+    padding: 3px;
+}
+
+#aside-items li {
+    padding: 0;
+}
+
+#aside-items ul li span {
+    display: inline-block !important;
+    vertical-align: middle;
+    width: 155px;
+}
+
+#aside-items ul li .remove-row {
+    background: url("../img/delete.png") no-repeat scroll 0 0 / 16px auto rgba(0, 0, 0, 0);
+    border: medium none;
+    cursor: pointer;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+
+.keep-aside {
+	display: block !important;
+}
+
 li.even {
 	background-color: #DED0B3;
 }
@@ -138,7 +170,7 @@ li.even {
     float: left;
     font-size: 12px;
 	margin-right: 5px;
-    max-width: 700px;
+    max-width: 660px;
     padding: 5px 10px;
 }
 
@@ -186,7 +218,7 @@ li.even {
 
 .item .craft {
     background-color: #F6EDDC;
-    max-width: 800px;
+    max-width: 760px;
     padding: 5px 10px;
 }
 

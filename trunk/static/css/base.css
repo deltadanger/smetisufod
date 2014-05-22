@@ -26,8 +26,8 @@
 
 body {
     background-color: #1F2012;
-	max-width: 1024px;
-	margin: auto;
+    margin: auto;
+    max-width: 1024px;
     padding: 0 10px;
 }
 
@@ -46,14 +46,18 @@ header a {
 
 
 nav.wide {
-    border: 2px solid #FC8D2B;
-    border-radius: 7px;
     float: left;
-    padding: 0;
-    width: 127px;
+    width: 200px;
 }
 
-nav h1 {
+nav.wide div {
+    border: 2px solid #FC8D2B;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+nav div h1 {
     border-bottom: 1px solid #E79854;
     color: #EBBF6D;
     font-family: Tahoma;
@@ -63,41 +67,41 @@ nav h1 {
     text-transform: uppercase;
 }
 
-nav ul {
+nav div ul {
     margin: 0;
     padding: 0;
 }
 
 
-nav li {
+nav div li {
     font-size: 14px;
     list-style: none outside none;
     padding: 0 8px 3px;
 }
 
-nav li.even {
+nav div li.even {
 	background-color: #3C352D
 }
 
-nav li.active {
+nav div li.active {
     font-size: 20px;
     font-weight: bold;
     padding: 3px 8px 5px;
 }
 
-nav li a {
+nav div li a {
     color: #E0DCDC;
     text-decoration: none;
 }
 
-nav li a:hover {
+nav div li a:hover {
     text-decoration: underline;
 }
 
 
 main.wide {
     background-color: #FFF7E0;
-    margin-left: 150px;
+    margin-left: 210px;
     padding: 5px;
 }
 

@@ -6,11 +6,20 @@
 {% block title %}Recherche d'objets{% endblock %}
 
 {% block js %}
+<script src="{% static "js/jquery.cookie.js" %}"></script>
 <script src="{% static "js/search.js" %}"></script>
 {% endblock %}
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static "css/search.css" %}">
+{% endblock %}
+
+{% block nav %}
+<div id="aside-items">
+    <h1>Comparaison</h1>
+    <input id="remove-aside" type="button" class="light-button" value="Effacer la liste" />
+    <ul></ul>
+</div>
 {% endblock %}
 
 {% block content %}

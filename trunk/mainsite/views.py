@@ -263,7 +263,7 @@ def get_item(request):
         elif pano:
             result["isPanoplie"] = True
             result["html"] = loader.render_to_string("pano.html", {"pano": dictify_pano(pano)}, context_instance=RequestContext(request))
-    print result
+    
     return HttpResponse(json.dumps(result), mimetype="application/json");
 
 
