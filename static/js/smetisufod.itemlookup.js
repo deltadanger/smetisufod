@@ -100,7 +100,7 @@
         applyStyle: true,
         style: {
             "background-color": "#F6EDDC",
-            "border": "1px solid #5E4911",
+            "border": "1px dashed #5E4911",
             "color": "#5E4911",
             "display": "block",
             "margin": "1px",
@@ -117,7 +117,7 @@
     function moveDiv(displayDiv, element) {
         displayDiv.position({
             "my": "top",
-            "at": "bottom",
+            "at": "bottom + 15px",
             "of": element,
             "collision": "flipfit",
         });

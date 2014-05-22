@@ -35,12 +35,15 @@
 </header>
 
 <nav class="wide">
-    <h1>Index</h1>
-    <ul>
-        <li class="odd {% if active_tab == "search" %}active{% endif %}"><a href="{% url "search" %}">Recherche</a></li>
-        <li class="even {% if active_tab == "dev" %}active{% endif %}"><a href="{% url "dev" %}">Developpeurs</a></li>
-        <li class="odd {% if active_tab == "contact" %}active{% endif %}"><a href="{% url "contact" %}">Contact</a></li>
-    </ul>
+    <div>
+        <h1>Index</h1>
+        <ul>
+            <li class="odd {% if active_tab == "search" %}active{% endif %}"><a href="{% url "search" %}">Recherche</a></li>
+            <li class="even {% if active_tab == "dev" %}active{% endif %}"><a href="{% url "dev" %}">Developpeurs</a></li>
+            <li class="odd {% if active_tab == "contact" %}active{% endif %}"><a href="{% url "contact" %}">Contact</a></li>
+        </ul>
+    </div>
+    {% block nav %}{% endblock %}
 </nav>
 
 <main class="wide">

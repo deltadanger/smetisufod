@@ -1,6 +1,8 @@
 (function ($) {
 
     var row_index = 1;
+    var KEEP_ASIDE_COOKIE_NAME = "smetisufod-keep-aside";
+    var COOKIE_SEP = " - ";
 
     $(function(){
         $("#template-row").hide();
@@ -32,7 +34,58 @@
         setFormFromUrlParameters();
         makeCheckboxTree();
         
-        $(".item-lookup").lookupitem();$(".item-lookup").lookupitem();
+        $(".item-lookup").lookupitem();
+        
+        
+        $("#aside-items").hide();
+        
+        $(document).on("click", "#aside-items .remove-row", function() {
+            var currentItems = $.cookie(KEEP_ASIDE_COOKIE_NAME);
+            if (!currentItems) {
+                return;
+            }
+            
+            currentItems = currentItems.split(COOKIE_SEP);
+            
+            var index = undefined;
+            var element = $(this);
+            $.each(currentItems, function(i, e) {
+                if (e == element.attr("name")) {
+                    index = i;
+                }
+            });
+            
+            if (index !== undefined) {
+                currentItems.splice(index, 1);
+            }
+            currentItems.join(COOKIE_SEP);
+            
+            $.cookie(KEEP_ASIDE_COOKIE_NAME, currentItems);
+            
+            reloadAsideItemsFromCookie();
+        });
+        
+        $(document).on("click", ".keep-aside", function() {
+            var currentItems = $.cookie(KEEP_ASIDE_COOKIE_NAME);
+            
+            if (currentItems && currentItems.indexOf($(this).attr("name")) == -1) {
+                currentItems += COOKIE_SEP + $(this).attr("name");
+                
+            } else {
+                currentItems = $(this).attr("name");
+            }
+            
+            $.cookie(KEEP_ASIDE_COOKIE_NAME, currentItems);
+            
+            reloadAsideItemsFromCookie();
+        });
+        
+        $("#remove-aside").click(function() {
+            $.removeCookie(KEEP_ASIDE_COOKIE_NAME);
+            reloadAsideItemsFromCookie();
+        });
+        
+        reloadAsideItemsFromCookie();
     });
 
     function setFormFromUrlParameters() {
@@ -185,4 +238,39 @@
         
         checkParent(parent);
     }
+    
+    function reloadAsideItemsFromCookie() {
+        var items = $.cookie(KEEP_ASIDE_COOKIE_NAME)
+        if (!items) {
+            $("#aside-items").hide();
+            return;
+        }
+        
+        items = items.split(COOKIE_SEP);
+        
+        $("#aside-items ul>li").remove();
+        
+        $.each(items, function(i, e) {
+            var row = $("<li>");
+            var content = $("<span>", {
+                "class": "item-lookup",
+            }).html(e);
+            
+            content.lookupitem();
+            row.append(content);
+            row.append($("<input>", {
+                "type": "button",
+                "class": "remove-row",
+                "name": e,
+            }));
+            $("#aside-items ul").append(row);
+        });
+        
+        if (items.length) {
+            $("#aside-items").show();
+        } else {
+            $("#aside-items").hide();
+        }
+    }
+    
 })(jQuery);
