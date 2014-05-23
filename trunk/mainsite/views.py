@@ -283,9 +283,11 @@ def flag_invalid(request):
     name = request.GET.get("name")
     item = Item.objects.get_if_exist(name=name)
     pano = Panoplie.objects.get_if_exist(name=name)
-    if item:
+    
+    if item and InvalidItem.objects.filter(item=item).count() == 0:
         InvalidItem.objects.create(item=item, flag_date=timezone.now())
-    elif pano:
+        
+    elif pano and InvalidItem.objects.filter(panoplie=pano).count() == 0:
         InvalidItem.objects.create(panoplie=pano, flag_date=timezone.now())
     
     return HttpResponse()
