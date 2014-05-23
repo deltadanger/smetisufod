@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^developper.html$', 'mainsite.views.devs', name='dev'),
     url(r'^contact.html$', 'mainsite.views.contact', name='contact'),
     url(r'^get_item$', 'mainsite.views.get_item', name='get_item'),
+    url(r'^flag_invalid$', 'mainsite.views.flag_invalid', name='flag_invalid'),
 )

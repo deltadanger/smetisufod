@@ -7,8 +7,9 @@ from django.template import RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse
 from django.core import serializers
+from django.utils import timezone
 
-from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, PanoplieAttribute, AttributeValue
+from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, PanoplieAttribute, AttributeValue, UpdateHistory, InvalidItem
 
 EXCLUDE_CATEGORY = ["Ressource"]
 RECIPE_SIZE_TO_JOB_LEVEL = {
@@ -30,6 +31,7 @@ def search(request):
     # Do not get attributes that are used only as condition
     attributes = Attribute.objects.filter(attributevalue__isnull=False).distinct().order_by("name")
     categories = ItemCategory.objects.all()
+    last_update = UpdateHistory.objects.all().order_by("-started")[0].started
     
     page_parameters = {
         "attributes": attributes,
@@ -38,6 +40,7 @@ def search(request):
         "pageDescription": PAGE_DESCRIPTION,
         "pageUrl": PAGE_URL,
         "active_tab": "search",
+        "udpate_time": last_update,
     }
     
     if not request.GET:
@@ -184,6 +187,9 @@ def dictify_item(item):
     if item.panoplie:
         result["panoplie"] = item.panoplie.name
     
+    if InvalidItem.objects.filter(item=item).count() > 0:
+        result["invalid"] = True
+    
     return result
 
 def dictify_pano(pano):
@@ -202,6 +208,9 @@ def dictify_pano(pano):
     
     result["items"] = list(pano.item_set.all().values_list('name', flat=True))
     result["level"] = max(pano.item_set.values_list("level", flat=True))
+    
+    if InvalidItem.objects.filter(panoplie=pano).count() > 0:
+        result["invalid"] = True
     
     return result
 
@@ -266,5 +275,20 @@ def get_item(request):
             result["html"] = loader.render_to_string("pano.html", {"pano": dictify_pano(pano)}, context_instance=RequestContext(request))
     
     return HttpResponse(json.dumps(result), mimetype="application/json");
+
+
+
+
+def flag_invalid(request):
+    name = request.GET.get("name")
+    item = Item.objects.get_if_exist(name=name)
+    pano = Panoplie.objects.get_if_exist(name=name)
+    if item:
+        InvalidItem.objects.create(item=item, flag_date=timezone.now())
+    elif pano:
+        InvalidItem.objects.create(panoplie=pano, flag_date=timezone.now())
+    
+    return HttpResponse()
+
 
 

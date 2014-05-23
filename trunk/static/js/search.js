@@ -31,7 +31,7 @@
             $("#search-form").submit();
         });
         
-        $("#search-form input[type='text']").keypress(function(event) {
+        $(document).on("keypress", "#search-form input[type='text']", function(event) {
             if (event.keyCode == 13) {
                 $("#search").click();
             }
@@ -96,6 +96,14 @@
         });
         
         reloadAsideItemsFromCookie();
+        
+        $(document).on("click", ".invalid > a", function() {
+            $.get("flag_invalid", {"name": $(this).attr("name")}, function(result) {
+                var parent = $(this).parent();
+                parent.find("a").hide();
+                parent.find("span").show();
+            });
+        });
     });
 
     function setFormFromUrlParameters() {

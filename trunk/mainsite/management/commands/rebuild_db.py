@@ -131,7 +131,7 @@ class Command(BaseCommand):
         history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
         
         fetch_items(web_cache, history)
-        # fetch_sets(web_cache, history)
+        fetch_sets(web_cache, history)
         # printItems()
         
         history.finished = timezone.now()

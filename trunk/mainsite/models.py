@@ -120,5 +120,17 @@ class UpdateHistory(BaseModel):
     updated_panos = models.ManyToManyField(Panoplie)
     
     def __unicode__(self):
-        return unicode(self.started) + " - " + unicode(self.finished)
+        return unicode(self.started) + " - " + unicode(self.finished) + " (" + str(self.updated_items.count() + self.updated_panos.count()) + ")"
 
+
+
+class InvalidItem(BaseModel):
+    item = models.ForeignKey(Item, null=True)
+    panoplie = models.ForeignKey(Panoplie, null=True)
+    flag_date = models.DateTimeField()
+
+    def __unicode__(self):
+        if self.item:
+            return unicode(self.item) + " - " + unicode(self.flag_date)
+            
+        return unicode(self.panoplie) + " - " + unicode(self.flag_date)

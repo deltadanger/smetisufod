@@ -126,6 +126,15 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(u'mainsite_updatehistory_updated_panos', ['updatehistory_id', 'panoplie_id'])
 
+        # Adding model 'InvalidItem'
+        db.create_table(u'mainsite_invaliditem', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('item', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Item'], null=True)),
+            ('panoplie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Panoplie'], null=True)),
+            ('flag_date', self.gf('django.db.models.fields.DateTimeField')()),
+        ))
+        db.send_create_signal(u'mainsite', ['InvalidItem'])
+
 
     def backwards(self, orm):
         # Deleting model 'Job'
@@ -167,6 +176,9 @@ class Migration(SchemaMigration):
         # Removing M2M table for field updated_panos on 'UpdateHistory'
         db.delete_table('mainsite_updatehistory_updated_panos')
 
+        # Deleting model 'InvalidItem'
+        db.delete_table(u'mainsite_invaliditem')
+
 
     models = {
         u'mainsite.attribute': {
@@ -189,6 +201,13 @@ class Migration(SchemaMigration):
             'item': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Item']"}),
             'max_value': ('django.db.models.fields.IntegerField', [], {}),
             'min_value': ('django.db.models.fields.IntegerField', [], {})
+        },
+        u'mainsite.invaliditem': {
+            'Meta': {'object_name': 'InvalidItem'},
+            'flag_date': ('django.db.models.fields.DateTimeField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'item': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Item']", 'null': 'True'}),
+            'panoplie': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Panoplie']", 'null': 'True'})
         },
         u'mainsite.item': {
             'Meta': {'object_name': 'Item'},

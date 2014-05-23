@@ -61,4 +61,10 @@
     
     <div class="clear"></div>
     {% endif %}
+    
+    <div class="invalid">
+        <a href="javascript:void(0);" {% if item.invalid %} style="display:none"{% endif %} name="{{ item.name }}">{{item.invalid}}Cet objet est incorrect</a>
+        <span{% if not item.invalid %} style="display:none"{% endif %}>Cet objet est marqu&eacute; comme incorrect.</span>
+    </div>
+    <div class="clear"></div>
 </div>
