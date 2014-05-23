@@ -34,8 +34,8 @@
   <link rel="stylesheet" type="text/css" href="http://staticns.ankama.com/global/api/dofus/linker/css/dofuslinker.css"  />
   <link rel="stylesheet" type="text/css" href="http://staticns.ankama.com/dofus/www//css/encyclopedia.css"  />
   <style type="text/css">
-  #footer .houses { background:#1A182D  !important; height:222px !important; }
-    body{ background: #1A182D   url(http://staticns.ankama.com/ankama/cms/images/217/2014/04/15/418279.jpg)  center top no-repeat !important; }
+  #footer .houses { background:#1F2012 !important; height:222px !important; }
+    body{ background: #1F2012  url(http://staticns.ankama.com/ankama/cms/images/217/2014/05/13/419353.jpg)  center top no-repeat !important; }
   </style>
   <script type="text/javascript" >
   var _gaq = _gaq || [];
@@ -86,7 +86,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <div class="v_sep fleft"></div>
                 <div id="idbar_almanax">
           <a id="idbar_almanax_title" onclick="IdBar.AlmanaxMenu();" href="javascript:void(0);">
-              Almanax <span class="nb">1</span><span class="date">2 Maisial</span>
+              Almanax <span class="nb">1</span><span class="date">22 Maisial</span>
             <span class="bt"></span>
           </a>
           <div id="idbar_almanax_events">
@@ -94,21 +94,21 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
               <a class="dofus" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=dofus">
                 <div class="t"></div>
                 <strong>Bonus et Quêtes DOFUS</strong>
-                <span>Points d'expérience</span>
+                <span>Challenge supplémentaire</span>
                 <div class="b"></div>
               </a>
                               <a class="wakfu" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=wakfu">
                   <div class="t"></div>
                   <strong>Quête d'offrande WAKFU</strong>
-                  <span>Gymcitro</span>
+                  <span>Krisegis</span>
                   <div class="b"></div>
                 </a>
                           </div>
                           <div id="idbar_almanax_month_events">
                 <strong><span class="nb">1</span>Event du mois</strong>
-                                  <a href="http://www.krosmoz.com/fr/almanax/05-08" target="_blank">
+                                  <a href="http://www.krosmoz.com/fr/almanax/05-29" target="_blank">
                      <span class="date">
-                       8                       Maisial                     </span> : La Fête des Huit Mets</a>
+                       29                       Maisial                     </span> : La Fête de l’As en Soin</a>
                               </div>
                       </div>
         </div>
@@ -198,7 +198,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div id="register_loading"></div>
   </div>
 
-  <a id="linkpromo" href="http://www.dofus.com/fr/mmorpg/news/418272-chasse-tresors-commence"></a>
+  <a id="linkpromo" href="http://www.dofus.com/fr/mmorpg/news/419350-envolez-vers-monde-truches"></a>
 
 <div id="tcg_popup" style="display:none;"></div>
 <div id="content_connect" style="display: none;">
@@ -372,6 +372,268 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                                         <span class="levels">Level : <a href="/fr/mmorpg-jeux/objets/5-familiers/18-familier?lvlmin=1&lvlmax=40">1 à 40</a> > <a href="/fr/mmorpg-jeux/objets/5-familiers/18-familier?lvlmin=40&lvlmax=80">40 à 80</a> > <a href="/fr/mmorpg-jeux/objets/5-familiers/18-familier?lvlmin=80&lvlmax=120">80 à 120</a> > <a href="/fr/mmorpg-jeux/objets/5-familiers/18-familier?lvlmin=120&lvlmax=160">120 à 160</a> > <a href="/fr/mmorpg-jeux/objets/5-familiers/18-familier?lvlmin=160&lvlmax=200">160 à 200</a> > <a href="/fr/mmorpg-jeux/objets/5-familiers/18-familier">Tous les objets</a></span>
                                                               <div class="element_content">
 <div class="top_content"></div>
+<div class="middle_content" id="bworky">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb8000');">Bworky</h2>  <div id="bb8000" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8000]Bworky[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 1</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F1c99711e5f02414504a1460678b522e9" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F1c99711e5f02414504a1460678b522e9" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18031.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18031.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Cette petite créature est un Bwork, resté enfermé vivant dans un bocal pendant plusieurs décennies. Il a donc pris la forme du bocal, et restera nain toute sa vie. Sa bonne humeur et son humour légendaire en font le compagnon idéal pour les donjons perdus d'avance, ou les soirées mondaines endiablées. Attention, c'est un adepte des apéritifs, et il ne supporte que les noix et noisettes, même s'il ne rechigne pas avaler un gland de temps en temps.
+Le continent d'Amakna est sa zone de prédilection.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+          <div class="element_carac_left">
+      <div class="h3">
+        <span class="left_carac"></span>
+        <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+        <span class="right_carac"></span>
+      </div>
+      <div class="clear"></div>
+      <span>
+              <li class="list0">0 à 1000 Pods</li>
+                    </span>
+      </div>
+                      <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Nourriture / Effets</div>
+          <p>
+                    <div class="txt_green" style="font-weight:bold;">10 Pods</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 391)" >Noix de Cajou</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 392)" >Noix de Pécan</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 393)" >Gland</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 394)" >Noisette</a>,                                                   </p>
+          </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                                              <div class="element_carac_block2">
+        <span class="block2_top"></span>
+        <span class="block2_mid">
+          <div class="h3">Comment l'obtenir</div>
+          <p>Récompense du donjon des Bworks.</p>
+        </span>
+        <span class="block2_bot"></span>
+      </div>
+        </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="chacha">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb1728');">Chacha</h2>  <div id="bb1728" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=1728]Chacha[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 1</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F8b423bd5397182d6309c657bc127cbb2" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F8b423bd5397182d6309c657bc127cbb2" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18001.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18001.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Cette petite boule de poil friponne et câline fait craquer la gente féminine toutes classes confondues. Un animal redoutable donc.
+Tainéla est sa zone de prédilection.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+          <div class="element_carac_left">
+      <div class="h3">
+        <span class="left_carac"></span>
+        <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+        <span class="right_carac"></span>
+      </div>
+      <div class="clear"></div>
+      <span>
+              <li class="list0">0 à 80 Agilité</li>
+                      <li class="list1">0 à 80 Force</li>
+                      <li class="list0">0 à 20 % Résistance Neutre</li>
+                      <li class="list1">0 à 80 Intelligence</li>
+                      <li class="list0">0 à 80 Vitalité</li>
+                      <li class="list1">0 à 80 Chance</li>
+                    </span>
+      </div>
+                      <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Nourriture / Effets</div>
+          <p>
+                    <div class="txt_green" style="font-weight:bold;">1 Agilité</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 301)" >Plumes de Tofu</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 367)" >Oeuf de Tofu</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 376)" >Aile du Tofu Maléfique</a>,                                                               <div class="txt_green" style="font-weight:bold;">1 Force</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 360)" >Oreilles du Tiwabbit</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 419)" >Oreille du Grand Pa Wabbit</a>,                                                               <div class="txt_green" style="font-weight:bold;">1 % Résistance Neutre</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 368)" >Gelée à la Fraise</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 369)" >Gelée à la Menthe</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 757)" >Gelée Bleutée</a>,                                                               <div class="txt_green" style="font-weight:bold;">1 Intelligence</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 414)" >Plume du Kwak de Glace</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 415)" >Plume du Kwak de Flamme</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 416)" >Plume du Kwak de Vent</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 598)" >Greu-Vette</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1141)" >Plume du Kwak de Terre</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1781)" >Greu-vette vidée</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1782)" >Goujon</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1783)" >Goujon vidé</a>,                                                               <div class="txt_green" style="font-weight:bold;">1 Vitalité</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 477)" >Sang de Dragon Cochon</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 752)" >Sang du Vampire</a>,                                                               <div class="txt_green" style="font-weight:bold;">1 Chance</div>
+            <p>                                       <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1771)" >Souris verte</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1844)" >Truite</a>,                                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1845)" >Truite vidée</a>,                                                   </p>
+          </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                                              <div class="element_carac_block2">
+        <span class="block2_top"></span>
+        <span class="block2_mid">
+          <div class="h3">Comment l'obtenir</div>
+          <p>Récompense du donjon des Bouftous.</p>
+        </span>
+        <span class="block2_bot"></span>
+      </div>
+        </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="chacha-angora">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb9617');">Chacha Angora</h2>  <div id="bb9617" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=9617]Chacha Angora[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 1</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F4c1f0d079c4c38d110e671e2b68341b3" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F4c1f0d079c4c38d110e671e2b68341b3" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18050.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18050.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Cette boule de poils est mieux protégée contre le froid que le Chacha classique, elle est plus douce, mais il paraît que son caractère est encore plus insupportable. Cette créature ne mange que de la viande et du poisson.
+Les cités hormis les égouts sont sa zone de prédilection.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+          <div class="element_carac_left">
+      <div class="h3">
+        <span class="left_carac"></span>
+        <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+        <span class="right_carac"></span>
+      </div>
+      <div class="clear"></div>
+      <span>
+              <li class="list0">0 à 50 Puissance</li>
+                    </span>
+      </div>
+                      <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Nourriture / Effets</div>
+          <p>
+                    <div class="txt_green" style="font-weight:bold;">1 Puissance</div>
+            <p>                      <a href="/fr/mmorpg-jeux/objets/2-/41-poisson?se=Poisson#poisson" >Poisson</a>                                              </p>
+          </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                                              <div class="element_carac_block2">
+        <span class="block2_top"></span>
+        <span class="block2_mid">
+          <div class="h3">Comment l'obtenir</div>
+          <p>Ce familier peut être gagné grâce au <a href="/fr/lowa">Jeu de Lowa</a>.</p>
+        </span>
+        <span class="block2_bot"></span>
+      </div>
+        </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
 <div class="middle_content" id="chacha-blanc">
   <h2 class="title_element" onclick="OpenCloseDiv('bb6718');">Chacha Blanc</h2>  <div id="bb6718" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
@@ -383,10 +645,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fe022d5fa8cf992fa193b87a0139745c0" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fcc2fba1e4b949d02d0145ed0490e3eaf" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fe022d5fa8cf992fa193b87a0139745c0" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fcc2fba1e4b949d02d0145ed0490e3eaf" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -456,10 +718,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fe2738d873208e49df24fa831318eda0e" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F358d33d198fe6d6ee40b53a428a1b6dc" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fe2738d873208e49df24fa831318eda0e" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F358d33d198fe6d6ee40b53a428a1b6dc" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -540,10 +802,10 @@ L'île de Frigost est sa zone de prédilection.</span>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F34dac03ba877a8fab388e1eec7c6bcc6" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F6c9eb89255cbb44102ecc27c4e1d792f" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F34dac03ba877a8fab388e1eec7c6bcc6" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F6c9eb89255cbb44102ecc27c4e1d792f" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -624,10 +886,10 @@ Les plages du continent d'Amakna sont sa zone de prédilection.</span>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F3565ac8d4805f9b574505a72c2bc47b0" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff7d3a78e712e2d8624378d5fef22144f" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F3565ac8d4805f9b574505a72c2bc47b0" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff7d3a78e712e2d8624378d5fef22144f" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -669,22 +931,13 @@ Les plages du continent d'Amakna sont sa zone de prédilection.</span>
               <li class="list0">15 Vie</li>
                           </span>
       </div>
-                                    <div class="element_carac_block1">
+                                            <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Drop de l'objet</div>
-          <p>
-                        <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 2664)" >Bwork en fuite</a>                    </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                        <div class="element_carac_block2">
-        <span class="block2_top"></span>
-        <span class="block2_mid">
           <div class="h3">Comment l'obtenir</div>
           <p>Cette information a été avalée par un Bwork.</p>
         </span>
-        <span class="block2_bot"></span>
+        <span class="block1_bot"></span>
       </div>
         </div>
   </div>
@@ -706,10 +959,10 @@ Les plages du continent d'Amakna sont sa zone de prédilection.</span>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F3ec840e98d6120f92383a0f8512d78a4" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F374e4e000f914f69ccf14f2c517e913b" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F3ec840e98d6120f92383a0f8512d78a4" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F374e4e000f914f69ccf14f2c517e913b" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -790,10 +1043,10 @@ Le continent d'Amakna est sa zone de prédilection.</span>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fff7e46c1c38ea2196a427155abe0240f" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fbad29c2e038288628b0b88be0c291efd" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fff7e46c1c38ea2196a427155abe0240f" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fbad29c2e038288628b0b88be0c291efd" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -874,10 +1127,10 @@ La région des gelées est sa zone de prédilection.</span>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fbdcf0717402a8c2d3f5fcd552c41b0f5" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Feabe902f355ed88591648de4f6c74c87" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fbdcf0717402a8c2d3f5fcd552c41b0f5" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Feabe902f355ed88591648de4f6c74c87" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -926,237 +1179,6 @@ L'île d'Otomaï est sa zone de prédilection.</span>
           <p>
                     <div  style="font-weight:bold;">1 Puissance</div>
             <p>                      150 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crustorail+Koura%C3%A7ao" >Crustorail Kouraçao</a>,                                             150 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crustorail+Malibout" >Crustorail Malibout</a>,                                             150 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crustorail+Passaoh" >Crustorail Passaoh</a>,                                             150 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crustorail+Morito" >Crustorail Morito</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Corailleur" >Corailleur</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmifleur+Koura%C3%A7ao" >Palmifleur Kouraçao</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmifleur+Malibout" >Palmifleur Malibout</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmifleur+Passaoh" >Palmifleur Passaoh</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmifleur+Morito" >Palmifleur Morito</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Corboyard+l%27Enigmatique" >Corboyard l'Enigmatique</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crustterus+l%27Organique" >Crustterus l'Organique</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crustensyl+le+Pragmatique" >Crustensyl le Pragmatique</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Cruskof+le+Rustre" >Cruskof le Rustre</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Crusmeyer+le+Pervers" >Crusmeyer le Pervers</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmbytch+la+Bronz%C3%A9e" >Palmbytch la Bronzée</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmito+le+Menteur" >Palmito le Menteur</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmiche+le+Serein" >Palmiche le Serein</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Palmiflette+le+Convivial" >Palmiflette le Convivial</a>,                                             5 x <a href="/fr/mmorpg-jeux/monstres/search?se=Corailleur+Magistral" >Corailleur Magistral</a>                                                </p>
-          </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                                              <div class="element_carac_block2">
-        <span class="block2_top"></span>
-        <span class="block2_mid">
-          <div class="h3">Comment l'obtenir</div>
-          <p>Cette information a été avalée par un Bwork.</p>
-        </span>
-        <span class="block2_bot"></span>
-      </div>
-        </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="chienchien">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb1711');">Chienchien</h2>  <div id="bb1711" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=1711]Chienchien[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff968b335e4f2678d515e2838c9358733" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff968b335e4f2678d515e2838c9358733" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18006.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18006.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Avec ce petit toutou, vous goûterez aux joies des petites promenades pipi. Fort de ses racines sauvages, il est déconseillé de lui donner à manger, sous peine de perdre une main. 
-(CE FAMILIER N'AIME AUCUNE RESSOURCE)</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-          <div class="element_carac_left">
-      <div class="h3">
-        <span class="left_carac"></span>
-        <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-        <span class="right_carac"></span>
-      </div>
-      <div class="clear"></div>
-      <span>
-              <li class="list0">Points de vie : 10</li>
-                      <li class="list1">20 Sagesse</li>
-                    </span>
-      </div>
-                                            <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Comment l'obtenir</div>
-          <p>Il y a longtemps, très longtemps, les Chienchiens étaient envoyés par les dieux pour venir en aide aux aventuriers en déroute. On n'en voit plus de nos jours.</p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-        </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="chienchien-noir">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb6717');">Chienchien Noir</h2>  <div id="bb6717" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=6717]Chienchien Noir[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff8a16afc8b69835aa2bac13f780827fd" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff8a16afc8b69835aa2bac13f780827fd" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18010.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18010.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Avec ce petit toutou, vous goûterez aux joies des petites promenades pipi. Fort de ses racines sauvages, il est déconseillé de lui donner à manger, sous peine de perdre une main. 
-(CE FAMILIER LEGENDAIRE N'A PAS BESOIN DE MANGER)</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-          <div class="element_carac_left">
-      <div class="h3">
-        <span class="left_carac"></span>
-        <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-        <span class="right_carac"></span>
-      </div>
-      <div class="clear"></div>
-      <span>
-              <li class="list0">15 Vie</li>
-                    </span>
-      </div>
-                                            <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Comment l'obtenir</div>
-          <p>Ce familier n'est offert que lors de grands et rares évènements.</p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-        </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="chienchien-tigre">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb11012');">Chienchien Tigré</h2>  <div id="bb11012" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=11012]Chienchien Tigré[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fba8fc900e457e1b494d34873c9db8aaf" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fba8fc900e457e1b494d34873c9db8aaf" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18064.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/18064.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Ce n'est pas parce qu'il est tigré qu'il ne cherchera pas à vous renifler le postérieur ou à se soulager sur votre tapis. Mais qu'espériez-vous ? Ce familier adore chasser les créatures qui vivent dans les landes de Sidimote.
-Les landes de Sidimote sont sa zone de prédilection.</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-          <div class="element_carac_left">
-      <div class="h3">
-        <span class="left_carac"></span>
-        <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-        <span class="right_carac"></span>
-      </div>
-      <div class="clear"></div>
-      <span>
-              <li class="list0">0 à 10 Dommages</li>
-                    </span>
-      </div>
-                      <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Nourriture / Effets</div>
-          <p>
-                    <div  style="font-weight:bold;">1 Dommages</div>
-            <p>                      250 x <a href="/fr/mmorpg-jeux/monstres/search?se=Corbac" >Corbac</a>,                                             250 x <a href="/fr/mmorpg-jeux/monstres/search?se=Scorbute" >Scorbute</a>,                                             250 x <a href="/fr/mmorpg-jeux/monstres/search?se=Croc+Gland" >Croc Gland</a>,                                             250 x <a href="/fr/mmorpg-jeux/monstres/search?se=Kol%C3%A9rat+" >Kolérat </a>,                                             200 x <a href="/fr/mmorpg-jeux/monstres/search?se=Ouginak" >Ouginak</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Corbac+Terrien" >Corbac Terrien</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Kol%C3%A9rat+de+Laboratoire" >Kolérat de Laboratoire</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Ouginak+D%C3%A9cha%C3%AEn%C3%A9" >Ouginak Déchaîné</a>,                                             100 x <a href="/fr/mmorpg-jeux/monstres/search?se=Scorbute+Renforc%C3%A9" >Scorbute Renforcé</a>,                                             10 x <a href="/fr/mmorpg-jeux/monstres/search?se=Nelween" >Nelween</a>                                                </p>
           </p>
         </span>
         <span class="block1_bot"></span>
@@ -1233,7 +1255,8 @@ Chaque familier doit être nourri à des intervalles bien précis et, tous les t
       </div>
       <div class="clear"></div>
       <div id="footer">
-                  <div id="footer_krosmoz">
+                  <a class="ak-beta" href="http://beta.dofus.com" target="_blank"></a>
+          <div id="footer_krosmoz">
   <div id="bg_left"></div>
   <div id="bg_right"></div>
   <div id="timeline">

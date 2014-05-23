@@ -101,6 +101,31 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'mainsite', ['AttributeCondition'])
 
+        # Adding model 'UpdateHistory'
+        db.create_table(u'mainsite_updatehistory', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('started', self.gf('django.db.models.fields.DateTimeField')()),
+            ('finished', self.gf('django.db.models.fields.DateTimeField')(null=True)),
+            ('using_cache', self.gf('django.db.models.fields.BooleanField')(default=False)),
+        ))
+        db.send_create_signal(u'mainsite', ['UpdateHistory'])
+
+        # Adding M2M table for field updated_items on 'UpdateHistory'
+        db.create_table(u'mainsite_updatehistory_updated_items', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('updatehistory', models.ForeignKey(orm[u'mainsite.updatehistory'], null=False)),
+            ('item', models.ForeignKey(orm[u'mainsite.item'], null=False))
+        ))
+        db.create_unique(u'mainsite_updatehistory_updated_items', ['updatehistory_id', 'item_id'])
+
+        # Adding M2M table for field updated_panos on 'UpdateHistory'
+        db.create_table(u'mainsite_updatehistory_updated_panos', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('updatehistory', models.ForeignKey(orm[u'mainsite.updatehistory'], null=False)),
+            ('panoplie', models.ForeignKey(orm[u'mainsite.panoplie'], null=False))
+        ))
+        db.create_unique(u'mainsite_updatehistory_updated_panos', ['updatehistory_id', 'panoplie_id'])
+
 
     def backwards(self, orm):
         # Deleting model 'Job'
@@ -132,6 +157,15 @@ class Migration(SchemaMigration):
 
         # Deleting model 'AttributeCondition'
         db.delete_table(u'mainsite_attributecondition')
+
+        # Deleting model 'UpdateHistory'
+        db.delete_table(u'mainsite_updatehistory')
+
+        # Removing M2M table for field updated_items on 'UpdateHistory'
+        db.delete_table('mainsite_updatehistory_updated_items')
+
+        # Removing M2M table for field updated_panos on 'UpdateHistory'
+        db.delete_table('mainsite_updatehistory_updated_panos')
 
 
     models = {
@@ -210,6 +244,15 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'size': ('django.db.models.fields.IntegerField', [], {}),
             'text': ('django.db.models.fields.CharField', [], {'max_length': '1000'})
+        },
+        u'mainsite.updatehistory': {
+            'Meta': {'object_name': 'UpdateHistory'},
+            'finished': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'started': ('django.db.models.fields.DateTimeField', [], {}),
+            'updated_items': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Item']", 'symmetrical': 'False'}),
+            'updated_panos': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Panoplie']", 'symmetrical': 'False'}),
+            'using_cache': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
         }
     }
 

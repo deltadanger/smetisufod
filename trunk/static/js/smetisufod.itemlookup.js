@@ -34,28 +34,31 @@
             }
             
             element.mouseover(function() {
+                doNotHide = element.html();
+                
                 var displayDiv = $("#"+getIdFromItemName(element.html()));
                 
                 if (displayDiv.length == 0) {
                     var displayDiv = $("<div>", {
                         "id": getIdFromItemName(element.html()),
                         "class": "smetisufod-item-lookup",
-                        "style": "position: absolute;",
+                        "style": "position: absolute; margin: 10px",
                     });
                 }
                 
                 $("body").append(displayDiv);
             
                 displayDiv.mouseover(function() {
-                    doNotHide = true;
+                    doNotHide = element.html();
                 });
                 
                 displayDiv.mouseout(function() {
-                    doNotHide = false;
+                    if (doNotHide == element.html()){
+                        doNotHide = "";
+                    }
                     setTimeout(function() {
-                        if (!doNotHide) {
+                        if (doNotHide != element.html()) {
                             displayDiv.hide();
-                            doNotHide = false;
                         }
                     }, 200);
                 });
@@ -84,10 +87,12 @@
             });
             
             element.mouseout(function() {
+                if (doNotHide == element.html()){
+                    doNotHide = "";
+                }
                 setTimeout(function() {
-                    if (!doNotHide) {
+                    if (doNotHide != element.html()) {
                         $("#"+getIdFromItemName(element.html())).hide();
-                        doNotHide = false;
                     }
                 }, 200);
             });
@@ -117,7 +122,7 @@
     function moveDiv(displayDiv, element) {
         displayDiv.position({
             "my": "top",
-            "at": "bottom + 15px",
+            "at": "center bottom+15px",
             "of": element,
             "collision": "flipfit",
         });

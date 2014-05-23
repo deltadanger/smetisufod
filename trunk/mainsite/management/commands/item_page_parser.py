@@ -31,8 +31,13 @@ class ItemPageParser(HTMLParser):
         self.item = None
         self.item_type = item_type
         self.current_page = 0
+        self.changed_items = []
         
     def reset_vars(self):
+        self.has_changed = False
+        self.current_item_attributes_dump = ""
+        self.current_item_conditions_dump = ""
+        
         self.get_name = False
         self.get_level = False
         self.in_desc = False
@@ -54,35 +59,46 @@ class ItemPageParser(HTMLParser):
         
     
     def handle_starttag(self, tag, attrs):
+        # Start of Item definition
         if tag == "div" and "middle_content" in get_attr(attrs, "class"):
             if self.item:
-                self.recipe = None
+                self.has_changed |= self.item.type != self.item_type
                 self.item.type = self.item_type
+                
+                self.has_changed |= self.current_item_attributes_dump != str(self.item.attributevalue_set.all())
+                self.has_changed |= self.current_item_conditions_dump != str(self.item.attributecondition_set.all())
+                
                 self.item.save()
+                
+                if self.has_changed:
+                    self.changed_items.append(self.item)
+                
             self.reset_vars()
         
         
+        # Name of Item
         if tag == "h2" and "title_element" in get_attr(attrs, "class"):
             self.get_name = True
         
+        # Level of Item
         if tag == "span" and "level_element" in get_attr(attrs, "class"):
             self.get_level = True
         
-        
+        # Original Id of Item, for flash image display
         if tag == "param" and "flashvars" in get_attr(attrs, "name"):
             match = RE_ITEM_ID.match(get_attr(attrs, "value"))
             
             if match:
                 self.item.original_id = int(match.group(1))
         
-        
+        # Description of Item
         if tag == "div" and "desc" in get_attr(attrs, "class"):
             self.in_desc = True
         
         if self.in_desc and tag == "span":
             self.get_desc = True
         
-        
+        # Attributes of Item
         if tag == "div" and "element_carac" in get_attr(attrs, "class"):
             self.in_caracs_block = True
             
@@ -92,7 +108,7 @@ class ItemPageParser(HTMLParser):
         if self.in_caracs_left and tag == "li":
             self.get_attributes = True
         
-        
+        # Conditions of Item
         if self.in_caracs_block and tag == "div" and "element_carac_right" in get_attr(attrs, "class"):
             self.in_caracs_left = False
             self.get_attributes = False
@@ -101,10 +117,11 @@ class ItemPageParser(HTMLParser):
         if self.in_conditions and tag == "ul":
             self.get_conditions = True
         
+        # Caracteristics of Item
         if self.in_caracs and tag == "ul":
             self.get_caracs = True
         
-        
+        # Recipe of Item
         if tag == "div" and "element_carac_block1" in get_attr(attrs, "class"):
             self.in_caracs_block = False
             self.in_caracs_left = False
@@ -119,7 +136,7 @@ class ItemPageParser(HTMLParser):
             self.get_recipe = True
         
         
-        
+        # Current Page number, used for last-page-check
         if tag == "div" and "pagination" in get_attr(attrs, "class"):
             self.in_pagination = True
         
@@ -130,13 +147,22 @@ class ItemPageParser(HTMLParser):
         if self.get_name:
             self.item, created = Item.objects.get_or_create(name=data)
             log.debug("Item: " + data + " ("+str(created)+")")
+            self.has_changed |= created
+            
+            self.current_item_attributes_dump = str(self.item.attributevalue_set.all())
+            self.item.attributevalue_set.all().delete()
+            
+            self.current_item_conditions_dump = str(self.item.attributecondition_set.all())
+            self.item.attributecondition_set.all().delete()
         
         if self.get_level:
             match = RE_LEVEL.match(data)
             if match:
+                self.has_changed |= self.item.level != int(match.group(1))
                 self.item.level = match.group(1)
         
         if self.get_desc:
+            self.has_changed |= self.item.description != unicode(data.decode("utf-8"))
             self.item.description = data
         
         if self.get_attributes:
@@ -179,17 +205,22 @@ class ItemPageParser(HTMLParser):
             ec = RE_CARAC_EC.match(data)
             
             if pa:
+                self.has_changed |= self.item.cost != int(pa.group(1))
                 self.item.cost = int(pa.group(1))
                 
             if po:
+                self.has_changed |= self.item.range != int(po.group(1))
                 self.item.range = int(po.group(1))
             
             if cc:
+                self.has_changed |= self.item.crit_chance != int(cc.group(1))
                 self.item.crit_chance = int(cc.group(1))
                 if cc.group(3):
+                    self.has_changed |= self.item.crit_damage != int(cc.group(3))
                     self.item.crit_damage = int(cc.group(3))
                 
             if ec:
+                self.has_changed |= self.item.failure != int(ec.group(1))
                 self.item.failure = int(ec.group(1))
         
         if self.in_recipe and "Craft :" in data:
@@ -218,6 +249,7 @@ class ItemPageParser(HTMLParser):
             recipe.text = self.recipe
             recipe.size = self.recipe.count(" x ")
             recipe.save()
+            self.has_changed |= self.item.recipe != recipe
             self.item.recipe = recipe
             
         if self.get_caracs and tag == "ul":

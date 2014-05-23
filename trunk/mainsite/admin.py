@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainsite.models import Job, ItemCategory, ItemType, Attribute, Item, AttributeValue, AttributeCondition, Recipe
+from mainsite.models import Job, ItemCategory, ItemType, Attribute, Item, AttributeValue, AttributeCondition, Recipe, UpdateHistory
 
 
 class StandardAdmin(admin.ModelAdmin):
@@ -10,6 +10,8 @@ class StandardAdmin(admin.ModelAdmin):
 class ItemAdmin(StandardAdmin):
     list_filter = ("type", "level", "attribute", "recipe", "condition")
 
+class UpdateHistoryAdmin(StandardAdmin):
+    filter_horizontal = ("updated_items",)
 
 
 
@@ -21,3 +23,4 @@ admin.site.register(Attribute, StandardAdmin)
 admin.site.register(AttributeValue, StandardAdmin)
 admin.site.register(AttributeCondition, StandardAdmin)
 admin.site.register(Recipe, StandardAdmin)
+admin.site.register(UpdateHistory, UpdateHistoryAdmin)

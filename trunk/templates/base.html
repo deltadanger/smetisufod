@@ -27,6 +27,15 @@
     <meta name="twitter:description" content="{{ pageDescription }}" />
     
     <title>{% block title %}{{ pageTitle }}{% endblock %}</title>
+    
+    
+    <script src="{% static "js/jquery.1.11.0.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.1.10.4.min.js" %}"></script>
+    <script src="{% static "js/smetisufod.itemlookup.js" %}"></script>
+    {% block js %}{% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
+    {% block css %}{% endblock %}
 </head>
 <body>
 
@@ -53,14 +62,6 @@
 <footer>
     <a href="http://www.ankama.com" target="_blank">Toutes les informations et images pr&eacute;sentes sur ce site sont la propri&eacute;t&eacute; de Ankama.</a>
 </footer>
-
-<script src="{% static "js/jquery.1.11.0.min.js" %}"></script>
-<script src="{% static "js/jquery-ui.1.10.4.min.js" %}"></script>
-<script src="{% static "js/smetisufod.itemlookup.js" %}"></script>
-{% block js %}{% endblock %}
-
-<link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
-{% block css %}{% endblock %}
 
 </body>
 </html>

@@ -31,6 +31,13 @@
             $("#search-form").submit();
         });
         
+        $("#search-form input[type='text']").keypress(function(event) {
+            if (event.keyCode == 13) {
+                $("#search").click();
+            }
+        });
+        
+        
         setFormFromUrlParameters();
         makeCheckboxTree();
         
@@ -68,9 +75,12 @@
         $(document).on("click", ".keep-aside", function() {
             var currentItems = $.cookie(KEEP_ASIDE_COOKIE_NAME);
             
-            if (currentItems && currentItems.indexOf($(this).attr("name")) == -1) {
+            if (isItemInCookie($(this).attr("name"))) {
+                return;
+            }
+            
+            if (currentItems) {
                 currentItems += COOKIE_SEP + $(this).attr("name");
-                
             } else {
                 currentItems = $(this).attr("name");
             }
@@ -271,6 +281,26 @@
         } else {
             $("#aside-items").hide();
         }
+    }
+    
+    function isItemInCookie(name) {
+        var cookie = $.cookie(KEEP_ASIDE_COOKIE_NAME);
+        if (!cookie) {
+            return false;
+        }
+        
+        if (name == cookie) {
+            return true;
+        }
+        
+        var result = false;
+        $.each(cookie.split(COOKIE_SEP), function(i, e) {
+            if (e == name) {
+                result = true;
+            }
+        });
+        
+        return result;
     }
     
 })(jQuery);
