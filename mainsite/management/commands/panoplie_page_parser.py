@@ -24,7 +24,7 @@ def get_attr(attrs, attr):
     return ""
 
 class MainPanopliePageParser(HTMLParser):
-    def __init__(self, web_cache):
+    def __init__(self, web_cache, history):
         HTMLParser.__init__(self)
         self.web_cache = web_cache
         
@@ -39,7 +39,8 @@ class MainPanopliePageParser(HTMLParser):
             log.info(url)
             
             content = self.web_cache.get(url)
-            PanopliePageParser().feed(content)
+            p = PanopliePageParser()
+            p.feed(content)
         
     def handle_endtag(self, tag):
         if self.in_menu and tag == "div":

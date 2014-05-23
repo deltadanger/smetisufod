@@ -34,8 +34,8 @@
   <link rel="stylesheet" type="text/css" href="http://staticns.ankama.com/global/api/dofus/linker/css/dofuslinker.css"  />
   <link rel="stylesheet" type="text/css" href="http://staticns.ankama.com/dofus/www//css/encyclopedia.css"  />
   <style type="text/css">
-  #footer .houses { background:#1A182D  !important; height:222px !important; }
-    body{ background: #1A182D   url(http://staticns.ankama.com/ankama/cms/images/217/2014/04/15/418279.jpg)  center top no-repeat !important; }
+  #footer .houses { background:#1F2012 !important; height:222px !important; }
+    body{ background: #1F2012  url(http://staticns.ankama.com/ankama/cms/images/217/2014/05/13/419353.jpg)  center top no-repeat !important; }
   </style>
   <script type="text/javascript" >
   var _gaq = _gaq || [];
@@ -86,7 +86,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <div class="v_sep fleft"></div>
                 <div id="idbar_almanax">
           <a id="idbar_almanax_title" onclick="IdBar.AlmanaxMenu();" href="javascript:void(0);">
-              Almanax <span class="nb">1</span><span class="date">2 Maisial</span>
+              Almanax <span class="nb">1</span><span class="date">22 Maisial</span>
             <span class="bt"></span>
           </a>
           <div id="idbar_almanax_events">
@@ -94,21 +94,21 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
               <a class="dofus" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=dofus">
                 <div class="t"></div>
                 <strong>Bonus et Quêtes DOFUS</strong>
-                <span>Points d'expérience</span>
+                <span>Challenge supplémentaire</span>
                 <div class="b"></div>
               </a>
                               <a class="wakfu" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=wakfu">
                   <div class="t"></div>
                   <strong>Quête d'offrande WAKFU</strong>
-                  <span>Gymcitro</span>
+                  <span>Krisegis</span>
                   <div class="b"></div>
                 </a>
                           </div>
                           <div id="idbar_almanax_month_events">
                 <strong><span class="nb">1</span>Event du mois</strong>
-                                  <a href="http://www.krosmoz.com/fr/almanax/05-08" target="_blank">
+                                  <a href="http://www.krosmoz.com/fr/almanax/05-29" target="_blank">
                      <span class="date">
-                       8                       Maisial                     </span> : La Fête des Huit Mets</a>
+                       29                       Maisial                     </span> : La Fête de l’As en Soin</a>
                               </div>
                       </div>
         </div>
@@ -198,7 +198,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div id="register_loading"></div>
   </div>
 
-  <a id="linkpromo" href="http://www.dofus.com/fr/mmorpg/news/418272-chasse-tresors-commence"></a>
+  <a id="linkpromo" href="http://www.dofus.com/fr/mmorpg/news/419350-envolez-vers-monde-truches"></a>
 
 <div id="tcg_popup" style="display:none;"></div>
 <div id="content_connect" style="display: none;">
@@ -369,43 +369,46 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=25">25</a>
       <span class="on">26</span>
       <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=27">27</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=28">28</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=29">29</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=27" class="next">>></a>
                   </div>
                   <div class="content_encyclo">
                                         <span class="levels">Level : <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?lvlmin=1&lvlmax=40">1 à 40</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?lvlmin=40&lvlmax=80">40 à 80</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?lvlmin=80&lvlmax=120">80 à 120</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?lvlmin=120&lvlmax=160">120 à 160</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?lvlmin=160&lvlmax=200">160 à 200</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes">Tous les objets</a></span>
                                                               <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="petites-bottes-force">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb861');">Petites Bottes de Force</h2>  <div id="bb861" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="bottes-mousse">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb8256');">Bottes en Mousse</h2>  <div id="bb8256" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=861]Petites Bottes de Force[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8256]Bottes en Mousse[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 2</span>
+  <span class="level_element">Level 11</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fec9252ee8d17498d2d87a3ee12d05922" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fbb783b37a6b96637d8306609517824f2" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fec9252ee8d17498d2d87a3ee12d05922" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fbb783b37a6b96637d8306609517824f2" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11084.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11084.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Ces bottes augmentent la force de leur porteur au détriment de son agilité, ce qui tend à le rendre différent d'un Tofu, sans pour autant le rendre moins idiot.</span>
+        <span>Avec ces bottes, un Eniripsa peut marcher sur l'eau, ce qui ne sert à rien puisqu'il peut voler, mais ça impressionne toujours les foules. Les autres pourront toujours se servir de ces bottes pour se gratter les pieds en marchant, ou tout simplement pour les nettoyer.</span>
       </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/63-panoplie-mousse" >Panoplie en Mousse</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -427,516 +430,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">6 à 10 Force</li>
-                        <li class="list1">-6 à -10 Agilité</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
-          <p>
-                           1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 304)" >Cuir de Bouftou</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 884)" >Cuir de Boufton Noir</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottananas">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb8341');">Bottananas</h2>  <div id="bb8341" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8341]Bottananas[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F51bcb0cc8d7abbdda34e45d4d28c5aaf" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F51bcb0cc8d7abbdda34e45d4d28c5aaf" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11090.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11090.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Ces bottes sentent le jus d'ananas macéré dans du substrat de chaussette trouée. L'avantage, c'est qu'on ne vous demandera jamais de les enlever lorsque vous irez chez un ami.</span>
-      </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/74-panoplie-ananas" >Panoplie Ananas</a> </p>
-          </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-            </div>
-      <div class="element_carac_right">
-                   </div>
-                           </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottes-aventurier">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb2476');">Bottes de l'Aventurier</h2>  <div id="bb2476" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=2476]Bottes de l'Aventurier[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fb546604252a1f98492e68abee1ffe5ca" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fb546604252a1f98492e68abee1ffe5ca" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11032.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11032.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Bottes de simple facture mais idéales pour les jeunes se lançant sur le dur chemin de l'aventure.</span>
-      </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/5-panoplie-jeune-aventurier" >Panoplie du Jeune Aventurier</a> </p>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">1 à 2 Chance</li>
-                        <li class="list1">1 à 2 Force</li>
-                        <li class="list0">1 à 2 Agilité</li>
-                        <li class="list1">1 à 2 Sagesse</li>
-                        <li class="list0">1 à 2 Intelligence</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
-          <p>
-                           3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 297)" >Bottes du Petit Bouftou</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 298)" >Sandales Tofuesques</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      <div class="element_carac_block2">
-        <span class="block2_top"></span>
-        <span class="block2_mid">
-          <div class="h3">Drop de l'objet</div>
-          <p>
-                        <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 98)" >Tofu</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 794)" >Tofu d'Halouine</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 796)" >Tofu Noir</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 805)" >Tofu Mutant</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 970)" >Petit Tofu</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 2355)" >Tofuldebeu l'Explosif</a>                    </p>
-        </span>
-        <span class="block2_bot"></span>
-      </div>
-                </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottes-bouftou">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb890');">Bottes du Bouftou</h2>  <div id="bb890" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=890]Bottes du Bouftou[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff3c22ec1db731ab61a600e495764978a" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff3c22ec1db731ab61a600e495764978a" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Ces bottes sont confectionnées en cuir de Bouftou, elles permettent aux éleveurs de s'approcher plus facilement des Bouftous pour les tuer, grâce à l'odeur qu'elles dégagent.</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">3 Agilité</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
-          <p>
-                           1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 881)" >Laine de Boufton Blanc</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 883)" >Cuir de Boufton Blanc</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottes-champion">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb8067');">Bottes du Champion</h2>  <div id="bb8067" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8067]Bottes du Champion[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Feb388c5a920a5f4abfe2434e00ef8a48" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Feb388c5a920a5f4abfe2434e00ef8a48" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11072.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11072.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Certains aventuriers racontent que ces bottes permettent de marcher sur les pièges sans les déclencher. Attention, c'est peut-être un piège...</span>
-      </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/45-panoplie-champion" >Panoplie du Champion</a> </p>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">Échangeable : 01/01/600 01:00</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                           </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottes-debutant">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb10794');">Bottes du débutant</h2>  <div id="bb10794" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=10794]Bottes du débutant[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fab2e0b0dcfd004eaa3deac1d012af580" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fab2e0b0dcfd004eaa3deac1d012af580" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11155.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11155.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Chaudes à l'intérieur et froides à l'extérieur, ces bottes vous permettront de botter les fesses des bonshommes de neige sans leur faire fondre le postérieur.</span>
-      </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/150-panoplie-debutant" >Panoplie du débutant</a> </p>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">1 Vitalité</li>
-                        <li class="list1">1 Initiative</li>
-                        <li class="list0">Lié au personnage</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                           </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottes-petit-bouftou">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb297');">Bottes du Petit Bouftou</h2>  <div id="bb297" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=297]Bottes du Petit Bouftou[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F37eae69c2ad240deda2b9ad94ad2003f" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F37eae69c2ad240deda2b9ad94ad2003f" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Ces bottes sont confectionnées en cuir de Bouftou, elles permettent aux éleveurs de s'approcher plus facilement des Bouftous pour les tuer, grâce à l'odeur qu'elles dégagent.</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">2 Agilité</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
-          <p>
-                           1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 881)" >Laine de Boufton Blanc</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 883)" >Cuir de Boufton Blanc</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                          <div class="element_carac_block2">
-        <span class="block2_top"></span>
-        <span class="block2_mid">
-          <div class="h3">Dans le craft de</div>
-          <p>
-                          <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2476)" >Bottes de l'Aventurier</a>                      </p>
-        </span>
-        <span class="block2_bot"></span>
-      </div>
-            </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="bottes-usees-hogmeiser">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb911');">Bottes Usées d'Hogmeiser</h2>  <div id="bb911" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=911]Bottes Usées d'Hogmeiser[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 1</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff968f64e26cb91f26c42e41223e4d9bc" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff968f64e26cb91f26c42e41223e4d9bc" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11011.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11011.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Ces bottes usées ont appartenu à Hogmeiser pendant des années, elles sont tellement usées, qu'elles sont surtout handicapantes. Un très bon Cordonnier devrait pouvoir les réparer avec de la chance.</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">-1 PM</li>
-                        <li class="list1">-1 PA</li>
+                      <li class="list0">6 à 15 Agilité</li>
                       </ul>
               </div>
       <div class="element_carac_right">
@@ -946,16 +440,227 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
         <span class="block1_mid">
           <div class="h3">Drop de l'objet</div>
           <p>
-                        <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 148)" >Chef de Guerre Bouftou </a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 984)" >Petit Chef de Guerre Bouftou</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 2324)" >Bouflet le Puéril</a>                    </p>
+                        <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 928)" >Mob l'Éponge</a>                    </p>
         </span>
         <span class="block1_bot"></span>
+      </div>
+                </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="ailobottes">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb14625');">Ailobottes</h2>  <div id="bb14625" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=14625]Ailobottes[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 10</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F920a41d99e07cb6272752c36e08924c6" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F920a41d99e07cb6272752c36e08924c6" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11248.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11248.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Cet objet n'est pas encore assez connu des artisans pour que ses caractéristiques puissent être révélées aux éventuels acheteurs.</span>
+      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/-" ></a> </p>
+          </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+            </div>
+      <div class="element_carac_right">
+                   </div>
+                           </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="bottes-champetres">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb6794');">Bottes Champêtres</h2>  <div id="bb6794" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=6794]Bottes Champêtres[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 10</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F7b73891f14452a52cb9063d565c93037" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F7b73891f14452a52cb9063d565c93037" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11050.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11050.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Rien de mieux que d'utiliser des bottes confectionnées à partir de restes de fleurs champêtres, pour écraser ces misérables fleurs qui poussent dans vos champs. De plus, ces bottes permettront à vos pieds de dégager une délicieuse odeur de fleur. Dommage qu'il n'existe pas un équivalent à ces bottes pour les caleçons.</span>
+      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/18-panoplie-champetre" >Panoplie Champêtre</a> </p>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">5 à 6 Vitalité</li>
+                        <li class="list1">4 à 5 Intelligence</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 10)</span></div>
+          <p>
+                           8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 306)" >Fleur de Pissenlit Diabolique</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2659)" >Pétale de Tournesol Sauvage</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2661)" >Feuille de Tournesol Sauvage</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="boufbottes">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb2422');">Boufbottes</h2>  <div id="bb2422" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=2422]Boufbottes[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 10</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fe91d9bc77a7c878b3f87cd8e312661ee" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fe91d9bc77a7c878b3f87cd8e312661ee" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11026.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11026.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Ces bottes sont d'un confort inégalé, l'intérieur a l'air d'être doublé en laine de Bouftou, mais on peut ressentir également comme un liquide circulant entre les orteils. Reste à savoir si c'est de la bave ou du sang de Bouftou. Peu importe.</span>
+      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/1-panoplie-bouftou" >Panoplie du Bouftou</a> </p>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">1 à 15 Puissance</li>
+                        <li class="list1">1 à 35 Vitalité</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 20)</span></div>
+          <p>
+                           10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 304)" >Cuir de Bouftou</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 884)" >Cuir de Boufton Noir</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 887)" >Cuir du Chef de Guerre Bouftou</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2467)" >Sabot de Chef de Guerre Bouftou</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      <div class="element_carac_block2">
+        <span class="block2_top"></span>
+        <span class="block2_mid">
+          <div class="h3">Drop de l'objet</div>
+          <p>
+                        <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 101)" >Bouftou</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 793)" >Bouftou d'Halouine</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 971)" >Petit Bouftou</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 1232)" >Ballotin le Bouftou</a>,                         <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 2317)" >Boufdégou le Refoulant</a>                    </p>
+        </span>
+        <span class="block2_bot"></span>
       </div>
                     <div class="element_carac_block2">
         <span class="block2_top"></span>
         <span class="block2_mid">
           <div class="h3">Dans le craft de</div>
           <p>
-                          <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 910)" >Bottes d'Hogmeiser</a>                      </p>
+                          <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2442)" >Boufbottes Royales</a>,                             <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7883)" >Bottes du Boufcoul</a>                      </p>
         </span>
         <span class="block2_bot"></span>
       </div>
@@ -968,62 +673,43 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="incrustes">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb8535');">Les Incrustes</h2>  <div id="bb8535" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="dragoubottes-roses">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb14633');">Dragoubottes Roses</h2>  <div id="bb14633" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8535]Les Incrustes[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=14633]Dragoubottes Roses[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 1</span>
+  <span class="level_element">Level 10</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fb99d626ac73c8f1bc9013b8443f1ddc3" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F26d44fbf9d4343ab319b1f9f409b37b3" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fb99d626ac73c8f1bc9013b8443f1ddc3" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F26d44fbf9d4343ab319b1f9f409b37b3" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11099.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11249.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11099.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11249.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Ces Getas sont si légères qu'elles poussent leur propriétaire à courir dans tous les sens et à sauter partout lorsqu'un combat commence. Les aventuriers expérimentés détestent ces getas, qui permettent aux premiers venus de prendre part à un combat auquel ils n'ont pas été invités.</span>
+        <span>Cet objet n'est pas encore assez connu des artisans pour que ses caractéristiques puissent être révélées aux éventuels acheteurs.</span>
       </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/69-panoplie-boune" >Panoplie du Boune</a> </p>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/-" ></a> </p>
+          </div>
     <div class="bottom"></div>
     <div class="element_carac block">
             <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">1 Résistance Neutre</li>
-                      </ul>
-              </div>
+            </div>
       <div class="element_carac_right">
                    </div>
                            </div>
@@ -1035,38 +721,38 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="sandales-piou-bleu">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb8226');">Sandales du Piou Bleu</h2>  <div id="bb8226" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="pacmabottes">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb12757');">Pacmabottes</h2>  <div id="bb12757" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8226]Sandales du Piou Bleu[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=12757]Pacmabottes[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 1</span>
+  <span class="level_element">Level 10</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fa848fcd278f53450d6f80d9f29f7c307" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fb4079974b563377f7b785ca160b3ccbb" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fa848fcd278f53450d6f80d9f29f7c307" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fb4079974b563377f7b785ca160b3ccbb" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11079.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11206.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11079.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11206.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Parfaites pour protéger votre petite voûte plantaire, ces sandales sont en outre parfaites pour écraser les petites créatures qui rampent entre les brins d'herbe, comme les Xélors ou les Eniripsas par exemple.</span>
+        <span>Ces bottes sont capables d'engloutir tout ce dans quoi l'on donne des coups de pied avec. En recevoir un coup entre les jambes est le pire cauchemar des aventuriers masculins.</span>
       </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/61-panoplie-piou-bleu" >Panoplie du Piou Bleu</a> </p>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/231-pacmanoplie" >Pacmanoplie</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -1088,7 +774,88 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">1 Chance</li>
+                      <li class="list0">51 à 100 Initiative</li>
+                        <li class="list1">1 à 2 Esquive PM</li>
+                        <li class="list0">Échangeable : 01/01/600 02:02</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                     <div class="clear"></div>
+          <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Caractéristiques</span>
+            <span class="right_carac"></span>
+          </div>
+         <div class="clear"></div>
+                        <ul>
+              <li class="list0">PA : 0</li>
+              <li class="list1">Portée : 0</li>
+              <li class="list0">CC : 1/0</li>
+              <li class="list1">EC : 1/0</li>
+            </ul>
+            </div>
+                           </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="bottes-agilesques">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb863');">Bottes Agilesques</h2>  <div id="bb863" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=863]Bottes Agilesques[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 8</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F5c434964881e8e70ed04236f7a88f92a" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F5c434964881e8e70ed04236f7a88f92a" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11005.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11005.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Ces bottes permettent d'augmenter l'agilité de leur porteur, afin qu'il puisse se prendre pour un Tofu plus facilement, lorsque l'envie lui prend de faire l'idiot.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">6 à 10 Agilité</li>
                       </ul>
               </div>
       <div class="element_carac_right">
@@ -1098,20 +865,237 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
         <span class="block1_mid">
           <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
           <p>
-                           1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 287)" >Graine de Sésame</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 6897)" >Plume de Piou Bleu</a>                        </p>
+                           3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 384)" >Laine de Bouftou</a> +                               5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 884)" >Cuir de Boufton Noir</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
-                      <div class="element_carac_block2">
-        <span class="block2_top"></span>
-        <span class="block2_mid">
-          <div class="h3">Drop de l'objet</div>
-          <p>
-                        <a href="javascript:void(0)" onmouseover="DofusLinker.Monster(this, 3270)" >Pioussin Bleu</a>                    </p>
-        </span>
-        <span class="block2_bot"></span>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="bottes-chance">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb864');">Bottes de Chance</h2>  <div id="bb864" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=864]Bottes de Chance[/dofusitem]" /></p>
       </div>
-                </div>
+  <span class="level_element">Level 8</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff03786c0810a9e837d32db5ec57663ea" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff03786c0810a9e837d32db5ec57663ea" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11001.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11001.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Ces bottes augmentent la chance de leur porteur afin de l'aider à trouver des objets très puissants, comme de la bave de Bouftou par exemple.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">6 à 10 Chance</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
+          <p>
+                           5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 304)" >Cuir de Bouftou</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 884)" >Cuir de Boufton Noir</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="bottes-kluh">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb837');">Bottes de Kluh</h2>  <div id="bb837" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=837]Bottes de Kluh[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 8</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F62ceff607cc87e49617ce3d8ee4964e0" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F62ceff607cc87e49617ce3d8ee4964e0" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11003.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Ces bottes augmentent la force de leur porteur, mais risquent de le rendre un peu idiot au bout d'un certain temps, voire de le transformer en Iop en cas d'utilisation régulière et prolongée</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">11 à 20 Force</li>
+                        <li class="list1">-11 à -20 Intelligence</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
+          <p>
+                           7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 304)" >Cuir de Bouftou</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 883)" >Cuir de Boufton Blanc</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="sandales-intelligence">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb862');">Sandales d'Intelligence</h2>  <div id="bb862" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=862]Sandales d'Intelligence[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 8</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F484e925e17ea34fd4238982016a6cd9b" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F484e925e17ea34fd4238982016a6cd9b" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11004.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/11004.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Ces bottes permettent d'augmenter l'intelligence de leur porteur, tout en lui conférant un style vraiment à la mode par les temps qui courent grâce à leur semelle en Bois de Noyer qui offre une adhérence remarquable.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">6 à 10 Intelligence</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 1)</span></div>
+          <p>
+                           7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 304)" >Cuir de Bouftou</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 476)" >Bois de Noyer</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
   </div>
 </div>
 <div class="bottom_content"></div>
@@ -1133,6 +1117,8 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=25">25</a>
       <span class="on">26</span>
       <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=27">27</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=28">28</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=29">29</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/11-bottes?pa=27" class="next">>></a>
                   </div>
                 </div>
@@ -1224,7 +1210,8 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       </div>
       <div class="clear"></div>
       <div id="footer">
-                  <div id="footer_krosmoz">
+                  <a class="ak-beta" href="http://beta.dofus.com" target="_blank"></a>
+          <div id="footer_krosmoz">
   <div id="bg_left"></div>
   <div id="bg_right"></div>
   <div id="timeline">

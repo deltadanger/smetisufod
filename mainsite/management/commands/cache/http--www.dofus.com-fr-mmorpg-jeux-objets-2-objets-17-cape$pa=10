@@ -34,8 +34,8 @@
   <link rel="stylesheet" type="text/css" href="http://staticns.ankama.com/global/api/dofus/linker/css/dofuslinker.css"  />
   <link rel="stylesheet" type="text/css" href="http://staticns.ankama.com/dofus/www//css/encyclopedia.css"  />
   <style type="text/css">
-  #footer .houses { background:#1A182D  !important; height:222px !important; }
-    body{ background: #1A182D   url(http://staticns.ankama.com/ankama/cms/images/217/2014/04/15/418279.jpg)  center top no-repeat !important; }
+  #footer .houses { background:#1F2012 !important; height:222px !important; }
+    body{ background: #1F2012  url(http://staticns.ankama.com/ankama/cms/images/217/2014/05/13/419353.jpg)  center top no-repeat !important; }
   </style>
   <script type="text/javascript" >
   var _gaq = _gaq || [];
@@ -86,7 +86,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <div class="v_sep fleft"></div>
                 <div id="idbar_almanax">
           <a id="idbar_almanax_title" onclick="IdBar.AlmanaxMenu();" href="javascript:void(0);">
-              Almanax <span class="nb">1</span><span class="date">2 Maisial</span>
+              Almanax <span class="nb">1</span><span class="date">22 Maisial</span>
             <span class="bt"></span>
           </a>
           <div id="idbar_almanax_events">
@@ -94,21 +94,21 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
               <a class="dofus" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=dofus">
                 <div class="t"></div>
                 <strong>Bonus et Quêtes DOFUS</strong>
-                <span>Points d'expérience</span>
+                <span>Challenge supplémentaire</span>
                 <div class="b"></div>
               </a>
                               <a class="wakfu" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=wakfu">
                   <div class="t"></div>
                   <strong>Quête d'offrande WAKFU</strong>
-                  <span>Gymcitro</span>
+                  <span>Krisegis</span>
                   <div class="b"></div>
                 </a>
                           </div>
                           <div id="idbar_almanax_month_events">
                 <strong><span class="nb">1</span>Event du mois</strong>
-                                  <a href="http://www.krosmoz.com/fr/almanax/05-08" target="_blank">
+                                  <a href="http://www.krosmoz.com/fr/almanax/05-29" target="_blank">
                      <span class="date">
-                       8                       Maisial                     </span> : La Fête des Huit Mets</a>
+                       29                       Maisial                     </span> : La Fête de l’As en Soin</a>
                               </div>
                       </div>
         </div>
@@ -198,7 +198,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div id="register_loading"></div>
   </div>
 
-  <a id="linkpromo" href="http://www.dofus.com/fr/mmorpg/news/418272-chasse-tresors-commence"></a>
+  <a id="linkpromo" href="http://www.dofus.com/fr/mmorpg/news/419350-envolez-vers-monde-truches"></a>
 
 <div id="tcg_popup" style="display:none;"></div>
 <div id="content_connect" style="display: none;">
@@ -375,45 +375,46 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=17">17</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=18">18</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=19">19</a>
-      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=24">..</a>
-      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=25">25</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=27">..</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=28">28</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=11" class="next">>></a>
                   </div>
                   <div class="content_encyclo">
                                         <span class="levels">Level : <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?lvlmin=1&lvlmax=40">1 à 40</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?lvlmin=40&lvlmax=80">40 à 80</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?lvlmin=80&lvlmax=120">80 à 120</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?lvlmin=120&lvlmax=160">120 à 160</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?lvlmin=160&lvlmax=200">160 à 200</a> > <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape">Tous les objets</a></span>
                                                               <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="poilue">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb2387');">La Poilue</h2>  <div id="bb2387" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="cape-routh">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb8641');">Cape Routh</h2>  <div id="bb8641" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=2387]La Poilue[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8641]Cape Routh[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 63</span>
+  <span class="level_element">Level 80</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fe465727b56f5816b74952581dc640b5d" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fe6f282adfbbeafc248a60f5bd49360cf" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fe465727b56f5816b74952581dc640b5d" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fe6f282adfbbeafc248a60f5bd49360cf" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17041.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17140.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17041.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17140.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Il faut avouer que cette Cape possède une forte odeur très désagréable. En essayant de mettre des mots sur cette infection, on peut dire que c'est tout simplement un mélange de poils de monstres divers qui créent ce magnifique pot pourri.</span>
+        <span>Cette cape est si légère et si fine qu’elle s’envole à la moindre brise de vent, de n’importe quel vent. Pas toujours très pratique, surtout lorsque l’on veut se faire discret, après un repas composé de légumineuses et de diverses boissons fermentées.</span>
       </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/89-panoplie-criminelle" >Panoplie Criminelle</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -435,99 +436,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">1 à 2 PO</li>
-                        <li class="list1">11 à 20 Sagesse</li>
-                        <li class="list0">31 à 50 Vitalité</li>
-                        <li class="list1">3 à 5 % Résistance Terre</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Conditions :</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul style="margin-bottom:5px;">
-                      <li class="list0">Sagesse > 30</li>
-                            <li class="list1">Vitalité > 50</li>
-                        </ul>
-        <div class="clear"></div>
-                    </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
-          <p>
-                           2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 291)" >Poils du Mulou</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 646)" >Poils de Black Tiwabbit</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 648)" >Poils de Wabbit</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1890)" >Poil de Kanigrou</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1894)" >Poil de Sanglier des Plaines</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2248)" >Poil d'Ouginak</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="cape-kitsou">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb7340');">Cape du Kitsou</h2>  <div id="bb7340" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=7340]Cape du Kitsou[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 62</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F884990b4696fce240059c6f3d536784f" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F884990b4696fce240059c6f3d536784f" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17084.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17084.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Cette cape est lavable en rivière, même si elle risque de déteindre dès le troisième lavage.</span>
-      </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/41-panoplie-kitsou" >Panoplie du Kitsou</a> </p>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">21 à 100 Vitalité</li>
-                        <li class="list1">4 à 5 % Résistance Feu</li>
-                        <li class="list0">4 à 5 % Résistance Air</li>
+                      <li class="list0">Réduit de 1 le délai de relance du sort Invisibilité</li>
+                        <li class="list1">Augmente la PO du sort Piège Sournois de 3</li>
+                        <li class="list0">+30 CC sur le sort Poison insidieux</li>
+                        <li class="list1">Réduit de 1 le coût en PA du sort Piège répulsif</li>
                       </ul>
               </div>
       <div class="element_carac_right">
@@ -535,9 +447,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 80)</span></div>
           <p>
-                           1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7275)" >Poils de Kitsou Nae</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7277)" >Poils de Kitsou Nere</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7278)" >Poils de Kitsou Nakwa</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7279)" >Peau de Kitsou Nae</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7281)" >Peau de Kitsou Nere</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7282)" >Peau de Kitsou Nakwa</a>                        </p>
+                           24 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 372)" >Bandeau du Black Tiwabbit</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8757)" >Maillot de corps de Barbroussa</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8760)" >Foulard du Sparo</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8766)" >Plume de fesse du Kido</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8767)" >Aile du Bitouf des Plaines</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8801)" >Étoffe de Ouassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8995)" >Étoffe de Gourlo le Terrible</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -550,38 +462,38 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="cape-kabroule">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb11418');">Cape de Kabroule</h2>  <div id="bb11418" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="cape-sulhit">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb8643');">Cape Sulhit</h2>  <div id="bb8643" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=11418]Cape de Kabroule[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8643]Cape Sulhit[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 61</span>
+  <span class="level_element">Level 80</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F91cbb84b43bac2a8a42170dd293a280d" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F2bab9688b0a88aaf871d91866eebeb1b" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F91cbb84b43bac2a8a42170dd293a280d" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F2bab9688b0a88aaf871d91866eebeb1b" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17180.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17134.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17180.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17134.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Francisque Kabroule aime cette cape à mourir. Ce qui explique pourquoi il la porte à chacun de ses enterrements.</span>
+        <span>La Cape Sulhit se met délicatement sur les épaules afin de protéger son porteur des tendinites et de l’enraidissement des articulations. Vêtement aux vertus médicales, il est regardé avec envie par les Pandawas, qui passent beaucoup de temps à porter leur adversaire comme leur allié. Eux-aussi, ils aimeraient avoir un vêtement de ce type.</span>
       </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/172-panoplie-kabroule" >Panoplie de Kabroule</a> </p>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/83-panoplie-altruiste" >Panoplie Altruiste</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -603,14 +515,247 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">11 à 15 Force</li>
-                        <li class="list1">41 à 55 Vitalité</li>
-                        <li class="list0">16 à 25 Intelligence</li>
-                        <li class="list1">2 à 3 Soins</li>
-                        <li class="list0">151 à 200 Pods</li>
-                        <li class="list1">31 à 50 Initiative</li>
-                        <li class="list0">2 à 3 % Résistance Feu</li>
-                        <li class="list1">Échangeable : 01/01/600 02:02</li>
+                      <li class="list0">Désactive la ligne de vue du sort Mot d'Immobilisation</li>
+                        <li class="list1">Désactive le lancer en ligne du sort Mot de Prévention</li>
+                        <li class="list0">Augmente la PO du sort Mot Interdit de 1</li>
+                        <li class="list1">Réduit de 1 le coût en PA du sort Mot d'Epine</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 80)</span></div>
+          <p>
+                           2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2512)" >Queue de Sanglier des Plaines</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8757)" >Maillot de corps de Barbroussa</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8760)" >Foulard du Sparo</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8766)" >Plume de fesse du Kido</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8767)" >Aile du Bitouf des Plaines</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8801)" >Étoffe de Ouassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8995)" >Étoffe de Gourlo le Terrible</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="cape-wera">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb8647');">Cape Wéra</h2>  <div id="bb8647" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8647]Cape Wéra[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 80</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F87c7c414ed10e19463e9b19460e375ec" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F87c7c414ed10e19463e9b19460e375ec" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17142.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17142.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Les Pandawas se servent de cette cape comme protection contre les intempéries et comme accessoire de danse. Ils la posent à terre, au centre d’un cercle de danseurs éméchés. Puis, ils commencent leur chorégraphie improvisée sans que le pied touche le sol en dehors de la zone délimitée par ce vêtement.</span>
+      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/92-panoplie-ethylique" >Panoplie Ethylique</a> </p>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">Réduit de 1 le coût en PA du sort Vertige</li>
+                        <li class="list1">Augmente la PO du sort Souffle Alcoolisé de 2</li>
+                        <li class="list0">Désactive le lancer en ligne du sort Stabilisation</li>
+                        <li class="list1">+15 Dommages sur le sort Flasque Explosive</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 80)</span></div>
+          <p>
+                           7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2499)" >Museau de Kolérat</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8757)" >Maillot de corps de Barbroussa</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8760)" >Foulard du Sparo</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8766)" >Plume de fesse du Kido</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8767)" >Aile du Bitouf des Plaines</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8801)" >Étoffe de Ouassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8995)" >Étoffe de Gourlo le Terrible</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="cape-ytale">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb8645');">Cape Ytale</h2>  <div id="bb8645" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8645]Cape Ytale[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 80</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F100bc63209c2f290345137c3480ade3e" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F100bc63209c2f290345137c3480ade3e" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17138.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17138.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Ce vêtement joue un rôle primordial dans la prestance des Sacrieurs. Ils s’en servent comme bandage pour panser les plaies, comme serpillière pour essuyer le sang, comme descente de lit pour ne pas avoir froid aux pieds. On ne dira jamais à quel point les personnages de cette classe redoutent les sols gelés !</span>
+      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/87-panoplie-exsangue" >Panoplie Exsangue</a> </p>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">Réduit de 1 le coût en PA du sort Châtiment Osé</li>
+                        <li class="list1">Augmente la PO du sort Furie de 1</li>
+                        <li class="list0">Réduit de 2 le délai de relance du sort Transposition</li>
+                        <li class="list1">Augmente la PO du sort Transfert de Vie de 2</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 80)</span></div>
+          <p>
+                           15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1652)" >Patte d'Arakne Majeure</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8757)" >Maillot de corps de Barbroussa</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8760)" >Foulard du Sparo</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8766)" >Plume de fesse du Kido</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8767)" >Aile du Bitouf des Plaines</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8801)" >Étoffe de Ouassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8995)" >Étoffe de Gourlo le Terrible</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="cape-nelween">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb12070');">Cape de Nelween</h2>  <div id="bb12070" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=12070]Cape de Nelween[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 71</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F502d042a1b8c0acfdb12b49b08d4d79d" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F502d042a1b8c0acfdb12b49b08d4d79d" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17219.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17219.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Après réflexion, cette cape que l'on vous a présentée comme une authentique cape en fourrure de Nelween n'en n'est peut-être pas une. Cette dernière ne vous a paru ni bleue, ni brune et encore moins coupée en deux quand vous l'avez vue pour la dernière fois. Vous n'aurez qu'à vous en servir comme descente de lit.</span>
+      </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/204-panoplie-nelween" >Panoplie de Nelween</a> </p>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">6 à 8 Dommages Neutre</li>
+                        <li class="list1">7 à 10 Esquive PA</li>
+                        <li class="list0">6 à 8 Fuite</li>
+                        <li class="list1">7 à 10 Résistance Critiques</li>
                       </ul>
               </div>
       <div class="element_carac_right">
@@ -628,6 +773,90 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
               <li class="list1">EC : 1/0</li>
             </ul>
             </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
+          <p>
+                           12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1893)" >Queue de scorbute</a> +                               14 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2248)" >Poil d'Ouginak</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2317)" >Oreilles de Croc Gland</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2495)" >Oeil de Kolérat</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12075)" >Fiole de fumée de Nelween</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12076)" >Duvet de Nelween</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
+  </div>
+</div>
+<div class="bottom_content"></div>
+</div>
+
+  <div class="separator"></div>
+<div class="element_content">
+<div class="top_content"></div>
+<div class="middle_content" id="cape-hucine">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb6712');">Cape Hucine</h2>  <div id="bb6712" class="forumbbcode" style="display:none;">
+    <div class="h3" style="color:#000 !important">Forum :</div>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=6712]Cape Hucine[/dofusitem]" /></p>
+      </div>
+  <span class="level_element">Level 71</span>
+  <div class="element_desc">
+    <div class="top"></div>
+    <div class="middle">
+      <div class="fix">
+        <!--[if !IE]> -->
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F2758d7f3f60351229f8250b1c715bf73" width="120" height="120">
+<!-- <![endif]-->
+<!--[if IE]>
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F2758d7f3f60351229f8250b1c715bf73" width="120" height="120">
+  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17082.swf" />
+<!--><!--dgx-->
+  <param name="allowscriptaccess" value="always" />
+  <param name="wmode" value="transparent" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17082.swf" />
+  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
+</object>
+<!-- <![endif]-->
+      </div>
+      <div class="desc">
+        <div class="h3">Description :</div>
+        <span>Cette magnifique cape sent la fleur des bois. Pas de quoi rendre folle de vous une Craêtte, mais suffisant pour couvrir les odeurs d'un Sadida qui se néglige.</span>
+      </div>
+         <a class="btn_carac none" onClick="ShowCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid">Caractéristiques >></span>
+      <span class="right">&nbsp;</span>
+    </a>
+    <a class="btn_carac2 block" onClick="HideCarac(this);">
+      <span class="left">&nbsp;</span>
+      <span class="mid"> << Caractéristiques</span>
+      <span class="right">&nbsp;</span>
+    </a>
+      </div>
+    <div class="bottom"></div>
+    <div class="element_carac block">
+            <div class="element_carac_left">
+                <div class="h3">
+            <span class="left_carac"></span>
+            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
+            <span class="right_carac"></span>
+          </div>
+          <div class="clear"></div>
+          <ul>
+                      <li class="list0">71 à 100 Vitalité</li>
+                        <li class="list1">31 à 40 Sagesse</li>
+                        <li class="list0">1 PA</li>
+                        <li class="list1">1 à 2 Invocations</li>
+                        <li class="list0">6 à 10 % Résistance Eau</li>
+                        <li class="list1">6 à 10 % Résistance Terre</li>
+                        <li class="list0">-101 à -200 Agilité</li>
+                        <li class="list1">-101 à -200 Chance</li>
+                        <li class="list0">-101 à -200 Force</li>
+                        <li class="list1">-101 à -200 Intelligence</li>
+                      </ul>
+              </div>
+      <div class="element_carac_right">
+                   </div>
                            </div>
   </div>
 </div>
@@ -637,37 +866,38 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="cape-meupette">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb8867');">Cape de la Meupette</h2>  <div id="bb8867" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="cape-desir-o-boul">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb7011');">Cape du Désir O'Boul</h2>  <div id="bb7011" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8867]Cape de la Meupette[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=7011]Cape du Désir O'Boul[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 61</span>
+  <span class="level_element">Level 67</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F2018776c7a3f515b4e4d9243b8d7a95a" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F38821208ea351751f763b4e92b38da6d" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F2018776c7a3f515b4e4d9243b8d7a95a" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F38821208ea351751f763b4e92b38da6d" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17146.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17083.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17146.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17083.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>En portant cette cape, vous serez pris d'une furieuse envie de vinaigrette.</span>
+        <span>Cette cape presque vivante en poils de barbe roux est unique en son genre. Animée d'une magie extraordinaire, elle a tendance à jouer de nombreux tours à son porteur, en se cachant toujours au moment de partir à l'aventure, lorsqu'on a besoin d'elle. Elle compense heureusement sa fourberie, par une puissance en combat à toute épreuve, qui fait d'elle une "véwitable meuchine de guewe" d'après certains Wabbits.</span>
       </div>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/38-panoplie-o-boul" >Panoplie O'Boul</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -689,274 +919,14 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">21 à 35 Vitalité</li>
-                        <li class="list1">21 à 30 Agilité</li>
-                        <li class="list0">16 à 20 Chance</li>
-                        <li class="list1">1 à 3 Soins</li>
-                        <li class="list0">1 à 3 Dommages</li>
-                        <li class="list1">2 à 5 Résistance Terre</li>
-                        <li class="list0">2 à 5 Résistance Neutre</li>
+                      <li class="list0">41 à 60 Vitalité</li>
+                        <li class="list1">16 à 30 Sagesse</li>
+                        <li class="list0">3 à 4 Coups Critiques</li>
+                        <li class="list1">4 à 5 Dommages</li>
                       </ul>
               </div>
       <div class="element_carac_right">
                    </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
-          <p>
-                           15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2556)" >Pollen de Blop</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8735)" >Corail Morito</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8748)" >Pétale Morito</a> +                               6 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8760)" >Foulard du Sparo</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8801)" >Étoffe de Ouassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8994)" >Étoffe Corailleuse</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="cape-koalak">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb8007');">Cape du Koalak</h2>  <div id="bb8007" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=8007]Cape du Koalak[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 61</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fff2dfc21dfbd553c4f531462de3181a2" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fff2dfc21dfbd553c4f531462de3181a2" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17095.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17095.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Cette cape vous protégera de la majorité des attaques, mais pas du ridicule.</span>
-      </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/46-panoplie-koalak" >Panoplie du Koalak</a> </p>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">31 à 50 Vitalité</li>
-                        <li class="list1">7 à 10 Résistance Eau</li>
-                        <li class="list0">7 à 10 Résistance Feu</li>
-                        <li class="list1">7 à 10 Résistance Terre</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                   </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
-          <p>
-                           3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8002)" >Étoffe de Dok Alako</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8050)" >Peau de Koalak Immature</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8059)" >Poils de Koalak Griotte</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8060)" >Poils de Koalak Coco</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8061)" >Poils de Koalak Reinette</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8062)" >Poils de Koalak Indigo</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="cape-flotteuse">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb2381');">Cape Flotteuse</h2>  <div id="bb2381" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=2381]Cape Flotteuse[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 61</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F70c2610e9fc9202e56c570ff495a994b" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F70c2610e9fc9202e56c570ff495a994b" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17036.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17036.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Cette Cape fut découpée dans un fanion, anciennement situé sur la plus haute tour du chateau d'Amakna. C'est sûrement pour cela qu'elle sent le linge séché au grand air.</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">21 à 30 Vitalité</li>
-                        <li class="list1">6 à 10 % Résistance Eau</li>
-                        <li class="list0">6 à 10 % Résistance Neutre</li>
-                        <li class="list1">-3 à 5 Prospection</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Conditions :</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul style="margin-bottom:5px;">
-                      <li class="list0">Intelligence > 90</li>
-                        </ul>
-        <div class="clear"></div>
-                    </div>
-                       <div class="element_carac_block1">
-        <span class="block1_top"></span>
-        <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
-          <p>
-                           5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 414)" >Plume du Kwak de Glace</a> +                               5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 416)" >Plume du Kwak de Vent</a> +                               5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 420)" >Ficelle en Lin</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1455)" >Ailes de Scarafeuille Bleu</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1688)" >Teinture Magique Bleutée</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2291)" >Carapace de Scarafeuille Bleu</a>                        </p>
-        </span>
-        <span class="block1_bot"></span>
-      </div>
-                      </div>
-  </div>
-</div>
-<div class="bottom_content"></div>
-</div>
-
-  <div class="separator"></div>
-<div class="element_content">
-<div class="top_content"></div>
-<div class="middle_content" id="phero-cape">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb10846');">Phéro-Cape</h2>  <div id="bb10846" class="forumbbcode" style="display:none;">
-    <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=10846]Phéro-Cape[/dofusitem]" /></p>
-      </div>
-  <span class="level_element">Level 61</span>
-  <div class="element_desc">
-    <div class="top"></div>
-    <div class="middle">
-      <div class="fix">
-        <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F8081f1896ac6f1f845484b9a6f171f56" width="120" height="120">
-<!-- <![endif]-->
-<!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F8081f1896ac6f1f845484b9a6f171f56" width="120" height="120">
-  <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17173.swf" />
-<!--><!--dgx-->
-  <param name="allowscriptaccess" value="always" />
-  <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17173.swf" />
-  <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
-</object>
-<!-- <![endif]-->
-      </div>
-      <div class="desc">
-        <div class="h3">Description :</div>
-        <span>Pris d'une étrange frénésie, les tofus que vous croisez veulent se frotter contre votre jambe. Ce n'est tout de même pas cette cape qui les attire ?</span>
-      </div>
-         <a class="btn_carac none" onClick="ShowCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid">Caractéristiques >></span>
-      <span class="right">&nbsp;</span>
-    </a>
-    <a class="btn_carac2 block" onClick="HideCarac(this);">
-      <span class="left">&nbsp;</span>
-      <span class="mid"> << Caractéristiques</span>
-      <span class="right">&nbsp;</span>
-    </a>
-      </div>
-    <div class="bottom"></div>
-    <div class="element_carac block">
-            <div class="element_carac_left">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Effets</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul>
-                      <li class="list0">41 à 50 Vitalité</li>
-                        <li class="list1">21 à 30 Puissance</li>
-                        <li class="list0">1 PO</li>
-                        <li class="list1">101 à 150 Pods</li>
-                        <li class="list0">201 à 250 Initiative</li>
-                        <li class="list1">Quelqu'un vous suit !</li>
-                      </ul>
-              </div>
-      <div class="element_carac_right">
-                <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Conditions :</span>
-            <span class="right_carac"></span>
-          </div>
-          <div class="clear"></div>
-          <ul style="margin-bottom:5px;">
-                      <li class="list0"> = 19</li>
-                        </ul>
-        <div class="clear"></div>
-                    </div>
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
@@ -975,38 +945,38 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="cape-wa-wabbit">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb971');">Cape du Wa Wabbit</h2>  <div id="bb971" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="cape-aerdala">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb7233');">Cape Aerdala</h2>  <div id="bb7233" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=971]Cape du Wa Wabbit[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=7233]Cape Aerdala[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 60</span>
+  <span class="level_element">Level 65</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ff0ea2952d9b6088573f88a70409a90ca" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F0d8f0eab81f92a4cdc09d047b6a5074f" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ff0ea2952d9b6088573f88a70409a90ca" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F0d8f0eab81f92a4cdc09d047b6a5074f" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17021.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17114.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17021.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17114.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Cette cape appartenait au tristement célèbre Wa Wabbit. Elle est encore imprégnée de sa transpiration, ce qui vous permettra de vous remémorer ce magnifique combat à chaque fois que vous la porterez.</span>
+        <span>Cette cape qui vient du village d'Aerdala, peut servir de paillasson, ou même de serpillière si vous venez de sortir de l'eau.</span>
       </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/40-panoplie-wa" >Panoplie du Wa</a> </p>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/35-panoplie-aerdala" >Panoplie Aerdala</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -1028,10 +998,12 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">81 à 100 Vitalité</li>
-                        <li class="list1">21 à 30 Puissance</li>
-                        <li class="list0">1 PO</li>
-                        <li class="list1">7 à 10 Tacle</li>
+                      <li class="list0">11 à 20 Agilité</li>
+                        <li class="list1">21 à 40 Vitalité</li>
+                        <li class="list0">3 à 4 Dommages Pièges</li>
+                        <li class="list1">6 à 10 Prospection</li>
+                        <li class="list0">6 à 8 Résistance Feu</li>
+                        <li class="list1">6 à 8 Résistance Eau</li>
                       </ul>
               </div>
       <div class="element_carac_right">
@@ -1041,7 +1013,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
         <span class="block1_mid">
           <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
           <p>
-                           14 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 305)" >Dent de Wabbit</a> +                               22 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 419)" >Oreille du Grand Pa Wabbit</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8398)" >Étoffe du Wa Wabbit</a> +                               18 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14457)" >Patte de Black Wabbit</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14461)" >Langue de Tiwabbit Kiafin</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14463)" >Crâne de Wabbit Squelette</a>                        </p>
+                           50 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7223)" >Artefact Pandawushu Air</a> +                               5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7258)" >Poils de Pandikaze</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7259)" >Étoffe de Pandikaze</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7277)" >Poils de Kitsou Nere</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7278)" >Poils de Kitsou Nakwa</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7297)" >Poils de Pandule</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -1054,38 +1026,38 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="capinokio">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb11401');">Capinokio</h2>  <div id="bb11401" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="cape-mulou">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb6954');">Cape du Mulou</h2>  <div id="bb6954" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=11401]Capinokio[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=6954]Cape du Mulou[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 60</span>
+  <span class="level_element">Level 64</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F330cd0ff1a9b561c61d8d7907156bf1d" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F62b83f04ae8daef1f5b3de8039563741" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F330cd0ff1a9b561c61d8d7907156bf1d" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F62b83f04ae8daef1f5b3de8039563741" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17226.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17099.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17226.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17099.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Cette cape en bois s'allonge quand vous mentez. Vous risquez de marcher régulièrement dessus.</span>
+        <span>Cette peau de Mulou constitue une excellente protection contre le froid, mais également contre les aventuriers aux sens olfactifs un peu trop développés.</span>
       </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/171-panoplinokio" >Panoplinokio</a> </p>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/32-panoplie-mulou" >Panoplie du Mulou</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -1107,30 +1079,34 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">41 à 50 Vitalité</li>
-                        <li class="list1">16 à 25 Agilité</li>
-                        <li class="list0">2 à 3 Coups Critiques</li>
-                        <li class="list1">201 à 250 Pods</li>
-                        <li class="list0">6 à 10 Prospection</li>
-                        <li class="list1">Échangeable : 01/01/600 02:02</li>
+                      <li class="list0">1 à 50 Vitalité</li>
+                        <li class="list1">1 à 20 Sagesse</li>
+                        <li class="list0">1 à 8 Soins</li>
+                        <li class="list1">1 PO</li>
+                        <li class="list0">1 à 5 Prospection</li>
                       </ul>
               </div>
       <div class="element_carac_right">
-                     <div class="clear"></div>
-          <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Caractéristiques</span>
-            <span class="right_carac"></span>
-          </div>
-         <div class="clear"></div>
-                        <ul>
-              <li class="list0">PA : 0</li>
-              <li class="list1">Portée : 0</li>
-              <li class="list0">CC : 1/0 (+-1)</li>
-              <li class="list1">EC : 1/0</li>
-            </ul>
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
+          <p>
+                           5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 291)" >Poils du Mulou</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 438)" >Queue du Mulou</a> +                               5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 1690)" >Poils du Milimulou</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2575)" >Scalp de Mulou</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 2579)" >Oeil du Milimulou</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8396)" >Mojo du Mulou </a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                          <div class="element_carac_block2">
+        <span class="block2_top"></span>
+        <span class="block2_mid">
+          <div class="h3">Dans le craft de</div>
+          <p>
+                          <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8265)" >Cape du Meulou</a>                      </p>
+        </span>
+        <span class="block2_bot"></span>
+      </div>
             </div>
-                           </div>
   </div>
 </div>
 <div class="bottom_content"></div>
@@ -1139,38 +1115,38 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
   <div class="separator"></div>
 <div class="element_content">
 <div class="top_content"></div>
-<div class="middle_content" id="capoduvet">
-  <h2 class="title_element" onclick="OpenCloseDiv('bb13016');">Capoduvet</h2>  <div id="bb13016" class="forumbbcode" style="display:none;">
+<div class="middle_content" id="cape-terrdala">
+  <h2 class="title_element" onclick="OpenCloseDiv('bb7231');">Cape Terrdala</h2>  <div id="bb7231" class="forumbbcode" style="display:none;">
     <div class="h3" style="color:#000 !important">Forum :</div>
-    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=13016]Capoduvet[/dofusitem]" /></p>
+    <p><input onclick="javascript:this.select();" type="text" readonly="readonly" value="[dofusitem=7231]Cape Terrdala[/dofusitem]" /></p>
       </div>
-  <span class="level_element">Level 60</span>
+  <span class="level_element">Level 63</span>
   <div class="element_desc">
     <div class="top"></div>
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fc5b7846fe2790331e4696d5849d96168" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F5ec73911d4536a58cd54a04d436f68ac" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fc5b7846fe2790331e4696d5849d96168" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F5ec73911d4536a58cd54a04d436f68ac" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17244.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17112.swf" />
 <!--><!--dgx-->
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
-  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17244.swf" />
+  <param name="flashvars" value="item=http://staticns.ankama.com/dofus/www//game/items/src/17112.swf" />
   <p><a target="_blank" href="http://www.adobe.com/go/getflashplayer"><img src="http://staticns.ankama.com/global/img/get_flash_player.gif" alt="Get Adobe Flash player" /></a></p>
 </object>
 <!-- <![endif]-->
       </div>
       <div class="desc">
         <div class="h3">Description :</div>
-        <span>Faire la roue devant l'élue de votre coeur avec cette cape ornée de plumes aux couleurs chatoyantes sur le dos peut peut-être réussir à l'impressionner, mais vous risquez surtout de vous prendre les bras dedans, de chuter lamentablement, et de finir seul.</span>
+        <span>Cette cape qui vient du village de Terrdala, peut servir de paillasson, ou même de serpillière si vous venez de sortir de l'eau.</span>
       </div>
-          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/237-panoplie-duvet" >Panoplie Duvet</a> </p>
+          <p> Dans la panoplie: <a href="/fr/mmorpg-jeux/panoplies/36-panoplie-terrdala" >Panoplie Terrdala</a> </p>
          <a class="btn_carac none" onClick="ShowCarac(this);">
       <span class="left">&nbsp;</span>
       <span class="mid">Caractéristiques >></span>
@@ -1192,33 +1168,26 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
           </div>
           <div class="clear"></div>
           <ul>
-                      <li class="list0">31 à 50 Vitalité</li>
-                        <li class="list1">1 PO</li>
-                        <li class="list0">3 à 4 Dommages Neutre</li>
-                        <li class="list1">3 à 4 Dommages Terre</li>
-                        <li class="list0">3 à 4 Dommages Feu</li>
-                        <li class="list1">3 à 4 Dommages Eau</li>
-                        <li class="list0">3 à 4 Dommages Air</li>
-                        <li class="list1">4 à 5 % Résistance Feu</li>
-                        <li class="list0">Échangeable : 01/01/600 02:02</li>
+                      <li class="list0">16 à 25 Force</li>
+                        <li class="list1">31 à 50 Vitalité</li>
+                        <li class="list0">6 à 10 Dommages Pièges</li>
+                        <li class="list1">151 à 200 Initiative</li>
+                        <li class="list0">6 à 7 Résistance Eau</li>
+                        <li class="list1">6 à 7 Résistance Terre</li>
                       </ul>
               </div>
       <div class="element_carac_right">
-                     <div class="clear"></div>
-          <div class="h3">
-            <span class="left_carac"></span>
-            <span class="mid_carac"><span>&nbsp;</span>Caractéristiques</span>
-            <span class="right_carac"></span>
-          </div>
-         <div class="clear"></div>
-                        <ul>
-              <li class="list0">PA : 0</li>
-              <li class="list1">Portée : 0</li>
-              <li class="list0">CC : 1/0</li>
-              <li class="list1">EC : 1/0</li>
-            </ul>
-            </div>
-                           </div>
+                   </div>
+                       <div class="element_carac_block1">
+        <span class="block1_top"></span>
+        <span class="block1_mid">
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Tailleur (Niv. 60)</span></div>
+          <p>
+                           5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 388)" >Poils du Sanglier</a> +                               50 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7224)" >Artefact Pandawushu Terre</a> +                               5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7258)" >Poils de Pandikaze</a> +                               15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7267)" >Feuille de Bulbuisson</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7297)" >Poils de Pandule</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7308)" >Étoffe de Pandule</a>                        </p>
+        </span>
+        <span class="block1_bot"></span>
+      </div>
+                      </div>
   </div>
 </div>
 <div class="bottom_content"></div>
@@ -1246,8 +1215,8 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=17">17</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=18">18</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=19">19</a>
-      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=24">..</a>
-      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=25">25</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=27">..</a>
+      <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=28">28</a>
       <a href="/fr/mmorpg-jeux/objets/2-objets/17-cape?pa=11" class="next">>></a>
                   </div>
                 </div>
@@ -1339,7 +1308,8 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       </div>
       <div class="clear"></div>
       <div id="footer">
-                  <div id="footer_krosmoz">
+                  <a class="ak-beta" href="http://beta.dofus.com" target="_blank"></a>
+          <div id="footer_krosmoz">
   <div id="bg_left"></div>
   <div id="bg_right"></div>
   <div id="timeline">

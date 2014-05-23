@@ -2,13 +2,14 @@
 import urllib2, logging
 
 from django.core.management.base import BaseCommand, CommandError
+from django.utils import timezone
 
 from web_cache import WebCache
 
 from item_page_parser import ItemPageParser
 from panoplie_page_parser import MainPanopliePageParser
 
-from mainsite.models import Item, ItemCategory, ItemType, Job
+from mainsite.models import Item, ItemCategory, ItemType, Job, UpdateHistory
 
 log = logging.getLogger(__name__)
 
@@ -127,12 +128,17 @@ class Command(BaseCommand):
         
         web_cache = WebCache(opener)
         
-        fetch_items(web_cache)
-        fetch_sets(web_cache)
+        history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
+        
+        fetch_items(web_cache, history)
+        # fetch_sets(web_cache, history)
         # printItems()
+        
+        history.finished = timezone.now()
+        history.save()
 
 
-def fetch_items(web_cache):
+def fetch_items(web_cache, history):
     build_categories()
     build_jobs()
     
@@ -153,6 +159,7 @@ def fetch_items(web_cache):
             p = ItemPageParser(type)
             p.feed(content)
             current_page = p.current_page
+            history.updated_items.add(*p.changed_items)
             
             i += 1
     
@@ -177,9 +184,9 @@ def build_item_type(type, category, job):
 
 
 
-def fetch_sets(web_cache):
+def fetch_sets(web_cache, history):
     content = web_cache.get(SETS_URL)
-    MainPanopliePageParser(web_cache).feed(content)
+    MainPanopliePageParser(web_cache, history).feed(content)
 
 
 

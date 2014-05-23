@@ -9,10 +9,10 @@ class WebCache():
         
     def get(self, url, force_refresh=False):
         content = self._get_from_local(url)
-        if content:
+        if content and not force_refresh and not self.force_refresh:
             log.debug("Getting resource from local: " + url)
-        
-        if not content or force_refresh or self.force_refresh:
+            
+        else:
             log.debug("Getting from remote source: " + url)
             content = self.opener.open(url).read()
             self._save_to_local(url, content)

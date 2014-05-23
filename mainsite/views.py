@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.core import serializers
 
-from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, PanoplieAttribute
+from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, PanoplieAttribute, AttributeValue
 
 EXCLUDE_CATEGORY = ["Ressource"]
 RECIPE_SIZE_TO_JOB_LEVEL = {
@@ -27,7 +27,8 @@ PAGE_DESCRIPTION = "Outil de recherche d'objet pour le MMORPG Dofus."
 PAGE_URL = ""
 
 def search(request):
-    attributes = Attribute.objects.all().order_by("name")
+    # Do not get attributes that are used only as condition
+    attributes = Attribute.objects.filter(attributevalue__isnull=False).distinct().order_by("name")
     categories = ItemCategory.objects.all()
     
     page_parameters = {

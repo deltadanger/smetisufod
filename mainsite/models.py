@@ -19,7 +19,6 @@ class BaseModel(models.Model):
         abstract = True
 
 
-
 class Job(BaseModel):
     name = models.CharField(max_length=50)
     
@@ -99,7 +98,7 @@ class AttributeValue(BaseModel):
     max_value = models.IntegerField()
     
     def __unicode__(self):
-        return unicode(self.item) + "-" + unicode(self.attribute)
+        return unicode(self.item) + "-" + unicode(self.attribute) + "("+unicode(self.min_value)+ "-"+unicode(self.max_value)+")"
 
 class AttributeCondition(BaseModel):
     item = models.ForeignKey(Item)
@@ -108,5 +107,18 @@ class AttributeCondition(BaseModel):
     required_value = models.IntegerField()
     
     def __unicode__(self):
-        return unicode(self.item) + "-" + unicode(self.attribute)
+        return unicode(self.item) + "-" + unicode(self.attribute) + unicode(self.equality) + unicode(self.required_value)
+
+
+
+
+class UpdateHistory(BaseModel):
+    started = models.DateTimeField()
+    finished = models.DateTimeField(null=True)
+    using_cache = models.BooleanField()
+    updated_items = models.ManyToManyField(Item)
+    updated_panos = models.ManyToManyField(Panoplie)
+    
+    def __unicode__(self):
+        return unicode(self.started) + " - " + unicode(self.finished)
 

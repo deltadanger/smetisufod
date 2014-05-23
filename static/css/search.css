@@ -128,7 +128,7 @@ li.even {
 .result {
     background-color: #C4B58A;
     border: 2px inset #C4B58A;
-    margin: 10px;
+    margin: 14px 10px 10px;
 	min-width: -moz-max-content;
 	min-width: -webkit-max-content;
     padding: 0 10px 10px;
@@ -218,7 +218,7 @@ li.even {
 
 .item .craft {
     background-color: #F6EDDC;
-    max-width: 760px;
+    max-width: 740px;
     padding: 5px 10px;
 }
 
@@ -259,7 +259,9 @@ li.even {
 }
 
 
-
+.smetisufod-item-lookup .result {
+    margin: 0;
+}
 
 
 
