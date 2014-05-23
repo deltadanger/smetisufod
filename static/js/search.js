@@ -98,8 +98,9 @@
         reloadAsideItemsFromCookie();
         
         $(document).on("click", ".invalid > a", function() {
-            $.get("flag_invalid", {"name": $(this).attr("name")}, function(result) {
-                var parent = $(this).parent();
+            var self = $(this)
+            $.get("flag_invalid", {"name": self.attr("name")}, function(result) {
+                var parent = self.parent();
                 parent.find("a").hide();
                 parent.find("span").show();
             });
