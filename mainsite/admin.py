@@ -1,5 +1,5 @@
 from django.contrib import admin
-from mainsite.models import Job, ItemCategory, ItemType, Attribute, Item, AttributeValue, AttributeCondition, Recipe, UpdateHistory
+from mainsite.models import Job, ItemCategory, ItemType, Attribute, Item, AttributeValue, AttributeCondition, Recipe, UpdateHistory, InvalidItem
 
 
 class StandardAdmin(admin.ModelAdmin):
@@ -24,3 +24,4 @@ admin.site.register(AttributeValue, StandardAdmin)
 admin.site.register(AttributeCondition, StandardAdmin)
 admin.site.register(Recipe, StandardAdmin)
 admin.site.register(UpdateHistory, UpdateHistoryAdmin)
+admin.site.register(InvalidItem, StandardAdmin)

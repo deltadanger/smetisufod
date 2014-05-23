@@ -29,6 +29,7 @@ class MainPanopliePageParser(HTMLParser):
         self.web_cache = web_cache
         
         self.in_menu = False
+        self.history = history
         
     def handle_starttag(self, tag, attrs):
         if tag == "div" and "sous_menu_encyclo" in get_attr(attrs, "class"):
@@ -41,6 +42,9 @@ class MainPanopliePageParser(HTMLParser):
             content = self.web_cache.get(url)
             p = PanopliePageParser()
             p.feed(content)
+            if p.has_changed and p.is_panoplie_valid:
+                self.history.updated_panos.add(p.panoplie)
+                self.history.updated_items.add(*p.changed_items)
         
     def handle_endtag(self, tag):
         if self.in_menu and tag == "div":
@@ -54,6 +58,9 @@ class PanopliePageParser(HTMLParser):
         self.panoplie = None
         self.current_no_item = 0
         self.is_panoplie_valid = True
+        self.has_changed = False
+        self.attributes_dump = ""
+        self.changed_items = []
         
         self.in_name = False
         self.get_name = False
@@ -89,6 +96,10 @@ class PanopliePageParser(HTMLParser):
         if self.get_name:
             self.panoplie, created = Panoplie.objects.get_or_create(name=data)
             log.debug("Name: " + data+" ("+str(created)+")")
+            self.has_changed |= created
+            
+            self.attributes_dump = str(self.panoplie.panoplieattribute_set.all())
+            self.panoplie.panoplieattribute_set.all().delete()
         
         if "Bonus de la panoplie" in data:
             self.in_bonuses = True
@@ -113,6 +124,10 @@ class PanopliePageParser(HTMLParser):
         if self.get_item:
             item = Item.objects.get_if_exist(name=data)
             if item:
+                if item.panoplie != self.panoplie:
+                    self.has_changed = True
+                    self.changed_items.append(item)
+                
                 item.panoplie = self.panoplie
                 item.save()
                 # log.debug("Item " + name + " belongs to " + self.panoplie.name)
@@ -131,4 +146,6 @@ class PanopliePageParser(HTMLParser):
         if self.get_bonuses and tag == "ul":
             self.get_bonuses = False
             self.in_bonuses = False
+            
+            self.has_changed |= self.attributes_dump != str(self.panoplie.panoplieattribute_set.all())
 

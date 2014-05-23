@@ -31,15 +31,20 @@
 	display: block !important;
 }
 
-li.even {
-	background-color: #DED0B3;
-}
+
 
 #search-form {
     background-color: #C4B58A;
     border: 2px inset #C4B58A;
     margin: 10px;
     padding: 10px;
+}
+
+#last_update {
+    color: #94854A;
+    float: right;
+    font-size: 12px;
+    margin: -10px -8px;
 }
 
 #search-form > h1 {
@@ -138,6 +143,7 @@ li.even {
 	font-family: Tahoma;
     font-size: 12px;
     font-weight: bold;
+    max-width: 740px;
 	color: #FEF5E3;
     padding: 0 10px;
 }
@@ -193,7 +199,7 @@ li.even {
 
 .result .caracs div {
     float: left;
-    width: 195px;
+    width: 190px;
 }
 
 .result .caracs h2 {
@@ -258,6 +264,25 @@ li.even {
     float: left;
 }
 
+.result .invalid {
+    float: right;
+    font-size: 12px;
+    margin: 1px 0 -9px;
+}
+
+.result .invalid > a {
+    color: #94854A;
+}
+
+.result .invalid > a:hover {
+    color: #AB9C62;
+}
+
+.result .invalid > span {
+    background: url("../img/warning.png") no-repeat scroll 0 0 / 13px auto rgba(0, 0, 0, 0);
+    color: #94854A;
+    padding-left: 14px;
+}
 
 .smetisufod-item-lookup .result {
     margin: 0;
