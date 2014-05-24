@@ -1,6 +1,8 @@
 # Django settings for smetisufod project.
+import site, os.path as path
+site.addsitedir("/home/smetisufod/modules/")
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -10,10 +12,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+PROJECT_PATH = path.dirname(path.dirname(path.abspath(__file__)))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'maindb.sqlite3',                      # Or path to database file if using sqlite3.
+        'NAME': path.join(PROJECT_PATH, 'maindb.sqlite3'),                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -24,7 +28,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["smetisufod.alwaysdata.net"]
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -66,6 +70,7 @@ STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
+# STATIC_URL = '/static/'
 STATIC_URL = '/static/'
 
 # Additional locations of static files
@@ -74,8 +79,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     
-    "C:/Users/jacoelt/Documents/private/Smetisufod/static",
-    "E:/Documents/Private Documents/Development/python/Smetisufod/static",
+    path.join(PROJECT_PATH, "public", "static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -116,8 +120,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     
-    "C:/Users/jacoelt/Documents/private/Smetisufod/templates",
-    "E:/Documents/Private Documents/Development/python/Smetisufod/templates",
+    path.join(PROJECT_PATH, "templates"),
 )
 
 INSTALLED_APPS = (
