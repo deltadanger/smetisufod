@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block title %}Contact{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/contact.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="contact">
+    <h1>Contact</h1>
+
+    <form method="POST">
+        <table>
+            <tr>
+                <td><label for="id_sender">Votre adresse Email :</label></td>
+                <td>{{ form.sender }}</td>
+            </tr>
+            <tr>
+                <td colspan=2><label for="id_cc_myself">Recevoir une copie du message :</label> {{ form.cc_myself }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_subject">Sujet :</label></td>
+                <td>{{ form.subject }}</td>
+            </tr>
+            <tr>
+                <td><label for="id_message">Message :</label></td>
+                <td>{{ form.message }}</td>
+            </tr>
+            <tr>
+                <td colspan=2 class="center">
+                    <div>
+                        <script type="text/javascript"
+                            src="http://api.recaptcha.net/challenge?k={{ captcha_key }}">
+                        </script> 
+                        
+                        <noscript>
+                            <iframe src="http://api.recaptcha.net/noscript?k={{ captcha_key }}" height="300" width="500" frameborder="0"></iframe>
+                            <br />
+                            <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                            <input type="hidden" name="recaptcha_response_field" value="manual_challenge">
+                        </noscript>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan=2 class="center"><input type="submit" value="Envoyer" class="light-button"/></td>
+            </tr>
+        </table>
+        
+    <form>
+</div>
+
+{% endblock %}

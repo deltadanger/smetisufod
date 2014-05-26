@@ -2,7 +2,7 @@
 import site, os.path as path
 site.addsitedir("/home/smetisufod/modules/")
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -149,6 +149,15 @@ INSTALLED_APPS = (
     # "django.contrib.messages.context_processors.messages",
 # )
 
+EMAIL_HOST      = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'smetisufod@gmail.com'
+EMAIL_HOST_PASSWORD = '8*ziydwys'
+EMAIL_PORT      = 587
+EMAIL_USE_TLS   = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL  = 'admin@smetisufod.com'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -186,3 +195,6 @@ LOGGING = {
         },
     }
 }
+
+RECAPTCHA_PUBLIC_KEY = "6Le5JPQSAAAAAEfdqGMi3Pix_BnDOB_kimDOlFm6"
+RECAPTCHA_PRIVATE_KEY = "6Le5JPQSAAAAAOymrtplgD_xfYHog12ijRuzyguh"

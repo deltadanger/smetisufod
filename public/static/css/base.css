@@ -26,6 +26,13 @@ li.even {
 	background-color: #DED0B3;
 }
 
+.center {
+	text-align: center;
+}
+.center > div {
+    display: inline-block;
+}
+
 
 
 body {
@@ -109,6 +116,19 @@ main.wide {
     padding: 5px;
 }
 
+main > div {
+    background-color: #C4B58A;
+    border: 2px inset #C4B58A;
+    margin: 10px;
+    padding: 10px;
+}
+
+main > div h1 {
+    color: #FEF5E3;
+    font-family: tahoma;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
 
 
 footer {

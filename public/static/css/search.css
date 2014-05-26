@@ -33,25 +33,11 @@
 
 
 
-#search-form {
-    background-color: #C4B58A;
-    border: 2px inset #C4B58A;
-    margin: 10px;
-    padding: 10px;
-}
-
 #last_update {
     color: #94854A;
     float: right;
     font-size: 12px;
     margin: -10px -8px;
-}
-
-#search-form > h1 {
-    color: #FEF5E3;
-    font-family: tahoma;
-    margin: 0 0 10px;
-    text-transform: uppercase;
 }
 
 #types {
@@ -128,6 +114,13 @@
     background-color: rgba(0, 0, 0, 0);
     margin: 20px 0 0;
     text-align: center;
+}
+
+#results {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    margin: 0;
+    padding: 0;
 }
 
 .result {

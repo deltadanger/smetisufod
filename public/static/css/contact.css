@@ -1,0 +1,13 @@
+
+.contact form {
+    background-color: #F6EDDC;
+	padding: 10px 15px 10px 10px;
+    width: -moz-max-content;
+	width: -webkit-max-content;
+}
+
+.contact form input[type="text"], .contact form textarea {
+    width: 100%;
+}
+
+
