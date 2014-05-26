@@ -23,84 +23,84 @@
 {% endblock %}
 
 {% block content %}
-
-<form id="search-form" action="search.html">
-    <span id="last_update">Derni&egrave;re mise &agrave; jour des donn&eacute;es : {{ udpate_time|date:"d/m/Y H:i" }}</span>
-    <h1>Recherche</h1>
-    <div id="types">
-        <ul id="type-tree">
-            <li class="tree-expanded"><input type="checkbox" id="all" /><label for="all">Tous</label>
-                <ul>
-                    {% for category in categories %}
-                        <li class="category tree-collapsed"><input type="checkbox" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
-                            <ul>
-                                {% for type in category.itemtype_set.all %}
-                                    <li class="type"><input type="checkbox" value="{{ type }}" id="type-{{ type|cut:" " }}" name="type" /><label for="type-{{ type }}">{{ type }}</label></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
-        </ul>
-    </div>
-    
-    <div id="search-fields">
-        <div>
-            <label for="level-min">Niveau</label> <input type="text" id="level-min" name="level-min" autocomplete="off" /> &agrave; <input type="text" id="level-max" name="level-max" autocomplete="off" /> 
+<div>
+    <form id="search-form" action="search.html">
+        <span id="last_update">Derni&egrave;re mise &agrave; jour des donn&eacute;es : {{ udpate_time|date:"d/m/Y H:i" }}</span>
+        <h1>Recherche</h1>
+        <div id="types">
+            <ul id="type-tree">
+                <li class="tree-expanded"><input type="checkbox" id="all" /><label for="all">Tous</label>
+                    <ul>
+                        {% for category in categories %}
+                            <li class="category tree-collapsed"><input type="checkbox" id="cat-{{ category }}" /><label for="cat-{{ category }}">{{ category }}</label>
+                                <ul>
+                                    {% for type in category.itemtype_set.all %}
+                                        <li class="type"><input type="checkbox" value="{{ type }}" id="type-{{ type|cut:" " }}" name="type" /><label for="type-{{ type }}">{{ type }}</label></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
         </div>
         
-        <div>
-            <h3>
-                Effets
-                <input type="button" id="add-row" class="light-button" value="Ajouter une ligne" />
-            </h3>
-            <div class="clear"></div>
-            <ul id="effects"></ul>
-            <label for="include-panoplie">Inclure les panoplies dans les r&eacute;sultats de recherche</label> <input type="checkbox" id="include-panoplie" name="include-panoplie" />
-        </div>
-        
-        <a href="javascript:void(0);" id="switch-advanced-search" class="light-button">Recherche avanc&eacute;e</a>
-        <div id="advanced-search">
-            <label for="name">Nom de l'objet</label> <input type="text" id="name" name="name" />
-            
+        <div id="search-fields">
             <div>
-                Seulement les recettes &agrave;
-                <label for="recipe-1">1</label><input type="checkbox" class="craft-case" id="recipe-1" name="recipe" value="1" />
-                <label for="recipe-2">2</label><input type="checkbox" class="craft-case" id="recipe-2" name="recipe" value="2" />
-                <label for="recipe-3">3</label><input type="checkbox" class="craft-case" id="recipe-3" name="recipe" value="3" />
-                <label for="recipe-4">4</label><input type="checkbox" class="craft-case" id="recipe-4" name="recipe" value="4" />
-                <label for="recipe-5">5</label><input type="checkbox" class="craft-case" id="recipe-5" name="recipe" value="5" />
-                <label for="recipe-6">6</label><input type="checkbox" class="craft-case" id="recipe-6" name="recipe" value="6" />
-                <label for="recipe-7">7</label><input type="checkbox" class="craft-case" id="recipe-7" name="recipe" value="7" />
-                <label for="recipe-8">8</label><input type="checkbox" class="craft-case" id="recipe-8" name="recipe" value="8" />
-                case(s)
+                <label for="level-min">Niveau</label> <input type="text" id="level-min" name="level-min" autocomplete="off" /> &agrave; <input type="text" id="level-max" name="level-max" autocomplete="off" /> 
             </div>
             
             <div>
-                <label for="cost-min">Co&ucirc;t en PA :</label>
-                <input type="text" id="cost-min" name="cost-min" autocomplete="off" />
-                &agrave;
-                <input type="text" id="cost-max" name="cost-max" autocomplete="off" />
+                <h3>
+                    Effets
+                    <input type="button" id="add-row" class="light-button" value="Ajouter une ligne" />
+                </h3>
+                <div class="clear"></div>
+                <ul id="effects"></ul>
+                <label for="include-panoplie">Inclure les panoplies dans les r&eacute;sultats de recherche</label> <input type="checkbox" id="include-panoplie" name="include-panoplie" />
+            </div>
+            
+            <a href="javascript:void(0);" id="switch-advanced-search" class="light-button">Recherche avanc&eacute;e</a>
+            <div id="advanced-search">
+                <label for="name">Nom de l'objet</label> <input type="text" id="name" name="name" />
                 
-                <br />
+                <div>
+                    Seulement les recettes &agrave;
+                    <label for="recipe-1">1</label><input type="checkbox" class="craft-case" id="recipe-1" name="recipe" value="1" />
+                    <label for="recipe-2">2</label><input type="checkbox" class="craft-case" id="recipe-2" name="recipe" value="2" />
+                    <label for="recipe-3">3</label><input type="checkbox" class="craft-case" id="recipe-3" name="recipe" value="3" />
+                    <label for="recipe-4">4</label><input type="checkbox" class="craft-case" id="recipe-4" name="recipe" value="4" />
+                    <label for="recipe-5">5</label><input type="checkbox" class="craft-case" id="recipe-5" name="recipe" value="5" />
+                    <label for="recipe-6">6</label><input type="checkbox" class="craft-case" id="recipe-6" name="recipe" value="6" />
+                    <label for="recipe-7">7</label><input type="checkbox" class="craft-case" id="recipe-7" name="recipe" value="7" />
+                    <label for="recipe-8">8</label><input type="checkbox" class="craft-case" id="recipe-8" name="recipe" value="8" />
+                    case(s)
+                </div>
                 
-                <label for="range-min">Port&eacute;e :</label>
-                <input type="text" id="range-min" name="range-min" autocomplete="off" />
-                &agrave;
-                <input type="text" id="range-max" name="range-max" autocomplete="off" />
+                <div>
+                    <label for="cost-min">Co&ucirc;t en PA :</label>
+                    <input type="text" id="cost-min" name="cost-min" autocomplete="off" />
+                    &agrave;
+                    <input type="text" id="cost-max" name="cost-max" autocomplete="off" />
+                    
+                    <br />
+                    
+                    <label for="range-min">Port&eacute;e :</label>
+                    <input type="text" id="range-min" name="range-min" autocomplete="off" />
+                    &agrave;
+                    <input type="text" id="range-max" name="range-max" autocomplete="off" />
+                </div>
+            </div>
+        
+            <div class="submit">
+                <a id="search" href="javascript:void(0);" class="light-button bold">Lancer la recherche</a>
+                <a id="clear-search" href="javascript:void(0);" class="light-button small">Effacer les termes de la recherche</a>
             </div>
         </div>
-    
-        <div class="submit">
-            <a id="search" href="javascript:void(0);" class="light-button bold">Lancer la recherche</a>
-            <a id="clear-search" href="javascript:void(0);" class="light-button small">Effacer les termes de la recherche</a>
-        </div>
-    </div>
-    
-    <div class="clear"></div>
-</form>
-
+        
+        <div class="clear"></div>
+    </form>
+</div>
 {% if objects != None %}
 <div id="results">
 {% for object in objects %}

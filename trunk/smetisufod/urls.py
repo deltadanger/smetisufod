@@ -18,7 +18,8 @@ urlpatterns = patterns('',
     url(r'^$', 'mainsite.views.search', name='home'),
     url(r'^search.html$', 'mainsite.views.search', name='search'),
     url(r'^developper.html$', 'mainsite.views.devs', name='dev'),
-    url(r'^contact.html$', 'mainsite.views.contact', name='contact'),
     url(r'^get_item$', 'mainsite.views.get_item', name='get_item'),
     url(r'^flag_invalid$', 'mainsite.views.flag_invalid', name='flag_invalid'),
+    
+    url(r'^contact.html$', 'mainsite.contact.contact', name='contact'),
 )
