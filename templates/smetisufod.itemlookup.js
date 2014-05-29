@@ -19,18 +19,15 @@
             if (settings.makeLink) {
                 if (!element.is("a")) {
                     element = $("<a>", {
-                        "style": "color: inherit; text-decoration:inherit;"
+                        "style": "color: inherit; text-decoration:inherit;",
+                        "target": "_blank"
                     });
                     element.html($(this).html());
                     $(this).html("");
                     $(this).append(element);
                 }
-                element.attr("href", "/search.html?include-panoplie=on&name=" + element.html());
+                element.attr("href", "{% url "search" %}?include-panoplie=on&name=" + element.html());
                 cursor = "pointer";
-            }
-            
-            if (settings.applyStyle) {
-                element.css(settings.style);
             }
             
             element.mouseover(function() {
@@ -47,7 +44,7 @@
                 }
                 
                 $("body").append(displayDiv);
-            
+                
                 displayDiv.mouseover(function() {
                     doNotHide = element.html();
                 });
@@ -67,7 +64,7 @@
                 if (!displayDiv.html()) {
                     element.css("cursor", "progress");
                     
-                    $.get("get_item", {"name": element.html()}, function(result) {
+                    $.get("{{ get_item_uri }}", {"name": element.html()}, function(result) {
                         if (result.html) {
                             displayDiv.html(result.html);
                             displayDiv.find(".item-lookup").lookupitem();
@@ -102,16 +99,6 @@
     };
     
     $.fn.lookupitem.defaults = {
-        applyStyle: true,
-        style: {
-            "background-color": "#F6EDDC",
-            "border": "1px dashed #5E4911",
-            "color": "#5E4911",
-            "display": "block",
-            "margin": "1px",
-            "padding": "2px 5px",
-            "text-decoration": "none",
-        },
         makeLink: false
     };
     
@@ -122,7 +109,7 @@
     function moveDiv(displayDiv, element) {
         displayDiv.position({
             "my": "top",
-            "at": "center bottom+15px",
+            "at": "bottom+15px",
             "of": element,
             "collision": "flipfit",
         });

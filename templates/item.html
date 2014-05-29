@@ -11,7 +11,7 @@
     
     <div class="description">
         <div>{{ item.description }}</div>
-        <input class="light-button keep-aside" name="{{ item.name }}" type="button" value="Comparer" style="display:none" />
+        {% if not hide_extra %}<input class="light-button keep-aside" name="{{ item.name }}" type="button" value="Comparer" style="display:none" />{% endif %}
     </div>
     
     <div class="clear"></div>
@@ -62,9 +62,11 @@
     <div class="clear"></div>
     {% endif %}
     
+    {% if not hide_extra %}
     <div class="invalid">
         <a href="javascript:void(0);" {% if item.invalid %} style="display:none"{% endif %} name="{{ item.name }}">{{item.invalid}}Cet objet est incorrect</a>
         <span{% if not item.invalid %} style="display:none"{% endif %}>Cet objet est marqu&eacute; comme incorrect.</span>
     </div>
     <div class="clear"></div>
+    {% endif %}
 </div>

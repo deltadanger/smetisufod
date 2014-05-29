@@ -1,0 +1,153 @@
+
+.smetisufod-item-lookup .clear {
+    clear: both;
+    float: none;
+}
+
+.smetisufod-item-lookup li.even {
+	background-color: #DED0B3;
+}
+
+
+.smetisufod-item-lookup .result {
+    background-color: #C4B58A;
+    border: 2px inset #C4B58A;
+    margin: 0;
+	min-width: -moz-max-content;
+	min-width: -webkit-max-content;
+    padding: 0 10px 10px;
+}
+
+.smetisufod-item-lookup .result .title {
+	font-family: Tahoma;
+    font-size: 12px;
+    font-weight: bold;
+    max-width: 740px;
+	color: #FEF5E3;
+    padding: 0 10px;
+}
+
+.smetisufod-item-lookup .result .title > h1, .result .title > h3 {
+    float: left;
+    text-transform: uppercase;
+}
+
+.smetisufod-item-lookup .result .title > h1 {
+    margin: 0;
+}
+
+.smetisufod-item-lookup .result .title > h3 {
+    margin: 2px 0 0 15px !important;
+}
+
+.smetisufod-item-lookup .result .title > h4 {
+    margin: 6px 0 0 15px;
+}
+
+.smetisufod-item-lookup .result .title > h4 {
+    float: right;
+}
+
+.smetisufod-item-lookup .item .description div {
+    background-color: #F6EDDC;
+    color: #5E4911;
+    float: left;
+    font-size: 12px;
+	margin-right: 5px;
+    max-width: 660px;
+    padding: 5px 10px;
+}
+
+.smetisufod-item-lookup .item .description .light-button {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+.smetisufod-item-lookup .item .image {
+    height: 120px;
+    margin: 10px;
+    width: 120px !important;
+}
+
+.smetisufod-item-lookup .result .caracs {
+    color: #000000;
+    font-size: 14px;
+}
+
+.smetisufod-item-lookup .result .caracs div {
+    float: left;
+    width: 190px;
+}
+
+.smetisufod-item-lookup .result .caracs h2 {
+    background-color: #F6EDDC;
+    color: #5E4911;
+    font-size: 17px;
+    margin: 5px;
+    padding: 1px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.smetisufod-item-lookup .result .caracs ul {
+    list-style: none outside none;
+    margin: 5px;
+    padding: 0;
+}
+
+.smetisufod-item-lookup .result .caracs ul li {
+    padding-left: 3px;
+}
+
+.smetisufod-item-lookup .item .craft {
+    background-color: #F6EDDC;
+    max-width: 740px;
+    padding: 5px 10px;
+}
+
+.smetisufod-item-lookup .item .craft div {
+    font-weight: bold;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
+
+.smetisufod-item-lookup .item .craft div h2 {
+    font-size: 16px;
+}
+
+.smetisufod-item-lookup .item .craft div h3 {
+    font-size: 14px;
+}
+
+.smetisufod-item-lookup .item .craft div h2, .craft div h3 {
+    display: inline;
+}
+
+.smetisufod-item-lookup .item .craft span {
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.smetisufod-item-lookup .panoplie {
+	min-width: 500px;
+}
+
+.smetisufod-item-lookup .panoplie .item-list {
+    list-style: none outside none;
+    padding: 0;
+}
+
+.smetisufod-item-lookup .panoplie .item-list li {
+    float: left;
+}
+
+.item-lookup {
+	background-color: #F6EDDC;
+	border: 1px dashed #5E4911;
+	color: #5E4911;
+	display: inline-block;
+	margin: 1px;
+	padding: 2px 5px;
+	text-decoration: none;
+}

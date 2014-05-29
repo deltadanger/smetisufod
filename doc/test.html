@@ -1,0 +1,32 @@
+<html>
+<head>
+    <script src="http://localhost:8081/static/js/jquery.1.11.0.min.js"></script>
+    <script src="http://localhost:8081/static/js/jquery-ui.1.10.4.min.js"></script>
+    <script src="http://localhost:8081/smetisufod.itemlookup.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8081/smetisufod.itemlookup.css">
+    
+    <script>
+        $(function() {
+            $(".lookup").lookupitem();
+            
+            $("input").click(function() {
+                $.get("http://localhost:8081/search", {
+                    "name": "Marteau du Bouftou",
+                    "json": true,
+                }, function(result) {
+                    console.log(result);
+                });
+            });
+        });
+    </script>
+</head>
+<body style="height:100%;">
+<span class="lookup">Anneau de l'Aventurier</span>
+<span class="lookup">blah</span>
+<span class="lookup">Marteau du Bouftou</span>
+<span class="lookup">Panoplie Exsangue</span>
+
+<input type="button" value="tes" />
+
+</body>
+</html>
