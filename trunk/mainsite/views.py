@@ -217,48 +217,6 @@ def dictify_pano(pano):
 
 
 
-
-
-
-
-def devs(request):
-    attributes = Attribute.objects.all().order_by("name")
-    categories = ItemCategory.objects.all()
-    
-    page_parameters = {
-        "attributes": attributes,
-        "categories": categories,
-        "pageTitle": PAGE_TITLE,
-        "pageDescription": PAGE_DESCRIPTION,
-        "pageUrl": PAGE_URL,
-        "active_tab": "dev",
-    }
-    
-    if not request.GET:
-        return render_to_response("build.html", page_parameters, context_instance=RequestContext(request))
-
-
-
-def contact(request):
-    attributes = Attribute.objects.all().order_by("name")
-    categories = ItemCategory.objects.all()
-    
-    page_parameters = {
-        "attributes": attributes,
-        "categories": categories,
-        "pageTitle": PAGE_TITLE,
-        "pageDescription": PAGE_DESCRIPTION,
-        "pageUrl": PAGE_URL,
-        "active_tab": "contact",
-    }
-    
-    if not request.GET:
-        return render_to_response("build.html", page_parameters, context_instance=RequestContext(request))
-    
-
-
-
-
 def get_item(request):
     name = request.GET.get("name");
     
@@ -269,14 +227,12 @@ def get_item(request):
         pano = Panoplie.objects.get_if_exist(name__iexact=name)
         if item:
             result["isPanoplie"] = False
-            result["html"] = loader.render_to_string("item.html", {"item": dictify_item(item)}, context_instance=RequestContext(request))
+            result["html"] = loader.render_to_string("item.html", {"item": dictify_item(item), "hide_extra":True}, context_instance=RequestContext(request))
         elif pano:
             result["isPanoplie"] = True
-            result["html"] = loader.render_to_string("pano.html", {"pano": dictify_pano(pano)}, context_instance=RequestContext(request))
+            result["html"] = loader.render_to_string("pano.html", {"pano": dictify_pano(pano), "hide_extra":True}, context_instance=RequestContext(request))
     
-    return HttpResponse(json.dumps(result), mimetype="application/json");
-
-
+    return HttpResponse(json.dumps(result), mimetype="application/json")
 
 
 def flag_invalid(request):

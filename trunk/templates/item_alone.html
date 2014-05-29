@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load staticfiles %}
+
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ object.name }}</title>
+    
+    <script src="{% static "js/jquery.1.11.0.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.1.10.4.min.js" %}"></script>
+    <script src="{% url "jquery_plugin" %}"></script>
+    <script>
+        $(function() {
+            $(".item-lookup").lookupitem();
+        });
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="{% static "css/search.css" %}">
+
+</head>
+<body>
+{% if object.is_item %}
+    {% include "item.html" with item=object hide_extra="true" %}
+{% else %}
+    {% include "pano.html" with pano=object hide_extra="true" %}
+{% endif %}
+</body>
+</html>

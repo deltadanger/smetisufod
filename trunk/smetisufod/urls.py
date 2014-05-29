@@ -17,9 +17,14 @@ urlpatterns = patterns('',
 
     url(r'^$', 'mainsite.views.search', name='home'),
     url(r'^search.html$', 'mainsite.views.search', name='search'),
-    url(r'^developper.html$', 'mainsite.views.devs', name='dev'),
+    url(r'^search$', 'mainsite.views.search', name='search-simple'),
+    url(r'^developper.html$', 'mainsite.developpers.developpers', name='dev'),
     url(r'^get_item$', 'mainsite.views.get_item', name='get_item'),
     url(r'^flag_invalid$', 'mainsite.views.flag_invalid', name='flag_invalid'),
     
     url(r'^contact.html$', 'mainsite.contact.contact', name='contact'),
+    
+    
+    url(r'^smetisufod.itemlookup.js$', 'mainsite.jquery_plugin.js', name='jquery_plugin'),
+    url(r'^smetisufod.itemlookup.css$', 'mainsite.jquery_plugin.css', name='jquery_plugin_css'),
 )

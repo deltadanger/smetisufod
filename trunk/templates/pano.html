@@ -13,7 +13,7 @@
             <h2>{{ k }} objets</h2>
             <ul>
                 {% for attr in v %}
-                    <li class="{% cycle "odd" "even" %}">{{ attr }}</li>
+                    <li class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">{{ attr }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -30,10 +30,12 @@
     
     <div class="clear"></div>
     
+    {% if not hide_extra %}
     <div class="invalid">
         <a href="javascript:void(0);"{% if pano.invalid %} style="display:none"{% endif %} name="{{ pano.name }}">Cette panoplie est incorrecte</a>
         <span{% if not pano.invalid %} style="display:none"{% endif %}>Cette panoplie est marqu&eacute;e comme incorrecte.</span>
     </div>
     
     <div class="clear"></div>
+    {% endif %}
 </div>
