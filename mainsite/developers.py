@@ -71,7 +71,7 @@ def developers(request):
         "plugin_option_list": [
             {
                 "name": "makeLink",
-                "desc": "Si &agrave; true, la cible du plugin sera chang&eacute;e en lien vers ce site vers un r&eacute;sultat de recherche contenant l'objet.",
+                "desc": "Si &agrave; true, la cible du plugin sera chang&eacute;e en un lien vers le r&eacute;sultat de recherche contenant l'objet.",
                 "type": ["true", "false"],
                 "example": '<span class="code">$(".item-lookup").lookupitem({"makeLink": true});</span> <span class="item-lookup link">Marteau du Bouftou</span>',
                 "default": "false"

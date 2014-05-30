@@ -7,6 +7,7 @@
     
     <script>
         $(function() {
+            $(".lookup.link").lookupitem({"makeLink":true});
             $(".lookup").lookupitem();
             
             $("input").click(function() {
@@ -20,7 +21,7 @@
     </script>
 </head>
 <body style="height:100%;">
-<span class="lookup">Anneau de l'Aventurier</span>
+<span class="lookup link">Anneau de l'Aventurier</span>
 <span class="lookup">blah</span>
 <span class="lookup">Marteau du Bouftou</span>
 <span class="lookup">Panoplie Exsangue</span>

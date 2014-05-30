@@ -40,7 +40,7 @@
                     $(this).html("");
                     $(this).append(element);
                 }
-                element.attr("href", "{% url "search" %}?include-panoplie=on&name=" + element.html());
+                element.attr("href", "{{ search_uri }}?include-panoplie=on&name=" + element.html());
                 cursor = "pointer";
             }
             
