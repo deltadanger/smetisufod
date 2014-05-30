@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import urllib2, logging
+from optparse import make_option
 
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
@@ -121,12 +122,19 @@ COOKIES = "LANG=fr; SID=E1E002989B2E28B1544466C1DFE80000"
 class Command(BaseCommand):
     help = 'Update or rebuild the items database'
     
+    option_list = BaseCommand.option_list + (
+        make_option('--use-cache',
+            dest='use-cache',
+            default="y",
+            help='(Y/n) Whether to use the web cache or force data refresh'),
+        )
+        
     def handle(self, *args, **options):
         proxy = urllib2.ProxyHandler(PROXY_LIST)
         opener = urllib2.build_opener(proxy)
         opener.addheaders.append(('Cookie', COOKIES))
         
-        web_cache = WebCache(opener)
+        web_cache = WebCache(opener, options["use-cache"] == "n")
         
         history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
         
@@ -220,6 +228,3 @@ def printItems():
 
 
     
-
-if __name__ == "__main__":
-    run()
