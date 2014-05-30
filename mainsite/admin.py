@@ -11,7 +11,7 @@ class ItemAdmin(StandardAdmin):
     list_filter = ("type", "level", "attribute", "recipe", "condition")
 
 class UpdateHistoryAdmin(StandardAdmin):
-    filter_horizontal = ("updated_items",)
+    filter_horizontal = ("updated_items", "updated_panos")
 
 
 

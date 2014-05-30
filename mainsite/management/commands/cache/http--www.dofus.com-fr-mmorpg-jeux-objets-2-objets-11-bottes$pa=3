@@ -86,7 +86,7 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
       <div class="v_sep fleft"></div>
                 <div id="idbar_almanax">
           <a id="idbar_almanax_title" onclick="IdBar.AlmanaxMenu();" href="javascript:void(0);">
-              Almanax <span class="nb">1</span><span class="date">22 Maisial</span>
+              Almanax <span class="nb">1</span><span class="date">30 Maisial</span>
             <span class="bt"></span>
           </a>
           <div id="idbar_almanax_events">
@@ -94,21 +94,21 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
               <a class="dofus" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=dofus">
                 <div class="t"></div>
                 <strong>Bonus et Quêtes DOFUS</strong>
-                <span>Challenge supplémentaire</span>
+                <span>Points d'expérience</span>
                 <div class="b"></div>
               </a>
                               <a class="wakfu" target="_blank" href="http://www.krosmoz.com/fr/almanax?game=wakfu">
                   <div class="t"></div>
                   <strong>Quête d'offrande WAKFU</strong>
-                  <span>Krisegis</span>
+                  <span>Xandra</span>
                   <div class="b"></div>
                 </a>
                           </div>
                           <div id="idbar_almanax_month_events">
                 <strong><span class="nb">1</span>Event du mois</strong>
-                                  <a href="http://www.krosmoz.com/fr/almanax/05-29" target="_blank">
+                                  <a href="http://www.krosmoz.com/fr/almanax/06-04" target="_blank">
                      <span class="date">
-                       29                       Maisial                     </span> : La Fête de l’As en Soin</a>
+                       4                       Juinssidor                     </span> : La Gardienne-Party</a>
                               </div>
                       </div>
         </div>
@@ -387,10 +387,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F37c1744e7f7d21f25b94d78584745311" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fc3b5d01e2d417654fd72e47e0b30b315" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F37c1744e7f7d21f25b94d78584745311" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fc3b5d01e2d417654fd72e47e0b30b315" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -464,9 +464,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 60)</span></div>
           <p>
-                           2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8404)" >Peau de Skeunk</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13062)" >Galet acajou</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13154)" >Poudre glaciale</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14921)" >Étoffe Mystérieuse</a> +                               32 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14925)" >Masque de la Vivacité</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14926)" >Masque du Vice</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14927)" >Symbole des Obscuranti</a> +                               11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14928)" >Corne d'Ombre</a>                        </p>
+                           2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8404)" >Peau de Skeunk</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13154)" >Poudre glaciale</a> +                               32 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14925)" >Masque de la Vivacité</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14926)" >Masque du Vice</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14927)" >Symbole des Obscuranti</a> +                               11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14928)" >Corne d'Ombre</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -490,10 +490,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F44875b6ae6243fec9f5f034904bf9a46" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fedfa41123979a048468e64451c20f490" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F44875b6ae6243fec9f5f034904bf9a46" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fedfa41123979a048468e64451c20f490" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -568,9 +568,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 80)</span></div>
           <p>
-                           47 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7303)" >Peau de Pandule</a> +                               11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8490)" >Fémur de Sphincter Cell</a> +                               13 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11226)" >Huile de Mamansot</a> +                               15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11532)" >Bois de Gobus</a> +                               6 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11943)" >Queue de Glourséleste</a> +                               25 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11945)" >Queue de Meliglours</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13062)" >Galet acajou</a> +                               14 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13165)" >Duvet du Maître Corbac</a>                        </p>
+                           47 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7303)" >Peau de Pandule</a> +                               11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8490)" >Fémur de Sphincter Cell</a> +                               13 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11226)" >Huile de Mamansot</a> +                               15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11532)" >Bois de Gobus</a> +                               6 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11943)" >Queue de Glourséleste</a> +                               25 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11945)" >Queue de Meliglours</a> +                               14 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13165)" >Duvet du Maître Corbac</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -594,10 +594,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F37bca45882ec2ee6d116f7ca53fbe4f7" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F2e4c78e3b4af9fd126204104b1f32e56" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F37bca45882ec2ee6d116f7ca53fbe4f7" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F2e4c78e3b4af9fd126204104b1f32e56" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -677,9 +677,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 80)</span></div>
           <p>
-                           4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8365)" >Corne brisée de Crocabulia</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8802)" >Tibia du Guerrier Zoth</a> +                               13 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8811)" >Faux menton du Bourbassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8812)" >Encre du Kralamoure géant</a> +                               17 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11222)" >Bec du Timansot</a> +                               15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11333)" >Scorie d'Obsidiantre</a> +                               42 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11891)" >Écorce d'Abrazif</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13062)" >Galet acajou</a>                        </p>
+                           4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8365)" >Corne brisée de Crocabulia</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8802)" >Tibia du Guerrier Zoth</a> +                               13 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8811)" >Faux menton du Bourbassingue</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8812)" >Encre du Kralamoure géant</a> +                               17 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11222)" >Bec du Timansot</a> +                               15 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11333)" >Scorie d'Obsidiantre</a> +                               42 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11891)" >Écorce d'Abrazif</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -703,10 +703,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F0e0bd068044480527f6517dfe330afd2" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F5a1f8f7eb81f225b64a96c72e45c6d82" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F0e0bd068044480527f6517dfe330afd2" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F5a1f8f7eb81f225b64a96c72e45c6d82" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -787,9 +787,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 80)</span></div>
           <p>
-                           7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8753)" >Crinière fleurie</a> +                               42 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8808)" >Étoffe du Roissingue</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8810)" >Tourbe séchée de Tourbassingue</a> +                               56 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11238)" >Queue d'Ecumouth</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11895)" >Patte de Korriandre</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11929)" >Queue de Blérom</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12740)" >Galet brasillant</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13166)" >Calice du Tynril</a>                        </p>
+                           7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8753)" >Crinière fleurie</a> +                               42 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8808)" >Étoffe du Roissingue</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8810)" >Tourbe séchée de Tourbassingue</a> +                               56 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11238)" >Queue d'Ecumouth</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11895)" >Patte de Korriandre</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11929)" >Queue de Blérom</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13166)" >Calice du Tynril</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -813,10 +813,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F9d8066e35e3d8e0b3b7a21ec5d5f818e" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F67347684e749c7169eb50f7b7b3a3993" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F9d8066e35e3d8e0b3b7a21ec5d5f818e" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F67347684e749c7169eb50f7b7b3a3993" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -887,9 +887,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 60)</span></div>
           <p>
-                           29 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 408)" >Dentier du Chafer d'Élite</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7386)" >Testicules du Tanukouï San</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8251)" >Poil de Péki</a> +                               41 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11314)" >Coquille de Fantimonier</a> +                               13 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11884)" >Cuir de Fuji Givrefoux</a> +                               7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11946)" >Calcanéus de Meliglours</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12740)" >Galet brasillant</a> +                               20 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13493)" >Queue de Rat Pine</a>                        </p>
+                           29 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 408)" >Dentier du Chafer d'Élite</a> +                               2 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 7386)" >Testicules du Tanukouï San</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8251)" >Poil de Péki</a> +                               41 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11314)" >Coquille de Fantimonier</a> +                               13 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11884)" >Cuir de Fuji Givrefoux</a> +                               7 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11946)" >Calcanéus de Meliglours</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -913,10 +913,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F67dd792eb2dfb0ba488c819f86b23c8b" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F97b55aabbcee2a0063bf87b68a250f10" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F67dd792eb2dfb0ba488c819f86b23c8b" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F97b55aabbcee2a0063bf87b68a250f10" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -996,10 +996,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Ffd3c86040e88d1bdfad1a7a0422da249" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fa70a886d55f116b5e913d474679f079a" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Ffd3c86040e88d1bdfad1a7a0422da249" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fa70a886d55f116b5e913d474679f079a" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -1071,9 +1071,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 60)</span></div>
           <p>
-                           3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12740)" >Galet brasillant</a> +                               8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13154)" >Poudre glaciale</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13946)" >Sépale de Drosérâle</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13947)" >Broderie de Nileza</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13950)" >Griffe de Kanimate</a> +                               46 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13973)" >Bec de Mansordide</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13983)" >Incisive de Sylargh</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 14141)" >Racine cristalline</a>                        </p>
+                           8 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13154)" >Poudre glaciale</a> +                               4 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13946)" >Sépale de Drosérâle</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13947)" >Broderie de Nileza</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13950)" >Griffe de Kanimate</a> +                               46 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13973)" >Bec de Mansordide</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13983)" >Incisive de Sylargh</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -1097,10 +1097,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F3d6211ea3e4bbc201203e12982b91a47" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fc770db8d14ad0c384c93c9f38be74497" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F3d6211ea3e4bbc201203e12982b91a47" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fc770db8d14ad0c384c93c9f38be74497" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -1172,9 +1172,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 60)</span></div>
           <p>
-                           11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11882)" >Queue de Yomi Givrefoux</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11883)" >Condyle de Fuji Givrefoux</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11884)" >Cuir de Fuji Givrefoux</a> +                               31 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11888)" >Volve de Fistulor</a> +                               30 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12001)" >Larme de Givrefoux</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13062)" >Galet acajou</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13154)" >Poudre glaciale</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13165)" >Duvet du Maître Corbac</a>                        </p>
+                           11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11882)" >Queue de Yomi Givrefoux</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11883)" >Condyle de Fuji Givrefoux</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11884)" >Cuir de Fuji Givrefoux</a> +                               31 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11888)" >Volve de Fistulor</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13154)" >Poudre glaciale</a> +                               12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13165)" >Duvet du Maître Corbac</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -1198,10 +1198,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F17d2f47e3901b064c9f789264a6c50d3" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F13fa7f2155a3749d6a5bfeb089c81802" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F17d2f47e3901b064c9f789264a6c50d3" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F13fa7f2155a3749d6a5bfeb089c81802" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -1273,9 +1273,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 80)</span></div>
           <p>
-                           5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8493)" >Peau de Sphincter Cell</a> +                               33 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11920)" >Oreille de Fleuro</a> +                               44 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11927)" >Molaire de Blérice</a> +                               31 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11930)" >Omoplate de Blérom</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11931)" >Griffe de Kolosso</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11932)" >Etoffe de Kolosso</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 12740)" >Galet brasillant</a> +                               11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13168)" >Ethmoïde du Minotot</a>                        </p>
+                           5 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8493)" >Peau de Sphincter Cell</a> +                               33 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11920)" >Oreille de Fleuro</a> +                               44 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11927)" >Molaire de Blérice</a> +                               31 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11930)" >Omoplate de Blérom</a> +                               9 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11931)" >Griffe de Kolosso</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11932)" >Etoffe de Kolosso</a> +                               11 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13168)" >Ethmoïde du Minotot</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -1299,10 +1299,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
     <div class="middle">
       <div class="fix">
         <!--[if !IE]> -->
-<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="F6534f3b206225c3905b533ec135d1fef" width="120" height="120">
+<object type="application/x-shockwave-flash" data="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" id="Fd95e9dbc6bfdca63fbc42af9e1c63b58" width="120" height="120">
 <!-- <![endif]-->
 <!--[if IE]>
-<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="F6534f3b206225c3905b533ec135d1fef" width="120" height="120">
+<object class="fix" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version="10.0.0 id="Fd95e9dbc6bfdca63fbc42af9e1c63b58" width="120" height="120">
   <param name="movie" value="http://staticns.ankama.com/dofus/www//game/objectViewer.swf" />
   <param name="allowscriptaccess" value="always" />
   <param name="wmode" value="transparent" />
@@ -1388,9 +1388,9 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
                        <div class="element_carac_block1">
         <span class="block1_top"></span>
         <span class="block1_mid">
-          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 100)</span></div>
+          <div class="h3">Craft :  <span class="txt_brown">Métier : Cordonnier (Niv. 80)</span></div>
           <p>
-                           12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8251)" >Poil de Péki</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11892)" >Racine d'Abrazif</a> +                               39 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11926)" >Oreille de Croleur</a> +                               44 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11927)" >Molaire de Blérice</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11931)" >Griffe de Kolosso</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11932)" >Etoffe de Kolosso</a> +                               3 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13062)" >Galet acajou</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13157)" >Ongle du Bworker</a>                        </p>
+                           12 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 8251)" >Poil de Péki</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11892)" >Racine d'Abrazif</a> +                               39 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11926)" >Oreille de Croleur</a> +                               44 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11927)" >Molaire de Blérice</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11931)" >Griffe de Kolosso</a> +                               1 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 11932)" >Etoffe de Kolosso</a> +                               10 x <a href="javascript:void(0)" onmouseover="DofusLinker.Item(this, 13157)" >Ongle du Bworker</a>                        </p>
         </span>
         <span class="block1_bot"></span>
       </div>
@@ -1571,10 +1571,10 @@ _gaq.push(['_setCustomVar', 1, 'logged', 'not_logged_on', 2]);
             <div class="text">
               <h2>Devblog DOFUS Les derniers Articles :</h2>
               <p>
-                                  <a target="_blank" href="/fr/devblog/billets/mise-jour-updater-8-avril">Mise à jour de l’Updater le 8 avril</a> |
+                                  <a target="_blank" href="/fr/devblog/billets/benev-blog-plateforme-equipes-benevoles-dofus">Benev'Blog : la plateforme des équipes bénévoles de DOFUS</a> |
+                                    <a target="_blank" href="/fr/devblog/billets/mise-jour-updater-8-avril">Mise à jour de l’Updater le 8 avril</a> |
                                     <a target="_blank" href="/fr/devblog/billets/chasse-tresors">La chasse aux trésors</a> |
                                     <a target="_blank" href="/fr/devblog/billets/dimensions-divines">Les Dimensions Divines</a> |
-                                    <a target="_blank" href="/fr/devblog/billets/deploiement-progressif-nouvel-updater">Déploiement progressif du nouvel Updater</a> |
                               </p>
             </div>
           </div>
