@@ -11,8 +11,7 @@
             
             $("input").click(function() {
                 $.get("http://localhost:8081/search", {
-                    "name": "Marteau du Bouftou",
-                    "json": true,
+                    "name": "Marteau du Bouftou"
                 }, function(result) {
                     console.log(result);
                 });

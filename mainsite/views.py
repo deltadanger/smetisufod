@@ -25,7 +25,6 @@ RECIPE_SIZE_TO_JOB_LEVEL = {
 
 PAGE_TITLE = "Dofus: Outil de recherche d'objets"
 PAGE_DESCRIPTION = "Outil de recherche d'objet pour le MMORPG Dofus."
-PAGE_URL = ""
 
 def search(request):
     # Do not get attributes that are used only as condition
@@ -38,7 +37,7 @@ def search(request):
         "categories": categories,
         "pageTitle": PAGE_TITLE,
         "pageDescription": PAGE_DESCRIPTION,
-        "pageUrl": PAGE_URL,
+        "pageUrl": request.build_absolute_uri(),
         "active_tab": "search",
         "udpate_time": last_update,
     }
@@ -138,12 +137,11 @@ def search(request):
     
     objects = [dictify_item(item) for item in items] + [dictify_pano(pano) for pano in panoplies]
     
-    if request.GET.get("json"):
-        return HttpResponse(json.dumps(objects), mimetype="application/json");
-        
-    page_parameters.update({"objects": objects,})
+    if "html" in request.META.get("PATH_INFO"):
+        page_parameters.update({"objects": objects,})
+        return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
     
-    return render_to_response("search.html", page_parameters, context_instance=RequestContext(request))
+    return HttpResponse(json.dumps(objects), mimetype="application/json");
     
 
 def dictify_item(item):

@@ -10,6 +10,6 @@ class CorsMiddleware(object):
         return None
 
     def process_response(self, request, response):
-        if request.META.get("PATH_INFO") == "/search" and request.GET.get("json"):
+        if request.META.get("PATH_INFO") in ("/search", "/get_item"):
             response["Access-Control-Allow-Origin"] = "*"
         return response

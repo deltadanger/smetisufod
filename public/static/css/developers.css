@@ -1,0 +1,59 @@
+
+
+.code {
+    background-color: #FFF7E0;
+    font-family: monospace;
+}
+
+.url {
+	text-decoration: underline;
+}
+
+main > p {
+    border: 1px dashed;
+    font-size: 17px;
+    margin: 10px;
+    padding: 10px 15px;
+}
+
+section {
+    background-color: #C4B58A;
+    border: 2px inset #C4B58A;
+    margin: 0 10px 14px;
+    padding: 0 10px;
+}
+
+h1, h2, h3 {
+    color: #FEF5E3;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 20px;
+}
+
+h3 {
+    margin: 10px 0 0;
+}
+
+.param {
+    margin: 20px 5px;
+}
+
+.param h4 {
+    font-family: monospace;
+    font-size: 20px;
+    margin: 0;
+    padding-left: 50px;
+}
+
+.param p {
+    margin: 0;
+}
+
+.param h5 {
+    display: inline-block;
+    font-size: 15px;
+    margin: 0;
+}
