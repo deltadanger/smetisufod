@@ -103,7 +103,9 @@
         <div class="clear"></div>
     </form>
 </div>
+
 {% if objects != None %}
+{% spaceless %}
 <div id="results">
 {% for object in objects %}
     {% if object.is_item %}
@@ -115,14 +117,17 @@
     <span>Aucun objet ne correspond &agrave; ces crit&egrave;res de recherche.</span>
 {% endfor %}
 </div>
+{% endspaceless %}
 {% endif %}
 
 <li id="template-row">
+    {% spaceless %}
     <select name="attribute">
         {% for attr in attributes %}
             <option value="{{ attr.name }}">{{ attr.name }}</option>
         {% endfor %}
     </select>
+    {% endspaceless %}
     <label>Min</label> <input type="text" class="value-min" name="value-min" autocomplete="off" />
     <label>Max</label> <input type="text" class="value-max" name="value-max" autocomplete="off" />
     <input type="button" class="remove-row" value="-" />

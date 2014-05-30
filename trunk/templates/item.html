@@ -1,9 +1,9 @@
 
 <div class="result item">
     <div class="title">
-        <h1>{{ item.name }}</h1>
+        <h1>{{ item.name }} </h1>
         {% if item.panoplie %}<h3 class="item-lookup">{{ item.panoplie }}</h3>{% endif %}
-        <h4>{{ item.type }}</h4>
+        <h4>{{ item.type }} </h4>
         <h4>Niveau {{ item.level }}</h4>
     </div>
     
@@ -54,7 +54,8 @@
     {% if item.recipe %}
     <div class="craft">
         <div>
-            <h2>Craft :</h2> <h3>{{ item.job }} (Niveau {{item.job_level }})</h3>
+            <h2>Craft : </h2>
+            <h3>{{ item.job }} (Niveau {{item.job_level }})</h3>
         </div>
         <span>{{ item.recipe }}</span>
     </div>
