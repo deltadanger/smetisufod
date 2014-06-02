@@ -65,7 +65,7 @@
             if (index !== undefined) {
                 currentItems.splice(index, 1);
             }
-            currentItems.join(COOKIE_SEP);
+            currentItems = currentItems.join(COOKIE_SEP);
             
             $.cookie(KEEP_ASIDE_COOKIE_NAME, currentItems);
             
