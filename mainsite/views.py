@@ -61,13 +61,9 @@ def search(request):
         name_query = Q(name__icontains=name)
     
     
-    level_min = 1
-    if request.GET.get("level-min"):
-        level_min = int(request.GET.get("level-min"))
-    level_max = 200
-    if request.GET.get("level-max"):
-        level_max = int(request.GET.get("level-max"))
-        
+    level_min = get_int_or_default(request.GET.get("level-min"), 1)
+    level_max = get_int_or_default(request.GET.get("level-max"), 200)
+    
     level_query = Q(level__gte=level_min,level__lte=level_max)
     level_query_pano = Q(item__level__gte=level_min, item__level__lte=level_max)
     
@@ -78,19 +74,34 @@ def search(request):
         recipe_query |= Q(recipe__size=recipe)
     
     
+    cost_min = get_int_or_default(request.GET.get("cost-min"), 0)
+    cost_max = get_int_or_default(request.GET.get("cost-min"), 100)
+    
+    cost_query = Q(cost__gte=cost_min,cost__lte=cost_max)
+    cost_query_pano = Q(item__cost__gte=level_min, item__cost__lte=level_max)
+    
+    if cost_min == 0:
+        cost_query |= Q(cost__isnull=True)
+        cost_query_pano |= Q(item__cost__isnull=True)
+    
+    
+    range_min = get_int_or_default(request.GET.get("range-min"), 0)
+    range_max = get_int_or_default(request.GET.get("range-min"), 100)
+    
+    range_query = Q(range__gte=range_min,range__lte=range_max)
+    range_query_pano = Q(item__range__gte=level_min, item__range__lte=level_max)
+    
+    if range_min == 0:
+        range_query |= Q(range__isnull=True)
+        range_query_pano |= Q(item__range__isnull=True)
     
     attribute_querys = []
     attribute_querys_pano = []
     for k, v in request.GET.items():
         if re.match("attribute-\d+", k):
             index = k[10:]
-            min = 1
-            max = 9999
-            try:
-                min = int(request.GET.get("value-min-"+index, 1))
-                max = int(request.GET.get("value-max-"+index, 9999))
-            except ValueError:
-                pass
+            min = get_int_or_default(request.GET.get("value-min-"+index), 1)
+            max = get_int_or_default(request.GET.get("value-max-"+index), 9999)
             
             attributeObject = Attribute.objects.get_if_exist(name=v)
             
@@ -106,7 +117,7 @@ def search(request):
                                            panoplieattribute__value__gte=min))
         
     
-    items = Item.objects.filter(type_query & name_query & level_query & recipe_query)
+    items = Item.objects.filter(type_query & name_query & level_query & recipe_query & cost_query & range_query)
     for q in attribute_querys:
         items = items.filter(q)
     items = items.distinct().order_by("level")
@@ -122,7 +133,7 @@ def search(request):
     
     panoplies = []
     if request.GET.get("include-panoplie") and not recipes:
-        panoplies = Panoplie.objects.filter(name_query & type_query_pano & level_query_pano)
+        panoplies = Panoplie.objects.filter(name_query & type_query_pano & level_query_pano & cost_query_pano & range_query_pano)
         for q in attribute_querys_pano:
             panoplies = panoplies.filter(q)
         panoplies = panoplies.distinct()
@@ -212,6 +223,11 @@ def dictify_pano(pano):
     
     return result
 
+def get_int_or_default(str, default=0):
+    try:
+        return int(str)
+    except:
+        return default
 
 
 

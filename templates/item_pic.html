@@ -1,3 +1,5 @@
 
-<img src="http://staticns.ankama.com/dofus/www/game/items/200/{{ item_id }}.png" alt="Image de l'objet" width="120" height="120" />
+{% load staticfiles %}
+
+<img src="{% static "img/items/" %}{{ item_id }}.png" alt="Image de l'objet" width="120" height="120" />
 

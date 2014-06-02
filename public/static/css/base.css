@@ -55,6 +55,11 @@ header a {
     text-decoration: none;
 }
 
+nav.fixed {
+	position: fixed;
+	margin: 10px 0;
+	top: 0;
+}
 
 nav.wide {
     float: left;

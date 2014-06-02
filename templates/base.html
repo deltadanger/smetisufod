@@ -27,11 +27,6 @@
     <meta name="twitter:description" content="{{ pageDescription }}" />
     
     <title>{% block title %}{{ pageTitle }}{% endblock %}</title>
-    
-    <script src="{% static "js/jquery.1.11.0.min.js" %}"></script>
-    <script src="{% static "js/jquery-ui.1.10.4.min.js" %}"></script>
-    <script src="{% static "js/google.analytics.js" %}"></script>
-    {% block js %}{% endblock %}
 
     <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}">
     {% block css %}{% endblock %}
@@ -39,7 +34,7 @@
 <body>
 
 <header>
-<a href="{% url "home" %}">SmetisufoD</a>
+<a href="{% url "home" %}">SmetisufoD</a> {{ debug }}
 </header>
 
 <nav class="wide">
@@ -62,5 +57,16 @@
     <a href="http://www.ankama.com" target="_blank">Toutes les informations et images pr&eacute;sentes sur ce site sont la propri&eacute;t&eacute; de Ankama.</a>
 </footer>
 
+{% if debug %}
+<script src="{% static "js/jquery.1.11.0.min.js" %}"></script>
+<script src="{% static "js/jquery-ui.1.10.4.min.js" %}"></script>
+{% else %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+{% endif %}
+
+<script src="{% static "js/google.analytics.js" %}"></script>
+<script src="{% static "js/base.js" %}"></script>
+{% block js %}{% endblock %}
 </body>
 </html>
