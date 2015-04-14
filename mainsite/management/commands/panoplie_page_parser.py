@@ -23,6 +23,7 @@ def get_attr(attrs, attr):
             return e[1]
     return ""
 
+# TODO: Rewrite parser with new page structure
 class MainPanopliePageParser(HTMLParser):
     def __init__(self, web_cache, history):
         HTMLParser.__init__(self)

@@ -23,6 +23,7 @@ def get_attr(attrs, attr):
             return e[1]
     return ""
 
+# TODO: Rewrite parser with new page structure
 class ItemPageParser(HTMLParser):
     def __init__(self, item_type):
         HTMLParser.__init__(self)

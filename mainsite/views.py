@@ -249,6 +249,7 @@ def get_item(request):
     return HttpResponse(json.dumps(result), mimetype="application/json")
 
 
+# TODO: Add IP tag + admin function to remove by IP
 def flag_invalid(request):
     name = request.GET.get("name")
     item = Item.objects.get_if_exist(name=name)

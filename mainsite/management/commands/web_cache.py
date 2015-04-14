@@ -20,10 +20,10 @@ class WebCache():
         return content
         
     def _get_from_local(self, url):
-        file = self._get_name_from_url(url)
+        local_file = self._get_name_from_url(url)
         
-        if path.isfile(file):
-            with open(file, "r") as f:
+        if path.isfile(local_file):
+            with open(local_file, "r") as f:
                 content = "".join(f.readlines())
             
             return content
@@ -31,9 +31,9 @@ class WebCache():
         return None
     
     def _save_to_local(self, url, content):
-        file = self._get_name_from_url(url)
+        local_file = self._get_name_from_url(url)
         
-        with open(file, "w") as f:
+        with open(local_file, "w") as f:
             f.write(content)
         
     

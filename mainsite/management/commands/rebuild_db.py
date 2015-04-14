@@ -2,7 +2,7 @@
 import urllib2, logging
 from optparse import make_option
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.utils import timezone
 
 from web_cache import WebCache
@@ -151,20 +151,21 @@ def fetch_items(web_cache, history):
     build_jobs()
     
     for mapping in CATEGORY_MAPPING:
-        type = build_item_type(mapping["type"], mapping["category"], mapping["job"])
+        item_type = build_item_type(mapping["type"], mapping["category"], mapping["job"])
         
         url = BASE_URL + mapping["url"] + "?pa="
         i = 1
         p = None
         prev_page = 0
         current_page = 1
+        # TODO: remove page management and use size=99999
         while prev_page != current_page:
             log.info(url+str(i))
             content = web_cache.get(url + str(i))
             
             if p:
                 prev_page = p.current_page
-            p = ItemPageParser(type)
+            p = ItemPageParser(item_type)
             p.feed(content)
             current_page = p.current_page
             history.updated_items.add(*p.changed_items)
@@ -181,13 +182,13 @@ def build_jobs():
     for j in JOBS:
         Job.objects.get_or_create(name=j)
     
-def build_item_type(type, category, job):
+def build_item_type(item_type, category, job):
     category = ItemCategory.objects.get(name=category)
     if job:
         job = Job.objects.get(name=job)
     
-    type, created = ItemType.objects.get_or_create(name=type, category=category, job=job)
-    return type
+    item_type, _created = ItemType.objects.get_or_create(name=type, category=category, job=job)
+    return item_type
 
 
 
