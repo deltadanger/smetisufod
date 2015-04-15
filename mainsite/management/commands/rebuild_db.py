@@ -14,9 +14,6 @@ from mainsite.models import Item, ItemCategory, ItemType, Job, UpdateHistory
 
 log = logging.getLogger(__name__)
 
-PROXY = "http://jacoelt:8*ziydwys@crlwsgateway_cluster.salmat.com.au:8080"
-PROXY_LIST = {"http":PROXY, "https":PROXY}
-
 BASE_URL = "http://www.dofus.com/fr/mmorpg-jeux/objets/"
 SETS_URL = "http://www.dofus.com/fr/mmorpg-jeux/panoplies"
 
@@ -130,7 +127,7 @@ class Command(BaseCommand):
         )
         
     def handle(self, *args, **options):
-        proxy = urllib2.ProxyHandler(PROXY_LIST)
+        proxy = urllib2.ProxyHandler()
         opener = urllib2.build_opener(proxy)
         opener.addheaders.append(('Cookie', COOKIES))
         
