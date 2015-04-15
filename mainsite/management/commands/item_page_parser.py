@@ -3,19 +3,28 @@ import re, logging
 
 from HTMLParser import HTMLParser
 
-from mainsite.models import Item, ItemType, ItemCategory, Attribute, AttributeValue, AttributeCondition, Recipe
+from mainsite.models import Item, Attribute, AttributeValue, AttributeCondition, Recipe,\
+    ItemType
 
 log = logging.getLogger(__name__)
 
-RE_LEVEL = re.compile("Level (\d+)")
-RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
-RE_CONDITION = re.compile("(.+?) ([><=]) (\d+)")
-RE_CARAC_PA = re.compile("PA : (\d{1,2})")
-RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
-RE_CARAC_CC = re.compile("CC : 1/(\d{1,2})( \(\+(\d{1,2})\))?")
-RE_CARAC_EC = re.compile("EC : 1/(\d{1,2})")
-RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s+(\d) x ")
-RE_ITEM_ID = re.compile(".*/(\d+)\.swf")
+RE_ITEM_ID = re.compile("fr/mmorpg/encyclopedie/[a-z]+/(.*)")
+
+RE_LEVEL = re.compile("Niveau : (\d+)")
+# RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
+# RE_CONDITION = re.compile("(.+?) ([><=]) (\d+)")
+# RE_CARAC_PA = re.compile("PA : (\d{1,2})")
+# RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
+# RE_CARAC_CC = re.compile("CC : 1/(\d{1,2})( \(\+(\d{1,2})\))?")
+# RE_CARAC_EC = re.compile("EC : 1/(\d{1,2})")
+# RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s+(\d) x ")
+# RE_ITEM_ID = re.compile(".*/(\d+)\.swf")
+
+BLOCK_DESCRIPTION = "Description"
+
+BASE_URL_STUFF = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements?size=99999"
+DETAIL_URL_STUFF = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements/{item_id_name}"
+BASE_URL_WEAPONS = "http://www.dofus.com/fr/mmorpg/encyclopedie/armes?size=99999"
 
 def get_attr(attrs, attr):
     for e in attrs:
@@ -23,16 +32,46 @@ def get_attr(attrs, attr):
             return e[1]
     return ""
 
+
+class MainItemPageParser(HTMLParser):
+    def __init__(self, web_cache, history):
+        HTMLParser.__init__(self)
+        self.web_cache = web_cache
+        self.history = history
+        
+        self.in_table = False
+        
+    def handle_starttag(self, tag, attrs):
+        if tag == "table" and "ak-responsivetable" in get_attr(attrs, "class"):
+            self.in_table = True
+        
+        if self.in_table and tag == "a" and RE_ITEM_ID.match(get_attr(attrs, "href")):
+            # item_id_name contains the item id and its formatter name ie: 15495-arc-necrotique
+            item_id_name = RE_ITEM_ID.match(get_attr(attrs, "href")).group(1)
+            url = DETAIL_URL_STUFF.format(item_id_name=item_id_name)
+            log.info(url)
+            
+            content = self.web_cache.get(url)
+            # Extract the id part of the id_name variable
+            p = ItemPageParser(re.match("\d+", item_id_name).group())
+            p.feed(content)
+            if p.has_changed:
+                self.history.updated_items.add(p.item)
+        
+    def handle_endtag(self, tag):
+        if self.in_table and tag == "table":
+            self.in_table = False
+
 # TODO: Rewrite parser with new page structure
 class ItemPageParser(HTMLParser):
-    def __init__(self, item_type):
+    def __init__(self, item_id):
         HTMLParser.__init__(self)
         self.reset_vars()
         
         self.item = None
-        self.item_type = item_type
-        self.current_page = 0
-        self.changed_items = []
+        self.item_id = item_id
+#         self.item_type = item_type
+#         self.current_page = 0
         
     def reset_vars(self):
         self.has_changed = False
@@ -40,27 +79,96 @@ class ItemPageParser(HTMLParser):
         self.current_item_conditions_dump = ""
         
         self.get_name = False
+        self.in_name = False
         self.get_level = False
-        self.in_desc = False
+        self.get_type = False
+        self.in_type = False
+#         self.in_desc = False
+        self.content_is_desc = False
         self.get_desc = False
-        self.in_caracs_block = False
-        self.in_caracs_left = False
+#         self.in_caracs_block = False
+#         self.in_caracs_left = False
         self.get_attributes = False
-        self.in_caracs_right = False
-        self.in_conditions = False
+#         self.in_caracs_right = False
+#         self.in_conditions = False
         self.get_conditions = False
-        self.in_caracs = False
+#         self.in_caracs = False
         self.get_caracs = False
-        self.in_recipe = False
-        self.in_recipe_confirmed = False
+#         self.in_recipe = False
+#         self.in_recipe_confirmed = False
         self.get_recipe = False
-        self.recipe = ""
-        self.in_pagination = False
-        self.get_page = False
+#         self.recipe = ""
+#         self.in_pagination = False
+#         self.get_page = False
+        self.check_block = False
         
     
     def handle_starttag(self, tag, attrs):
-        # Start of Item definition
+        if tag == "div" and "ak-panel-title" in get_attr(attrs, "class"):
+            self.check_block = True
+        
+        # Item name
+        if tag == "div" and "ak-title-container" in get_attr(attrs, "class"):
+            self.in_name = True
+        if self.in_name and tag == "h1":
+            self.get_name = True
+            
+        # Item type
+        if tag == "div" and "ak-encyclo-detail-type" in get_attr(attrs, "class"):
+            self.in_type = True
+        if self.in_type and tag == "span":
+            self.get_type = True
+        
+        # Item level
+        if tag == "div" and "ak-encyclo-detail-level" in get_attr(attrs, "class"):
+            self.get_level = True
+        
+        # Item description
+        if self.content_is_desc and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
+            self.get_desc = True
+            
+    def handle_data(self, data):
+        if self.check_block:
+            block = data.strip()
+            if block == BLOCK_DESCRIPTION:
+                self.content_is_desc = True
+        
+        if self.get_name:
+            name = data.strip()
+            try:
+                self.item = Item.objects.get(name=name)
+            except:
+                self.item = Item(name=name)
+                
+        if self.get_type:
+            item_type = ItemType.objects.get(name=data.strip())
+            self.item.type = item_type
+    
+        if self.get_level:
+            self.item.level = RE_LEVEL.match(data.strip())
+        
+        if self.get_desc:
+            self.item.description = data.strip()
+        
+    def handle_endtag(self, tag):
+        if self.check_block and tag == "div":
+            self.check_block = False
+        
+        if self.get_name and tag == "h1":
+            self.in_name = False
+            self.get_name = False
+        
+        if self.get_type and tag == "span":
+            self.get_type = False
+            
+        if self.get_level and tag == "div":
+            self.get_level = False
+        
+        if self.get_desc and tag == "div":
+            self.get_desc = False
+            self.content_is_desc = False
+        
+    def handle_starttag(self, tag, attrs):
         if tag == "div" and "middle_content" in get_attr(attrs, "class"):
             if self.item:
                 self.has_changed |= self.item.type != self.item_type
