@@ -127,20 +127,24 @@ class Command(BaseCommand):
         )
         
     def handle(self, *args, **options):
-        proxy = urllib2.ProxyHandler()
-        opener = urllib2.build_opener(proxy)
-        opener.addheaders.append(('Cookie', COOKIES))
-        
-        web_cache = WebCache(opener, options["use-cache"] == "n")
-        
-        history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
-        
-        fetch_items(web_cache, history)
-        fetch_sets(web_cache, history)
-        # printItems()
-        
-        history.finished = timezone.now()
-        history.save()
+        rebuild_db(options["use-cache"] == "n")
+    
+
+def rebuild_db(use_cache=True):
+    proxy = urllib2.ProxyHandler()
+    opener = urllib2.build_opener(proxy)
+    opener.addheaders.append(('Cookie', COOKIES))
+    
+    web_cache = WebCache(opener, use_cache)
+    
+    history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
+    
+    fetch_items(web_cache, history)
+    fetch_sets(web_cache, history)
+    # printItems()
+    
+    history.finished = timezone.now()
+    history.save()
 
 
 def fetch_items(web_cache, history):
