@@ -2,14 +2,13 @@
 from HTMLParser import HTMLParser
 import re, logging
 
-from rebuild_db import printItems
 from mainsite.models import Item, Attribute, AttributeValue, AttributeCondition, Recipe, \
     ItemType
 
 
 log = logging.getLogger(__name__)
 
-RE_ITEM_ID = re.compile("fr/mmorpg/encyclopedie/[a-z]+/(.*)")
+RE_ITEM_ID = re.compile("/fr/mmorpg/encyclopedie/[a-z]+/(.*)")
 
 RE_LEVEL = re.compile("Niveau : (\d+)")
 RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
@@ -44,37 +43,40 @@ class MainItemPageParser(HTMLParser):
         self.history = history
         
         self.in_table = False
+        self.in_link = False
         
     def handle_starttag(self, tag, attrs):
         if tag == "table" and "ak-responsivetable" in get_attr(attrs, "class"):
             self.in_table = True
         
-        if self.in_table and tag == "a" and RE_ITEM_ID.match(get_attr(attrs, "href")):
+        if self.in_table and tag == "span" and "ak-linker" in get_attr(attrs, "class"):
+            self.in_link = True
+        
+        if self.in_link and tag == "a" and "fr/mmorpg/encyclopedie/" in get_attr(attrs, "href"):
             # item_id_name contains the item id and its formatter name ie: 15495-arc-necrotique
             item_id_name = RE_ITEM_ID.match(get_attr(attrs, "href")).group(1)
             url = DETAIL_URL_STUFF.format(item_id_name=item_id_name)
-            log.info(url)
             
             content = self.web_cache.get(url)
             # Extract the id part of the id_name variable
-            p = ItemPageParser(re.match("\d+", item_id_name).group(), self.web_cache)
+            p = ItemPageParser(re.match("\d+", item_id_name).group())
             p.feed(content)
-            printItems(p.item)
             if p.has_changed:
+                p.item.save()
                 self.history.updated_items.add(p.item)
         
     def handle_endtag(self, tag):
         if self.in_table and tag == "table":
             self.in_table = False
+            self.in_link = False
 
 class ItemPageParser(HTMLParser):
-    def __init__(self, item_id, web_cache):
+    def __init__(self, item_id):
         HTMLParser.__init__(self)
         self.reset_vars()
         
         self.item = None
         self.item_id = item_id
-        self.web_cache = web_cache
         
     def reset_vars(self):
         self.has_changed = False
@@ -100,6 +102,7 @@ class ItemPageParser(HTMLParser):
         self.content_is_recipe = False
         self.in_recipe = False
         self.get_recipe_element_number = False
+        self.in_recipe_element_name = False
         self.get_recipe_element_name = False
         self.recipe = ""
         self.check_block = False
@@ -197,7 +200,6 @@ class ItemPageParser(HTMLParser):
             if block == BLOCK_RECIPE:
                 self.content_is_recipe = True
         
-        
         if self.get_name:
             name = data.strip()
             try:
@@ -205,11 +207,18 @@ class ItemPageParser(HTMLParser):
             except:
                 self.item = Item(name=name)
                 self.has_changed = True
+            
+            self.has_changed |= self.item.original_id != self.item_id
+            self.item.original_id = self.item_id
                 
         if self.get_type:
-            item_type = ItemType.objects.get(name=data.strip())
-            self.has_changed |= self.item.type != item_type
-            self.item.type = item_type
+            try:
+                item_type = ItemType.objects.get(name=data.strip())
+                self.has_changed |= self.item.type != item_type
+                self.item.type = item_type
+            except ItemType.DoesNotExist:
+                log.debug("Could not find item type '{}'".format(data.strip()))
+                raise
     
         if self.get_level:
             match = RE_LEVEL.match(data.strip())
@@ -276,7 +285,7 @@ class ItemPageParser(HTMLParser):
             self.recipe += data.strip()
         
         if self.get_recipe_element_name:
-            self.recipe += data.strip()
+            self.recipe += " " + data.strip()
         
     def handle_endtag(self, tag):
         if self.check_block and tag == "div":

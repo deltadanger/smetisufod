@@ -40,7 +40,34 @@ JOBS = [
     "Forgeur de Haches",
 ]
 
-# COOKIES = "LANG=fr; SID=E1E002989B2E28B1544466C1DFE80000"
+ITEM_TYPES = [
+    # (CATEGORY , TYPE , JOB)
+    ("Equipement", "Amulette", "Bijouter"),
+    ("Equipement", "Anneau", "Bijouter"),
+    ("Equipement", "Chapeau", "Tailleur"),
+    ("Equipement", "Cape", "Tailleur"),
+    ("Equipement", "Sac a Dos", "Tailleur"),
+    ("Equipement", "Ceinture", "Cordonnier"),
+    ("Equipement", "Bottes", "Cordonnier"),
+    ("Equipement", "Bouclier", "Forgeur de Boucliers"),
+    
+    ("Arme", "Arc", "Sculpteur d'Arcs"),
+    ("Arme", "Baguette", "Sculpteur de Baguettes"),
+    ("Arme", "Baton", "Sculpteur de Baton"),
+    ("Arme", "Dague", "Forgeur de Dagues"),
+    ("Arme", "Epée", "Forgeur d'Epées"),
+    ("Arme", "Marteau", "Forgeur de Marteaux"),
+    ("Arme", "Pelle", "Forgeur de Pelle"),
+    ("Arme", "Hache", "Forgeur de Haches"),
+    ("Arme", "Pioche", None),
+    ("Arme", "Faux", None),
+    ("Arme", "Outil", None),
+    
+    ("Familier", "Familier", None),
+    ("Familier", "Montilier", None),
+]
+
+COOKIES = "LANG=fr; SID=8F065BA510C1A36E09AEDFB7EE2A0001"
 
 class Command(BaseCommand):
     help = 'Update or rebuild the items database'
@@ -59,15 +86,15 @@ class Command(BaseCommand):
 def rebuild_db(use_cache=True):
     proxy = urllib2.ProxyHandler()
     opener = urllib2.build_opener(proxy)
-#     opener.addheaders.append(('Cookie', COOKIES))
+    opener.addheaders.append(('Cookie', COOKIES))
     
     web_cache = WebCache(opener, use_cache)
     
     history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
     
     fetch_items(web_cache, history)
-    fetch_sets(web_cache, history)
-    # printItems()
+#     fetch_sets(web_cache, history)
+    printItems()
     
     history.finished = timezone.now()
     history.save()
@@ -76,32 +103,34 @@ def rebuild_db(use_cache=True):
 def fetch_items(web_cache, history):
     build_categories()
     build_jobs()
+    build_item_types()
     
-    p = MainItemPageParser()
+    p = MainItemPageParser(web_cache, history)
     p.feed(web_cache.get(STUFF_URL))
-    history.updated_items.add(*p.changed_items)
     
     p.feed(web_cache.get(WEAPONS_URL))
-    history.updated_items.add(*p.changed_items)
     
     
     
 
 def build_categories():
     for c in CATEGORIES:
+        log.debug("Inserting category '{}'".format(c))
         ItemCategory.objects.get_or_create(name=c)
     
 def build_jobs():
     for j in JOBS:
+        log.debug("Inserting job '{}'".format(j))
         Job.objects.get_or_create(name=j)
     
-def build_item_type(item_type, category, job):
-    category = ItemCategory.objects.get(name=category)
-    if job:
-        job = Job.objects.get(name=job)
-    
-    item_type, _created = ItemType.objects.get_or_create(name=type, category=category, job=job)
-    return item_type
+def build_item_types():
+    for category, item_type, job in ITEM_TYPES:
+        category = ItemCategory.objects.get(name=category)
+        if job:
+            job = Job.objects.get(name=job)
+        
+        log.debug("Inserting type '{}'".format(item_type))
+        ItemType.objects.get_or_create(name=item_type, category=category, job=job)
 
 
 
@@ -116,6 +145,7 @@ def fetch_sets(web_cache, history):
 def printItems():
     for item in Item.objects.all():
         print item.name
+        print item.description.encode('ascii', 'replace')
         for a in item.attributes.all():
             attribute = a.attributevalue_set.get(item=item)
             print a.name, ":" + str(attribute.min_value) + "-" + str(attribute.max_value)
@@ -126,19 +156,12 @@ def printItems():
             print c.name, condition.equality, condition.required_value
         
         print "\nCaracs"
-        print str(item.cost) + " PA ; " + str(item.range) + " PO ; CC 1/" + str(item.crit_chance) + " (+" + str(item.crit_damage) + ")"
+        print str(item.cost) + " PA ; " + str(item.range_min) + "-" + str(item.range_max) + " PO ; CC 1/" + str(item.crit_chance) + " (+" + str(item.crit_damage) + ")"
         
-        print "\nCraft"
-        craft = []
-        if item.has_valid_recipe:
-            for i in item.craft.all():
-                recipe = i.recipe_element_set.get(recipe_item=item)
-                craft.append(str(recipe.quantity) + " x " + recipe.recipe_element.name)
-            print ",".join(craft)
-            
-        else:
-            print "Invalid recipe"
+        print "\nRecipe"
+        print item.recipe
+        
         print "\n"
-
+    print "Items printed: {}".format(Item.objects.count())
 
     
