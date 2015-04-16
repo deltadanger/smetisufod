@@ -1,30 +1,34 @@
 # -*- coding: utf-8 -*-
+from HTMLParser import HTMLParser
 import re, logging
 
-from HTMLParser import HTMLParser
-
-from mainsite.models import Item, Attribute, AttributeValue, AttributeCondition, Recipe,\
+from rebuild_db import printItems
+from mainsite.models import Item, Attribute, AttributeValue, AttributeCondition, Recipe, \
     ItemType
+
 
 log = logging.getLogger(__name__)
 
 RE_ITEM_ID = re.compile("fr/mmorpg/encyclopedie/[a-z]+/(.*)")
 
 RE_LEVEL = re.compile("Niveau : (\d+)")
-# RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
-# RE_CONDITION = re.compile("(.+?) ([><=]) (\d+)")
-# RE_CARAC_PA = re.compile("PA : (\d{1,2})")
-# RE_CARAC_PO = re.compile("Portée : (\d{1,2})")
-# RE_CARAC_CC = re.compile("CC : 1/(\d{1,2})( \(\+(\d{1,2})\))?")
-# RE_CARAC_EC = re.compile("EC : 1/(\d{1,2})")
-# RE_RECIPE_ELEMENT_QUANTITY = re.compile("\+?\s+(\d) x ")
-# RE_ITEM_ID = re.compile(".*/(\d+)\.swf")
+RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
+RE_CARAC_PA = re.compile("(\d{1,2}) (\d utilisations? par tour)")
+RE_CARAC_PO = re.compile("(\d+)( à (\d+))?")
+RE_CARAC_CC = re.compile("1/(\d{1,2})( \(\+(\d{1,2})\))?")
+RE_CONDITION = re.compile("(.+?) ([><=]) (\d+)")
 
 BLOCK_DESCRIPTION = "Description"
+BLOCK_ATTRIBUTES = "Effets"
+BLOCK_CARACS = "Caractéristiques"
+BLOCK_CONDITIONS = "Conditions"
+BLOCK_RECIPE = "Recette"
 
-BASE_URL_STUFF = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements?size=99999"
+BASE_URL = "http:/www.dofus.com"
 DETAIL_URL_STUFF = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements/{item_id_name}"
-BASE_URL_WEAPONS = "http://www.dofus.com/fr/mmorpg/encyclopedie/armes?size=99999"
+DETAIL_URL_WEAPONS = "http://www.dofus.com/fr/mmorpg/encyclopedie/armes/{item_id_name}"
+
+RECIPE_ELEMENT_SEPARATOR = " ; "
 
 def get_attr(attrs, attr):
     for e in attrs:
@@ -53,8 +57,9 @@ class MainItemPageParser(HTMLParser):
             
             content = self.web_cache.get(url)
             # Extract the id part of the id_name variable
-            p = ItemPageParser(re.match("\d+", item_id_name).group())
+            p = ItemPageParser(re.match("\d+", item_id_name).group(), self.web_cache)
             p.feed(content)
+            printItems(p.item)
             if p.has_changed:
                 self.history.updated_items.add(p.item)
         
@@ -62,16 +67,14 @@ class MainItemPageParser(HTMLParser):
         if self.in_table and tag == "table":
             self.in_table = False
 
-# TODO: Rewrite parser with new page structure
 class ItemPageParser(HTMLParser):
-    def __init__(self, item_id):
+    def __init__(self, item_id, web_cache):
         HTMLParser.__init__(self)
         self.reset_vars()
         
         self.item = None
         self.item_id = item_id
-#         self.item_type = item_type
-#         self.current_page = 0
+        self.web_cache = web_cache
         
     def reset_vars(self):
         self.has_changed = False
@@ -83,23 +86,22 @@ class ItemPageParser(HTMLParser):
         self.get_level = False
         self.get_type = False
         self.in_type = False
-#         self.in_desc = False
         self.content_is_desc = False
         self.get_desc = False
-#         self.in_caracs_block = False
-#         self.in_caracs_left = False
+        self.content_is_attributes = False
+        self.in_attributes = False
         self.get_attributes = False
-#         self.in_caracs_right = False
-#         self.in_conditions = False
-        self.get_conditions = False
-#         self.in_caracs = False
+        self.content_is_caracs = False
+        self.in_caracs = False
         self.get_caracs = False
-#         self.in_recipe = False
-#         self.in_recipe_confirmed = False
-        self.get_recipe = False
-#         self.recipe = ""
-#         self.in_pagination = False
-#         self.get_page = False
+        self.content_is_conditions = False
+        self.in_conditions = False
+        self.get_conditions = False
+        self.content_is_recipe = False
+        self.in_recipe = False
+        self.get_recipe_element_number = False
+        self.get_recipe_element_name = False
+        self.recipe = ""
         self.check_block = False
         
     
@@ -126,229 +128,40 @@ class ItemPageParser(HTMLParser):
         # Item description
         if self.content_is_desc and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
             self.get_desc = True
-            
-    def handle_data(self, data):
-        if self.check_block:
-            block = data.strip()
-            if block == BLOCK_DESCRIPTION:
-                self.content_is_desc = True
         
-        if self.get_name:
-            name = data.strip()
-            try:
-                self.item = Item.objects.get(name=name)
-            except:
-                self.item = Item(name=name)
-                
-        if self.get_type:
-            item_type = ItemType.objects.get(name=data.strip())
-            self.item.type = item_type
-    
-        if self.get_level:
-            self.item.level = RE_LEVEL.match(data.strip())
-        
-        if self.get_desc:
-            self.item.description = data.strip()
-        
-    def handle_endtag(self, tag):
-        if self.check_block and tag == "div":
-            self.check_block = False
-        
-        if self.get_name and tag == "h1":
-            self.in_name = False
-            self.get_name = False
-        
-        if self.get_type and tag == "span":
-            self.get_type = False
-            
-        if self.get_level and tag == "div":
-            self.get_level = False
-        
-        if self.get_desc and tag == "div":
-            self.get_desc = False
-            self.content_is_desc = False
-        
-    def handle_starttag(self, tag, attrs):
-        if tag == "div" and "middle_content" in get_attr(attrs, "class"):
-            if self.item:
-                self.has_changed |= self.item.type != self.item_type
-                self.item.type = self.item_type
-                
-                self.has_changed |= self.current_item_attributes_dump != str(self.item.attributevalue_set.all())
-                self.has_changed |= self.current_item_conditions_dump != str(self.item.attributecondition_set.all())
-                
-                self.item.save()
-                
-                if self.has_changed:
-                    self.changed_items.append(self.item)
-                
-            self.reset_vars()
-        
-        
-        # Name of Item
-        if tag == "h2" and "title_element" in get_attr(attrs, "class"):
-            self.get_name = True
-        
-        # Level of Item
-        if tag == "span" and "level_element" in get_attr(attrs, "class"):
-            self.get_level = True
-        
-        # Original Id of Item, for flash image display
-        if tag == "param" and "flashvars" in get_attr(attrs, "name"):
-            match = RE_ITEM_ID.match(get_attr(attrs, "value"))
-            
-            if match:
-                self.item.original_id = int(match.group(1))
-        
-        # Description of Item
-        if tag == "div" and "desc" in get_attr(attrs, "class"):
-            self.in_desc = True
-        
-        if self.in_desc and tag == "span":
-            self.get_desc = True
-        
-        # Attributes of Item
-        if tag == "div" and "element_carac" in get_attr(attrs, "class"):
-            self.in_caracs_block = True
-            
-        if self.in_caracs_block and tag == "div" and "element_carac_left" in get_attr(attrs, "class"):
-            self.in_caracs_left = True
-        
-        if self.in_caracs_left and tag == "li":
+        # Item attributes
+        if self.content_is_attributes and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
+            self.in_attributes = True
+        if self.in_attributes and tag == "div" and "ak-title" in get_attr(attrs, "class"):
             self.get_attributes = True
         
-        # Conditions of Item
-        if self.in_caracs_block and tag == "div" and "element_carac_right" in get_attr(attrs, "class"):
-            self.in_caracs_left = False
-            self.get_attributes = False
-            self.in_caracs_right = True
-        
-        if self.in_conditions and tag == "ul":
-            self.get_conditions = True
-        
-        # Caracteristics of Item
-        if self.in_caracs and tag == "ul":
+        # Item caracteristics
+        if self.content_is_caracs and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
+            self.in_caracs = True
+        if self.in_caracs and tag == "div" and "ak-title" in get_attr(attrs, "class"):
             self.get_caracs = True
         
-        # Recipe of Item
-        if tag == "div" and "element_carac_block1" in get_attr(attrs, "class"):
-            self.in_caracs_block = False
-            self.in_caracs_left = False
-            self.get_attributes = False
-            self.in_caracs_right = False
-            self.get_conditions = False
-            self.get_caracs = False
-            
-            self.in_recipe = True
-        
-        if self.in_recipe_confirmed and tag == "p":
-            self.get_recipe = True
-        
-        
-        # Current Page number, used for last-page-check
-        if tag == "div" and "pagination" in get_attr(attrs, "class"):
-            self.in_pagination = True
-        
-        if self.in_pagination and tag == "span" and "on" in get_attr(attrs, "class"):
-            self.get_page = True
-        
-    def handle_data(self, data):
-        if self.get_name:
-            self.item, created = Item.objects.get_or_create(name=data)
-            log.debug("Item: " + data + " ("+str(created)+")")
-            self.has_changed |= created
-            
-            self.current_item_attributes_dump = str(self.item.attributevalue_set.all())
-            self.item.attributevalue_set.all().delete()
-            
-            self.current_item_conditions_dump = str(self.item.attributecondition_set.all())
-            self.item.attributecondition_set.all().delete()
-        
-        if self.get_level:
-            match = RE_LEVEL.match(data)
-            if match:
-                self.has_changed |= self.item.level != int(match.group(1))
-                self.item.level = match.group(1)
-        
-        if self.get_desc:
-            self.has_changed |= self.item.description != unicode(data.decode("utf-8"))
-            self.item.description = data
-        
-        if self.get_attributes:
-            match = RE_ATTRIBUTE.match(data)
-            if match:
-                attr = match.group(4)
-                min = match.group(1)
-                max = match.group(3)
-                if not max:
-                    max = min
-                if int(min) < 0 and int(max) > 0:
-                    max = "-"+max
-                
-                # if not Attribute.objects.get_if_exist(name=attr):
-                    # log.debug(match.groups())
-                    # raise Exception("Weird attribute:" + attr + " on " + self.item.name)
-                
-                attr, created = Attribute.objects.get_or_create(name=attr)
-                
-                AttributeValue.objects.get_or_create(item=self.item, attribute=attr, min_value=int(min), max_value=int(max))
-        
-        if self.in_caracs_right and "Conditions :" in data:
+        # Item conditions
+        if self.content_is_conditions and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
             self.in_conditions = True
+        if self.in_conditions and tag == "div" and "ak-title" in get_attr(attrs, "class"):
+            self.get_conditions = True
+        
+        # Item recipe
+        if self.content_is_recipe and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
+            self.in_recipe = True
             
-        if self.get_conditions:
-            match = RE_CONDITION.match(data)
-            if match:
-                attr, equality, value = match.groups()
-                attr, created = Attribute.objects.get_or_create(name=attr)
-                
-                AttributeCondition.objects.get_or_create(item=self.item, attribute=attr, equality=equality, required_value=value)
-         
-        if self.in_caracs_right and "Caractéristiques" in data:
-            self.in_caracs = True
-            
-        if self.get_caracs:
-            pa = RE_CARAC_PA.match(data)
-            po = RE_CARAC_PO.match(data)
-            cc = RE_CARAC_CC.match(data)
-            ec = RE_CARAC_EC.match(data)
-            
-            if pa:
-                self.has_changed |= self.item.cost != int(pa.group(1))
-                self.item.cost = int(pa.group(1))
-                
-            if po:
-                self.has_changed |= self.item.range != int(po.group(1))
-                self.item.range = int(po.group(1))
-            
-            if cc:
-                self.has_changed |= self.item.crit_chance != int(cc.group(1))
-                self.item.crit_chance = int(cc.group(1))
-                if cc.group(3):
-                    self.has_changed |= self.item.crit_damage != int(cc.group(3))
-                    self.item.crit_damage = int(cc.group(3))
-                
-            if ec:
-                self.has_changed |= self.item.failure != int(ec.group(1))
-                self.item.failure = int(ec.group(1))
+        if self.in_recipe and tag == "div" and "ak-front" in get_attr(attrs, "class"):
+            self.get_recipe_element_number = True
         
-        if self.in_recipe and "Craft :" in data:
-            self.in_recipe_confirmed = True
+        if self.in_recipe and tag == "div" and "ak-content" in get_attr(attrs, "class"):
+            self.in_recipe_element_name = True
         
-        if self.get_recipe:
-            self.recipe += re.sub("\s+", " ", data)
+        if self.in_recipe_element_name and tag == "span" and "ak-linker" in get_attr(attrs, "class"):
+            self.get_recipe_element_name = True
         
-        if self.get_page:
-            self.current_page = int(data)
-        
-    def handle_endtag(self, tag):
-        if self.get_page and tag == "span":
-            self.get_page = False
-            self.in_pagination = False
-        
-        if self.in_recipe and tag == "p":
-            self.get_recipe = False
-            self.in_recipe_confirmed = False
+        if self.in_recipe and tag == "div" and "ak-social" in get_attr(attrs, "class"):
+            self.content_is_recipe = False
             self.in_recipe = False
             
             recipe = self.item.recipe
@@ -360,28 +173,144 @@ class ItemPageParser(HTMLParser):
             recipe.save()
             self.has_changed |= self.item.recipe != recipe
             self.item.recipe = recipe
-            
-        if self.get_caracs and tag == "ul":
-            self.get_caracs = False
-            self.in_caracs_right = False
-            self.in_caracs_block = False
-            
-        if self.get_conditions and tag == "ul":
-            self.get_conditions = False
-            self.in_conditions = False
         
-        if self.get_attributes and tag == "ul":
-            self.get_attributes = False
-            self.in_caracs_left = False
-            self.in_caracs_block = False
+    def handle_data(self, data):
+        if self.check_block:
+            block = data.strip()
             
-        if self.get_desc and tag == "span":
-            self.get_desc = False
-            self.in_desc = False
+            if block == BLOCK_DESCRIPTION:
+                self.content_is_desc = True
+                
+            if block == BLOCK_ATTRIBUTES:
+                self.content_is_attributes = True
+                
+            if block == BLOCK_CARACS:
+                self.content_is_attributes = False
+                self.in_attributes = False
+                self.content_is_caracs = True
+                
+            if block == BLOCK_CONDITIONS:
+                self.content_is_caracs = False
+                self.in_caracs = False
+                self.content_is_conditions = True
+                
+            if block == BLOCK_RECIPE:
+                self.content_is_recipe = True
         
-        if self.get_name and tag == "h2":
+        
+        if self.get_name:
+            name = data.strip()
+            try:
+                self.item = Item.objects.get(name=name)
+            except:
+                self.item = Item(name=name)
+                self.has_changed = True
+                
+        if self.get_type:
+            item_type = ItemType.objects.get(name=data.strip())
+            self.has_changed |= self.item.type != item_type
+            self.item.type = item_type
+    
+        if self.get_level:
+            match = RE_LEVEL.match(data.strip())
+            if match:
+                self.has_changed |= self.item.level != int(match.group(1))
+                self.item.level = match.group(1)
+                
+        if self.get_desc:
+            self.has_changed |= self.item.description != unicode(data.decode("utf-8"))
+            self.item.description = data.strip()
+        
+        if self.get_attributes:
+            match = RE_ATTRIBUTE.match(data)
+            if match:
+                attr = match.group(4).strip()
+                min_value = match.group(1)
+                max_value = match.group(3)
+                if not max_value:
+                    max_value = min_value
+                if int(min_value) < 0 and int(max_value) > 0:
+                    max_value = "-"+max_value
+                
+                # if not Attribute.objects.get_if_exist(name=attr):
+                    # log.debug(match.groups())
+                    # raise Exception("Weird attribute:" + attr + " on " + self.item.name)
+                
+                attr, _created = Attribute.objects.get_or_create(name=attr)
+                
+                AttributeValue.objects.get_or_create(item=self.item, attribute=attr, min_value=int(min_value), max_value=int(max_value))
+        
+        
+        if self.get_caracs:
+            pa = RE_CARAC_PA.match(data)
+            po = RE_CARAC_PO.match(data)
+            cc = RE_CARAC_CC.match(data)
+            
+            if pa:
+                self.has_changed |= self.item.cost != int(pa.group(1))
+                self.item.cost = int(pa.group(1))
+                
+            if po:
+                self.has_changed |= self.item.range_min != int(po.group(1)) and self.item.range_max != int(po.group(3))
+                self.item.range_min = int(po.group(1))
+                self.item.range_max = int(po.group(3))
+            
+            if cc:
+                self.has_changed |= self.item.crit_chance != int(cc.group(1))
+                self.item.crit_chance = int(cc.group(1))
+                if cc.group(3):
+                    self.has_changed |= self.item.crit_damage != int(cc.group(3))
+                    self.item.crit_damage = int(cc.group(3))
+        
+        if self.get_conditions:
+            match = RE_CONDITION.match(data)
+            if match:
+                attr, equality, value = match.groups()
+                attr, _created = Attribute.objects.get_or_create(name=attr.strip())
+                
+                AttributeCondition.objects.get_or_create(item=self.item, attribute=attr, equality=equality.strip(), required_value=value)
+         
+        if self.get_recipe_element_number:
+            if self.recipe:
+                self.recipe += RECIPE_ELEMENT_SEPARATOR
+            self.recipe += data.strip()
+        
+        if self.get_recipe_element_name:
+            self.recipe += data.strip()
+        
+    def handle_endtag(self, tag):
+        if self.check_block and tag == "div":
+            self.check_block = False
+        
+        if self.get_name and tag == "h1":
+            self.in_name = False
             self.get_name = False
         
-        if self.get_level and tag == "span":
+        if self.get_type and tag == "span":
+            self.in_type = False
+            self.get_type = False
+            
+        if self.get_level and tag == "div":
             self.get_level = False
         
+        if self.get_desc and tag == "div":
+            self.get_desc = False
+            self.content_is_desc = False
+            
+        if self.get_attributes and tag == "div":
+            self.get_attributes = False
+        
+        if self.get_caracs and tag == "div":
+            self.get_caracs = False
+        
+        if self.get_conditions and tag == "div":
+            self.get_conditions = False
+            self.in_conditions = False
+            self.content_is_conditions = False
+        
+        if self.get_recipe_element_number and tag == "div":
+            self.get_recipe_element_number = False
+        
+        if self.get_recipe_element_name and tag == "span":
+            self.in_recipe_element_name = False
+            self.get_recipe_element_name = False

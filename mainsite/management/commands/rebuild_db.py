@@ -7,14 +7,15 @@ from django.utils import timezone
 
 from web_cache import WebCache
 
-from item_page_parser import ItemPageParser
+from item_page_parser import MainItemPageParser
 from panoplie_page_parser import MainPanopliePageParser
 
 from mainsite.models import Item, ItemCategory, ItemType, Job, UpdateHistory
 
 log = logging.getLogger(__name__)
 
-BASE_URL = "http://www.dofus.com/fr/mmorpg-jeux/objets/"
+STUFF_URL = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements?size=99999"
+WEAPONS_URL = "http://www.dofus.com/fr/mmorpg/encyclopedie/armes?size=99999"
 SETS_URL = "http://www.dofus.com/fr/mmorpg-jeux/panoplies"
 
 CATEGORIES = [
@@ -39,82 +40,7 @@ JOBS = [
     "Forgeur de Haches",
 ]
 
-CATEGORY_MAPPING = [
-    # {"url": "4-ressources/15-ressources-diverses",  "category": "Ressource", "type": "Divers", "job": None},
-    # {"url": "4-ressources/34-cereale",              "category": "Ressource", "type": "Cérérale", "job": None},
-    # {"url": "4-ressources/35-fleur",                "category": "Ressource", "type": "Fleur", "job": None},
-    # {"url": "4-ressources/36-plante",               "category": "Ressource", "type": "Plante", "job": None},
-    # {"url": "4-ressources/38-bois",                 "category": "Ressource", "type": "Bois", "job": None},
-    # {"url": "4-ressources/39-minerai",              "category": "Ressource", "type": "Minerai", "job": None},
-    # {"url": "4-ressources/41-poisson",              "category": "Ressource", "type": "Poisson", "job": None},
-    # {"url": "4-ressources/46-fruit",                "category": "Ressource", "type": "Fruit", "job": None},
-    # {"url": "4-ressources/47-os",                   "category": "Ressource", "type": "Os", "job": None},
-    # {"url": "4-ressources/48-poudre",               "category": "Ressource", "type": "Poudre", "job": None},
-    # {"url": "4-ressources/51-pierre-brute",         "category": "Ressource", "type": "Pierre Brute", "job": None},
-    # {"url": "4-ressources/53-plume",                "category": "Ressource", "type": "Plume", "job": None},
-    # {"url": "4-ressources/54-poil",                 "category": "Ressource", "type": "Poil", "job": None},
-    # {"url": "4-ressources/55-etoffe",               "category": "Ressource", "type": "Etoffe", "job": None},
-    # {"url": "4-ressources/56-cuir",                 "category": "Ressource", "type": "Cuir", "job": None},
-    # {"url": "4-ressources/57-laine",                "category": "Ressource", "type": "Laine", "job": None},
-    # {"url": "4-ressources/58-graine",               "category": "Ressource", "type": "Graine", "job": None},
-    # {"url": "4-ressources/59-peau",                 "category": "Ressource", "type": "Peau", "job": None},
-    # {"url": "4-ressources/60-huile",                "category": "Ressource", "type": "Huile", "job": None},
-    # {"url": "4-ressources/61-peluche",              "category": "Ressource", "type": "Peluche", "job": None},
-    # {"url": "4-ressources/63-viande",               "category": "Ressource", "type": "Viande", "job": None},
-    # {"url": "4-ressources/65-queue",                "category": "Ressource", "type": "Queue", "job": None},
-    # {"url": "4-ressources/66-metaria",              "category": "Ressource", "type": "Metaria", "job": None},
-    # {"url": "4-ressources/68-legume",               "category": "Ressource", "type": "Legume", "job": None},
-    # {"url": "4-ressources/70-teinture",             "category": "Ressource", "type": "Teinture", "job": None},
-    # {"url": "4-ressources/71-materiel-alchimie",    "category": "Ressource", "type": "Matériel d'Alchimie", "job": None},
-    # {"url": "4-ressources/78-rune-forgemagie",      "category": "Ressource", "type": "Rune de Forgemagie", "job": None},
-    # {"url": "4-ressources/90-fantome-familier",     "category": "Ressource", "type": "Fantome de Familier", "job": None},
-    # {"url": "4-ressources/96-ecorce",               "category": "Ressource", "type": "Ecorce", "job": None},
-    # {"url": "4-ressources/98-racine",               "category": "Ressource", "type": "Racine", "job": None},
-    # {"url": "4-ressources/119-champignon",          "category": "Ressource", "type": "Champignon", "job": None},
-    # {"url": "4-ressources/152-galet",               "category": "Ressource", "type": "Galet", "job": None},
-    # {"url": "4-ressources/153-nowel",               "category": "Ressource", "type": "Nowel", "job": None},
-    # {"url": "4-ressources/40-aliage",               "category": "Ressource", "type": "Aliage", "job": None},
-    # {"url": "4-ressources/26-potion-forgemagie",    "category": "Ressource", "type": "Potion de Forgemagie", "job": None},
-    # {"url": "4-ressources/50-pierre-precieuse",     "category": "Ressource", "type": "Pierre Précieuse", "job": None},
-    # {"url": "4-ressources/52-farine",               "category": "Ressource", "type": "Farine", "job": None},
-    # {"url": "4-ressources/62-poisson-vide",         "category": "Ressource", "type": "Poisson Vidé", "job": None},
-    # {"url": "4-ressources/64-viande-conservee",     "category": "Ressource", "type": "Viande Conservée", "job": None},
-    # {"url": "4-ressources/84-clef",                 "category": "Ressource", "type": "Clef", "job": None},
-    # {"url": "4-ressources/95-planche",              "category": "Ressource", "type": "Planche", "job": None},
-    
-    {"url": "2-objets/1-amulette", "category": "Equipement", "type": "Amulette", "job": "Bijouter"},
-    {"url": "2-objets/9-anneau", "category": "Equipement", "type": "Anneau", "job": "Bijouter"},
-    {"url": "2-objets/16-chapeau", "category": "Equipement", "type": "Chapeau", "job": "Tailleur"},
-    {"url": "2-objets/17-cape", "category": "Equipement", "type": "Cape", "job": "Tailleur"},
-    {"url": "2-objets/81-sac-dos", "category": "Equipement", "type": "Sac a Dos", "job": "Tailleur"},
-    {"url": "2-objets/10-ceinture", "category": "Equipement", "type": "Ceinture", "job": "Cordonnier"},
-    {"url": "2-objets/11-bottes", "category": "Equipement", "type": "Bottes", "job": "Cordonnier"},
-    {"url": "2-objets/82-bouclier", "category": "Equipement", "type": "Bouclier", "job": "Forgeur de Boucliers"},
-    
-    {"url": "1-armes/2-arc", "category": "Arme", "type": "Arc", "job": "Sculpteur d'Arcs"},
-    {"url": "1-armes/3-baguette", "category": "Arme", "type": "Baguette", "job": "Sculpteur de Baguettes"},
-    {"url": "1-armes/4-baton", "category": "Arme", "type": "Baton", "job": "Sculpteur de Baton"},
-    {"url": "1-armes/5-dague", "category": "Arme", "type": "Dague", "job": "Forgeur de Dagues"},
-    {"url": "1-armes/6-epee", "category": "Arme", "type": "Epée", "job": "Forgeur d'Epées"},
-    {"url": "1-armes/7-marteau", "category": "Arme", "type": "Marteau", "job": "Forgeur de Marteaux"},
-    {"url": "1-armes/8-pelle", "category": "Arme", "type": "Pelle", "job": "Forgeur de Pelle"},
-    {"url": "1-armes/19-hache", "category": "Arme", "type": "Hache", "job": "Forgeur de Haches"},
-    {"url": "1-armes/21-pioche", "category": "Arme", "type": "Pioche", "job": None},
-    {"url": "1-armes/22-faux", "category": "Arme", "type": "Faux", "job": None},
-    {"url": "1-armes/20-outil", "category": "Arme", "type": "Outil", "job": None},
-    
-    {"url": "5-familiers/18-familier", "category": "Familier", "type": "Familier", "job": None},
-    {"url": "5-familiers/121-montilier", "category": "Familier", "type": "Montilier", "job": None},
-]
-
-# CATEGORY_MAPPING = [
-    # {"url": "1-armes/3-baguette", "category": "Arme", "type": "Baguette", "job": "Sculpteur de Baguettes"},
-    # {"url": "5-familiers/18-familier", "category": "Familier", "type": "Familier", "job": None},
-# ]
-
-
-
-COOKIES = "LANG=fr; SID=E1E002989B2E28B1544466C1DFE80000"
+# COOKIES = "LANG=fr; SID=E1E002989B2E28B1544466C1DFE80000"
 
 class Command(BaseCommand):
     help = 'Update or rebuild the items database'
@@ -133,7 +59,7 @@ class Command(BaseCommand):
 def rebuild_db(use_cache=True):
     proxy = urllib2.ProxyHandler()
     opener = urllib2.build_opener(proxy)
-    opener.addheaders.append(('Cookie', COOKIES))
+#     opener.addheaders.append(('Cookie', COOKIES))
     
     web_cache = WebCache(opener, use_cache)
     
@@ -151,27 +77,13 @@ def fetch_items(web_cache, history):
     build_categories()
     build_jobs()
     
-    for mapping in CATEGORY_MAPPING:
-        item_type = build_item_type(mapping["type"], mapping["category"], mapping["job"])
-        
-        url = BASE_URL + mapping["url"] + "?pa="
-        i = 1
-        p = None
-        prev_page = 0
-        current_page = 1
-        # TODO: remove page management and use size=99999
-        while prev_page != current_page:
-            log.info(url+str(i))
-            content = web_cache.get(url + str(i))
-            
-            if p:
-                prev_page = p.current_page
-            p = ItemPageParser(item_type)
-            p.feed(content)
-            current_page = p.current_page
-            history.updated_items.add(*p.changed_items)
-            
-            i += 1
+    p = MainItemPageParser()
+    p.feed(web_cache.get(STUFF_URL))
+    history.updated_items.add(*p.changed_items)
+    
+    p.feed(web_cache.get(WEAPONS_URL))
+    history.updated_items.add(*p.changed_items)
+    
     
     
 
@@ -214,7 +126,7 @@ def printItems():
             print c.name, condition.equality, condition.required_value
         
         print "\nCaracs"
-        print str(item.cost) + " PA ; " + str(item.range) + " PO ; CC 1/" + str(item.crit_chance) + " (+" + str(item.crit_damage) + ") ; EC 1/" + str(item.failure)
+        print str(item.cost) + " PA ; " + str(item.range) + " PO ; CC 1/" + str(item.crit_chance) + " (+" + str(item.crit_damage) + ")"
         
         print "\nCraft"
         craft = []
