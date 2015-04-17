@@ -107,7 +107,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('started', self.gf('django.db.models.fields.DateTimeField')()),
             ('finished', self.gf('django.db.models.fields.DateTimeField')(null=True)),
-            ('using_cache', self.gf('django.db.models.fields.BooleanField')()),
+            ('using_cache', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal(u'mainsite', ['UpdateHistory'])
 
@@ -275,7 +275,7 @@ class Migration(SchemaMigration):
             'started': ('django.db.models.fields.DateTimeField', [], {}),
             'updated_items': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Item']", 'symmetrical': 'False'}),
             'updated_panos': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Panoplie']", 'symmetrical': 'False'}),
-            'using_cache': ('django.db.models.fields.BooleanField', [], {})
+            'using_cache': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
         }
     }
 

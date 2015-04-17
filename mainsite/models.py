@@ -142,7 +142,7 @@ class AttributeCondition(BaseModel):
 class UpdateHistory(BaseModel):
     started = models.DateTimeField()
     finished = models.DateTimeField(null=True)
-    using_cache = models.BooleanField()
+    using_cache = models.BooleanField(default=False)
     updated_items = models.ManyToManyField(Item)
     updated_panos = models.ManyToManyField(Panoplie)
     
