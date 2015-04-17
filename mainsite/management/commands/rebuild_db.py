@@ -46,22 +46,24 @@ ITEM_TYPES = [
     ("Equipement", "Anneau", "Bijouter"),
     ("Equipement", "Chapeau", "Tailleur"),
     ("Equipement", "Cape", "Tailleur"),
-    ("Equipement", "Sac a Dos", "Tailleur"),
+    ("Equipement", "Sac à Dos", "Tailleur"),
     ("Equipement", "Ceinture", "Cordonnier"),
     ("Equipement", "Bottes", "Cordonnier"),
     ("Equipement", "Bouclier", "Forgeur de Boucliers"),
     
     ("Arme", "Arc", "Sculpteur d'Arcs"),
     ("Arme", "Baguette", "Sculpteur de Baguettes"),
-    ("Arme", "Baton", "Sculpteur de Baton"),
+    ("Arme", "Bâton", "Sculpteur de Baton"),
     ("Arme", "Dague", "Forgeur de Dagues"),
-    ("Arme", "Epée", "Forgeur d'Epées"),
+    ("Arme", "Épée", "Forgeur d'Epées"),
     ("Arme", "Marteau", "Forgeur de Marteaux"),
     ("Arme", "Pelle", "Forgeur de Pelle"),
     ("Arme", "Hache", "Forgeur de Haches"),
     ("Arme", "Pioche", None),
     ("Arme", "Faux", None),
     ("Arme", "Outil", None),
+    ("Arme", "Pierre d'âme", None),
+    ("Arme", "Trophée", None),
     
     ("Familier", "Familier", None),
     ("Familier", "Montilier", None),
@@ -94,7 +96,6 @@ def rebuild_db(use_cache=True):
     
     fetch_items(web_cache, history)
 #     fetch_sets(web_cache, history)
-    printItems()
     
     history.finished = timezone.now()
     history.save()
@@ -106,9 +107,8 @@ def fetch_items(web_cache, history):
     build_item_types()
     
     p = MainItemPageParser(web_cache, history)
-    p.feed(web_cache.get(STUFF_URL))
-    
     p.feed(web_cache.get(WEAPONS_URL))
+    p.feed(web_cache.get(STUFF_URL))
     
     
     
@@ -132,36 +132,10 @@ def build_item_types():
         log.debug("Inserting type '{}'".format(item_type))
         ItemType.objects.get_or_create(name=item_type, category=category, job=job)
 
-
-
-
 def fetch_sets(web_cache, history):
     content = web_cache.get(SETS_URL)
     MainPanopliePageParser(web_cache, history).feed(content)
 
 
-
-
-def printItems():
-    for item in Item.objects.all():
-        print item.name
-        print item.description.encode('ascii', 'replace')
-        for a in item.attributes.all():
-            attribute = a.attributevalue_set.get(item=item)
-            print a.name, ":" + str(attribute.min_value) + "-" + str(attribute.max_value)
-        
-        print "\nConditions"
-        for c in item.conditions.all():
-            condition = c.attributecondition_set.get(item=item)
-            print c.name, condition.equality, condition.required_value
-        
-        print "\nCaracs"
-        print str(item.cost) + " PA ; " + str(item.range_min) + "-" + str(item.range_max) + " PO ; CC 1/" + str(item.crit_chance) + " (+" + str(item.crit_damage) + ")"
-        
-        print "\nRecipe"
-        print item.recipe
-        
-        print "\n"
-    print "Items printed: {}".format(Item.objects.count())
 
     

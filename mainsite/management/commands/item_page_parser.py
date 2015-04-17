@@ -12,8 +12,8 @@ RE_ITEM_ID = re.compile("/fr/mmorpg/encyclopedie/[a-z]+/(.*)")
 
 RE_LEVEL = re.compile("Niveau : (\d+)")
 RE_ATTRIBUTE = re.compile("(-?\d+)\.?\d*?( à (-?\d+)\.?\d*?)? (.*)")
-RE_CARAC_PA = re.compile("(\d{1,2}) (\d utilisations? par tour)")
-RE_CARAC_PO = re.compile("(\d+)( à (\d+))?")
+RE_CARAC_PA = re.compile("(\d{1,2}) \(\d utilisations? par tour\)")
+RE_CARAC_PO = re.compile("(\d+)( à (\d+))?$")
 RE_CARAC_CC = re.compile("1/(\d{1,2})( \(\+(\d{1,2})\))?")
 RE_CONDITION = re.compile("(.+?) ([><=]) (\d+)")
 
@@ -43,13 +43,17 @@ class MainItemPageParser(HTMLParser):
         self.history = history
         
         self.in_table = False
+        self.in_row = False
         self.in_link = False
         
     def handle_starttag(self, tag, attrs):
         if tag == "table" and "ak-responsivetable" in get_attr(attrs, "class"):
             self.in_table = True
         
-        if self.in_table and tag == "span" and "ak-linker" in get_attr(attrs, "class"):
+        if self.in_table and tag == "tr":
+            self.in_row = True
+        
+        if self.in_row and tag == "span" and "ak-linker" in get_attr(attrs, "class"):
             self.in_link = True
         
         if self.in_link and tag == "a" and "fr/mmorpg/encyclopedie/" in get_attr(attrs, "href"):
@@ -64,11 +68,13 @@ class MainItemPageParser(HTMLParser):
             if p.has_changed:
                 p.item.save()
                 self.history.updated_items.add(p.item)
+            
+            self.in_row = False
+            self.in_link = False
         
     def handle_endtag(self, tag):
         if self.in_table and tag == "table":
             self.in_table = False
-            self.in_link = False
 
 class ItemPageParser(HTMLParser):
     def __init__(self, item_id):
@@ -137,12 +143,18 @@ class ItemPageParser(HTMLParser):
             self.in_attributes = True
         if self.in_attributes and tag == "div" and "ak-title" in get_attr(attrs, "class"):
             self.get_attributes = True
+        if self.in_attributes and tag == "div" and "ak-panel " in get_attr(attrs, "class"):
+            self.content_is_attributes = False
+            self.in_attributes = False
         
         # Item caracteristics
         if self.content_is_caracs and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
             self.in_caracs = True
         if self.in_caracs and tag == "div" and "ak-title" in get_attr(attrs, "class"):
             self.get_caracs = True
+        if self.in_caracs and tag == "div" and "ak-panel " in get_attr(attrs, "class"):
+            self.content_is_caracs = False
+            self.in_caracs = False
         
         # Item conditions
         if self.content_is_conditions and tag == "div" and "ak-panel-content" in get_attr(attrs, "class"):
@@ -188,13 +200,9 @@ class ItemPageParser(HTMLParser):
                 self.content_is_attributes = True
                 
             if block == BLOCK_CARACS:
-                self.content_is_attributes = False
-                self.in_attributes = False
                 self.content_is_caracs = True
                 
             if block == BLOCK_CONDITIONS:
-                self.content_is_caracs = False
-                self.in_caracs = False
                 self.content_is_conditions = True
                 
             if block == BLOCK_RECIPE:
@@ -202,14 +210,12 @@ class ItemPageParser(HTMLParser):
         
         if self.get_name:
             name = data.strip()
-            try:
-                self.item = Item.objects.get(name=name)
-            except:
-                self.item = Item(name=name)
-                self.has_changed = True
-            
-            self.has_changed |= self.item.original_id != self.item_id
-            self.item.original_id = self.item_id
+            if name:
+                self.item, _created = Item.objects.get_or_create(name=name)
+                self.item.attributes.clear()
+                
+                self.has_changed |= self.item.original_id != self.item_id
+                self.item.original_id = self.item_id
                 
         if self.get_type:
             try:
@@ -231,7 +237,7 @@ class ItemPageParser(HTMLParser):
             self.item.description = data.strip()
         
         if self.get_attributes:
-            match = RE_ATTRIBUTE.match(data)
+            match = RE_ATTRIBUTE.match(data.strip())
             if match:
                 attr = match.group(4).strip()
                 min_value = match.group(1)
@@ -247,22 +253,30 @@ class ItemPageParser(HTMLParser):
                 
                 attr, _created = Attribute.objects.get_or_create(name=attr)
                 
-                AttributeValue.objects.get_or_create(item=self.item, attribute=attr, min_value=int(min_value), max_value=int(max_value))
+                AttributeValue.objects.create(item=self.item, attribute=attr, min_value=int(min_value), max_value=int(max_value))
         
         
         if self.get_caracs:
-            pa = RE_CARAC_PA.match(data)
-            po = RE_CARAC_PO.match(data)
-            cc = RE_CARAC_CC.match(data)
+#             log.debug("get caracs")
+#             log.debug("|" + data.strip() + "|")
+            pa = RE_CARAC_PA.match(data.strip())
+            po = RE_CARAC_PO.match(data.strip())
+            cc = RE_CARAC_CC.match(data.strip())
             
             if pa:
+#                 log.debug(pa.groups())
                 self.has_changed |= self.item.cost != int(pa.group(1))
                 self.item.cost = int(pa.group(1))
                 
             if po:
-                self.has_changed |= self.item.range_min != int(po.group(1)) and self.item.range_max != int(po.group(3))
-                self.item.range_min = int(po.group(1))
-                self.item.range_max = int(po.group(3))
+#                 log.debug(po.groups())
+                min_range = po.group(1)
+                max_range = po.group(3)
+                if not max_range:
+                    max_range = min_range
+                self.has_changed |= self.item.range_min != int(min_range) and self.item.range_max != int(max_range)
+                self.item.range_min = int(min_range)
+                self.item.range_max = int(max_range)
             
             if cc:
                 self.has_changed |= self.item.crit_chance != int(cc.group(1))
@@ -272,7 +286,9 @@ class ItemPageParser(HTMLParser):
                     self.item.crit_damage = int(cc.group(3))
         
         if self.get_conditions:
-            match = RE_CONDITION.match(data)
+#             log.debug("get conditions")
+#             log.debug("|" + data.strip() + "|")
+            match = RE_CONDITION.match(data.strip())
             if match:
                 attr, equality, value = match.groups()
                 attr, _created = Attribute.objects.get_or_create(name=attr.strip())

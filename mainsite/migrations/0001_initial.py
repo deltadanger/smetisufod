@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import datetime
+from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -67,13 +67,14 @@ class Migration(SchemaMigration):
         db.create_table(u'mainsite_item', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('description', self.gf('django.db.models.fields.CharField')(max_length=5000)),
+            ('description', self.gf('django.db.models.fields.CharField')(max_length=5000, null=True)),
             ('original_id', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.ItemType'], null=True)),
             ('level', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('recipe', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['mainsite.Recipe'], null=True)),
             ('cost', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('range', self.gf('django.db.models.fields.IntegerField')(null=True)),
+            ('range_min', self.gf('django.db.models.fields.IntegerField')(null=True)),
+            ('range_max', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('crit_chance', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('crit_damage', self.gf('django.db.models.fields.IntegerField')(null=True)),
             ('failure', self.gf('django.db.models.fields.IntegerField')(null=True)),
@@ -106,25 +107,27 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('started', self.gf('django.db.models.fields.DateTimeField')()),
             ('finished', self.gf('django.db.models.fields.DateTimeField')(null=True)),
-            ('using_cache', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('using_cache', self.gf('django.db.models.fields.BooleanField')()),
         ))
         db.send_create_signal(u'mainsite', ['UpdateHistory'])
 
         # Adding M2M table for field updated_items on 'UpdateHistory'
-        db.create_table(u'mainsite_updatehistory_updated_items', (
+        m2m_table_name = db.shorten_name(u'mainsite_updatehistory_updated_items')
+        db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
             ('updatehistory', models.ForeignKey(orm[u'mainsite.updatehistory'], null=False)),
             ('item', models.ForeignKey(orm[u'mainsite.item'], null=False))
         ))
-        db.create_unique(u'mainsite_updatehistory_updated_items', ['updatehistory_id', 'item_id'])
+        db.create_unique(m2m_table_name, ['updatehistory_id', 'item_id'])
 
         # Adding M2M table for field updated_panos on 'UpdateHistory'
-        db.create_table(u'mainsite_updatehistory_updated_panos', (
+        m2m_table_name = db.shorten_name(u'mainsite_updatehistory_updated_panos')
+        db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
             ('updatehistory', models.ForeignKey(orm[u'mainsite.updatehistory'], null=False)),
             ('panoplie', models.ForeignKey(orm[u'mainsite.panoplie'], null=False))
         ))
-        db.create_unique(u'mainsite_updatehistory_updated_panos', ['updatehistory_id', 'panoplie_id'])
+        db.create_unique(m2m_table_name, ['updatehistory_id', 'panoplie_id'])
 
         # Adding model 'InvalidItem'
         db.create_table(u'mainsite_invaliditem', (
@@ -171,10 +174,10 @@ class Migration(SchemaMigration):
         db.delete_table(u'mainsite_updatehistory')
 
         # Removing M2M table for field updated_items on 'UpdateHistory'
-        db.delete_table('mainsite_updatehistory_updated_items')
+        db.delete_table(db.shorten_name(u'mainsite_updatehistory_updated_items'))
 
         # Removing M2M table for field updated_panos on 'UpdateHistory'
-        db.delete_table('mainsite_updatehistory_updated_panos')
+        db.delete_table(db.shorten_name(u'mainsite_updatehistory_updated_panos'))
 
         # Deleting model 'InvalidItem'
         db.delete_table(u'mainsite_invaliditem')
@@ -211,19 +214,20 @@ class Migration(SchemaMigration):
         },
         u'mainsite.item': {
             'Meta': {'object_name': 'Item'},
-            'attribute': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attribute'", 'null': 'True', 'through': u"orm['mainsite.AttributeValue']", 'to': u"orm['mainsite.Attribute']"}),
-            'condition': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
+            'attributes': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_attribute'", 'null': 'True', 'through': u"orm['mainsite.AttributeValue']", 'to': u"orm['mainsite.Attribute']"}),
+            'conditions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'item_condition'", 'null': 'True', 'through': u"orm['mainsite.AttributeCondition']", 'to': u"orm['mainsite.Attribute']"}),
             'cost': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'crit_chance': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'crit_damage': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'description': ('django.db.models.fields.CharField', [], {'max_length': '5000'}),
+            'description': ('django.db.models.fields.CharField', [], {'max_length': '5000', 'null': 'True'}),
             'failure': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'level': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'original_id': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'panoplie': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Panoplie']", 'null': 'True', 'on_delete': 'models.SET_NULL'}),
-            'range': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'range_max': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
+            'range_min': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
             'recipe': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.Recipe']", 'null': 'True'}),
             'type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['mainsite.ItemType']", 'null': 'True'})
         },
@@ -271,7 +275,7 @@ class Migration(SchemaMigration):
             'started': ('django.db.models.fields.DateTimeField', [], {}),
             'updated_items': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Item']", 'symmetrical': 'False'}),
             'updated_panos': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['mainsite.Panoplie']", 'symmetrical': 'False'}),
-            'using_cache': ('django.db.models.fields.BooleanField', [], {'default': 'False'})
+            'using_cache': ('django.db.models.fields.BooleanField', [], {})
         }
     }
 

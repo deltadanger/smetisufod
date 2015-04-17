@@ -74,7 +74,7 @@ class Recipe(BaseModel):
 
 class Item(BaseModel):
     name                = models.CharField(max_length=50)
-    description         = models.CharField(max_length=5000)
+    description         = models.CharField(max_length=5000, null=True)
     original_id         = models.IntegerField(null=True)
     type                = models.ForeignKey(ItemType, null=True)
     level               = models.IntegerField(null=True)
@@ -91,6 +91,32 @@ class Item(BaseModel):
     
     def __unicode__(self):
         return unicode(self.name)
+
+    @property
+    def full_str(self):
+        result = self.name + " (" + self.type.name + " - Level " + str(self.level) + " - id:" + str(self.original_id) + ")\n"
+        result += "\n" + self.description.encode('ascii', 'replace') + "\n"
+        for a in self.attributevalue_set.all():
+            result += "\n" + a.attribute.name + ": " + str(a.min_value) + "-" + str(a.max_value)
+        
+        result += "\n\nConditions\n"
+        for c in self.attributecondition_set.all():
+            result += c.attribute.name + " " +  c.equality + " " + str(c.required_value) + "\n"
+        
+        result += "\nCaracs\n"
+        result += str(self.cost) + " PA ; " + str(self.range_min) + "-" + str(self.range_max) + " PO ; CC 1/" + str(self.crit_chance) + " (+" + str(self.crit_damage) + ")"
+        
+        result += "\n\nRecipe\n"
+        result += unicode(self.recipe).encode('ascii', 'replace')
+        
+        result += "\n\nPanoplie\n"
+        if self.panoplie:
+            result += self.panoplie.name
+        else:
+            result += "None"
+        
+        result += "\n\n"
+        return result
 
 class AttributeValue(BaseModel):
     item = models.ForeignKey(Item)
