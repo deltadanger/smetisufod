@@ -3,19 +3,21 @@ import os.path as path, logging
 log = logging.getLogger(__name__)
 
 class WebCache():
-    def __init__(self, opener, force_refresh=False):
+    def __init__(self, opener, use_cache=True):
         self.opener = opener
-        self.force_refresh = force_refresh
+        self.use_cache = use_cache
         
-    def get(self, url, force_refresh=False):
+    def get(self, url, use_cache=True):
+        use_cache = use_cache and self.use_cache
         content = self._get_from_local(url)
-        if content and not force_refresh and not self.force_refresh:
+        if content and use_cache:
             log.debug("Getting resource from local: " + url)
             
         else:
             log.debug("Getting from remote source: " + url)
             content = self.opener.open(url).read()
-            self._save_to_local(url, content)
+            if use_cache:
+                self._save_to_local(url, content)
         
         return content
         

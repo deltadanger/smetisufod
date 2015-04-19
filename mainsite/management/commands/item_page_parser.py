@@ -68,6 +68,7 @@ class MainItemPageParser(HTMLParser):
             if p.has_changed:
                 p.item.save()
                 self.history.updated_items.add(p.item)
+#                 print p.item.full_str
             
             self.in_row = False
             self.in_link = False
@@ -75,7 +76,7 @@ class MainItemPageParser(HTMLParser):
     def handle_endtag(self, tag):
         if self.in_table and tag == "table":
             self.in_table = False
-
+# TODO: get image id (different from item id)
 class ItemPageParser(HTMLParser):
     def __init__(self, item_id):
         HTMLParser.__init__(self)

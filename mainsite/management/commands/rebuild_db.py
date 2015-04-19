@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 
 STUFF_URL = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements?size=99999"
 WEAPONS_URL = "http://www.dofus.com/fr/mmorpg/encyclopedie/armes?size=99999"
-SETS_URL = "http://www.dofus.com/fr/mmorpg-jeux/panoplies"
+SETS_URL = "http://www.dofus.com/fr/mmorpg/encyclopedie/panoplies?size=99999"
 
 CATEGORIES = [
     "Arme",
@@ -46,10 +46,11 @@ ITEM_TYPES = [
     ("Equipement", "Anneau", "Bijouter"),
     ("Equipement", "Chapeau", "Tailleur"),
     ("Equipement", "Cape", "Tailleur"),
-    ("Equipement", "Sac à Dos", "Tailleur"),
+    ("Equipement", "Sac à dos", "Tailleur"),
     ("Equipement", "Ceinture", "Cordonnier"),
     ("Equipement", "Bottes", "Cordonnier"),
     ("Equipement", "Bouclier", "Forgeur de Boucliers"),
+    ("Equipement", "Dofus", None),
     
     ("Arme", "Arc", "Sculpteur d'Arcs"),
     ("Arme", "Baguette", "Sculpteur de Baguettes"),
@@ -82,7 +83,7 @@ class Command(BaseCommand):
         )
         
     def handle(self, *args, **options):
-        rebuild_db(options["use-cache"] == "n")
+        rebuild_db(options["use-cache"] != "n")
     
 
 def rebuild_db(use_cache=True):
@@ -92,10 +93,10 @@ def rebuild_db(use_cache=True):
     
     web_cache = WebCache(opener, use_cache)
     
-    history = UpdateHistory.objects.create(started=timezone.now(), using_cache=not web_cache.force_refresh)
+    history = UpdateHistory.objects.create(started=timezone.now(), using_cache=use_cache)
     
-    fetch_items(web_cache, history)
-#     fetch_sets(web_cache, history)
+#     fetch_items(web_cache, history)
+    fetch_sets(web_cache, history)
     
     history.finished = timezone.now()
     history.save()

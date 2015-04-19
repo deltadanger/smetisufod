@@ -68,7 +68,7 @@ class Recipe(BaseModel):
     size = models.IntegerField()
     
     def __unicode__(self):
-        return unicode(self.text) + " ("+str(self.size)+" elements)"
+        return unicode(self.text) + " ("+unicode(self.size)+" elements)"
 
 
 
@@ -95,7 +95,7 @@ class Item(BaseModel):
     @property
     def full_str(self):
         result = self.name + " (" + self.type.name + " - Level " + str(self.level) + " - id:" + str(self.original_id) + ")\n"
-        result += "\n" + self.description.encode('ascii', 'replace') + "\n"
+        result += "\n" + self.description + "\n"
         for a in self.attributevalue_set.all():
             result += "\n" + a.attribute.name + ": " + str(a.min_value) + "-" + str(a.max_value)
         
@@ -106,8 +106,10 @@ class Item(BaseModel):
         result += "\nCaracs\n"
         result += str(self.cost) + " PA ; " + str(self.range_min) + "-" + str(self.range_max) + " PO ; CC 1/" + str(self.crit_chance) + " (+" + str(self.crit_damage) + ")"
         
+        result = result.encode('ascii', 'replace')
+        
         result += "\n\nRecipe\n"
-        result += unicode(self.recipe).encode('ascii', 'replace')
+        result += str(self.recipe)
         
         result += "\n\nPanoplie\n"
         if self.panoplie:
