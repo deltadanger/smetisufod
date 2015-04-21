@@ -12,6 +12,8 @@ from panoplie_page_parser import MainPanopliePageParser
 
 from mainsite.models import Item, ItemCategory, ItemType, Job, UpdateHistory
 
+from smetisufod.settings import DOFUS_COOKIES
+
 log = logging.getLogger(__name__)
 
 STUFF_URL = "http://www.dofus.com/fr/mmorpg/encyclopedie/equipements?size=99999"
@@ -70,8 +72,6 @@ ITEM_TYPES = [
     ("Familier", "Montilier", None),
 ]
 
-COOKIES = "LANG=fr; SID=8F065BA510C1A36E09AEDFB7EE2A0001"
-
 class Command(BaseCommand):
     help = 'Update or rebuild the items database'
     
@@ -89,7 +89,7 @@ class Command(BaseCommand):
 def rebuild_db(use_cache=True):
     proxy = urllib2.ProxyHandler()
     opener = urllib2.build_opener(proxy)
-    opener.addheaders.append(('Cookie', COOKIES))
+    opener.addheaders.append(('Cookie', DOFUS_COOKIES))
     
     web_cache = WebCache(opener, use_cache)
     
