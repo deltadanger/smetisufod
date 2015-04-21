@@ -130,10 +130,13 @@ class ItemPageParser(HTMLParser):
         if tag == "div" and "ak-encyclo-detail-illu" in get_attr(attrs, "class"):
             self.in_image = True
         if self.in_image and tag == "img":
+            # TODO: check if image is different
             url = get_attr(attrs, "src")
-            if not self.item.image or not is_image_available(url):
+            new_image_name = url.split("/")[-1]
+            current_image_name = self.item.image.split("/")[-1] if self.item.image else None
+            if new_image_name != current_image_name:
                 image = upload_image_file(url)
-                self.has_changed |= self.item.image != image
+                self.has_changed = True
                 self.item.image = image
         
         # Item type
