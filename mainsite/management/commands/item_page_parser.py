@@ -4,7 +4,7 @@ import re, logging
 
 from mainsite.models import Item, Attribute, AttributeValue, AttributeCondition, Recipe, \
     ItemType
-
+from pictures import upload_image_file, is_image_available
 
 log = logging.getLogger(__name__)
 
@@ -76,7 +76,7 @@ class MainItemPageParser(HTMLParser):
     def handle_endtag(self, tag):
         if self.in_table and tag == "table":
             self.in_table = False
-# TODO: get image id (different from item id)
+
 class ItemPageParser(HTMLParser):
     def __init__(self, item_id):
         HTMLParser.__init__(self)
@@ -90,8 +90,9 @@ class ItemPageParser(HTMLParser):
         self.current_item_attributes_dump = ""
         self.current_item_conditions_dump = ""
         
-        self.get_name = False
         self.in_name = False
+        self.get_name = False
+        self.in_image = False
         self.get_level = False
         self.get_type = False
         self.in_type = False
@@ -113,7 +114,7 @@ class ItemPageParser(HTMLParser):
         self.get_recipe_element_name = False
         self.recipe = ""
         self.check_block = False
-        
+    
     
     def handle_starttag(self, tag, attrs):
         if tag == "div" and "ak-panel-title" in get_attr(attrs, "class"):
@@ -124,7 +125,17 @@ class ItemPageParser(HTMLParser):
             self.in_name = True
         if self.in_name and tag == "h1":
             self.get_name = True
-            
+        
+        # Item image
+        if tag == "div" and "ak-encyclo-detail-illu" in get_attr(attrs, "class"):
+            self.in_image = True
+        if self.in_image and tag == "img":
+            url = get_attr(attrs, "src")
+            if not self.item.image or not is_image_available(url):
+                image = upload_image_file(url)
+                self.has_changed |= self.item.image != image
+                self.item.image = image
+        
         # Item type
         if tag == "div" and "ak-encyclo-detail-type" in get_attr(attrs, "class"):
             self.in_type = True

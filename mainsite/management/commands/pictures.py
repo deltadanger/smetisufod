@@ -18,6 +18,18 @@ CREDENTIAL_FILE = "credentials"
 FOLDER_ID = "0B7K23HtYjKyBfnhYbkVyUld3YUVqSWgzWm1uMXdrMzQ0NlEwOXVUd3o0MWVYQ1ZVMlFSNms"
 DRIVE_FOLDER_LINK = "http://googledrive.com/host/{folder_id}/{file_name}"
 
+def is_image_available(dofus_url):
+    file_name = dofus_url.split('/')[-1]
+    url = DRIVE_FOLDER_LINK.format(folder_id=FOLDER_ID, file_name=file_name)
+    
+    print url
+    opener = urllib2.build_opener()
+    opener.addheaders.append(('Cookie', DOFUS_COOKIES))
+    resp = opener.open(url).getcode()
+    print resp
+    
+    return True
+
 def upload_image_file(dofus_url):
     # Download image from dofus static into a temporary file
     opener = urllib2.build_opener()
@@ -68,4 +80,6 @@ def upload_image_file(dofus_url):
     return DRIVE_FOLDER_LINK.format(folder_id=FOLDER_ID, file_name=file_name)
 
 if __name__ == "__main__":
-    print upload_image_file("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
+#     print upload_image_file("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
+    print is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
+    print is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/0000.png")

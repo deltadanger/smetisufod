@@ -87,8 +87,7 @@ class Command(BaseCommand):
     
 
 def rebuild_db(use_cache=True):
-    proxy = urllib2.ProxyHandler()
-    opener = urllib2.build_opener(proxy)
+    opener = urllib2.build_opener()
     opener.addheaders.append(('Cookie', DOFUS_COOKIES))
     
     web_cache = WebCache(opener, use_cache)

@@ -75,6 +75,7 @@ class Recipe(BaseModel):
 class Item(BaseModel):
     name                = models.CharField(max_length=50)
     description         = models.CharField(max_length=5000, null=True)
+    image               = models.CharField(max_length=2048, null=True)
     original_id         = models.IntegerField(null=True)
     type                = models.ForeignKey(ItemType, null=True)
     level               = models.IntegerField(null=True)
@@ -96,6 +97,7 @@ class Item(BaseModel):
     def full_str(self):
         result = self.name + " (" + self.type.name + " - Level " + str(self.level) + " - id:" + str(self.original_id) + ")\n"
         result += "\n" + self.description + "\n"
+        result += "\nImage: " + self.image + "\n"
         for a in self.attributevalue_set.all():
             result += "\n" + a.attribute.name + ": " + str(a.min_value) + "-" + str(a.max_value)
         
