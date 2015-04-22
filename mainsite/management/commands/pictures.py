@@ -20,7 +20,7 @@ FOLDER_ID = "0B7K23HtYjKyBfnhYbkVyUld3YUVqSWgzWm1uMXdrMzQ0NlEwOXVUd3o0MWVYQ1ZVMl
 DRIVE_FOLDER_LINK = "http://googledrive.com/host/{folder_id}/{file_name}"
 
 
-def _get_service():
+def _get_credentials():
     # Get stored credentials
     storage = Storage(CREDENTIAL_FILE)
     credentials = storage.get()
@@ -32,7 +32,10 @@ def _get_service():
         code = raw_input("Enter verification code: ").strip()
         credentials = flow.step2_exchange(code)
         storage.put(credentials)
+    return credentials
     
+def _get_service():
+    credentials = _get_credentials()
     # Create an httplib2.Http object and authorize it with our credentials
     http = httplib2.Http()
     http = credentials.authorize(http)
@@ -45,7 +48,24 @@ def get_original_name(image_url):
     image_id = image_url.split("/")[-1]
     service = _get_service()
     result = service.files().get(fileId=image_id).execute()
-    return result.originalFilename
+    return result.get("originalFilename")
+
+
+def is_image_available(dofus_url):
+    file_name = dofus_url.split('/')[-1]
+    url = DRIVE_FOLDER_LINK.format(folder_id=FOLDER_ID, file_name=file_name)
+    
+    credentials = _get_credentials()
+    # Create an httplib2.Http object and authorize it with our credentials
+    http = httplib2.Http()
+    http = credentials.authorize(http)
+    resp, _content = http.request(url)
+    
+    status = resp.get("status")
+    if status == "404":
+        return False
+    return True
+
 
 def upload_image_file(dofus_url):
     file_name = dofus_url.split("/")[-1]
