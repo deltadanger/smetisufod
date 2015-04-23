@@ -41,6 +41,7 @@ class MainItemPageParser(HTMLParser):
         HTMLParser.__init__(self)
         self.web_cache = web_cache
         self.history = history
+        self.picture_manager = PictureManager()
         
         self.in_table = False
         self.in_row = False
@@ -63,7 +64,7 @@ class MainItemPageParser(HTMLParser):
             
             content = self.web_cache.get(url)
             # Extract the id part of the id_name variable
-            p = ItemPageParser(re.match("\d+", item_id_name).group())
+            p = ItemPageParser(re.match("\d+", item_id_name).group(), self.picture_manager)
             p.feed(content)
             if p.has_changed:
                 p.item.save()
@@ -78,12 +79,13 @@ class MainItemPageParser(HTMLParser):
             self.in_table = False
 
 class ItemPageParser(HTMLParser):
-    def __init__(self, item_id):
+    def __init__(self, item_id, picture_manager):
         HTMLParser.__init__(self)
         self.reset_vars()
         
         self.item = None
         self.item_id = item_id
+        self.picture_manager = picture_manager
         
     def reset_vars(self):
         self.has_changed = False
@@ -130,14 +132,10 @@ class ItemPageParser(HTMLParser):
         if tag == "div" and "ak-encyclo-detail-illu" in get_attr(attrs, "class"):
             self.in_image = True
         if self.in_image and tag == "img":
-            # TODO: check if image is different
             url = get_attr(attrs, "src")
-            new_image_name = url.split("/")[-1]
-            current_image_name = self.item.image.split("/")[-1] if self.item.image else None
-            if new_image_name != current_image_name:
-                image = upload_image_file(url)
-                self.has_changed = True
-                self.item.image = image
+            new_image_url = self.picture_manager.get_image_url(url)
+            self.has_changed = self.item.image != new_image_url
+            self.item.image = new_image_url
         
         # Item type
         if tag == "div" and "ak-encyclo-detail-type" in get_attr(attrs, "class"):
@@ -354,3 +352,6 @@ class ItemPageParser(HTMLParser):
         if self.get_recipe_element_name and tag == "span":
             self.in_recipe_element_name = False
             self.get_recipe_element_name = False
+        
+        if self.in_image and tag == "div":
+            self.in_image = False

@@ -94,7 +94,7 @@ def rebuild_db(use_cache=True):
     
     history = UpdateHistory.objects.create(started=timezone.now(), using_cache=use_cache)
     
-#     fetch_items(web_cache, history)
+    fetch_items(web_cache, history)
     fetch_sets(web_cache, history)
     
     history.finished = timezone.now()

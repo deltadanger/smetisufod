@@ -11,6 +11,9 @@ from django.core.files.temp import NamedTemporaryFile
 
 from smetisufod.settings import DOFUS_COOKIES
 from smetisufod.private_settings import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
+import logging
+
+log = logging.getLogger(__name__)
 
 # Check https://developers.google.com/drive/scopes for all available scopes
 OAUTH_SCOPE = 'https://www.googleapis.com/auth/drive'
@@ -18,23 +21,25 @@ CREDENTIAL_FILE = "credentials"
 
 FOLDER_ID = "0B7K23HtYjKyBfnhYbkVyUld3YUVqSWgzWm1uMXdrMzQ0NlEwOXVUd3o0MWVYQ1ZVMlFSNms"
 DRIVE_FOLDER_LINK = "http://googledrive.com/host/{folder_id}/{file_name}"
-FILE_URL = "https://drive.google.com/file/d/{file_id}/view"
+FILE_URL = "https://googledrive.com/host/{file_id}"
 
 
 class PictureManager():
     def __init__(self):
-        self.credentials = self._get_credentials()
-        self.service = self._get_service()
-        self.images = self._build_current_list()
+        log.debug("Initialising PictureManager")
+        self._service = self._get_service()
+        self._images = self._build_current_list()
+        log.debug("{} images already stored.".format(len(self._images)))
         
-    def get_image_link(self, original_url):
+    def get_image_url(self, original_url):
         file_name = original_url.split("/")[-1]
-        image_data = self.images.get(file_name)
-        if not image_data:
-            image_data = self._upload_image_file(original_url)
-            self.images[file_name] = image_data
+        image_url = self._images.get(file_name)
+        if not image_url:
+            log.debug("Image not found, uploading {}".format(file_name))
+            image_url = self._upload_image_file(original_url)
+            self._images[file_name] = image_url
         
-        return image_data.get("selfLink")
+        return image_url
     
     
     def _get_credentials(self):
@@ -53,23 +58,26 @@ class PictureManager():
     
     
     def _get_service(self):
+        credentials = self._get_credentials()
         # Create an httplib2.Http object and authorize it with our credentials
         http = httplib2.Http()
-        http = self.credentials.authorize(http)
+        http = credentials.authorize(http)
         
         # Build the drive API service object
         service = build('drive', 'v2', http=http)
         return service
     
+    def _get_link_from_metadata(self, data):
+        return FILE_URL.format(file_id=data["id"])
     
     def _build_current_list(self):
-        response = self.service.children().list(folderId=FOLDER_ID).execute()
+        response = self._service.children().list(folderId=FOLDER_ID).execute()
         image_list = response["items"]
         result = {}
         for image in image_list:
-            image_data = self.service.files().get(fileId=image.get("id")).execute()
-            print image_data
-            result[image_data["originalFilename"]] = image_data["selfLink"]
+            # TODO: get all pages
+            image_data = self._service.files().get(fileId=image.get("id")).execute()
+            result[image_data["originalFilename"]] = self._get_link_from_metadata(image_data)
         
         return result
     
@@ -92,17 +100,14 @@ class PictureManager():
             "parents": [{"id": FOLDER_ID}]
         }
         
-        uploaded_file = self.service.files().insert(body=body, media_body=media_body).execute()
+        image_data = self._service.files().insert(body=body, media_body=media_body).execute()
         temp_file.close() # Close also destroys the temp file
         
-        return uploaded_file
+        return self._get_link_from_metadata(image_data)
 
 if __name__ == "__main__":
     manager = PictureManager()
-#     print upload_image_file("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
-#     print _is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
-#     print _is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/0000.png")
-#     print manager._get_original_name("https://www.googleapis.com/drive/v2/files/0B7K23HtYjKyBaXA3RU1lZEh6Z00")
-    print manager.images
+    print manager.get_image_url("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
+    
 
 
