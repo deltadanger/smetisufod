@@ -4,7 +4,7 @@ import re, logging
 
 from mainsite.models import Item, Attribute, AttributeValue, AttributeCondition, Recipe, \
     ItemType
-from pictures import upload_image_file, is_image_available
+from pictures import PictureManager
 
 log = logging.getLogger(__name__)
 

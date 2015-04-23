@@ -18,89 +18,91 @@ CREDENTIAL_FILE = "credentials"
 
 FOLDER_ID = "0B7K23HtYjKyBfnhYbkVyUld3YUVqSWgzWm1uMXdrMzQ0NlEwOXVUd3o0MWVYQ1ZVMlFSNms"
 DRIVE_FOLDER_LINK = "http://googledrive.com/host/{folder_id}/{file_name}"
+FILE_URL = "https://drive.google.com/file/d/{file_id}/view"
 
 
-def _get_credentials():
-    # Get stored credentials
-    storage = Storage(CREDENTIAL_FILE)
-    credentials = storage.get()
-    if not credentials:
-        # Run through the OAuth flow and retrieve credentials
-        flow = OAuth2WebServerFlow(CLIENT_ID, CLIENT_SECRET, OAUTH_SCOPE, redirect_uri=REDIRECT_URI)
-        authorize_url = flow.step1_get_authorize_url()
-        print "Go to the following link in your browser: " + authorize_url
-        code = raw_input("Enter verification code: ").strip()
-        credentials = flow.step2_exchange(code)
-        storage.put(credentials)
-    return credentials
+class PictureManager():
+    def __init__(self):
+        self.credentials = self._get_credentials()
+        self.service = self._get_service()
+        self.images = self._build_current_list()
+        
+    def get_image_link(self, original_url):
+        file_name = original_url.split("/")[-1]
+        image_data = self.images.get(file_name)
+        if not image_data:
+            image_data = self._upload_image_file(original_url)
+            self.images[file_name] = image_data
+        
+        return image_data.get("selfLink")
     
-def _get_service():
-    credentials = _get_credentials()
-    # Create an httplib2.Http object and authorize it with our credentials
-    http = httplib2.Http()
-    http = credentials.authorize(http)
     
-    # Build the drive API service object
-    service = build('drive', 'v2', http=http)
-    return service
-
-def get_original_name(image_url):
-    image_id = image_url.split("/")[-1]
-    service = _get_service()
-    result = service.files().get(fileId=image_id).execute()
-    return result.get("originalFilename")
-
-
-def is_image_available(dofus_url):
-    file_name = dofus_url.split('/')[-1]
-    url = DRIVE_FOLDER_LINK.format(folder_id=FOLDER_ID, file_name=file_name)
+    def _get_credentials(self):
+        # Get stored credentials
+        storage = Storage(CREDENTIAL_FILE)
+        credentials = storage.get()
+        if not credentials:
+            # Run through the OAuth flow and retrieve credentials
+            flow = OAuth2WebServerFlow(CLIENT_ID, CLIENT_SECRET, OAUTH_SCOPE, redirect_uri=REDIRECT_URI)
+            authorize_url = flow.step1_get_authorize_url()
+            print "Go to the following link in your browser: " + authorize_url
+            code = raw_input("Enter verification code: ").strip()
+            credentials = flow.step2_exchange(code)
+            storage.put(credentials)
+        return credentials
     
-    credentials = _get_credentials()
-    # Create an httplib2.Http object and authorize it with our credentials
-    http = httplib2.Http()
-    http = credentials.authorize(http)
-    resp, _content = http.request(url)
     
-    status = resp.get("status")
-    if status == "404":
-        return False
-    return True
-
-
-def upload_image_file(dofus_url):
-    file_name = dofus_url.split("/")[-1]
-#     result_link = DRIVE_FOLDER_LINK.format(folder_id=FOLDER_ID, file_name=file_name)
-#     if is_image_available(dofus_url):
-#         return result_link
+    def _get_service(self):
+        # Create an httplib2.Http object and authorize it with our credentials
+        http = httplib2.Http()
+        http = self.credentials.authorize(http)
+        
+        # Build the drive API service object
+        service = build('drive', 'v2', http=http)
+        return service
     
-    # Download image from dofus into a temporary file
-    opener = urllib2.build_opener()
-    opener.addheaders.append(("Cookie", DOFUS_COOKIES))
-    resp = opener.open(dofus_url)
     
-    temp_file = NamedTemporaryFile()
-    temp_file.write(resp.read())
+    def _build_current_list(self):
+        response = self.service.children().list(folderId=FOLDER_ID).execute()
+        image_list = response["items"]
+        result = {}
+        for image in image_list:
+            image_data = self.service.files().get(fileId=image.get("id")).execute()
+            print image_data
+            result[image_data["originalFilename"]] = image_data["selfLink"]
+        
+        return result
     
-    service = _get_service()
-    
-    # Upload the file to GDrive
-    mime_type = "image/png"
-    media_body = MediaFileUpload(temp_file.name, mimetype=mime_type)
-    body = {
-        "title": file_name,
-        "mimeType": mime_type,
-        "parents": [{"id": FOLDER_ID}]
-    }
-    
-    uploaded_file = service.files().insert(body=body, media_body=media_body).execute()
-    temp_file.close() # Close also destroys the temp file
-    
-    return uploaded_file.selfLink
+    def _upload_image_file(self, original_url):
+        # Download image from dofus into a temporary file
+        opener = urllib2.build_opener()
+        opener.addheaders.append(("Cookie", DOFUS_COOKIES))
+        resp = opener.open(original_url)
+        
+        temp_file = NamedTemporaryFile()
+        temp_file.write(resp.read())
+        
+        # Upload the file to GDrive
+        file_name = original_url.split("/")[-1]
+        mime_type = "image/png"
+        media_body = MediaFileUpload(temp_file.name, mimetype=mime_type)
+        body = {
+            "title": file_name,
+            "mimeType": mime_type,
+            "parents": [{"id": FOLDER_ID}]
+        }
+        
+        uploaded_file = self.service.files().insert(body=body, media_body=media_body).execute()
+        temp_file.close() # Close also destroys the temp file
+        
+        return uploaded_file
 
 if __name__ == "__main__":
+    manager = PictureManager()
 #     print upload_image_file("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
-#     print is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
-#     print is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/0000.png")
-    print get_original_name("https://www.googleapis.com/drive/v2/files/0B7K23HtYjKyBaXA3RU1lZEh6Z00")
+#     print _is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
+#     print _is_image_available("http://staticns.ankama.com/dofus/www/game/items/200/0000.png")
+#     print manager._get_original_name("https://www.googleapis.com/drive/v2/files/0B7K23HtYjKyBaXA3RU1lZEh6Z00")
+    print manager.images
 
 
