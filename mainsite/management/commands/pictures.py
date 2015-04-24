@@ -71,13 +71,21 @@ class PictureManager():
         return FILE_URL.format(file_id=data["id"])
     
     def _build_current_list(self):
-        response = self._service.children().list(folderId=FOLDER_ID).execute()
-        image_list = response["items"]
         result = {}
-        for image in image_list:
-            # TODO: get all pages
-            image_data = self._service.files().get(fileId=image.get("id")).execute()
-            result[image_data["originalFilename"]] = self._get_link_from_metadata(image_data)
+        page_token = None
+        while True:
+            param = {}
+            if page_token:
+                param['pageToken'] = page_token
+            children = self._service.children().list(folderId=FOLDER_ID, **param).execute()
+            
+            for image in children.get('items', []):
+                image_data = self._service.files().get(fileId=image.get("id")).execute()
+                result[image_data["originalFilename"]] = self._get_link_from_metadata(image_data)
+                
+            page_token = children.get('nextPageToken')
+            if not page_token:
+                break
         
         return result
     
@@ -107,7 +115,8 @@ class PictureManager():
 
 if __name__ == "__main__":
     manager = PictureManager()
-    print manager.get_image_url("http://staticns.ankama.com/dofus/www/game/items/200/2082.png")
+    print manager._images
+    print len(manager._images)
     
 
 
