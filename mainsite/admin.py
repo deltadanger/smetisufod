@@ -8,11 +8,13 @@ class StandardAdmin(admin.ModelAdmin):
     # fields = ("field_name")
 
 class ItemAdmin(StandardAdmin):
-    list_filter = ("type", "level", "attribute", "recipe", "condition")
+    list_filter = ("type", "level", "attributes", "conditions")
 
 class UpdateHistoryAdmin(StandardAdmin):
     filter_horizontal = ("updated_items", "updated_panos")
 
+class InvalidItemAdmin(StandardAdmin):
+    list_filter = ("origin", "flag_date")
 
 
 admin.site.register(Item, ItemAdmin)

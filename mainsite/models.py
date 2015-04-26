@@ -158,6 +158,7 @@ class UpdateHistory(BaseModel):
 class InvalidItem(BaseModel):
     item = models.ForeignKey(Item, null=True)
     panoplie = models.ForeignKey(Panoplie, null=True)
+    origin = models.CharField(max_length=250, null=True)
     flag_date = models.DateTimeField()
 
     def __unicode__(self):

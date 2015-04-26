@@ -18,7 +18,7 @@
     
     <div class="caracs">
         <div class="image">
-            {% include "item_pic.html" with item_id=item.original_id %}
+            {% include "item_pic.html" with item=item %}
         </div>
         <div class="effects">
             <h2>Effets</h2>
@@ -41,7 +41,7 @@
             <h2>Attributs</h2>
             <ul>
                 <li class="odd">Co&ucirc;t en PA : {{ item.cost }}</li>
-                <li class="even">Port&eacute;e : {{ item.range }}</li>
+                <li class="even">Port&eacute;e : {{ item.range_min }}{% if item.range_min != item.range_max %} &agrave; {{ item.range_max }}{% endif %}</li>
                 <li class="odd">CC : 1/{{ item.crit_chance }} (+{{ item.crit_damage }})</li>
                 <li class="even">EC : 1/{{ item.failure }}</li>
             </ul>

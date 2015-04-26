@@ -2,14 +2,13 @@ import json, logging, re
 
 log = logging.getLogger(__name__)
 
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render_to_response
 from django.template import RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse
-from django.core import serializers
 from django.utils import timezone
 
-from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, PanoplieAttribute, AttributeValue, UpdateHistory, InvalidItem
+from mainsite.models import Attribute, ItemCategory, ItemType, Item, Panoplie, UpdateHistory, InvalidItem
 
 EXCLUDE_CATEGORY = ["Ressource"]
 RECIPE_SIZE_TO_JOB_LEVEL = {
@@ -50,9 +49,9 @@ def search(request):
     type_query = Q()
     type_query_pano = Q()
     
-    for type in types:
-        type_query |= Q(type=ItemType.objects.get(name=type))
-        type_query_pano |= Q(item__type=ItemType.objects.get(name=type))
+    for item_type in types:
+        type_query |= Q(type=ItemType.objects.get(name=item_type))
+        type_query_pano |= Q(item__type=ItemType.objects.get(name=item_type))
     
     
     name = request.GET.get("name")
@@ -86,22 +85,25 @@ def search(request):
     
     
     range_min = get_int_or_default(request.GET.get("range-min"), 0)
-    range_max = get_int_or_default(request.GET.get("range-min"), 100)
+    range_max = get_int_or_default(request.GET.get("range-max"), 100)
     
-    range_query = Q(range__gte=range_min,range__lte=range_max)
-    range_query_pano = Q(item__range__gte=level_min, item__range__lte=level_max)
+    range_query = Q(range_min__gte=range_min,range_max__lte=range_max)
+    range_query_pano = Q(item__range_min__gte=level_min, item__range_max__lte=level_max)
     
     if range_min == 0:
-        range_query |= Q(range__isnull=True)
-        range_query_pano |= Q(item__range__isnull=True)
+        range_query |= Q(range_min__isnull=True)
+        range_query_pano |= Q(item__range_min__isnull=True)
+    if range_max == 100:
+        range_query |= Q(range_max__isnull=True)
+        range_query_pano |= Q(item__range_max__isnull=True)
     
     attribute_querys = []
     attribute_querys_pano = []
     for k, v in request.GET.items():
         if re.match("attribute-\d+", k):
             index = k[10:]
-            min = get_int_or_default(request.GET.get("value-min-"+index), 1)
-            max = get_int_or_default(request.GET.get("value-max-"+index), 9999)
+            value_min = get_int_or_default(request.GET.get("value-min-"+index), 1)
+            value_max = get_int_or_default(request.GET.get("value-max-"+index), 9999)
             
             attributeObject = Attribute.objects.get_if_exist(name=v)
             
@@ -109,12 +111,12 @@ def search(request):
                 continue
             
             attribute_querys.append(Q(attributevalue__attribute=attributeObject,
-                                      attributevalue__min_value__lte=max,
-                                      attributevalue__max_value__gte=min))
+                                      attributevalue__min_value__lte=value_max,
+                                      attributevalue__max_value__gte=value_min))
             
             attribute_querys_pano.append(Q(panoplieattribute__attribute=attributeObject,
-                                           panoplieattribute__value__lte=max,
-                                           panoplieattribute__value__gte=min))
+                                           panoplieattribute__value__lte=value_max,
+                                           panoplieattribute__value__gte=value_min))
         
     
     items = Item.objects.filter(type_query & name_query & level_query & recipe_query & cost_query & range_query)
@@ -159,13 +161,15 @@ def dictify_item(item):
     result = {}
     result["is_item"] = True
     result["name"] = item.name
+    result["image"] = item.image
     result["description"] = item.description
     result["original_id"] = item.original_id
     result["type"] = item.type.name
     result["is_weapon"] = item.type.category.name == "Arme"
     result["level"] = item.level
     result["cost"] = item.cost
-    result["range"] = item.range
+    result["range_min"] = item.range_min
+    result["range_max"] = item.range_max
     result["crit_chance"] = item.crit_chance
     result["crit_damage"] = item.crit_damage
     result["failure"] = item.failure
@@ -223,9 +227,9 @@ def dictify_pano(pano):
     
     return result
 
-def get_int_or_default(str, default=0):
+def get_int_or_default(string, default=0):
     try:
-        return int(str)
+        return int(string)
     except:
         return default
 
@@ -249,17 +253,22 @@ def get_item(request):
     return HttpResponse(json.dumps(result), mimetype="application/json")
 
 
-# TODO: Add IP tag + admin function to remove by IP
 def flag_invalid(request):
     name = request.GET.get("name")
     item = Item.objects.get_if_exist(name=name)
     pano = Panoplie.objects.get_if_exist(name=name)
     
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[-1].strip()
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    
     if item and InvalidItem.objects.filter(item=item).count() == 0:
-        InvalidItem.objects.create(item=item, flag_date=timezone.now())
+        InvalidItem.objects.create(item=item, flag_date=timezone.now(), origin=ip)
         
     elif pano and InvalidItem.objects.filter(panoplie=pano).count() == 0:
-        InvalidItem.objects.create(panoplie=pano, flag_date=timezone.now())
+        InvalidItem.objects.create(panoplie=pano, flag_date=timezone.now(), origin=ip)
     
     return HttpResponse()
 

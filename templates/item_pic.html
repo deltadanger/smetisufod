@@ -1,5 +1,2 @@
 
-{% load staticfiles %}
-
-<img src="{% static "img/items/" %}{{ item_id }}.png" alt="Image de l'objet" width="120" height="120" />
-
+<img src="{{ item.image }}" alt="Image de l'objet" width="120" height="120" />

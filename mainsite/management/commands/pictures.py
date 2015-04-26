@@ -76,7 +76,10 @@ class PictureManager():
         while True:
             param = {}
             if page_token:
+                log.debug("Fetch next page..")
                 param['pageToken'] = page_token
+            else:
+                log.debug("Fetch first page..")
             children = self._service.children().list(folderId=FOLDER_ID, **param).execute()
             
             for image in children.get('items', []):
@@ -97,7 +100,6 @@ class PictureManager():
         
         temp_file = NamedTemporaryFile()
         temp_file.write(resp.read())
-        
         # Upload the file to GDrive
         file_name = original_url.split("/")[-1]
         mime_type = "image/png"
