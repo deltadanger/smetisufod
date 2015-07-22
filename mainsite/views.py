@@ -25,6 +25,9 @@ RECIPE_SIZE_TO_JOB_LEVEL = {
 PAGE_TITLE = "Dofus: Outil de recherche d'objets"
 PAGE_DESCRIPTION = "Outil de recherche d'objet pour le MMORPG Dofus."
 
+def maintenance(request):
+    return render_to_response("maintenance.html", context_instance=RequestContext(request))
+
 def search(request):
     # Do not get attributes that are used only as condition
     attributes = Attribute.objects.filter(attributevalue__isnull=False).distinct().order_by("name")
